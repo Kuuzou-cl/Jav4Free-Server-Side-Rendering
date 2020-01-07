@@ -1,0 +1,52 @@
+<template>
+  <div class="container-fluid">
+    <Crumbs />
+    <div class="need-space"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h6 class="title-white text-left">Categories</h6>
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row justify-content-center">
+            <div v-for="category in categories" :key="category._id">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <nuxt-link :to="'/categories/1/'+category._id">
+                  <button class="btn category-title">{{ category.name }}</button>
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
+
+export default {
+  components: {
+    Crumbs
+  },
+  async asyncData() {
+    const { data } = await axios.get(
+      "https://jav.souzou.dev/jav4free/categories"
+    );
+    
+    return { categories: data.categories };
+  },
+  beforeCreate(){
+    this.$store.dispatch("addCrumb", {page:"Categories", show:"Categories",route:"categories"});
+  }
+};
+</script>

@@ -1,0 +1,42 @@
+footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+.footer{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #4A4860;
+}
+
+.footer h6{
+    color: #E8175D ;
+    text-align:left;
+    font-weight: 450 !important;
+}
+
+.footer p{
+    color: #FFE4FA ;
+    text-align:justify;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.footer .details-footer{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.footer .copyright{
+    background-color: #323042;
+    padding-bottom: 0px;
+}
+
+.footer .copyright p{
+    color: #E8175D ;
+    height: 5px;
+    text-align: center;
+}
