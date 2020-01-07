@@ -440,8 +440,23 @@ body
 
 .container-jav{
     border-style: solid;
+    border-radius: 0.5%;
     border-width: 1px;
     border-color: #4A4860;
+}
+
+.container-recommended{
+    background-color: #1b1927;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.5%;
+    border-color: #4A4860;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+
+    .box2 .box-content{
+        background-color: #1b1927;
+    }
 }
 
 .jav-title{
@@ -456,7 +471,7 @@ body
 .jav-extra{
     padding: 0.5% 2%;
     text-align: justify;
-    background-color: #16151c;
+    background-color: #1b1927;
     font-size:16px;
     color: #FFE4FA;
 }

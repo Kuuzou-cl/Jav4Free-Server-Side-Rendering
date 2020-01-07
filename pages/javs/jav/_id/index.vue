@@ -31,13 +31,16 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <h3 v-for="c in check" :key="c._id">{{c.code}}</h3>
+          <h3>ADS</h3>
         </div>
       </div>
       <div class="need-space"></div>
       <div class="row justify-content-center">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-          <div class="container-jav">
+          <div class="container-recommended">
+            <div class="row justify-content-center">
+              <h6 class="title-white text-left">Recommended JAV's</h6>
+            </div>
             <div class="row">
               <div
                 v-for="jav in relatedJavs"
@@ -49,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><h3>ADS</h3></div>
       </div>
     </div>
   </div>
@@ -90,7 +93,7 @@ export default {
       previewThumbnails: {
         enabled: true,
         src:
-          "https://javdata.sfo2.digitaloceanspaces.com/vtts/" +
+          "https://javdata.sfo2.cdn.digitaloceanspaces.com/vtts/" +
           jav.data.jav.code +
           "_thumbs.vtt"
       }

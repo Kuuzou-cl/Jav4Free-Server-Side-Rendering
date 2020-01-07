@@ -109,7 +109,7 @@ export default {
       var obj = {
         name: this.idolName,
         imageUrl:
-          "https://javdata.sfo2.digitaloceanspaces.com/idols/" +
+          "https://javdata.sfo2.cdn.digitaloceanspaces.com/idols/" +
           this.idolUrl +
           ".jpg",
         hidden: this.hidden

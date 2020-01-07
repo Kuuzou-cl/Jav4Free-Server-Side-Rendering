@@ -5,9 +5,9 @@
         :to="'/javs/jav/'+dataJav._id"
         tag="img"
         class="static"
-        :src="'https://javdata.sfo2.digitaloceanspaces.com/covers/'+ dataJav.code +'-static.jpg'"
+        :src="dataJav.imageIndexUrl"
       ></nuxt-link>
-      <img :src="'https://javdata.sfo2.digitaloceanspaces.com/covers/'+ dataJav.code +'.gif'" />
+      <img :src="dataJav.imageUrl" />
     </a>
     <div v-if="titleType(dataJav.name)" class="box-time">
       <span class="post">

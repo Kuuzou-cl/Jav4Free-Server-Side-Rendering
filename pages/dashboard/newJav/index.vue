@@ -189,16 +189,16 @@ export default {
         name: this.javName,
         code: this.javCode,
         url:
-          "https://javdata.sfo2.digitaloceanspaces.com/javs/" +
+          "https://javdata.sfo2.cdn.digitaloceanspaces.com/javs/" +
           this.javCode +
           ".mp4",
         duration: this.javDuration,
         imageUrl:
-          "https://javdata.sfo2.digitaloceanspaces.com/covers/" +
+          "https://javdata.sfo2.cdn.digitaloceanspaces.com/covers/" +
           this.javCode +
           ".gif",
         imageIndexUrl:
-          "https://javdata.sfo2.digitaloceanspaces.com/covers/" +
+          "https://javdata.sfo2.cdn.digitaloceanspaces.com/covers/" +
           this.javCode +
           "-static.jpg",
         hidden: this.hidden,
