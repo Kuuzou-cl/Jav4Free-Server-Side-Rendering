@@ -46,8 +46,8 @@ export default {
   methods: {
     getName: function(_name) {
       let newName;
-      if (_name.length > 64) {
-        newName = _name.slice(0, 64) + " ...";
+      if (_name.length > 58) {
+        newName = _name.slice(0, 58) + " ...";
         return newName;
       } else {
         return _name;

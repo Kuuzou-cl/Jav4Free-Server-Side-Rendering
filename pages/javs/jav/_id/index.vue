@@ -19,13 +19,25 @@
             <div class="jav-extra">
               <span>
                 <b>Categories:</b>
-                <b v-for="category in categories" :key="category._id">{{category.name}}</b>
+                <nuxt-link
+                  v-for="category in categories"
+                  :key="category._id"
+                  :to="'/categories/1/'+category._id"
+                  tag="a"
+                  class="links"
+                >{{category.name}},</nuxt-link>
               </span>
             </div>
             <div class="jav-extra">
               <span>
                 <b>Idols:</b>
-                <b v-for="idol in idols" :key="idol._id">{{idol.name}}</b>
+                <nuxt-link
+                  v-for="idol in idols"
+                  :key="idol._id"
+                  :to="'/idols/1/'+idol._id"
+                  tag="a"
+                  class="links"
+                >{{idol.name}},</nuxt-link>
               </span>
             </div>
           </div>
@@ -52,7 +64,9 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><h3>ADS</h3></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <h3>ADS</h3>
+        </div>
       </div>
     </div>
   </div>

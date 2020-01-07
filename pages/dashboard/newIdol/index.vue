@@ -52,7 +52,7 @@
               id="inputJav06"
               :src="'https://javdata.sfo2.digitaloceanspaces.com/idols/' +
           this.idolUrl +
-          '.jpg'"
+          '.webp'"
             />
           </div>
           <div class="row">
