@@ -1,18 +1,22 @@
 @media screen and (min-width: 1px) and (max-width: 389px) {
-    .box00{width:65px !important}
-    .box00 .post{font-size:5px !important}
-    .box00 .post{margin-top: 0% !important}
-    .box00 .box-code{width: 120% !important;;top:63% !important}
+    .box00 .post{font-size:15px !important}
+    .box00 .box-code{top:80% !important;}
 }
 
 @media screen and (min-width: 390px) and (max-width: 750px) {
-    .box00 .post{font-size:10px !important}
+    .box00 .post{font-size:18px !important}
+    .box00 .box-code{top:80% !important;}
 }
 
 @media screen and (min-width: 751px) and (max-width: 974px) {
-    .box00{width:150px !important}
+    .box00{width:100% !important}
+    .box00 .post{font-size:11px !important}
+    .box00 .box-code{top:78% !important;}
 }
 
+@media screen and (min-width: 975px) and (max-width: 1190px) {
+    .box00{width:100% !important}
+}
 .box00{
     overflow:hidden;
     position:relative;

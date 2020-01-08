@@ -437,7 +437,41 @@ body
     padding-bottom: 2%;
 }
 /*============================Jav Page========================================*/
+@media screen and (min-width: 1px) and (max-width: 389px) {
+    .jav-title{
+        font-size:10px !important;
+    }
+    .jav-extra{
+        font-size:12px !important;
+    }
+}
 
+@media screen and (min-width: 390px) and (max-width: 750px) {
+    .jav-title{
+        font-size:12px !important;
+    }
+    .jav-extra{
+        font-size:12px !important;
+    }
+}
+
+@media screen and (min-width: 751px) and (max-width: 974px) {
+    .jav-title{
+        font-size:13px !important;
+    }
+    .jav-extra{
+        font-size:13px !important;
+    }
+}
+
+@media screen and (min-width: 975px) and (max-width: 1190px) {
+    .jav-title{
+        font-size:13px !important;
+    }
+    .jav-extra{
+        font-size:13px !important;
+    }
+}
 .container-jav{
     border-style: solid;
     border-radius: 0.5%;

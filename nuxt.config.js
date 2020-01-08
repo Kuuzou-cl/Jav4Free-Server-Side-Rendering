@@ -1,4 +1,4 @@
-
+const webpack = require('webpack')
 module.exports = {
   mode: 'universal',
   /*
@@ -13,12 +13,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.webp' },
-      { rel: "stylesheet", type: "text/css", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" }
     ],
     script: [
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js' },
-      { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
-      { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js' }
     ]
   },
   /*
@@ -29,12 +25,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'plyr/dist/plyr.css'
+    'plyr/dist/plyr.css',
+    'bootstrap/dist/css/bootstrap.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/bootstrap.js',
     '~/plugins/vue-plyr'
   ],
   /*
@@ -47,7 +45,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    'nuxt-lazy-load',
+    // 'nuxt-lazy-load',
     '@nuxtjs/axios',
     [
       'nuxt-fontawesome', {
@@ -78,6 +76,15 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    vendor: ['jquery', 'bootstrap'],
+    plugins: [
+      // set shortcuts as global for bootstrap
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
+      })
+    ],
     extend(config, ctx) {
     }
   }
