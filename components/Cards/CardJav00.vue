@@ -1,14 +1,9 @@
 <template>
   <div class="card bg-dark box2">
-    <a>
-      <nuxt-link
-        :to="'/javs/jav/'+dataJav._id"
-        tag="img"
-        class="static"
-        :src="dataJav.imageIndexUrl"
-      ></nuxt-link>
-      <img :src="dataJav.imageUrl" />
-    </a>
+    <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="img" class="static" :src="dataJav.imageIndexUrl"></nuxt-link>
+    <video autoplay loop>
+      <source :src="dataJav.imageUrl" type="video/mp4" />
+    </video>
     <div v-if="titleType(dataJav.name)" class="box-time">
       <span class="post">
         <b>{{dataJav.duration}}:00</b>
@@ -53,10 +48,10 @@ export default {
         return _name;
       }
     },
-    titleType: function(_name){
+    titleType: function(_name) {
       if (_name.length > 31) {
         return true;
-      }else{
+      } else {
         return false;
       }
     }

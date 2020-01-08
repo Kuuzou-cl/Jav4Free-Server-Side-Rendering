@@ -196,7 +196,7 @@ export default {
         imageUrl:
           "https://javdata.sfo2.cdn.digitaloceanspaces.com/covers/" +
           this.javCode +
-          ".gif",
+          ".mp4",
         imageIndexUrl:
           "https://javdata.sfo2.cdn.digitaloceanspaces.com/covers/" +
           this.javCode +
