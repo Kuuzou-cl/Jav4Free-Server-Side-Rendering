@@ -43,7 +43,20 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <h3>ADS</h3>
+          <div class="row justify-content-center">
+            <!-- JuicyAds v3.1 -->
+            <script
+              type="application/javascript"
+              data-cfasync="false"
+              async
+              src="https://poweredby.jads.co/js/jads.js"
+            ></script>
+            <ins id="817968" data-width="300" data-height="262"></ins>
+            <script type="application/javascript" data-cfasync="false" async>
+  (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 817968 });
+            </script>
+            <!--JuicyAds END-->
+          </div>
         </div>
       </div>
       <div class="need-space"></div>
