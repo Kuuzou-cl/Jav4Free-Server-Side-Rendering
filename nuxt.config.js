@@ -46,8 +46,18 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     // 'nuxt-lazy-load',
+    '@nuxtjs/device',
+    /* 
+    instance.$device.isDesktop
+    instance.$device.isMobile
+    instance.$device.isTablet
+    instance.$device.isMobileOrTablet
+    instance.$device.isDesktopOrTablet
+    instance.$device.isIos
+    instance.$device.isWindows
+    instance.$device.isMacOS 
+    */
     '@nuxtjs/axios',
     [
       'nuxt-fontawesome', {

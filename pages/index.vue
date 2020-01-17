@@ -1,7 +1,7 @@
 <template>
   <div id="Home" class="container-fluid">
     <Crumbs v-if="!this.$store.state.breadCrumbs" />
-    <div class="container">
+    <div v-if="$device.isDesktopOrTablet" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <h6>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container">
+    <div v-if="$device.isDesktopOrTablet" class="container">
       <div class="row">
         <div
           v-for="jav in javsCategory1"
@@ -49,7 +49,14 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container">
+    <div v-if="$device.isMobile" class="container">
+      <div class="row">
+        <div v-for="jav in javsMobile" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <CardJav v-bind:dataJav="jav" />
+        </div>
+      </div>
+    </div>
+    <div v-if="$device.isDesktopOrTablet" class="container">
       <div class="row">
         <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJav v-bind:dataJav="jav" />
@@ -109,6 +116,14 @@ export default {
     const javs = await axios.get(
       "https://jav.souzou.dev/jav4free/javs/getLatestJavs"
     );
+    const javsMobile = await axios.get(
+      "https://jav.souzou.dev/jav4free/javs/",
+      {
+        headers: {
+          quantity: 8
+        }
+      }
+    );
     const idols = await axios.get(
       "https://jav.souzou.dev/jav4free/idols/getRandomIdols"
     );
@@ -116,6 +131,7 @@ export default {
       category1: cat1.data.category,
       javsCategory1: cat1.data.javs,
       javs: javs.data.javs,
+      javsMobile: javs.data.javsMobile,
       idols: idols.data.idols
     };
   },

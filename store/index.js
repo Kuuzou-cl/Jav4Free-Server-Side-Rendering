@@ -103,8 +103,7 @@ export const actions = {
         }
       }
     }
-
     commit('SET_BREADCRUMBS', newPage)
-  }
+  },
 
 }
