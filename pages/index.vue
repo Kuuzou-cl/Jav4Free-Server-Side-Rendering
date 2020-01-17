@@ -131,7 +131,7 @@ export default {
       category1: cat1.data.category,
       javsCategory1: cat1.data.javs,
       javs: javs.data.javs,
-      javsMobile: javs.data.javsMobile,
+      javsMobile: javsMobile.data.javs,
       idols: idols.data.idols
     };
   },
