@@ -52,7 +52,7 @@
     <div v-if="$device.isMobile" class="container">
       <div class="row">
         <div v-for="jav in javsMobile" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <CardJav v-bind:dataJav="jav" />
+          <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
     </div>
@@ -101,6 +101,7 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "../components/Cards/CardJav00";
+import CardJavMobile from "../components/Cards/CardJav00Mobile";
 import CardIdol from "../components/Cards/CardIdol00";
 
 export default {
