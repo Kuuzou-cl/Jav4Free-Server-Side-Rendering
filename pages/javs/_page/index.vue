@@ -56,10 +56,17 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container">
+    <div v-if="$device.isDesktopOrTablet" class="container">
       <div class="row">
         <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJav v-bind:dataJav="jav" />
+        </div>
+      </div>
+    </div>
+    <div v-if="$device.isMobile" class="container">
+      <div class="row">
+        <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
     </div>
@@ -115,12 +122,14 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav00";
+import CardJavMobile  from "~/components/Cards/CardIdol00Mobile";
 
 export default {
   name: "RecentJavs",
   components: {
     Crumbs,
-    CardJav
+    CardJav,
+    CardJavMobile
   },
   async asyncData({ params }) {
     let page = params.page;

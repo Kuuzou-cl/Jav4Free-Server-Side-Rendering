@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container">
+    <div v-if="$device.isDesktopOrTablet" class="container">
       <div class="row justify-content-center">
         <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardIdol
@@ -89,6 +89,18 @@
             v-bind:dataName="idol.name"
             v-bind:dataUrl="idol.imageUrl"
           ></CardIdol>
+        </div>
+      </div>
+    </div>
+    <div v-if="$device.isMobile" class="container">
+      <div class="row justify-content-center">
+        <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <CardIdolMobile
+            v-if="idol != null"
+            v-bind:dataId="idol._id"
+            v-bind:dataName="idol.name"
+            v-bind:dataUrl="idol.imageUrl"
+          ></CardIdolMobile>
         </div>
       </div>
     </div>
@@ -103,12 +115,15 @@ import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "../components/Cards/CardJav00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
 import CardIdol from "../components/Cards/CardIdol00";
+import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 
 export default {
   components: {
     Crumbs,
     CardJav,
-    CardIdol
+    CardIdol,
+    CardJavMobile,
+    CardIdolMobile
   },
   async asyncData() {
     const cat1 = await axios.get(

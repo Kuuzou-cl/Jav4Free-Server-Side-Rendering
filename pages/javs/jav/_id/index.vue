@@ -62,7 +62,7 @@
       <div class="need-space"></div>
       <div class="row justify-content-center">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-          <div class="container-recommended">
+          <div v-if="$device.isDesktopOrTablet" class="container-recommended">
             <div class="row justify-content-center">
               <h6 class="title-white text-left">Recommended JAV's</h6>
             </div>
@@ -73,6 +73,20 @@
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
               >
                 <CardJav v-bind:dataJav="jav" />
+              </div>
+            </div>
+          </div>
+          <div v-if="$device.isMobile" class="container-recommended">
+            <div class="row justify-content-center">
+              <h6 class="title-white text-left">Recommended JAV's</h6>
+            </div>
+            <div class="row">
+              <div
+                v-for="jav in relatedJavs"
+                :key="jav._id"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+              >
+                <CardJavMobile v-bind:dataJav="jav" />
               </div>
             </div>
           </div>
@@ -90,12 +104,14 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav01";
+import CardJavMobile from '~/components/Cards/CardJav01Mobile';
 
 export default {
   name: "JAV",
   components: {
     Crumbs,
-    CardJav
+    CardJav,
+    CardJavMobile
   },
   data() {
     return {

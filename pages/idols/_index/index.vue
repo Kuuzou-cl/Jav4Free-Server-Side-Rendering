@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container">
+    <div v-if="$device.isDesktopOrTablet" class="container">
       <div class="row justify-content-center">
         <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardIdol
@@ -69,6 +69,18 @@
             v-bind:dataName="idol.name"
             v-bind:dataUrl="idol.imageUrl"
           ></CardIdol>
+        </div>
+      </div>
+    </div>
+    <div v-if="$device.isMobile" class="container">
+      <div class="row justify-content-center">
+        <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <CardIdolMobile
+            v-if="idol != null"
+            v-bind:dataId="idol._id"
+            v-bind:dataName="idol.name"
+            v-bind:dataUrl="idol.imageUrl"
+          ></CardIdolMobile>
         </div>
       </div>
     </div>
@@ -129,12 +141,14 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardIdol from "~/components/Cards/CardIdol00";
+import CardIdolMobile from "~/components/Cards/CardIdol00Mobile";
 
 export default {
   name: "Idols",
   components: {
     Crumbs,
     CardIdol,
+    CardIdolMobile
   },
   async asyncData({ params }) {
     let page = params.index;
