@@ -62,7 +62,7 @@
       <div class="need-space"></div>
       <div class="row justify-content-center">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-          <div v-if="$device.isDesktopOrTablet" class="container-recommended">
+          <div v-if="$device.isDesktop" class="container-recommended">
             <div class="row justify-content-center">
               <h6 class="title-white text-left">Recommended JAV's</h6>
             </div>
@@ -76,7 +76,7 @@
               </div>
             </div>
           </div>
-          <div v-if="$device.isMobile" class="container-recommended">
+          <div v-if="$device.isMobileOrTablet" class="container-recommended">
             <div class="row justify-content-center">
               <h6 class="title-white text-left">Recommended JAV's</h6>
             </div>

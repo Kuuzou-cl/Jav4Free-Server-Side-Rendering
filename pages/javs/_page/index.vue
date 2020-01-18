@@ -56,14 +56,14 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="$device.isDesktopOrTablet" class="container">
+    <div v-if="$device.isDesktop" class="container">
       <div class="row">
         <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJav v-bind:dataJav="jav" />
         </div>
       </div>
     </div>
-    <div v-if="$device.isMobile" class="container">
+    <div v-if="$device.isMobileOrTablet" class="container">
       <div class="row">
         <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJavMobile v-bind:dataJav="jav" />

@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="$device.isDesktopOrTablet" class="container">
+    <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardIdol
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <div v-if="$device.isMobile" class="container">
+    <div v-if="$device.isMobileOrTablet" class="container">
       <div class="row justify-content-center">
         <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardIdolMobile

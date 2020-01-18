@@ -1,7 +1,7 @@
 <template>
   <div id="Home" class="container-fluid">
     <Crumbs v-if="!this.$store.state.breadCrumbs" />
-    <div v-if="$device.isDesktopOrTablet" class="container">
+    <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <h6>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="$device.isDesktopOrTablet" class="container">
+    <div v-if="$device.isDesktop" class="container">
       <div class="row">
         <div
           v-for="jav in javsCategory1"
@@ -49,14 +49,14 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="$device.isMobile" class="container">
+    <div v-if="$device.isMobileOrTablet" class="container">
       <div class="row">
         <div v-for="jav in javsMobile" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
     </div>
-    <div v-if="$device.isDesktopOrTablet" class="container">
+    <div v-if="$device.isDesktop" class="container">
       <div class="row">
         <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJav v-bind:dataJav="jav" />
@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="$device.isDesktopOrTablet" class="container">
+    <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardIdol
@@ -92,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div v-if="$device.isMobile" class="container">
+    <div v-if="$device.isMobileOrTablet" class="container">
       <div class="row justify-content-center">
         <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardIdolMobile
