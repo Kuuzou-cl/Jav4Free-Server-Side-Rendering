@@ -78,6 +78,7 @@
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Code</th>
+                <th scope="col">Javs</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
@@ -86,6 +87,7 @@
               <tr v-for="category in categories" :key="category._id">
                 <th scope="row">{{category.name}}</th>
                 <td>{{category._id}}</td>
+                <td>{{getLength(category._id)}}</td>
                 <td>
                   <nuxt-link :to="'/dashboard/editCategories/'+category._id" class="btn simple-button">Edit</nuxt-link>
                 </td>
@@ -109,7 +111,9 @@ export default {
   middleware: "auth",
   name: "Dashboard",
   data() {
-    return {};
+    return {
+      categoriesLength: [],
+    };
   },
   async asyncData() {
     let javs = await axios.get("https://jav.souzou.dev/jav4free/javs/");
@@ -117,16 +121,32 @@ export default {
       "https://jav.souzou.dev/jav4free/categories/"
     );
     let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
+    let categoriesLength = [];
+    categories.data.categories.forEach(async element => {
+      let data = await axios.get("https://jav.souzou.dev/jav4free/categories/countJavs/"+ element._id);
+      let categoryData =  { categoryId: element._id, categoryLength: data.data.length };
+      categoriesLength.push(categoryData);
+    });
     return {
       javs: javs.data.javs,
       categories: categories.data.categories,
-      idols: idols.data.idols
+      idols: idols.data.idols,
+      categoriesLength: categoriesLength,
     };
   },
   methods: {
     async deleteCat(_id){
      let message = await axios.delete("https://jav.souzou.dev/jav4free/categories/"+_id)
      this.$router.push({ path: "/dashboard" });
+    },
+    getLength(_id){
+      let length = 0;
+      this.categoriesLength.forEach(element => {
+        if (element.categoryId == _id) {
+          length = element.categoryLength;
+        }
+      });
+      return length;
     }
   }
 };

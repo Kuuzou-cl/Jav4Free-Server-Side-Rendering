@@ -79,7 +79,8 @@
     <div class="need-space"></div>
     <div class="containter">
       <div class="row justify-content-center">
-        <button class="btn category-title" @click="viewCategoriesContainer()">View Categories</button>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><button class="btn category-title" @click="viewCategoriesContainer()">View Categories</button></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><button class="btn category-title" @click="viewIdolsContainer()">View Idols</button></div>
       </div>
     </div>
     <div class="need-space"></div>
@@ -88,20 +89,17 @@
         <div v-for="category in categories" :key="category._id">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button
-              data-toggle="button"
-              aria-pressed="false"
-              autocomplete="off"
+              v-if="checkCategory(category._id)"
               @click="addCategory(category._id)"
               class="btn category-button"
             >{{ category.name }}</button>
+            <button 
+              v-else
+              @click="addCategory(category._id)"
+              class="active btn category-button"
+            >{{ category.name }}</button>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="containter">
-      <div class="row justify-content-center">
-        <button class="btn category-title" @click="viewIdolsContainer()">View Idols</button>
       </div>
     </div>
     <div class="need-space"></div>
@@ -110,11 +108,14 @@
         <div v-for="idol in idols" :key="idol._id">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button
-              data-toggle="button"
-              aria-pressed="false"
-              autocomplete="off"
+              v-if="checkIdol(idol._id)"
               @click="addIdol(idol._id)"
               class="btn category-button"
+            >{{ idol.name }}</button>
+            <button
+              v-else
+              @click="addIdol(idol._id)"
+              class="active btn category-button"
             >{{ idol.name }}</button>
           </div>
         </div>
@@ -159,10 +160,10 @@ export default {
   },
   methods: {
     addCategory: function(_id) {
-      const exist = this.javCategories.find(category => category._id === _id);
+      const exist = this.javCategories.find(category => category === _id);
       if (exist) {
         for (var i = 0; i < this.javCategories.length; i++) {
-          if (this.javCategories[i]._id === _id) {
+          if (this.javCategories[i] === _id) {
             this.javCategories.splice(i, 1);
             i--;
           }
@@ -171,17 +172,33 @@ export default {
         this.javCategories.push(_id);
       }
     },
+    checkCategory: function(_id){
+      const exist = this.javCategories.find(category => category === _id);
+      if(exist){
+        return false;
+      }else{
+        return true;
+      }
+    },
     addIdol: function(_id) {
-      const exist = this.javIdols.find(idol => idol._id === _id);
+      const exist = this.javIdols.find(idol => idol === _id);
       if (exist) {
         for (var i = 0; i < this.javIdols.length; i++) {
-          if (this.javIdols[i]._id === _id) {
+          if (this.javIdols[i] === _id) {
             this.javIdols.splice(i, 1);
             i--;
           }
         }
       } else {
         this.javIdols.push(_id);
+      }
+    },
+    checkIdol: function(_id){
+      const exist = this.javIdols.find(idol => idol === _id);
+      if(exist){
+        return false;
+      }else{
+        return true;
       }
     },
     async postJav() {

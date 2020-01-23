@@ -114,11 +114,14 @@
         <div v-for="category in categories" :key="category._id">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button
-              data-toggle="button"
-              aria-pressed="false"
-              autocomplete="off"
+              v-if="checkCategory(category._id)"
               @click="addCategory(category._id)"
               class="btn category-button"
+            >{{ category.name }}</button>
+            <button 
+              v-else
+              @click="addCategory(category._id)"
+              class="active btn category-button"
             >{{ category.name }}</button>
           </div>
         </div>
@@ -130,11 +133,14 @@
         <div v-for="idol in idols" :key="idol._id">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button
-              data-toggle="button"
-              aria-pressed="false"
-              autocomplete="off"
+              v-if="checkIdol(idol._id)"
               @click="addIdol(idol._id)"
               class="btn category-button"
+            >{{ idol.name }}</button>
+            <button 
+              v-else
+              @click="addIdol(idol._id)"
+              class="active btn category-button"
             >{{ idol.name }}</button>
           </div>
         </div>
@@ -185,17 +191,17 @@ export default {
     checkCategory: function(_id) {
       const exist = this.jav.categories.find(category => category === _id);
       if (exist) {
-        return true;
-      } else {
         return false;
+      } else {
+        return true;
       }
     },
     checkIdol: function(_id) {
       const exist = this.jav.idols.find(idol => idol === _id);
       if (exist) {
-        return true;
-      } else {
         return false;
+      } else {
+        return true;
       }
     },
     addCategory: function(_id) {
