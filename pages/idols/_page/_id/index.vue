@@ -38,18 +38,32 @@
         <div class="pagination">
           <div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-              <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
+              <button
+                v-if="page!=1"
+                @click="prevClick()"
+                type="button"
+                class="btn paginate-prev"
+              >Prev</button>
               <button v-else disabled type="button" class="btn paginate-prev">Prev</button>
             </div>
           </div>
           <div v-if="Number(page) - 1 !=1 && Number(page) - 1 != 0">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button"  @click="pullPage(2)" class="btn paginate-index">{{Number(page) - 2}}</button>
+              <button
+                type="button"
+                @click="pullPage(2)"
+                class="btn paginate-index"
+              >{{Number(page) - 2}}</button>
             </div>
           </div>
           <div v-if="Number(page)!=1">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button v-if="page!=1"  @click="pullPage(1)" type="button" class="btn paginate-index">{{Number(page) - 1}}</button>
+              <button
+                v-if="page!=1"
+                @click="pullPage(1)"
+                type="button"
+                class="btn paginate-index"
+              >{{Number(page) - 1}}</button>
             </div>
           </div>
           <div>
@@ -59,7 +73,11 @@
           </div>
           <div v-if="nextPage">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button" @click="pushPage(1)" class="btn paginate-index">{{Number(page) + 1}}</button>
+              <button
+                type="button"
+                @click="pushPage(1)"
+                class="btn paginate-index"
+              >{{Number(page) + 1}}</button>
             </div>
           </div>
           <div>
@@ -90,18 +108,32 @@
         <div class="pagination">
           <div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-              <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
+              <button
+                v-if="page!=1"
+                @click="prevClick()"
+                type="button"
+                class="btn paginate-prev"
+              >Prev</button>
               <button v-else disabled type="button" class="btn paginate-prev">Prev</button>
             </div>
           </div>
           <div v-if="Number(page) - 1 !=1 && Number(page) - 1 != 0">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button"  @click="pullPage(2)" class="btn paginate-index">{{Number(page) - 2}}</button>
+              <button
+                type="button"
+                @click="pullPage(2)"
+                class="btn paginate-index"
+              >{{Number(page) - 2}}</button>
             </div>
           </div>
           <div v-if="Number(page)!=1">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button v-if="page!=1"  @click="pullPage(1)" type="button" class="btn paginate-index">{{Number(page) - 1}}</button>
+              <button
+                v-if="page!=1"
+                @click="pullPage(1)"
+                type="button"
+                class="btn paginate-index"
+              >{{Number(page) - 1}}</button>
             </div>
           </div>
           <div>
@@ -111,7 +143,11 @@
           </div>
           <div v-if="nextPage">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button" @click="pushPage(1)" class="btn paginate-index">{{Number(page) + 1}}</button>
+              <button
+                type="button"
+                @click="pushPage(1)"
+                class="btn paginate-index"
+              >{{Number(page) + 1}}</button>
             </div>
           </div>
           <div>
@@ -146,6 +182,20 @@ export default {
     CardIdol,
     CardJav
   },
+  head() {
+    return {
+      title: this.titleI + " Videos | Jav4Free",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Jav4Free, Here you can watch every porn video of " +
+            this.titleI +
+            ", find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+        }
+      ]
+    };
+  },
   async asyncData({ params }) {
     let page = params.page;
     if (page == null || page == "") {
@@ -159,6 +209,7 @@ export default {
       "https://jav.souzou.dev/jav4free/javs/getJavByIdol/" + page + "/" + idolId
     );
     return {
+      titleI: idol.data.idol.name,
       idol: idol.data.idol,
       javs: javs.data.javs,
       page: page,
@@ -174,26 +225,30 @@ export default {
       route: routePage
     });
   },
-  beforeCreate(){
+  beforeCreate() {
     let routePage = "javs/" + this.$route.params.page;
-    this.$store.dispatch("addCrumb", {page:"Javs", show:"Recently Added Videos",route:routePage});
+    this.$store.dispatch("addCrumb", {
+      page: "Javs",
+      show: "Recently Added Videos",
+      route: routePage
+    });
   },
   methods: {
-    nextClick(){
-      var newPage = Number( this.page ) + 1
-      this.$router.push({ path: "/idols/"+ newPage + "/" + this.idol._id });
+    nextClick() {
+      var newPage = Number(this.page) + 1;
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
     },
-    prevClick(){
-      var newPage = Number( this.page ) - 1
-      this.$router.push({ path: "/idols/"+ newPage + "/" + this.idol._id });
+    prevClick() {
+      var newPage = Number(this.page) - 1;
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
     },
-    pullPage(indexPage){
-      var newPage = Number( this.page ) - Number(indexPage)
-      this.$router.push({ path: "/idols/"+ newPage + "/" + this.idol._id });
+    pullPage(indexPage) {
+      var newPage = Number(this.page) - Number(indexPage);
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
     },
-    pushPage(indexPage){
-      var newPage = Number( this.page ) + Number(indexPage)
-      this.$router.push({ path: "/idols/"+ newPage + "/" + this.idol._id });
+    pushPage(indexPage) {
+      var newPage = Number(this.page) + Number(indexPage);
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
     }
   }
 };

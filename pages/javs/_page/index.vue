@@ -5,9 +5,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h6 class="title-white text-left">
-            Recently Added Videos
-          </h6>
+          <h6 class="title-white text-left">Recently Added Videos</h6>
         </div>
       </div>
     </div>
@@ -17,18 +15,32 @@
         <div class="pagination">
           <div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-              <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
+              <button
+                v-if="page!=1"
+                @click="prevClick()"
+                type="button"
+                class="btn paginate-prev"
+              >Prev</button>
               <button v-else disabled type="button" class="btn paginate-prev">Prev</button>
             </div>
           </div>
           <div v-if="Number(page) - 1 !=1 && Number(page) - 1 != 0">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button"  @click="pullPage(2)" class="btn paginate-index">{{Number(page) - 2}}</button>
+              <button
+                type="button"
+                @click="pullPage(2)"
+                class="btn paginate-index"
+              >{{Number(page) - 2}}</button>
             </div>
           </div>
           <div v-if="Number(page)!=1">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button v-if="page!=1"  @click="pullPage(1)" type="button" class="btn paginate-index">{{Number(page) - 1}}</button>
+              <button
+                v-if="page!=1"
+                @click="pullPage(1)"
+                type="button"
+                class="btn paginate-index"
+              >{{Number(page) - 1}}</button>
             </div>
           </div>
           <div>
@@ -38,7 +50,11 @@
           </div>
           <div v-if="nextPage">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button" @click="pushPage(1)" class="btn paginate-index">{{Number(page) + 1}}</button>
+              <button
+                type="button"
+                @click="pushPage(1)"
+                class="btn paginate-index"
+              >{{Number(page) + 1}}</button>
             </div>
           </div>
           <div>
@@ -76,18 +92,32 @@
         <div class="pagination">
           <div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-              <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
+              <button
+                v-if="page!=1"
+                @click="prevClick()"
+                type="button"
+                class="btn paginate-prev"
+              >Prev</button>
               <button v-else disabled type="button" class="btn paginate-prev">Prev</button>
             </div>
           </div>
           <div v-if="Number(page) - 1 !=1 && Number(page) - 1 != 0">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button"  @click="pullPage(2)" class="btn paginate-index">{{Number(page) - 2}}</button>
+              <button
+                type="button"
+                @click="pullPage(2)"
+                class="btn paginate-index"
+              >{{Number(page) - 2}}</button>
             </div>
           </div>
           <div v-if="Number(page)!=1">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button v-if="page!=1"  @click="pullPage(1)" type="button" class="btn paginate-index">{{Number(page) - 1}}</button>
+              <button
+                v-if="page!=1"
+                @click="pullPage(1)"
+                type="button"
+                class="btn paginate-index"
+              >{{Number(page) - 1}}</button>
             </div>
           </div>
           <div>
@@ -97,7 +127,11 @@
           </div>
           <div v-if="nextPage">
             <div class="col-lg-1 d-none d-lg-block text-center">
-              <button type="button" @click="pushPage(1)" class="btn paginate-index">{{Number(page) + 1}}</button>
+              <button
+                type="button"
+                @click="pushPage(1)"
+                class="btn paginate-index"
+              >{{Number(page) + 1}}</button>
             </div>
           </div>
           <div>
@@ -122,7 +156,7 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav00";
-import CardJavMobile  from "~/components/Cards/CardIdol00Mobile";
+import CardJavMobile from "~/components/Cards/CardIdol00Mobile";
 
 export default {
   name: "RecentJavs",
@@ -130,6 +164,18 @@ export default {
     Crumbs,
     CardJav,
     CardJavMobile
+  },
+  head() {
+    return {
+      title: "Recently Videos | Jav4Free | Japanese Adult Videos for Free",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Jav4Free, Uploads every day, free streaming videos, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+        }
+      ]
+    };
   },
   async asyncData({ params }) {
     let page = params.page;
@@ -145,26 +191,30 @@ export default {
       nextPage: javs.data.nextPage
     };
   },
-  beforeCreate(){
+  beforeCreate() {
     let routePage = "javs/" + this.$route.params.page;
-    this.$store.dispatch("addCrumb", {page:"Javs", show:"Recently Added Videos",route:routePage});
+    this.$store.dispatch("addCrumb", {
+      page: "Javs",
+      show: "Recently Added Videos",
+      route: routePage
+    });
   },
   methods: {
-    nextClick(){
-      var newPage = Number( this.page ) + 1
-      this.$router.push({ path: "/javs/"+ newPage });
+    nextClick() {
+      var newPage = Number(this.page) + 1;
+      this.$router.push({ path: "/javs/" + newPage });
     },
-    prevClick(){
-      var newPage = Number( this.page ) - 1
-      this.$router.push({ path: "/javs/"+ newPage });
+    prevClick() {
+      var newPage = Number(this.page) - 1;
+      this.$router.push({ path: "/javs/" + newPage });
     },
-    pullPage(indexPage){
-      var newPage = Number( this.page ) - Number(indexPage)
-      this.$router.push({ path: "/javs/"+ newPage });
+    pullPage(indexPage) {
+      var newPage = Number(this.page) - Number(indexPage);
+      this.$router.push({ path: "/javs/" + newPage });
     },
-    pushPage(indexPage){
-      var newPage = Number( this.page ) + Number(indexPage)
-      this.$router.push({ path: "/javs/"+ newPage });
+    pushPage(indexPage) {
+      var newPage = Number(this.page) + Number(indexPage);
+      this.$router.push({ path: "/javs/" + newPage });
     }
   }
 };

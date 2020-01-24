@@ -38,15 +38,31 @@ export default {
   components: {
     Crumbs
   },
+  head() {
+    return {
+      title: "Categories on Jav4Free | Japanese Adult Videos for Free",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Jav4Free, Here you can watch free adult porn videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+        }
+      ]
+    };
+  },
   async asyncData() {
     const { data } = await axios.get(
       "https://jav.souzou.dev/jav4free/categories"
     );
-    
+
     return { categories: data.categories };
   },
-  beforeCreate(){
-    this.$store.dispatch("addCrumb", {page:"Categories", show:"Categories",route:"categories"});
+  beforeCreate() {
+    this.$store.dispatch("addCrumb", {
+      page: "Categories",
+      show: "Categories",
+      route: "categories"
+    });
   }
 };
 </script>

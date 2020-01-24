@@ -125,6 +125,17 @@ export default {
     CardJavMobile,
     CardIdolMobile
   },
+  head() {
+    return {
+      meta: [
+        {
+          name: "description",
+          content:
+            "Jav4Free, watch every japanese adult video in HD and Free, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+        }
+      ]
+    };
+  },
   async asyncData() {
     const cat1 = await axios.get(
       "https://jav.souzou.dev/jav4free/categories/getRandomCategory"

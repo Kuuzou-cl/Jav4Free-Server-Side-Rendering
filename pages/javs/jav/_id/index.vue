@@ -104,7 +104,7 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav01";
-import CardJavMobile from '~/components/Cards/CardJav01Mobile';
+import CardJavMobile from "~/components/Cards/CardJav01Mobile";
 
 export default {
   name: "JAV",
@@ -121,6 +121,18 @@ export default {
           src: ""
         }
       }
+    };
+  },
+  head() {
+    return {
+      title: this.titleJ + " | Jav4Free | " + this.detailJ,
+      meta: [
+        {
+          name: "description",
+          content:
+            "Jav4Free, watch "+ this.titleJ +" , "+ this.detailJ +" , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+        }
+      ]
     };
   },
   async asyncData({ params }) {
@@ -142,6 +154,8 @@ export default {
       }
     };
     return {
+      titleJ: jav.data.jav.code,
+      detailJ: jav.data.jav.name,
       jav: jav.data.jav,
       playerOptions: playerOptions,
       categories: jav.data.categories,
