@@ -138,7 +138,7 @@ export default {
   async asyncData({ params }) {
     let id = params.id;
     if (id == null || id == "") {
-      this.$router.push({ path: "/" });
+      id = "";
     }
     let jav = await axios.get("https://jav.souzou.dev/jav4free/javs/" + id);
     let related = await axios.get(

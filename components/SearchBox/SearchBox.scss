@@ -1,0 +1,59 @@
+.tb
+{
+    display: table;
+    width: 100%;
+}
+
+.td
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+input, button
+{
+    color: #ffffffeb;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+#cover
+{
+    position: relative;
+    width: 100%;
+    padding: 0px 35px 0px 35px;
+    margin: 0px auto 1% auto;
+    background-color: #4A4860;
+    border-radius: 60px;
+    box-shadow: 0 5px 20px #4A4860, 0 0 0 10px #ffffffeb;
+    transform: scale(0.6);
+}
+
+form
+{
+    height: 96px;
+}
+
+input[type="text"]
+{
+    width: 100%;
+    height: 96px;
+    font-size: 20px;
+    line-height: 1;
+}
+
+input[type="text"]::placeholder
+{
+    color: #ffffff;
+}
+
+.searchButton{
+    font-size: 40px;
+    margin-right: 5%;
+}
+
+#s-cover{
+    text-align: right;
+}

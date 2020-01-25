@@ -37,13 +37,13 @@
             <nuxt-link to="/">Logout</nuxt-link>
           </li>
           <li>
-            <a href="#">Overwatch</a>
+            <a href="#">Hentai</a>
           </li>
           <li>
-            <a href="#">Lol</a>
+            <a href="#">Animation 3D</a>
           </li>
           <li>
-            <a href="#">Fornite</a>
+            <a href="#">LoL</a>
           </li>
         </ul>
       </div>

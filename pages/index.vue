@@ -1,6 +1,7 @@
 <template>
   <div id="Home" class="container-fluid">
     <Crumbs v-if="!this.$store.state.breadCrumbs" />
+    <SearchBox />
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -111,6 +112,7 @@
 <script>
 import axios from "axios";
 
+import SearchBox from "~/components/SearchBox/SearchBox";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "../components/Cards/CardJav00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
@@ -123,7 +125,8 @@ export default {
     CardJav,
     CardIdol,
     CardJavMobile,
-    CardIdolMobile
+    CardIdolMobile,
+    SearchBox
   },
   head() {
     return {

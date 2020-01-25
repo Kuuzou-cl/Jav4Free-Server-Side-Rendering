@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid">
     <Crumbs />
-    <SearchBox />
-    <div class="container">
+    <div class="need-space"></div>
+    <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h6 class="title-white text-left">Recently Added Videos</h6>
+          <h6 class="title-white text-left">Videos found by "{{this.query.toUpperCase()}}":</h6>
         </div>
       </div>
     </div>
@@ -154,69 +154,73 @@
 <script>
 import axios from "axios";
 
-import SearchBox from "~/components/SearchBox/SearchBox";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav00";
 import CardJavMobile from "~/components/Cards/CardIdol00Mobile";
 
 export default {
-  name: "RecentJavs",
+  name: "Search",
   components: {
-    SearchBox,
     Crumbs,
     CardJav,
     CardJavMobile
   },
+  data() {
+    return {
+      query: "",
+      page: ""
+    };
+  },
   head() {
     return {
-      title: "Recently Videos | Jav4Free | Japanese Adult Videos for Free",
+      title: '"' + this.query + '" | Jav4Free | Watch Adult Porn Videos ',
       meta: [
         {
           name: "description",
           content:
-            "Jav4Free, Uploads every day, free streaming videos, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+            "Jav4Free, watch , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
         }
       ]
     };
   },
   async asyncData({ params }) {
+    let query = params.query;
+    if (query == null || query == "") {
+      query = "";
+    }
     let page = params.page;
     if (page == null || page == "") {
       page = "1";
     }
-    let javs = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/getJavsByPage/" + page
+    const javs = await axios.get(
+      "https://jav.souzou.dev/jav4free/javs/searchJav/" + page + "/" + query
     );
     return {
-      javs: javs.data.javs,
+      query: query,
       page: page,
+      javs: javs.data.dataPage,
       nextPage: javs.data.nextPage
     };
   },
   beforeCreate() {
-    let routePage = "javs/" + this.$route.params.page;
-    this.$store.dispatch("addCrumb", {
-      page: "Javs",
-      show: "Recently Added Videos",
-      route: routePage
-    });
+    this.$store.dispatch("addCrumb", { page: "Home", route: "" });
   },
   methods: {
     nextClick() {
       var newPage = Number(this.page) + 1;
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/search/" + newPage + "/" + this.query });
     },
     prevClick() {
       var newPage = Number(this.page) - 1;
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/search/" + newPage + "/" + this.query });
     },
     pullPage(indexPage) {
       var newPage = Number(this.page) - Number(indexPage);
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/search/" + newPage + "/" + this.query });
     },
     pushPage(indexPage) {
       var newPage = Number(this.page) + Number(indexPage);
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/search/" + newPage + "/" + this.query });
     }
   }
 };
