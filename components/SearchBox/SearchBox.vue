@@ -37,7 +37,8 @@ export default {
   methods: {
     search() {
       if (this.query) {
-        this.$router.replace("/search/1/" + this.query);
+        var formatedQuery = this.query.replace(" ", "&");
+        this.$router.replace("/search/1/" + formatedQuery);
         this.query = "";
       }
     }

@@ -5,7 +5,7 @@
         v-for="(page, id) in this.$store.state.breadCrumbs"
         :key="id"
         :to="'/' + page.route"
-      >{{page.show}}/</nuxt-link>
+      >{{page.show}}/   </nuxt-link>
     </div>
   </div>
 </template>

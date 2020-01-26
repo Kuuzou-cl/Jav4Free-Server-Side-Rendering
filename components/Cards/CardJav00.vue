@@ -1,9 +1,11 @@
 <template>
   <div class="card bg-dark box2">
-    <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="img" class="static" :src="dataJav.imageIndexUrl"></nuxt-link>
+    <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
+      <img :src="dataJav.imageIndexUrl" class="static" />
+    </nuxt-link>
     <video autoplay loop>
-      <source :src="dataJav.imageUrl" type="video/mp4" />
-    </video>
+        <source :src="dataJav.imageUrl" type="video/mp4" />
+      </video>
     <div v-if="titleType(dataJav.name)" class="box-time">
       <span class="post">
         <b>{{dataJav.duration}}:00</b>
@@ -24,6 +26,7 @@
         <b>{{dataJav.code}}</b>
       </span>
     </div>
+
     <div class="box-content">
       <h3 class="title">
         <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">{{getName(dataJav.name)}}</nuxt-link>

@@ -42,6 +42,11 @@ export const mutations = {
                   if (page.page == "Jav") {
                     let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: "Javs", show: "Javs", route: "javs/1" }, { page: page.page, show: page.show, route: page.route }];
                     state.breadCrumbs = newCrumbs;
+                  } else {
+                    if (page.page == "Search") {
+                      let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
+                      state.breadCrumbs = newCrumbs;
+                    }
                   }
                 }
               }
@@ -99,7 +104,11 @@ export const actions = {
           );
           newPage = { page: page, show: jav.data.jav.code, route: route }
         } else {
-          newPage = { page: page, show: show, route: route }
+          if (page == "Search") {
+            newPage = { page: page, show: show, route: route }
+          } else {
+            newPage = { page: page, show: show, route: route }
+          }
         }
       }
     }

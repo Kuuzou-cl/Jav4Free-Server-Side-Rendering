@@ -1,7 +1,9 @@
 <template>
   <div class="container-fluid">
     <Crumbs />
-    <div class="need-space"></div>
+    <SearchBox />
+    <div class="need-space">
+    </div>
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -154,6 +156,7 @@
 <script>
 import axios from "axios";
 
+import SearchBox from "~/components/SearchBox/SearchBox";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav00";
 import CardJavMobile from "~/components/Cards/CardIdol00Mobile";
@@ -161,6 +164,7 @@ import CardJavMobile from "~/components/Cards/CardIdol00Mobile";
 export default {
   name: "Search",
   components: {
+    SearchBox,
     Crumbs,
     CardJav,
     CardJavMobile
@@ -203,7 +207,9 @@ export default {
     };
   },
   beforeCreate() {
-    this.$store.dispatch("addCrumb", { page: "Home", route: "" });
+    let routePage = "search/1/" + this.$route.params.query;
+    let show = "Search/"+ this.$route.params.query;
+    this.$store.dispatch("addCrumb", { page: "Search", show: show, route: routePage });
   },
   methods: {
     nextClick() {

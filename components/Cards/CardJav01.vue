@@ -1,6 +1,8 @@
 <template>
   <div class="card bg-dark box21">
-    <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="img" class="static" :src="dataJav.imageIndexUrl"></nuxt-link>
+    <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
+      <img class="static" :src="dataJav.imageIndexUrl">
+    </nuxt-link>
     <video autoplay loop>
       <source :src="dataJav.imageUrl" type="video/mp4" />
     </video>
