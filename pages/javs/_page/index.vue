@@ -157,7 +157,7 @@ import axios from "axios";
 import SearchBox from "~/components/SearchBox/SearchBox";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav00";
-import CardJavMobile from "~/components/Cards/CardIdol00Mobile";
+import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 
 export default {
   name: "RecentJavs",

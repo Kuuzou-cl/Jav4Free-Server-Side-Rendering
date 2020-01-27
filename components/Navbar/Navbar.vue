@@ -55,7 +55,7 @@ export default {
   name: "Navbar",
   data() {
     return {
-      show: true
+      show: false
     };
   },
   methods: {
