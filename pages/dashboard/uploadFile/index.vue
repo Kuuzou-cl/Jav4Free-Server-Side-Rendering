@@ -168,6 +168,198 @@
       </div>
       <div class="need-space"></div>
     </div>
+    <div class="need-space"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <h6 class="title-white text-left">Upload Idols</h6>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <button class="btn btn-more float-right" v-on:click="submitIdols()">
+            Upload to Idols Folder
+            <font-awesome-icon :icon="['fas', 'upload']" />
+          </button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card card-upload">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <div class="custom-file mb-3">
+                  <input
+                    class="custom-file-input"
+                    type="file"
+                    id="idols"
+                    ref="idols"
+                    multiple
+                    v-on:change="handleFilesUploadIdols()"
+                  />
+                  <label class="custom-file-label" for="covers">Choose only idols files</label>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div v-for="(file, key) in idols" :key="key" class="card text-center card-file">
+                  <div class="card-body card-file-body">
+                    <font-awesome-icon :icon="['fas', 'images']" />
+                    <h6 class="card-title">{{ file.name }}</h6>
+                  </div>
+                  <div
+                    class="card-footer text-muted card-file-footer"
+                    v-on:click="removeFileIdols( key )"
+                  >
+                    <span>
+                      Remove File
+                      <font-awesome-icon :icon="['fas', 'minus-circle']" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="need-space"></div>
+              <div v-if="this.viewLoadingIdols" class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                  role="progressbar"
+                  :aria-valuenow="loadingIdols"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  :style="{'width': `${loadingIdols}%`}"
+                >{{ loadingIdols }}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+    </div>
+    <div class="need-space"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <h6 class="title-white text-left">Upload Vtts</h6>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <button class="btn btn-more float-right" v-on:click="submitVtts()">
+            Upload to Vtts Folder
+            <font-awesome-icon :icon="['fas', 'upload']" />
+          </button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card card-upload">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <div class="custom-file mb-3">
+                  <input
+                    class="custom-file-input"
+                    type="file"
+                    id="vtts"
+                    ref="vtts"
+                    multiple
+                    v-on:change="handleFilesUploadVtts()"
+                  />
+                  <label class="custom-file-label" for="covers">Choose only vtts files</label>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div v-for="(file, key) in vtts" :key="key" class="card text-center card-file">
+                  <div class="card-body card-file-body">
+                    <font-awesome-icon :icon="['fas', 'images']" />
+                    <h6 class="card-title">{{ file.name }}</h6>
+                  </div>
+                  <div
+                    class="card-footer text-muted card-file-footer"
+                    v-on:click="removeFileVtts( key )"
+                  >
+                    <span>
+                      Remove File
+                      <font-awesome-icon :icon="['fas', 'minus-circle']" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="need-space"></div>
+              <div v-if="this.viewLoadingVtts" class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                  role="progressbar"
+                  :aria-valuenow="loadingVtts"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  :style="{'width': `${loadingVtts}%`}"
+                >{{ loadingVtts }}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+    </div>
+    <div class="need-space"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <h6 class="title-white text-left">Upload Sprites</h6>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <button class="btn btn-more float-right" v-on:click="submitSprites()">
+            Upload to Sprites Folder
+            <font-awesome-icon :icon="['fas', 'upload']" />
+          </button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card card-upload">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <div class="custom-file mb-3">
+                  <input
+                    class="custom-file-input"
+                    type="file"
+                    id="sprites"
+                    ref="sprites"
+                    multiple
+                    v-on:change="handleFilesUploadSprites()"
+                  />
+                  <label class="custom-file-label" for="covers">Choose only sprites files</label>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div v-for="(file, key) in sprites" :key="key" class="card text-center card-file">
+                  <div class="card-body card-file-body">
+                    <font-awesome-icon :icon="['fas', 'images']" />
+                    <h6 class="card-title">{{ file.name }}</h6>
+                  </div>
+                  <div
+                    class="card-footer text-muted card-file-footer"
+                    v-on:click="removeFileSprites( key )"
+                  >
+                    <span>
+                      Remove File
+                      <font-awesome-icon :icon="['fas', 'minus-circle']" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="need-space"></div>
+              <div v-if="this.viewLoadingSprites" class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                  role="progressbar"
+                  :aria-valuenow="loadingSprites"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  :style="{'width': `${loadingSprites}%`}"
+                >{{ loadingSprites }}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+    </div>
   </div>
 </template>
 
@@ -271,6 +463,120 @@ export default {
     },
     removeFileCovers(key) {
       this.covers.splice(key, 1);
+    },
+    async submitIdols() {
+      this.viewLoadingIdols = true;
+      let formData = new FormData();
+      this.idols.forEach(file => {
+        formData.append("file", file, file.name);
+      });
+      await axios
+        .post("https://jav.souzou.dev/jav4free/uploads/upIdol", formData, {
+          onUploadProgress: uploadEvent => {
+            this.loadingIdols = Math.round(
+              (uploadEvent.loaded / uploadEvent.total) * 100
+            );
+            console.log(
+              "Upload Progress: " +
+                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
+                "%"
+            );
+          }
+        })
+        .then(function() {
+          console.log("uploaded files");
+        })
+        .catch(function(e) {
+          console.log(e);
+        });
+      this.idols = [];
+      this.loadingIdols = 0;
+      this.viewLoadingIdols = false;
+    },
+    handleFilesUploadIdols() {
+      let uploadedFiles = this.$refs.idols.files;
+      for (var i = 0; i < uploadedFiles.length; i++) {
+        this.idols.push(uploadedFiles[i]);
+      }
+    },
+    removeFileIdols(key) {
+      this.idols.splice(key, 1);
+    },
+    async submitVtts() {
+      this.viewLoadingVtts = true;
+      let formData = new FormData();
+      this.vtts.forEach(file => {
+        formData.append("file", file, file.name);
+      });
+      await axios
+        .post("https://jav.souzou.dev/jav4free/uploads/upVtt", formData, {
+          onUploadProgress: uploadEvent => {
+            this.loadingVtts = Math.round(
+              (uploadEvent.loaded / uploadEvent.total) * 100
+            );
+            console.log(
+              "Upload Progress: " +
+                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
+                "%"
+            );
+          }
+        })
+        .then(function() {
+          console.log("uploaded files");
+        })
+        .catch(function(e) {
+          console.log(e);
+        });
+      this.vtts = [];
+      this.loadingVtts = 0;
+      this.viewLoadingVtts = false;
+    },
+    handleFilesUploadVtts() {
+      let uploadedFiles = this.$refs.vtts.files;
+      for (var i = 0; i < uploadedFiles.length; i++) {
+        this.vtts.push(uploadedFiles[i]);
+      }
+    },
+    removeFileVtts(key) {
+      this.vtts.splice(key, 1);
+    },
+    async submitSprites() {
+      this.viewLoadingSprites = true;
+      let formData = new FormData();
+      this.sprites.forEach(file => {
+        formData.append("file", file, file.name);
+      });
+      await axios
+        .post("https://jav.souzou.dev/jav4free/uploads/upSprite", formData, {
+          onUploadProgress: uploadEvent => {
+            this.loadingSprites = Math.round(
+              (uploadEvent.loaded / uploadEvent.total) * 100
+            );
+            console.log(
+              "Upload Progress: " +
+                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
+                "%"
+            );
+          }
+        })
+        .then(function() {
+          console.log("uploaded files");
+        })
+        .catch(function(e) {
+          console.log(e);
+        });
+      this.sprites = [];
+      this.loadingSprites = 0;
+      this.viewLoadingSprites = false;
+    },
+    handleFilesUploadSprites() {
+      let uploadedFiles = this.$refs.sprites.files;
+      for (var i = 0; i < uploadedFiles.length; i++) {
+        this.sprites.push(uploadedFiles[i]);
+      }
+    },
+    removeFileSprites(key) {
+      this.sprites.splice(key, 1);
     }
   }
 };
