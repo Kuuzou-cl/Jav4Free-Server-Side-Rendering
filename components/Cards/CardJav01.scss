@@ -63,6 +63,19 @@
     .box21 .title{font-size:8px !important;}
 }
 
+@media screen and (min-width: 1281px) and (max-width: 1919px) {
+    .box21 .box-time{top:60% !important;}
+    
+    .box21 .box-time-v2{top:65% !important;}
+    
+    .box21 .box-code{top:60% !important; color:#FFC4EB; text-align: left;}    
+    .box21 .box-code-v2{top:65% !important;}
+    
+    .box21 .post{font-size:11px !important;}
+    
+    .box21 .title{font-size:8px !important;}
+}
+
 .box21{
     position:relative;
     overflow:hidden;
