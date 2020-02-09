@@ -408,6 +408,10 @@ body
     background-color: #4A4860;
 }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color: #FFE4FA;
+  }
+
 .tag{
     border-style: solid;
     border-radius: 5px;

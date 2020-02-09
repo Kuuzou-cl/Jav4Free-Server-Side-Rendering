@@ -39,6 +39,13 @@
           </nuxt-link>
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">
+            Upload File
+          </nuxt-link>
+        </div>
+      </div>
     </div>
     <div class="need-space"></div>
     <div class="container">
@@ -70,7 +77,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <table class="table table-hover">
@@ -78,18 +85,18 @@
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Url</th>
-                <th scope="col">Hidden</th>
-                <th scope="col">Creation Date</th>
+                <th scope="col">Javs Quantity</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="idol in idols" :key="idol._id">
-                <th scope="row">{{idol.name}}</th>
+                <th v-if="idol.javsQ == '0'" class="red">{{idol.name}}</th>
+                <th v-else>{{idol.name}}</th>
                 <td>{{idol.imageUrl}}</td>
-                <td>{{idol.hidden}}</td>
-                <td>{{idol.creation}}</td>
+                <th v-if="idol.javsQ == '0'" class="red">{{idol.javsQ}}</th>
+                <th v-else>{{idol.javsQ}}</th>
                 <td>
                   <nuxt-link :to="'/dashboard/editIdols/'+idol._id" class="btn simple-button">Edit</nuxt-link>
                 </td>
@@ -137,4 +144,7 @@ export default {
 </script>
 
 <style lang="scss">
+.red{
+  color: #E8175D;
+}
 </style>

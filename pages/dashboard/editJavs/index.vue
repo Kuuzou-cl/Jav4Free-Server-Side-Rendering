@@ -39,6 +39,13 @@
           </nuxt-link>
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">
+            Upload File
+          </nuxt-link>
+        </div>
+      </div>
     </div>
     <div class="need-space"></div>
     <div class="container">
@@ -70,7 +77,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <table class="table table-hover">
@@ -78,8 +85,6 @@
               <tr>
                 <th scope="col">Code</th>
                 <th scope="col">Video</th>
-                <th scope="col">Image</th>
-                <th scope="col">Index Image</th>
                 <th scope="col">Hidden</th>
                 <th scope="col">Categories</th>
                 <th scope="col">Idols</th>
@@ -91,8 +96,6 @@
               <tr v-for="jav in javs" :key="jav._id">
                 <th scope="row">{{jav.code}}</th>
                 <td>{{jav.url}}</td>
-                <td>{{jav.imageUrl}}</td>
-                <td>{{jav.imageIndexUrl}}</td>
                 <td>{{jav.hidden}}</td>
                 <td>{{jav.categories.length}}</td>
                 <td>{{jav.idols.length}}</td>
