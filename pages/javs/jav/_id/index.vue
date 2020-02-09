@@ -1,7 +1,14 @@
 <template>
   <div class="container-fluid">
+    <!-- JuicyAds v3.2P Start -->
+      <script type="application/javascript">
+      var juicy_tags = ['a', 'img'];
+      </script>
+      <script type="application/javascript" src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=https%3A%2F%2Fwww.jav4free.watch"></script>
+      <!-- JuicyAds v3.2P End -->
     <Crumbs />
-    <div class="need-space"></div>
+    <div class="need-space">      
+    </div>
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
@@ -25,7 +32,7 @@
                   :to="'/categories/1/'+category._id"
                   tag="a"
                   class="links"
-                >{{category.name}},</nuxt-link>
+                >{{category.name}}, </nuxt-link>
               </span>
             </div>
             <div class="jav-extra">
@@ -37,25 +44,41 @@
                   :to="'/idols/1/'+idol._id"
                   tag="a"
                   class="links"
-                >{{idol.name}},</nuxt-link>
+                >{{idol.name}}, </nuxt-link>
               </span>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <div class="row justify-content-center">
-            <!-- JuicyAds v3.1 -->
-            <script
-              type="application/javascript"
-              data-cfasync="false"
-              async
-              src="https://poweredby.jads.co/js/jads.js"
-            ></script>
-            <ins id="817968" data-width="300" data-height="262"></ins>
-            <script type="application/javascript" data-cfasync="false" async>
+            <div v-if="$device.isDesktop" class="ad-desktop-300x250">
+              <!-- JuicyAds v3.1 -->
+              <script
+                type="application/javascript"
+                data-cfasync="false"
+                async
+                src="https://poweredby.jads.co/js/jads.js"
+              ></script>
+              <ins id="817968" data-width="300" data-height="262"></ins>
+              <script type="application/javascript" data-cfasync="false" async>
   (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 817968 });
-            </script>
-            <!--JuicyAds END-->
+              </script>
+              <!--JuicyAds END-->
+            </div>
+            <div v-if="$device.isDesktop" class="ad-desktop-300x250">
+              <!-- JuicyAds v3.1 -->
+              <script
+                type="application/javascript"
+                data-cfasync="false"
+                async
+                src="https://poweredby.jads.co/js/jads.js"
+              ></script>
+              <ins id="824389" data-width="300" data-height="262"></ins>
+              <script type="application/javascript" data-cfasync="false" async>
+  (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 824389 });
+              </script>
+              <!--JuicyAds END-->
+            </div>
           </div>
         </div>
       </div>
@@ -92,7 +115,22 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <h3>ADS</h3>
+          <div class="row justify-content-center">
+            <div v-if="$device.isDesktop" class="ad-desktop-300x250">
+              <!-- JuicyAds v3.1 -->
+              <script
+                type="application/javascript"
+                data-cfasync="false"
+                async
+                src="https://poweredby.jads.co/js/jads.js"
+              ></script>
+              <ins id="824390" data-width="300" data-height="262"></ins>
+              <script type="text/javascript" data-cfasync="false" async>
+  (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 824390 });
+              </script>
+              <!--JuicyAds END-->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -130,7 +168,11 @@ export default {
         {
           name: "description",
           content:
-            "Jav4Free, watch "+ this.titleJ +" , "+ this.detailJ +" , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
+            "Jav4Free, watch " +
+            this.titleJ +
+            " , " +
+            this.detailJ +
+            " , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
         }
       ]
     };
@@ -176,4 +218,18 @@ export default {
 </script>
 
 <style lang="scss">
+.ad-desktop-300x250 {
+  padding: 0% 2% 0% 2%;
+}
+@media all and (min-device-width: 1000px) and (max-device-width: 1200px) {
+  .ad-desktop-300x250 {
+    transform: scale(0.9);
+  }
+}
+@media all and (min-device-width: 720px) and (max-device-width: 999px) {
+  .ad-desktop-300x250 {
+    margin-bottom: 0;
+    transform: scale(0.7);
+  }
+}
 </style>
