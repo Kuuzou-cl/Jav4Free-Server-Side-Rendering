@@ -125,7 +125,7 @@
                 src="https://poweredby.jads.co/js/jads.js"
               ></script>
               <ins id="824390" data-width="300" data-height="262"></ins>
-              <script type="text/javascript" data-cfasync="false" async>
+              <script type="application/javascript" data-cfasync="false" async>
   (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 824390 });
               </script>
               <!--JuicyAds END-->
