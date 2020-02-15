@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newJav/'" class="btn simple-button">
+          <nuxt-link :to="'/dashboard/newJav/'" class="btn simple-button disabled">
             New Jav
             <font-awesome-icon :icon="['fas', 'plus']" />
           </nuxt-link>

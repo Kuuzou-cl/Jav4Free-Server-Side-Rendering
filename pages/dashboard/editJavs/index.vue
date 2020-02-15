@@ -24,7 +24,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">
+          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button disabled">
             View Javs
           </nuxt-link>
         </div>
