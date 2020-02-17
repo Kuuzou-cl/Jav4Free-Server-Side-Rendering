@@ -104,8 +104,6 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
-    <div class="container"></div>
   </div>
 </template>
 

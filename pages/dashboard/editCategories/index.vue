@@ -24,26 +24,21 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">
-            View Javs
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">View Javs</nuxt-link>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editCategories/'" class="btn simple-button disabled">
-            View Categories
-          </nuxt-link>
+          <nuxt-link
+            :to="'/dashboard/editCategories/'"
+            class="btn simple-button disabled"
+          >View Categories</nuxt-link>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button">
-            View Idols
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button">View Idols</nuxt-link>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">
-            Upload File
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">Upload File</nuxt-link>
         </div>
       </div>
     </div>
@@ -78,6 +73,11 @@
     </div>
     <div class="need-space"></div>
     <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <input type="text" v-model="search" placeholder="Search by name..." />
+        </div>
+      </div>
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <table class="table table-hover">
@@ -91,12 +91,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="category in categories" :key="category._id">
+              <tr v-for="category in filterCategories" :key="category._id">
                 <th scope="row">{{category.name}}</th>
                 <td>{{category._id}}</td>
                 <td>{{getLength(category._id)}}</td>
                 <td>
-                  <nuxt-link :to="'/dashboard/editCategories/'+category._id" class="btn simple-button">Edit</nuxt-link>
+                  <nuxt-link
+                    :to="'/dashboard/editCategories/'+category._id"
+                    class="btn simple-button"
+                  >Edit</nuxt-link>
                 </td>
                 <td>
                   <button @click="deleteCat(category._id)" class="btn simple-button">Delete</button>
@@ -119,7 +122,10 @@ export default {
   name: "Dashboard",
   data() {
     return {
-      categoriesLength: [],
+      search: "",
+      categories: null,
+      filteredCategories: [],
+      categoriesLength: []
     };
   },
   async asyncData() {
@@ -130,23 +136,30 @@ export default {
     let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
     let categoriesLength = [];
     categories.data.categories.forEach(async element => {
-      let data = await axios.get("https://jav.souzou.dev/jav4free/categories/countJavs/"+ element._id);
-      let categoryData =  { categoryId: element._id, categoryLength: data.data.length };
+      let data = await axios.get(
+        "https://jav.souzou.dev/jav4free/categories/countJavs/" + element._id
+      );
+      let categoryData = {
+        categoryId: element._id,
+        categoryLength: data.data.length
+      };
       categoriesLength.push(categoryData);
     });
     return {
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
-      categoriesLength: categoriesLength,
+      categoriesLength: categoriesLength
     };
   },
   methods: {
-    async deleteCat(_id){
-     let message = await axios.delete("https://jav.souzou.dev/jav4free/categories/"+_id)
-     this.$router.push({ path: "/dashboard" });
+    async deleteCat(_id) {
+      let message = await axios.delete(
+        "https://jav.souzou.dev/jav4free/categories/" + _id
+      );
+      this.$router.push({ path: "/dashboard" });
     },
-    getLength(_id){
+    getLength(_id) {
       let length = 0;
       this.categoriesLength.forEach(element => {
         if (element.categoryId == _id) {
@@ -154,6 +167,17 @@ export default {
         }
       });
       return length;
+    }
+  },
+  computed: {
+    filterCategories() {
+      this.filteredCategories = [];
+      this.categories.forEach(category => {
+        if (category.name.toLowerCase().includes(this.search.toLowerCase())) {
+          this.filteredCategories.push(category);
+        }
+      });
+      return this.filteredCategories;
     }
   }
 };

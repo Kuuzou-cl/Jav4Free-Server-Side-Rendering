@@ -73,7 +73,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <div class="tableFixHead">
-            <table class="table table-hover">
+            <table class="table table-hover text-center">
               <thead>
                 <tr>
                   <th scope="col" class="t-header">Code</th>
@@ -84,7 +84,7 @@
               </thead>
               <tbody>
                 <tr v-for="jav in javs" :key="jav._id">
-                  <th scope="row">{{jav.code}}</th>
+                  <th>{{jav.code}}</th>
                   <td>{{jav.hidden}}</td>
                   <td>{{jav.categories.length}}</td>
                   <td>{{jav.idols.length}}</td>
@@ -94,21 +94,23 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <table class="table table-hover text-center">
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                  class="t-header"
-                >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
-                <th>{{jav}}</th>
-              </tr>
-            </tbody>
-          </table>
+          <div class="tableFixHead">
+            <table class="table table-hover text-center">
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    class="t-header"
+                  >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
+                  <th>{{jav}}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <br />
           <div class="tableFixHead">
             <table class="table table-hover text-center">
@@ -230,7 +232,8 @@ export default {
 <style lang="scss">
 .tableFixHead {
   overflow-y: auto;
-  height: 680px;
+  height: 100%;
+  max-height: 680px;
 }
 .tableFixHead thead th {
   position: sticky;

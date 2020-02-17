@@ -24,26 +24,18 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">
-            View Javs
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">View Javs</nuxt-link>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editCategories/'" class="btn simple-button">
-            View Categories
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/editCategories/'" class="btn simple-button">View Categories</nuxt-link>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button disabled">
-            View Idols
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button disabled">View Idols</nuxt-link>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">
-            Upload File
-          </nuxt-link>
+          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">Upload File</nuxt-link>
         </div>
       </div>
     </div>
@@ -78,6 +70,11 @@
     </div>
     <div class="need-space"></div>
     <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <input type="text" v-model="search" placeholder="Search by name..." />
+        </div>
+      </div>
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <table class="table table-hover">
@@ -91,7 +88,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="idol in idols" :key="idol._id">
+              <tr v-for="idol in filterIdols" :key="idol._id">
                 <th v-if="idol.javsQ == '0'" class="red">{{idol.name}}</th>
                 <th v-else>{{idol.name}}</th>
                 <td>{{idol.imageUrl}}</td>
@@ -120,7 +117,7 @@ export default {
   middleware: "auth",
   name: "Dashboard",
   data() {
-    return {};
+    return { search: "", idols: null, filteredIdols: [] };
   },
   async asyncData() {
     let javs = await axios.get("https://jav.souzou.dev/jav4free/javs/");
@@ -135,16 +132,30 @@ export default {
     };
   },
   methods: {
-    async deleteIdol(_id){
-     let message = await axios.delete("https://jav.souzou.dev/jav4free/idols/"+_id)
-     this.$router.push({ path: "/dashboard" });
+    async deleteIdol(_id) {
+      let message = await axios.delete(
+        "https://jav.souzou.dev/jav4free/idols/" + _id
+      );
+      this.$router.push({ path: "/dashboard" });
+    },
+    
+  },
+  computed: {
+    filterIdols() {
+      this.filteredIdols = [];
+      this.idols.forEach(idol => {
+        if (idol.name.toLowerCase().includes(this.search.toLowerCase())) {
+          this.filteredIdols.push(idol);
+        }
+      });
+      return this.filteredIdols;
     }
   }
 };
 </script>
 
 <style lang="scss">
-.red{
-  color: #E8175D;
+.red {
+  color: #e8175d;
 }
 </style>
