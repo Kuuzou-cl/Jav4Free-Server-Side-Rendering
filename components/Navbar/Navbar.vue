@@ -36,14 +36,14 @@
         <li v-if="$store.state.authUser" @click="logout()" class="navbar-nav-link">
           <nuxt-link to="/">Logout</nuxt-link>
         </li>
-        <li>
-          <a href="#">Hentai</a>
+        <li class="navbar-nav-link">
+          <a href="https://www.hentai4free.watch/">Hentai</a>
+        </li>
+        <li class="navbar-nav-link">
+          <a href="https://www.vrporn4free.watch/">VR Porn</a>
         </li>
         <li>
-          <a href="#">Animation 3D</a>
-        </li>
-        <li>
-          <a href="#">LoL</a>
+          <a href="https://www.hentai4free.watch/">Animation 3d</a>
         </li>
       </ul>
     </div>

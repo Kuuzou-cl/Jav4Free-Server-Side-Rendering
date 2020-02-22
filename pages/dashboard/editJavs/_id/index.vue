@@ -80,7 +80,11 @@
             <label for="inputJav07" class="title-white">Categories</label>
           </div>
           <div class="row">
-            <p class="tag" v-for="category in categoriesJav" :key="category._id">{{category.name}}</p>
+            <p
+              class="tag"
+              v-for="category in categoriesJav"
+              :key="category._id"
+            >{{category.name}}</p>
           </div>
           <div class="row">
             <label for="inputJav07" class="title-white">Idols</label>
@@ -111,14 +115,19 @@
     <div class="need-space"></div>
     <div v-if="this.viewCategories" class="container-fluid">
       <div class="row justify-content-center">
-        <div v-for="category in categories" :key="category._id">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <input type="text" v-model="searchCategories" placeholder="Search..." />
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div v-for="category in filterCategories" :key="category._id">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button
               v-if="checkCategory(category._id)"
               @click="addCategory(category._id)"
               class="btn category-button"
             >{{ category.name }}</button>
-            <button 
+            <button
               v-else
               @click="addCategory(category._id)"
               class="active btn category-button"
@@ -130,14 +139,19 @@
     <div class="need-space"></div>
     <div v-if="this.viewIdols" class="container-fluid">
       <div class="row justify-content-center">
-        <div v-for="idol in idols" :key="idol._id">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <input type="text" v-model="searchIdols" placeholder="Search..." />
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div v-for="idol in filterIdols" :key="idol._id">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button
               v-if="checkIdol(idol._id)"
               @click="addIdol(idol._id)"
               class="btn category-button"
             >{{ idol.name }}</button>
-            <button 
+            <button
               v-else
               @click="addIdol(idol._id)"
               class="active btn category-button"
@@ -169,7 +183,9 @@ export default {
       categories: null,
       idols: null,
       viewCategories: false,
-      viewIdols: false
+      viewIdols: false,
+      searchCategories: "",
+      searchIdols: ""
     };
   },
   async asyncData({ params }) {
@@ -253,6 +269,7 @@ export default {
         this.viewCategories = false;
       } else {
         this.viewCategories = true;
+        this.viewIdols = false;
       }
     },
     viewIdolsContainer() {
@@ -260,7 +277,32 @@ export default {
         this.viewIdols = false;
       } else {
         this.viewIdols = true;
+        this.viewCategories = false;
       }
+    }
+  },
+  computed: {
+    filterCategories() {
+      this.filteredCategories = [];
+      this.categories.forEach(category => {
+        if (
+          category.name
+            .toLowerCase()
+            .includes(this.searchCategories.toLowerCase())
+        ) {
+          this.filteredCategories.push(category);
+        }
+      });
+      return this.filteredCategories;
+    },
+    filterIdols() {
+      this.filteredIdols = [];
+      this.idols.forEach(idol => {
+        if (idol.name.toLowerCase().includes(this.searchIdols.toLowerCase())) {
+          this.filteredIdols.push(idol);
+        }
+      });
+      return this.filteredIdols;
     }
   }
 };
