@@ -4,7 +4,7 @@ nav {
     left: 0;
     width: 100%;
     height: auto;
-    background: #4A4860;
+    background: #3e3c52;
     border-bottom: 4px solid #323042;
 }
 
@@ -39,7 +39,7 @@ nav ul {
         padding: 25px 30px  !important;
         transition: background .25s, box-shadow .15s;
         &:hover {
-            color: #4A4860;
+            color: #3e3c52;
             background: #FFC4EB;
             box-shadow: 0px 4px 0px 0px #BB8EAC;
         }
@@ -60,9 +60,9 @@ nav ul {
 }
 
 li[type=button]{
-    background-color: #4A4860;
+    background-color: #3e3c52;
     &:hover {
-        color: #4A4860;
+        color: #3e3c52;
         background: #FFC4EB;
         box-shadow: 0px 4px 0px 0px #BB8EAC;
     }
