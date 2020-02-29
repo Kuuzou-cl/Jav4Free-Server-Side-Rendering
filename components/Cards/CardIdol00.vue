@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-3 bg-dark text-white box00">
     <nuxt-link :to="'/idols/1/'+dataId">
-      <img class="card-img" :src="dataUrl" />
+      <img class="card-img" :src="dataUrl" v-lazy-load/>
     </nuxt-link>
     <div class="box-code">
       <span class="post">

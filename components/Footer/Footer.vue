@@ -1,6 +1,6 @@
 <template>
   <footer class="pt-4 footer">
-    <div class="container-fluid details-footer">
+    <div class="container details-footer">
       <div class="row justify-content-center">
         <div class="col-md-7 col-sm-7 col-xs-7">
           <h6 class="text-uppercase">DMCA</h6>

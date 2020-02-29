@@ -113,7 +113,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="this.viewCategories" class="container-fluid">
+    <div v-if="this.viewCategories" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <input type="text" v-model="searchCategories" placeholder="Search..." />
@@ -137,7 +137,7 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="this.viewIdols" class="container-fluid">
+    <div v-if="this.viewIdols" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <input type="text" v-model="searchIdols" placeholder="Search..." />

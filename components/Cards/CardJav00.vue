@@ -3,7 +3,7 @@
     <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
       <img :src="dataJav.imageIndexUrl" class="static" />
     </nuxt-link>
-    <video autoplay loop>
+    <video autoplay loop v-lazy-load>
         <source :src="dataJav.imageUrl" type="video/mp4" />
       </video>
     <div v-if="titleType(dataJav.name)" class="box-time">
