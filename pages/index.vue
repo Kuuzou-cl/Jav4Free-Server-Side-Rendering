@@ -1,5 +1,5 @@
 <template>
-  <div id="Home" class="container-fluid">
+  <div class="container-fluid">
     <!-- JuicyAds v3.2P Start -->
       <script type="application/javascript">
       var juicy_tags = ['a', 'img'];

@@ -1,27 +1,9 @@
 footer{
-    position: relative;
+    position: absolute;
     left: 0;
     bottom: 0;
     right: 0;
     text-align: center;
-}
-
-.footer h6{
-    color: #E8175D ;
-    text-align:left;
-    font-weight: 450 !important;
-}
-
-.footer p{
-    color: #FFE4FA ;
-    text-align:justify;
-    font-weight: 300;
-    font-size: 12px;
-}
-
-.footer .details-footer{
-    padding-top: 1%;
-    padding-bottom: 1%;
 }
 
 .footer .copyright{
@@ -33,4 +15,6 @@ footer{
     color: #E8175D ;
     height: 5px;
     text-align: center;
+    font-weight: 300;
+    font-size: 12px;
 }

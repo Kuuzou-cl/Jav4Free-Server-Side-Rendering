@@ -253,21 +253,13 @@
     }
 }
 
-#app{
-    max-height: 720px !important;
-  }
-
-#Home{
-    padding-top: 20px;
-}
-
 body
 {	
+    position: relative;
     background-color: #101015;
-	background-attachment: fixed;
-    background-repeat: no-repeat;
-	background-position: center;
-	font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    min-height: 100%;
+    padding-bottom: 6rem;
 }
 
 .need-space{
