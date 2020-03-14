@@ -8,8 +8,6 @@
       <nuxt-link :to="'/'" class="heart" tag="li" type="button">
         <img
           src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.png"
-          width="45px"
-          height="45px"
         />
       </nuxt-link>
       <div class="search-navbar mx-auto">
