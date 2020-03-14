@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid content">
     <!-- JuicyAds v3.2P Start -->
       <script type="application/javascript">
       var juicy_tags = ['a', 'img'];
@@ -7,7 +7,6 @@
       <script type="application/javascript" src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=https%3A%2F%2Fwww.jav4free.watch"></script>
       <!-- JuicyAds v3.2P End -->
     <Crumbs v-if="!this.$store.state.breadCrumbs" />
-    <SearchBox />
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">

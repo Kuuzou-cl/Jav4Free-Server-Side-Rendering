@@ -1,13 +1,14 @@
 footer{
+    width: 100%;
     position: absolute;
-    left: 0;
     bottom: 0;
-    right: 0;
+    left: 0;
     text-align: center;
 }
 
 .footer .copyright{
-    background-color: #323042;
+    border-top: 3px solid #E8175D;
+    background-color: #080808;
     padding-bottom: 0px;
 }
 

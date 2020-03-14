@@ -1,7 +1,6 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid content">
     <Crumbs />
-    <SearchBox />
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -25,19 +24,17 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 
-import SearchBox from "~/components/SearchBox/SearchBox";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 
 export default {
   components: {
-    Crumbs,SearchBox
+    Crumbs
   },
   head() {
     return {

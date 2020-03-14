@@ -1,20 +1,33 @@
 .crumbs-content{
-    background-color: #1b1927;
-    padding-top: 0.2%;
-    padding-bottom: 0.2%;
+    position: fixed;
+    z-index: 4;
+    top: 8%;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding-top: 0.05%;
+    padding-bottom: 0.05%;
 }
 
 .crumbs-content a {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
     margin-top: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-bottom:  0 !important;
-    color: #E8175D !important;
+    color: #f8faff !important;
+}
+
+.crumbs-content a:hover {
+  color: #E8175D !important;
 }
 
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
-  }
+}

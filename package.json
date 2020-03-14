@@ -18,6 +18,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/device": "^1.2.4",
     "bootstrap": "^4.4.1",
+    "cookie-universal-nuxt": "^2.1.2",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "jquery": "^3.4.1",
@@ -26,12 +27,13 @@
     "nuxt-lazy-load": "^1.0.5",
     "plyr": "^3.5.6",
     "popper.js": "^1.16.0",
+    "universal-cookie": "^4.0.3",
     "vue-plyr": "^6.0.4",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@nuxtjs/google-analytics": "^2.2.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.9",
     "sass-loader": "^8.0.0"
   }

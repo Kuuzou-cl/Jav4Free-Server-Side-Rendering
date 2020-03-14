@@ -1,7 +1,11 @@
-import axios from 'axios'
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export const state = () => ({
   authUser: null,
+  admin: false,
   breadCrumbs: [{ page: "Home", show: "Home", route: "" }]
 })
 
@@ -9,8 +13,26 @@ export const mutations = {
   SET_USER(state, user) {
     if (user) {
       state.authUser = user.data.user
+      this.$cookies.set('user', user.data.user, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+      state.admin = user.data.userState
+      this.$cookies.set('userState', user.data.userState, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
     } else {
       state.authUser = user
+      this.$cookies.set('user', null, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+      state.admin = false
+      this.$cookies.set('userState', false, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
     }
   },
   SET_BREADCRUMBS(state, page) {
@@ -59,9 +81,19 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit({ commit }, { req }) {
-    if (req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
+  nuxtServerInit ({ commit, state }, { req }) {
+    const cookieUser = this.$cookies.get('user');
+    const cookieUserState = this.$cookies.get('userState');
+    if (cookieUser) {
+      let userData = {
+        "data": {
+          "user": cookieUser,
+          "userState": cookieUserState
+        }
+      }
+      commit('SET_USER', userData)
+    }else{
+      commit('SET_USER', null)
     }
   },
 

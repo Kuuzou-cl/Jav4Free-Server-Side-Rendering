@@ -1,51 +1,33 @@
 <template>
-  <nav role="navbar navigation" class="navbar-expand-lg" align="center">
-    <button
-      class="navbar-toggler custom-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarTogglerDemo02"
-      aria-controls="navbarTogglerDemo02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      @click.stop="toggleNavbar()"
-    >
-      <span class="navbar-toggler-icon"></span>
+  <nav role="navbar navigation" class="navbar-expand-lg">
+    <button class="navbar-toggler custom-toggler" type="button" @click.stop="toggleNavbar()">
+      <font-awesome-icon :icon="['fas', 'bars']" class="menu-toggle" />
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" v-bind:class="{ 'show': show }">
-      <ul class="navbar-nav mx-auto">
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/javs/1'">Javs</nuxt-link>
-        </li>
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/categories'">Categories</nuxt-link>
-        </li>
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/idols/1'">Idols</nuxt-link>
-        </li>
-        <li v-if="$store.state.authUser" class="navbar-nav-link">
-          <nuxt-link :to="'/dashboard'">Dashboard</nuxt-link>
-        </li>
-        <nuxt-link :to="'/'" class="heart" tag="li" type="button">
-          <img
-            src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.png"
-            width="45px"
-            height="45px"
-          />
-        </nuxt-link>
-        <li v-if="$store.state.authUser" @click="logout()" class="navbar-nav-link">
-          <nuxt-link to="/">Logout</nuxt-link>
-        </li>
-        <li class="navbar-nav-link">
-          <a href="https://www.hentai4free.watch/">Hentai</a>
-        </li>
-        <li class="navbar-nav-link">
-          <a href="https://www.vrporn4free.watch/">VR Porn</a>
-        </li>
-        <li>
-          <a href="https://www.hentai4free.watch/">Animation 3d</a>
-        </li>
-      </ul>
+    <div class="collapse navbar-collapse main-navbar" v-bind:class="{ 'show': show }">
+      <font-awesome-icon :icon="['fas', 'bars']" class="menu-toggle" />
+      <nuxt-link :to="'/'" class="heart" tag="li" type="button">
+        <img
+          src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.png"
+          width="45px"
+          height="45px"
+        />
+      </nuxt-link>
+      <div class="search-navbar mx-auto">
+        <input
+          @keyup.enter="search"
+          v-model="query"
+          name="query"
+          type="text"
+          class="form-control"
+          placeholder="Search by code, idol or keyword ..."
+        />
+        <font-awesome-icon :icon="['fas', 'search']" @click="search" class="icon-search-navbar" />
+      </div>
+      <div class="log-navbar">
+        <nuxt-link to="/login" tag="div" class="signin" v-if="!$store.state.authUser">Sign In<font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" /></nuxt-link>
+        <nuxt-link to="/login" tag="div" class="signup" v-if="!$store.state.authUser">Sign Up<font-awesome-icon :icon="['fas', 'user-plus']" class="icon-navbar" /></nuxt-link>
+        <nuxt-link to="/login" tag="div" class="signin" v-if="$store.state.authUser">{{$store.state.authUser}}<font-awesome-icon :icon="['fas', 'user-astronaut']" class="icon-navbar" /></nuxt-link>
+      </div>
     </div>
   </nav>
 </template>
@@ -55,14 +37,17 @@ export default {
   name: "Navbar",
   data() {
     return {
-      show: false
+      show: false,
+      query: ""
     };
   },
   methods: {
-    async logout() {
-      try {
-        await this.$store.dispatch("logout");
-      } catch (e) {}
+    search() {
+      if (this.query) {
+        var formatedQuery = this.query.replace(" ", "&");
+        this.$router.replace("/search/1/" + formatedQuery);
+        this.query = "";
+      }
     },
     toggleNavbar() {
       this.show = !this.show;
