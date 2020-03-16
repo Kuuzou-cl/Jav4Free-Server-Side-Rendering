@@ -35,7 +35,7 @@
         </nuxt-link>
       </li>
       <li class="navbar-nav-link">
-        <nuxt-link :to="'/idols/1'">
+        <nuxt-link :to="'/history/1'">
           <font-awesome-icon :icon="['fas', 'history']" class="icon-sidebar" />
           <div class="title-sidebar">History</div>
         </nuxt-link>

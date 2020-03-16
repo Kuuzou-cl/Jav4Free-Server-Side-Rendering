@@ -31,3 +31,21 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }
+
+@media screen and (min-width: 800px) and (max-width: 991px) {
+    .crumbs-content{
+        top: 6%;
+    }   
+}
+
+@media screen and (min-width: 620px) and (max-width: 799px) {
+    .crumbs-content{
+        top: 5%;
+    }   
+}
+
+@media screen and (max-width: 620px) {
+    .crumbs-content{
+        top: 5%;
+    }   
+}

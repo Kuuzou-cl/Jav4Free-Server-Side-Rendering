@@ -6,10 +6,43 @@ const cookies = new Cookies();
 export const state = () => ({
   authUser: null,
   admin: false,
+  history: [],
   breadCrumbs: [{ page: "Home", show: "Home", route: "" }]
 })
 
+export const getters = {
+  getHistory: state =>{
+    return state.history;
+  }
+}
+
 export const mutations = {
+  SET_HISTORY(state, history) {
+    if (history) {
+      state.history = history;
+      this.$cookies.set('history', history, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 14
+      })
+    } else {
+      state.history = [];
+      this.$cookies.set('history', [], {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 14
+      })
+    }
+  },
+  ADD_HISTORY(state, javId) {
+    if (javId) {
+      if (!state.history.some(item => item === javId)) {
+        state.history.push(javId);
+      }
+      this.$cookies.set('history', state.history, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 14
+      })
+    }
+  },
   SET_USER(state, user) {
     if (user) {
       state.authUser = user.data.user
@@ -81,9 +114,10 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit ({ commit, state }, { req }) {
+  nuxtServerInit({ commit, state }, { req }) {
     const cookieUser = this.$cookies.get('user');
     const cookieUserState = this.$cookies.get('userState');
+    const cookieHistory = this.$cookies.get('history');
     if (cookieUser) {
       let userData = {
         "data": {
@@ -92,9 +126,18 @@ export const actions = {
         }
       }
       commit('SET_USER', userData)
-    }else{
+    } else {
       commit('SET_USER', null)
     }
+    if (cookieHistory) {
+      commit('SET_HISTORY', cookieHistory);
+    } else {
+      commit('SET_HISTORY', null);
+    }
+  },
+
+  addToHistory({ commit }, { javId }) {
+    commit('ADD_HISTORY', javId);
   },
 
   async login({ commit }, { email, password }) {

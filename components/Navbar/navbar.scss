@@ -4,6 +4,7 @@ nav {
     left: 0;
     width: 100%;
     height: 8%;
+    display:flex;align-items:center;
     background: #2e2e2e;
     border-bottom: 4px solid #E8175D;
     z-index: 6;
@@ -81,87 +82,159 @@ li[type=button]{
     }
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1366px) {
+@media screen and (min-width: 1601px) and (max-width: 1919px) {
     nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 8.5%;
-        background: #2e2e2e;
-        border-bottom: 4px solid #E8175D;
-        z-index: 6;
-    }
-    
-    .main-navbar{
-        padding-left: 1.5%;
-        .menu-toggle{
-            width: auto;
-            height: 35px;
-            padding-right: 1%;
-            color: #f8faff;
-            background-color: #2e2e2e !important;
-        }
+        height: 9%;
     }
     
     .heart {
-        margin: 0 auto;
-        display: block;
-        margin: initial;
-        padding: 10px 20px;
         img{
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
         }
     }
-    
-    li[type=button]{
-        background-color: #2e2e2e;
-        cursor: pointer;
-    }
-    
-    .search-navbar{    
-        width: 50%;
-        height: 6%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        input{
-            width: 90% !important;
-            height: 35px !important;
-            font-size: 14px !important;
-        }
-        input, textarea{
-            background-color:#383838;
-            color: #f8faff;
-        }
-        input:focus{
-            background-color:#383838;
-            color: #f8faff;
-            border-color: #E8175D;
-            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #E8175D;
-        }
-        .icon-search-navbar{
-            width: 5%;
-            color: #f8faff;
-            cursor: pointer;    
-        }
-    }
-    
+
     .log-navbar{
         width: 15%;
-        color: #f8faff;
-        font-size: 12px;
-        letter-spacing: 3px;
-        cursor: pointer;  
-        .signin{
-            display: inline;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+    nav {
+        height: 9%;
+    }
+    
+    .heart {
+        img{
+            width: 40px;
+            height: 40px;
         }
-        .signup{
-            display: inline;
+    }
+
+    .log-navbar{
+        width: 15%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+    nav {
+        height: 8%;
+    }
+    
+    .heart {
+        img{
+            width: 35px;
+            height: 35px;
         }
-        .icon-navbar{
-            margin: 0% 3%;
+    }
+
+    .log-navbar{
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 991px) {
+    nav {
+        height: 6%;
+    }
+
+    .show{
+        transition: height .25s;
+        width: 100%;
+        height: 10%;
+    } 
+    
+    .main-navbar{
+        display: inline-flex;
+    }
+
+    .heart {
+        width: 10%;
+        img{
+            width: 35px;
+            height: 35px;
         }
+    }
+
+    .search-navbar{    
+        width: 50%;
+        margin: 0 5% !important;
+    }
+
+    .log-navbar{
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 620px) and (max-width: 799px) {
+    nav {
+        height: 5%;
+    }
+
+    .show{
+        transition: height .25s;
+        width: 100%;
+        height: 10%;
+    } 
+    
+    .main-navbar{
+        display: inline-flex;
+    }
+
+    
+    
+    .heart {
+        width: 10%;
+        img{
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    .search-navbar{    
+        width: 50%;
+        margin: 0 3% !important;
+    }
+
+    .log-navbar{
+        font-size: 10px;
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    nav {
+        height: 5%;
+    }
+
+    .show{
+        transition: height .1s;
+        width: 100%;
+        height: 10%;
+    } 
+    
+    .main-navbar{
+        padding-left: 0;
+        display: inline-flex;
+    }
+
+    .heart {
+        width: 10%;
+        img{
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    .search-navbar{    
+        width: 75%;
+        margin: 0 5% !important;
+        input{
+            font-size: 11px !important;
+        }
+    }
+
+    .log-navbar{
+        display: none;
     }
 }

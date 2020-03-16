@@ -1,10 +1,9 @@
 <template>
-  <nav role="navbar navigation" class="navbar-expand-lg">
+  <nav role="navbar navigation" class="navbar-expand-lg" v-bind:class="{ 'show': show }">
     <button class="navbar-toggler custom-toggler" type="button" @click.stop="toggleNavbar()">
       <font-awesome-icon :icon="['fas', 'bars']" class="menu-toggle" />
     </button>
-    <div class="collapse navbar-collapse main-navbar" v-bind:class="{ 'show': show }">
-      <font-awesome-icon :icon="['fas', 'bars']" class="menu-toggle" />
+    <div v-show="showNav" class="navbar-collapse main-navbar" >
       <nuxt-link :to="'/'" class="heart" tag="li" type="button">
         <img
           src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.png"
@@ -36,6 +35,7 @@ export default {
   data() {
     return {
       show: false,
+      showNav: false,
       query: ""
     };
   },
@@ -49,6 +49,7 @@ export default {
     },
     toggleNavbar() {
       this.show = !this.show;
+      this.showNav = !this.showNav;
     }
   }
 };

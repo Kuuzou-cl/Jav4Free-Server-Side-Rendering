@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid content">
     <!-- JuicyAds v3.2P Start -->
       <script type="application/javascript">
       var juicy_tags = ['a', 'img'];
@@ -213,7 +213,8 @@ export default {
       show: this.$route.params.id,
       route: routePage
     });
-  }
+    this.$store.dispatch("addToHistory", {javId: this.$route.params.id});
+  },
 };
 </script>
 

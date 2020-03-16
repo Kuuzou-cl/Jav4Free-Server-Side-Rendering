@@ -1,7 +1,6 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid content">
     <Crumbs />
-    <div class="need-space"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -16,212 +15,79 @@
             />
           </div>
           <div class="row">
-            <h6 class="title-white text-left">
-              Featured Videos | {{ javs.length }} JAV's
-            </h6>
+            <h6 class="title-white text-left">Featured Videos | {{ javs.length }} JAV's</h6>
           </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-          <div class="row justify-content-center">
-            <!-- JuicyAds v3.1 -->
-            <script
-              type="application/javascript"
-              data-cfasync="false"
-              async
-              src="https://poweredby.jads.co/js/jads.js"
-            ></script>
-            <ins id="825394" data-width="908" data-height="270"></ins>
-            <script type="application/javascript" data-cfasync="false" async>
-              (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 825394 });
-            </script>
-            <!--JuicyAds END-->
-          </div>
-          <div class="row justify-content-center">
-            <!-- JuicyAds v3.1 -->
-            <script
-              type="application/javascript"
-              data-cfasync="false"
-              async
-              src="https://poweredby.jads.co/js/jads.js"
-            ></script>
-            <ins id="825395" data-width="908" data-height="270"></ins>
-            <script type="application/javascript" data-cfasync="false" async>
-              (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 825395 });
-            </script>
-            <!--JuicyAds END-->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div class="pagination">
-          <div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-              <button
-                v-if="page != 1"
-                @click="prevClick()"
-                type="button"
-                class="btn paginate-prev"
-              >
-                Prev
-              </button>
-              <button v-else disabled type="button" class="btn paginate-prev">
-                Prev
-              </button>
+          <div class="need-space"></div>
+          <div class="row">
+            <div v-for="jav in javs" :key="jav._id" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <CardJav v-bind:dataJav="jav" />
             </div>
           </div>
-          <div v-if="Number(page) - 1 != 1 && Number(page) - 1 != 0">
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button
-                type="button"
-                @click="pullPage(2)"
-                class="btn paginate-index"
-              >
-                {{ Number(page) - 2 }}
-              </button>
-            </div>
-          </div>
-          <div v-if="Number(page) != 1">
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button
-                v-if="page != 1"
-                @click="pullPage(1)"
-                type="button"
-                class="btn paginate-index"
-              >
-                {{ Number(page) - 1 }}
-              </button>
-            </div>
-          </div>
-          <div>
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button disabled type="button" class="btn paginate-index">
-                {{ page }}
-              </button>
-            </div>
-          </div>
-          <div v-if="nextPage">
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button
-                type="button"
-                @click="pushPage(1)"
-                class="btn paginate-index"
-              >
-                {{ Number(page) + 1 }}
-              </button>
-            </div>
-          </div>
-          <div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 text-center">
-              <button
-                v-if="nextPage"
-                type="button"
-                class="btn paginate-next"
-                @click="nextClick()"
-              >
-                Next
-              </button>
-              <button v-else disabled type="button" class="btn paginate-next">
-                Next
-              </button>
+          <div class="need-space"></div>
+          <div class="row">
+            <div class="pagination">
+              <div>
+                <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
+                  <button
+                    v-if="page != 1"
+                    @click="prevClick()"
+                    type="button"
+                    class="btn paginate-prev"
+                  >Prev</button>
+                  <button v-else disabled type="button" class="btn paginate-prev">Prev</button>
+                </div>
+              </div>
+              <div v-if="Number(page) - 1 != 1 && Number(page) - 1 != 0">
+                <div class="col-lg-1 d-none d-lg-block text-center">
+                  <button
+                    type="button"
+                    @click="pullPage(2)"
+                    class="btn paginate-index"
+                  >{{ Number(page) - 2 }}</button>
+                </div>
+              </div>
+              <div v-if="Number(page) != 1">
+                <div class="col-lg-1 d-none d-lg-block text-center">
+                  <button
+                    v-if="page != 1"
+                    @click="pullPage(1)"
+                    type="button"
+                    class="btn paginate-index"
+                  >{{ Number(page) - 1 }}</button>
+                </div>
+              </div>
+              <div>
+                <div class="col-lg-1 d-none d-lg-block text-center">
+                  <button disabled type="button" class="btn paginate-index">{{ page }}</button>
+                </div>
+              </div>
+              <div v-if="nextPage">
+                <div class="col-lg-1 d-none d-lg-block text-center">
+                  <button
+                    type="button"
+                    @click="pushPage(1)"
+                    class="btn paginate-index"
+                  >{{ Number(page) + 1 }}</button>
+                </div>
+              </div>
+              <div>
+                <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 text-center">
+                  <button
+                    v-if="nextPage"
+                    type="button"
+                    class="btn paginate-next"
+                    @click="nextClick()"
+                  >Next</button>
+                  <button v-else disabled type="button" class="btn paginate-next">Next</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div
-          v-for="jav in javs"
-          :key="jav._id"
-          class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-        >
-          <CardJav v-bind:dataJav="jav" />
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div class="pagination">
-          <div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-              <button
-                v-if="page != 1"
-                @click="prevClick()"
-                type="button"
-                class="btn paginate-prev"
-              >
-                Prev
-              </button>
-              <button v-else disabled type="button" class="btn paginate-prev">
-                Prev
-              </button>
-            </div>
-          </div>
-          <div v-if="Number(page) - 1 != 1 && Number(page) - 1 != 0">
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button
-                type="button"
-                @click="pullPage(2)"
-                class="btn paginate-index"
-              >
-                {{ Number(page) - 2 }}
-              </button>
-            </div>
-          </div>
-          <div v-if="Number(page) != 1">
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button
-                v-if="page != 1"
-                @click="pullPage(1)"
-                type="button"
-                class="btn paginate-index"
-              >
-                {{ Number(page) - 1 }}
-              </button>
-            </div>
-          </div>
-          <div>
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button disabled type="button" class="btn paginate-index">
-                {{ page }}
-              </button>
-            </div>
-          </div>
-          <div v-if="nextPage">
-            <div class="col-lg-1 d-none d-lg-block text-center">
-              <button
-                type="button"
-                @click="pushPage(1)"
-                class="btn paginate-index"
-              >
-                {{ Number(page) + 1 }}
-              </button>
-            </div>
-          </div>
-          <div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 text-center">
-              <button
-                v-if="nextPage"
-                type="button"
-                class="btn paginate-next"
-                @click="nextClick()"
-              >
-                Next
-              </button>
-              <button v-else disabled type="button" class="btn paginate-next">
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
   </div>
 </template>
 

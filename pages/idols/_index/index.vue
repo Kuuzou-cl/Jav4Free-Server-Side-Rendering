@@ -162,7 +162,6 @@
 <script>
 import axios from "axios";
 
-import SearchBox from "~/components/SearchBox/SearchBox";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardIdol from "~/components/Cards/CardIdol00";
 import CardIdolMobile from "~/components/Cards/CardIdol00Mobile";
@@ -170,7 +169,6 @@ import CardIdolMobile from "~/components/Cards/CardIdol00Mobile";
 export default {
   name: "Idols",
   components: {
-    SearchBox,
     Crumbs,
     CardIdol,
     CardIdolMobile

@@ -9,7 +9,7 @@
     <Crumbs v-if="!this.$store.state.breadCrumbs" />
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <h6>
             <nuxt-link
               :to="'/categories/1/'+category1._id"
@@ -18,7 +18,7 @@
             >Recommended Category - {{category1.name}} JAV's</nuxt-link>
           </h6>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more float-right">
             watch more
             <font-awesome-icon :icon="['fas', 'plus']" />
@@ -41,12 +41,12 @@
     <div class="need-space"></div>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <h6>
             <nuxt-link :to="'/javs/1'" tag="a" class="title-white text-left">Recently Added Videos</nuxt-link>
           </h6>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <nuxt-link :to="'/javs/1'" class="btn btn-more float-right">
             watch more
             <font-awesome-icon :icon="['fas', 'plus']" />
@@ -72,12 +72,12 @@
     <div class="need-space"></div>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <h6>
             <nuxt-link :to="'/idols/1'" tag="a" class="title-white text-left">Featured Jav Idols</nuxt-link>
           </h6>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <nuxt-link :to="'/idols/1'" class="btn btn-more float-right">
             watch more
             <font-awesome-icon :icon="['fas', 'plus']" />
