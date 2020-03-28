@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-dark box2">
     <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-      <img :src="dataJav.imageIndexUrl" class="static" />
+      <img :src="dataJav.imageIndexUrl" class="static" v-lazy-load/>
     </nuxt-link>
     <video autoplay loop v-lazy-load>
         <source :src="dataJav.imageUrl" type="video/mp4" />
@@ -26,7 +26,6 @@
         <b>{{dataJav.code}}</b>
       </span>
     </div>
-
     <div class="box-content">
       <h3 class="title">
         <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">{{getName(dataJav.name)}}</nuxt-link>
@@ -58,7 +57,10 @@ export default {
         return false;
       }
       return false;
-    }
+    },
+    addToFavorites: function(_id) {
+      this.$store.dispatch("addToFavorites", {javId: _id});
+    },
   }
 };
 </script>

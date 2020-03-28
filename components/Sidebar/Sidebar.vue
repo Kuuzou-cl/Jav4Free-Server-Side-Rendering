@@ -19,19 +19,13 @@
           <div class="title-sidebar">Idols</div>
         </nuxt-link>
       </li>
-      <li v-if="$store.state.authUser" class="navbar-nav-link">
-        <nuxt-link :to="'/dashboard'">Dashboard</nuxt-link>
-      </li>
-      <li v-if="$store.state.authUser" @click="logout()" class="navbar-nav-link">
-        <nuxt-link to="/">Logout</nuxt-link>
-      </li>
     </ul>
     <div class="underline-sidebar"></div>
     <ul>
       <li class="navbar-nav-link">
-        <nuxt-link :to="'/categories'">
-          <font-awesome-icon :icon="['fas', 'award']" class="icon-sidebar" />
-          <div class="title-sidebar">Recommended</div>
+        <nuxt-link :to="'/favorites/1'">
+          <font-awesome-icon :icon="['fas', 'heart']" class="icon-sidebar" />
+          <div class="title-sidebar">Favorites</div>
         </nuxt-link>
       </li>
       <li class="navbar-nav-link">

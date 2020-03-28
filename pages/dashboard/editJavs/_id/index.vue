@@ -1,7 +1,5 @@
 <template>
-  <div class="container-fluid">
-    <div class="need-space"></div>
-    <div class="need-space"></div>
+  <div class="container-fluid content">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -112,11 +110,10 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
     <div v-if="this.viewCategories" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-          <input type="text" v-model="searchCategories" placeholder="Search..." />
+          <input type="text"  class="custom-input" v-model="searchCategories" placeholder="Search..." />
         </div>
       </div>
       <div class="row justify-content-center">
@@ -136,11 +133,10 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
     <div v-if="this.viewIdols" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-          <input type="text" v-model="searchIdols" placeholder="Search..." />
+          <input type="text" class="custom-input" v-model="searchIdols" placeholder="Search..." />
         </div>
       </div>
       <div class="row justify-content-center">

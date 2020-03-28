@@ -1,6 +1,5 @@
 <template>
-  <div class="container-fluid">
-    <div class="need-space"></div>
+  <div class="container-fluid content">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -53,7 +52,7 @@
                       v-model="javName"
                       class="form-control custom-input"
                       id="inputJav01"
-                      placeholder="Enter new title"
+                      placeholder="Enter title"
                     />
                   </div>
                   <div class="form-row">
@@ -62,7 +61,7 @@
                       v-model="javCode"
                       class="form-control custom-input"
                       id="inputJav02"
-                      placeholder="Enter new code"
+                      placeholder="Enter code"
                     />
                   </div>
                   <div class="form-row">
@@ -71,7 +70,7 @@
                       v-model="javDuration"
                       class="form-control custom-input"
                       id="inputJav03"
-                      placeholder="Enter relative video url"
+                      placeholder="Enter duration in minutes"
                     />
                   </div>
                 </form>
@@ -95,8 +94,13 @@
           <div class="need-space"></div>
           <div v-if="this.viewCategories" class="container-fluid">
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                <input type="text" v-model="searchCategories" placeholder="Search..." />
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <input
+                  class="custom-input"
+                  type="text"
+                  v-model="searchCategories"
+                  placeholder="Search..."
+                />
               </div>
             </div>
             <div class="row justify-content-center">
@@ -119,8 +123,13 @@
           <div class="need-space"></div>
           <div v-if="this.viewIdols" class="container-fluid">
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                <input type="text" v-model="searchIdols" placeholder="Search..." />
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <input
+                  class="custom-input"
+                  type="text"
+                  v-model="searchIdols"
+                  placeholder="Search..."
+                />
               </div>
             </div>
             <div class="row justify-content-center">
@@ -148,18 +157,23 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <table class="table table-hover text-center">
-            <thead>
-              <tr>
-                <th scope="col">Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
-                <th>{{jav}}</th>
-              </tr>
-            </tbody>
-          </table>
+          <div class="tableFixHead">
+            <table class="table table-hover text-center">
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    class="t-header"
+                  >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
+                  <th>{{jav}}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

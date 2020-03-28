@@ -1,85 +1,7 @@
-@media screen and (min-width: 1601px) and (max-width: 1919px) {
-    .content{
-        position: relative;
-        width: 85%;
-        left: 4%;
-        padding-top: 7% !important;
-    }
-}
-
-@media screen and (min-width: 1280px) and (max-width: 1600px) {
-    .content{
-        position: relative;
-        width: 85%;
-        left: 6%;
-        padding-top: 8% !important;
-    }
-    .btn-more{
-        color:#f8faff !important;
-        border-color: #f8faff !important;
-    }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1279px) {
-    .content{
-        position: relative;
-        width: 85%;
-        left: 5%;
-        padding-top: 9% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (min-width: 800px) and (max-width: 991px) {
-    .content{
-        position: relative;
-        width: 85%;
-        left: 2%;
-        padding-top: 9% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (min-width: 620px) and (max-width: 799px) {
-    .content{
-        position: relative;
-        width: 85%;
-        left: 2%;
-        padding-top: 9% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 620px) {
-    .content{
-        position: relative;
-        width: 85%;
-        left: 6%;
-        padding-top: 13% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
+@import 'jav-page.scss';
+@import 'login-page.scss';
+@import 'dashboard-page.scss';
+@import 'categories-page.scss';
 
 #app{
     min-height: 100%;
@@ -115,46 +37,24 @@ body
 .title-white:hover{
     color:#f8faff;
     text-decoration-color: #E8175D;
-    
 }
 
 .btn-more{
     color:#f8faff !important;
     border-color: #f8faff !important;
+    box-shadow: none !important;
 }
 
 .btn-more:hover{
     color: #E8175D !important;
     border-color: #E8175D !important;
+    
 }
-
-.custom-input{
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #FFE4FA;
-    color: #FFE4FA;
-    letter-spacing: 2px;
-    text-align: left;
-    margin: 2% 0% !important;
-}
-
-.user_card {
-    height: 210px;
-    width: 350px;
-    background: #4a4860;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
-    margin-top: auto;  
-    margin-bottom: auto;
-  }
 
 .pagination .paginate-index{
     border-color: #f8faff !important;
     color: #f8faff !important;
+    box-shadow: none !important;
 }
 
 .pagination .paginate-index:hover{
@@ -164,6 +64,7 @@ body
 .pagination .paginate-prev{
     border-color: #f8faff !important;
     color: #f8faff !important;
+    box-shadow: none !important;
 }
 
 .pagination .paginate-prev:hover{
@@ -173,181 +74,97 @@ body
 .pagination .paginate-next{
     border-color: #f8faff !important;
     color: #f8faff !important;
+    box-shadow: none !important;
 }
 
 .pagination .paginate-next:hover{
     border-color: #E8175D !important;
 }
 
-/*============================Categories Page========================================*/
 
-.category-title{
-    color: #f8faff !important;
-    border-color: #f8faff !important;
-    width: 250px;
-    margin: 5px 0px;
-}
-
-.category-title:hover{
-    color: #f8faff !important;
-    border-color: #E8175D !important;
-}
-
-/*============================Dashboard Page========================================*/
-
-.category-button{
-    color: #FFE4FA !important;
-    border-color: #FFE4FA !important;
-    width: 200px;
-    margin: 5px 0px;
-}
-
-.category-button:hover{
-    color: #FFC4EB !important;
-    border-color: #FFC4EB !important;
-}
-
-.simple-button{
-    color: #FFE4FA !important;
-    border-color: #FFE4FA !important;
-    width: 100%;
-    margin: 5px 0px;
-}
-
-.simple-button:hover{
-    color: #FFC4EB !important;
-    border-color: #FFC4EB !important;
-}
-
-.active{
-    background-color: rgb(247, 119, 204) !important;
-}
-
-.dashboard-card{
-    border-color: #E8175D !important;
-}
-
-.card-header{
-    background-color: #E8175D;
-    color: #FFE4FA;
-}
-
-.card-body{
-    color: #FFE4FA;
-    background-color: #16151c;
-}
-
-.table{
-    color: #FFE4FA;
-    background-color: #4A4860;
-}
-
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    color: #FFE4FA;
-  }
-
-.tag{
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 1px !important;
-    color: #FFE4FA;
-    border-color: #E8175D !important;
-    margin-left: 2%;
-    margin-right: 2%;
-    padding: 1% 2%;
-}
-/*============================Login Page========================================*/
-.user_card {
-    height: 100%;
-    width: 350px;
-    background: #4a4860;
-    border-radius: 5px;
-    margin-top: 10%;  
-    margin-bottom: 10%;
-}
-
-.user_card img {
-    padding-top: 1%;
-}
-
-.user_card form{
-    padding-top: 1%;
-    padding-bottom: 2%;
-}
-/*============================Jav Page========================================*/
-.container-jav{
-    border-style: solid;
-    border-radius: 0.5%;
-    border-width: 1px;
-    border-color: #4A4860;
-}
-
-.container-recommended{
-    background-color: #1b1927;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 0.5%;
-    border-color: #4A4860;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-
-    .box2 .box-content{
-        background-color: #1b1927;
+@media screen and (min-width: 1601px) and (max-width: 1919px) {
+    .content{
+        position: relative;
+        width: 85%;
+        left: 4%;
+        padding-top: 7% !important;
     }
 }
 
-.jav-title{
-    padding: 1% 2% 1% 2%;
-    text-align: justify;
-    height: 8%;
-    background-color: #4A4860;
-    font-size:16px;
-    color: #FFE4FA;
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+    .content{
+        position: relative;
+        width: 85%;
+        left: 6%;
+        padding-top: 10% !important;
+        padding-bottom: 10% !important;
+    }
+    .btn-more{
+        color:#f8faff !important;
+        border-color: #f8faff !important;
+    }
 }
 
-.jav-extra{
-    padding: 0.5% 2%;
-    text-align: justify;
-    background-color: #1b1927;
-    font-size:16px;
-    color: #FFE4FA;
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+    .content{
+        position: relative;
+        width: 85%;
+        left: 5%;
+        padding-top: 11% !important;
+        padding-bottom: 11% !important;
+    }
+    .btn-more{
+        font-size: 80%;
+    }
+    .title-white{
+        font-size: 80%;
+    }
 }
 
-.jav-extra b{
-    font-size:12px;
-    display:inline;
-    padding-right: 1%;
+@media screen and (min-width: 800px) and (max-width: 991px) {
+    .content{
+        position: relative;
+        width: 85%;
+        left: 2%;
+        padding-top: 12% !important;
+        padding-bottom: 10% !important;
+    }
+    .btn-more{
+        font-size: 80%;
+    }
+    .title-white{
+        font-size: 80%;
+    }
 }
 
-.jav-extra a {
-    color: #E8175D;
-    padding-right: 0.15%;
-
+@media screen and (min-width: 620px) and (max-width: 799px) {
+    .content{
+        position: relative;
+        width: 85%;
+        left: 2%;
+        padding-top: 13% !important;
+        padding-bottom: 12% !important;
+    }
+    .btn-more{
+        font-size: 80%;
+    }
+    .title-white{
+        font-size: 80%;
+    }
 }
 
-.jav-extra a:hover {
-    color: rgb(201, 22, 81);
+@media screen and (max-width: 620px) {
+    .content{
+        position: relative;
+        width: 85%;
+        left: 6%;
+        padding-top: 16% !important;
+        padding-bottom: 15% !important;
+    }
+    .btn-more{
+        font-size: 80%;
+    }
+    .title-white{
+        font-size: 80%;
+    }
 }
-/*============================Plyr CSS========================================*/
-
-.plyr--full-ui input[type=range] {
-    color: #E8175D !important;
-  }
-  
-  .plyr__control--overlaid {
-    background: rgba(232, 23, 93, .8) !important;
-  }
-
-  .plyr--video .plyr__control.plyr__tab-focus,
-  .plyr--video .plyr__control:hover,
-  .plyr--video .plyr__control[aria-expanded=true] {
-    background: #E8175D !important;
-  }
-  
-  .plyr__control.plyr__tab-focus {
-    box-shadow: 0 0 0 5px rgba(232, 23, 93, .5) !important;
-  }
-  
-  .plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
-    background: #E8175D !important;
-  }

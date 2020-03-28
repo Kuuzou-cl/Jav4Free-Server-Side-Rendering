@@ -1,0 +1,135 @@
+.content-jav{
+    margin-left:auto;
+    margin-right: 0;
+    position: relative;
+    right: 1%;
+    width: 85%;
+}
+
+.container-jav{
+    border-style: solid;
+    border-radius: 0.5%;
+    border-width: 1px;
+    border-color: #1e1e1e;
+}
+
+.container-recommended{
+    background-color: #1e1e1e;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.5%;
+    border-color: #1e1e1e;
+    padding: 1.5% 0.5%;
+}
+
+.jav-title{
+    display: flex;
+    padding: 1% 2% 1% 2%;
+    text-align: justify;
+    justify-content:center;
+    align-items:center;
+    height: 8%;
+    background-color: #2e2e2e;
+    font-size:12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f8faff;
+    .favorite-button{
+        margin-left:auto; 
+        margin-right:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        width:5%;
+        padding-left: 8%;
+        padding-right: 3%;
+        font-size: 40px;
+        .favorite-icon{
+            color:#871037; 
+        }
+        .favorite-icon-active{
+            color:#E8175D; 
+        }
+    }
+    
+    .favorite-button .favorite-icon :hover{
+        color:#E8175D;
+    }
+    
+    .favorite-button .favorite-icon-active :hover{
+        color:#871037;
+    }
+}
+
+.jav-extra{
+    padding: 0.5% 2%;
+    text-align: justify;
+    justify-content:center;
+    align-items:center;
+    background-color: #1e1e1e;
+    font-size:12px;
+    letter-spacing: 1px;
+    color: #f8faff;
+}
+
+.jav-extra b{
+    font-size:12px;
+    display:inline;
+    padding-right: 1%;
+}
+
+.jav-extra a {
+    color: #E8175D;
+    padding-right: 0.15%;
+
+}
+
+.jav-extra a:hover {
+    color: #f8faff;
+}
+
+.plyr--full-ui input[type=range] {
+    color: #E8175D !important;
+  }
+  
+  .plyr__control--overlaid {
+    background: rgba(232, 23, 93, .8) !important;
+  }
+
+  .plyr--video .plyr__control.plyr__tab-focus,
+  .plyr--video .plyr__control:hover,
+  .plyr--video .plyr__control[aria-expanded=true] {
+    background: #E8175D !important;
+  }
+  
+  .plyr__control.plyr__tab-focus {
+    box-shadow: 0 0 0 5px rgba(232, 23, 93, .5) !important;
+  }
+  
+  .plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
+    background: #E8175D !important;
+  }
+
+@media screen and (min-width: 1601px) and (max-width: 1919px) {
+
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+
+}
+
+@media screen and (min-width: 800px) and (max-width: 991px) {
+
+}
+
+@media screen and (min-width: 620px) and (max-width: 799px) {
+
+}
+
+@media screen and (max-width: 620px) {
+
+}

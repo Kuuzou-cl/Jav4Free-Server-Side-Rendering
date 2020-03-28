@@ -1,9 +1,9 @@
 <template>
   <div class="card bg-dark box21">
     <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-      <img class="static" :src="dataJav.imageIndexUrl">
+      <img class="static" :src="dataJav.imageIndexUrl" v-lazy-load>
     </nuxt-link>
-    <video autoplay loop>
+    <video autoplay loop v-lazy-load>
       <source :src="dataJav.imageUrl" type="video/mp4" />
     </video>
     <div v-if="titleType(dataJav.name)" class="box-time">
@@ -43,15 +43,15 @@ export default {
   methods: {
     getName: function(_name) {
       let newName;
-      if (_name.length > 58) {
-        newName = _name.slice(0, 58) + " ...";
+      if (_name.length > 48) {
+        newName = _name.slice(0, 48) + " ...";
         return newName;
       } else {
         return _name;
       }
     },
     titleType: function(_name) {
-      if (_name.length >= 38) {
+      if (_name.length >= 28) {
         return true;
       } else {
         return false;

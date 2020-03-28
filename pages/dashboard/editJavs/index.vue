@@ -1,6 +1,5 @@
 <template>
-  <div class="container-fluid">
-    <div class="need-space"></div>
+  <div class="container-fluid content">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -71,8 +70,8 @@
     <div class="need-space"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-          <input type="text" v-model="search" placeholder="Search by code..." />
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <input class="custom-input" type="text" v-model="search" placeholder="Search by code..." />
         </div>
       </div>
       <div class="row justify-content-center">
@@ -108,7 +107,6 @@
             </table>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
       </div>
     </div>
   </div>

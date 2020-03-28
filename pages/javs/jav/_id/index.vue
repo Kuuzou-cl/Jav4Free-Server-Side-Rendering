@@ -1,17 +1,18 @@
 <template>
   <div class="container-fluid content">
     <!-- JuicyAds v3.2P Start -->
-      <script type="application/javascript">
-      var juicy_tags = ['a', 'img'];
-      </script>
-      <script type="application/javascript" src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=https%3A%2F%2Fwww.jav4free.watch"></script>
-      <!-- JuicyAds v3.2P End -->
+    <script type="application/javascript">
+  var juicy_tags = ["a", "img"];
+    </script>
+    <script
+      type="application/javascript"
+      src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=https%3A%2F%2Fwww.jav4free.watch"
+    ></script>
+    <!-- JuicyAds v3.2P End -->
     <Crumbs />
-    <div class="need-space">      
-    </div>
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+    <div class="container-fluid content-jav">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <div class="container-jav">
             <vue-plyr class="jav-player0" :options="playerOptions">
               <video preload="metadata" controls :poster="jav.imageIndexUrl">
@@ -20,75 +21,54 @@
             </vue-plyr>
             <div class="jav-title">
               <span>
-                <b>{{jav.name}}</b>
+                <b>{{jav.code}} - {{jav.name}}</b>
               </span>
+              <div class="favorite-button float-right">
+                <font-awesome-icon
+                  :icon="['fas', 'heart']"
+                  v-if="!checkFavorite"
+                  class="favorite-icon"
+                  @click="addToFavorites(jav._id)"
+                />
+                <font-awesome-icon
+                  :icon="['fas', 'heart']"
+                  v-if="checkFavorite"
+                  class="favorite-icon-active"
+                  @click="addToFavorites(jav._id)"
+                />
+              </div>
             </div>
             <div class="jav-extra">
               <span>
-                <b>Categories:</b>
+                Categories:
                 <nuxt-link
                   v-for="category in categories"
                   :key="category._id"
                   :to="'/categories/1/'+category._id"
                   tag="a"
                   class="links"
-                >{{category.name}}, </nuxt-link>
+                >{{category.name}},</nuxt-link>
               </span>
             </div>
             <div class="jav-extra">
               <span>
-                <b>Idols:</b>
+                Idols:
                 <nuxt-link
                   v-for="idol in idols"
                   :key="idol._id"
                   :to="'/idols/1/'+idol._id"
                   tag="a"
                   class="links"
-                >{{idol.name}}, </nuxt-link>
+                >{{idol.name}},</nuxt-link>
               </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <div class="row justify-content-center">
-            <div v-if="$device.isDesktop" class="ad-desktop-300x250">
-              <!-- JuicyAds v3.1 -->
-              <script
-                type="application/javascript"
-                data-cfasync="false"
-                async
-                src="https://poweredby.jads.co/js/jads.js"
-              ></script>
-              <ins id="817968" data-width="300" data-height="262"></ins>
-              <script type="application/javascript" data-cfasync="false" async>
-  (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 817968 });
-              </script>
-              <!--JuicyAds END-->
-            </div>
-            <div v-if="$device.isDesktop" class="ad-desktop-300x250">
-              <!-- JuicyAds v3.1 -->
-              <script
-                type="application/javascript"
-                data-cfasync="false"
-                async
-                src="https://poweredby.jads.co/js/jads.js"
-              ></script>
-              <ins id="824389" data-width="300" data-height="262"></ins>
-              <script type="application/javascript" data-cfasync="false" async>
-  (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 824389 });
-              </script>
-              <!--JuicyAds END-->
             </div>
           </div>
         </div>
       </div>
       <div class="need-space"></div>
-      <div class="row justify-content-center">
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <div v-if="$device.isDesktop" class="container-recommended">
-            <div class="row justify-content-center">
-              <h6 class="title-white text-left">Recommended JAV's</h6>
-            </div>
             <div class="row">
               <div
                 v-for="jav in relatedJavs"
@@ -100,9 +80,6 @@
             </div>
           </div>
           <div v-if="$device.isMobileOrTablet" class="container-recommended">
-            <div class="row justify-content-center">
-              <h6 class="title-white text-left">Recommended JAV's</h6>
-            </div>
             <div class="row">
               <div
                 v-for="jav in relatedJavs"
@@ -111,24 +88,6 @@
               >
                 <CardJavMobile v-bind:dataJav="jav" />
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <div class="row justify-content-center">
-            <div v-if="$device.isDesktop" class="ad-desktop-300x250">
-              <!-- JuicyAds v3.1 -->
-              <script
-                type="application/javascript"
-                data-cfasync="false"
-                async
-                src="https://poweredby.jads.co/js/jads.js"
-              ></script>
-              <ins id="824390" data-width="300" data-height="262"></ins>
-              <script type="application/javascript" data-cfasync="false" async>
-  (adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 824390 });
-              </script>
-              <!--JuicyAds END-->
             </div>
           </div>
         </div>
@@ -213,8 +172,18 @@ export default {
       show: this.$route.params.id,
       route: routePage
     });
-    this.$store.dispatch("addToHistory", {javId: this.$route.params.id});
+    this.$store.dispatch("addToHistory", { javId: this.$route.params.id });
   },
+  methods: {
+    addToFavorites: function(_id) {
+      this.$store.dispatch("addToFavorites", { javId: _id });
+    }
+  },
+  computed: {
+    checkFavorite () {
+      return this.$store.getters.checkFavorite(this.jav._id);
+    }
+  }
 };
 </script>
 

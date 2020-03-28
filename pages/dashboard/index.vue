@@ -1,6 +1,5 @@
 <template>
-  <div class="container-fluid">
-    <div class="need-space"></div>
+  <div class="container-fluid content">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -230,20 +229,5 @@ export default {
 </script>
 
 <style lang="scss">
-.tableFixHead {
-  overflow-y: auto;
-  height: 100%;
-  max-height: 680px;
-}
-.tableFixHead thead th {
-  position: sticky;
-  top: 0;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-.t-header {
-  background-color: #e8175d;
-}
+
 </style>

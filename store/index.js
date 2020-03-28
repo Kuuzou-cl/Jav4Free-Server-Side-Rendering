@@ -7,12 +7,23 @@ export const state = () => ({
   authUser: null,
   admin: false,
   history: [],
+  favorites: [],
   breadCrumbs: [{ page: "Home", show: "Home", route: "" }]
 })
 
 export const getters = {
-  getHistory: state =>{
+  getHistory: state => {
     return state.history;
+  },
+  getFavorites: state => {
+    return state.favorites;
+  },
+  checkFavorite: (state) => (javId) => {
+    if (state.favorites.some(item => item === javId)) {
+      return true;
+    }else{
+      return false;
+    }
   }
 }
 
@@ -32,14 +43,43 @@ export const mutations = {
       })
     }
   },
+  SET_FAVORITES(state, favorites) {
+    if (favorites) {
+      state.favorites = favorites;
+      this.$cookies.set('favorites', favorites, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 30
+      })
+    } else {
+      state.favorites = [];
+      this.$cookies.set('favorites', [], {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 30
+      })
+    }
+  },
   ADD_HISTORY(state, javId) {
     if (javId) {
       if (!state.history.some(item => item === javId)) {
-        state.history.push(javId);
+        state.history.unshift(javId);
       }
       this.$cookies.set('history', state.history, {
         path: '/',
         maxAge: 60 * 60 * 24 * 14
+      })
+    }
+  },
+  ADD_FAVORITE(state, javId) {
+    if (javId) {
+      if (!state.favorites.some(item => item === javId)) {
+        state.favorites.unshift(javId);
+      }else{
+        const index = state.favorites.findIndex(item => item === javId);
+        state.favorites.splice(index,1);
+      }
+      this.$cookies.set('favorites', state.favorites, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 30
       })
     }
   },
@@ -101,6 +141,18 @@ export const mutations = {
                     if (page.page == "Search") {
                       let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
                       state.breadCrumbs = newCrumbs;
+                    } else {
+                      if (page.page == "Favorites") {
+                        let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
+                        state.breadCrumbs = newCrumbs;
+                      } else {
+                        if (page.page == "History") {
+                          let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
+                          state.breadCrumbs = newCrumbs;
+                        } else {
+                          
+                        }
+                      }
                     }
                   }
                 }
@@ -118,6 +170,7 @@ export const actions = {
     const cookieUser = this.$cookies.get('user');
     const cookieUserState = this.$cookies.get('userState');
     const cookieHistory = this.$cookies.get('history');
+    const cookieFavorites = this.$cookies.get('favorites');
     if (cookieUser) {
       let userData = {
         "data": {
@@ -134,11 +187,20 @@ export const actions = {
     } else {
       commit('SET_HISTORY', null);
     }
+    if (cookieFavorites) {
+      commit('SET_FAVORITES', cookieFavorites);
+    } else {
+      commit('SET_FAVORITES', null);
+    }
   },
 
   addToHistory({ commit }, { javId }) {
     commit('ADD_HISTORY', javId);
   },
+
+  addToFavorites({ commit }, { javId }) {
+    commit('ADD_FAVORITE', javId);
+  },  
 
   async login({ commit }, { email, password }) {
     try {
@@ -182,7 +244,15 @@ export const actions = {
           if (page == "Search") {
             newPage = { page: page, show: show, route: route }
           } else {
-            newPage = { page: page, show: show, route: route }
+            if (page == "Favorites") {
+              newPage = { page: page, show: show, route: route }
+            } else {
+              if (page == "History") {
+                newPage = { page: page, show: show, route: route }
+              } else {
+                newPage = { page: page, show: show, route: route }
+              }
+            }
           }
         }
       }

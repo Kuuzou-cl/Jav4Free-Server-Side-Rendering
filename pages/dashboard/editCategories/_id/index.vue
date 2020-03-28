@@ -1,7 +1,5 @@
 <template>
-  <div class="container-fluid">
-    <div class="need-space"></div>
-    <div class="need-space"></div>
+  <div class="container-fluid content">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

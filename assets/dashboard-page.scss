@@ -1,0 +1,153 @@
+.tableFixHead {
+    overflow-y: auto;
+    height: 100%;
+    max-height: 680px;
+  }
+  .tableFixHead thead th {
+    position: sticky;
+    top: 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .t-header {
+    background-color: #e8175d;
+  }
+
+.category-button{
+    color: #f8faff !important;
+    border-color: #f8faff !important;
+    width: 200px;
+    margin: 5px 0px;
+    box-shadow: none !important;
+}
+
+.category-button:hover{
+    color: #E8175D !important;
+    border-color: #E8175D !important;
+}
+
+.category-title{
+    color: #f8faff !important;
+    border-color: #f8faff !important;
+    width: 250px;
+    margin: 5px 0px;
+    box-shadow: none !important;
+}
+
+.category-title:hover{
+    color: #f8faff !important;
+    border-color: #E8175D !important;
+}
+
+.simple-button{
+    color: #f8faff !important;
+    border-color: #f8faff !important;
+    width: 100%;
+    margin: 5px 0px;
+    box-shadow: none !important;
+}
+
+.simple-button:hover{
+    color: #E8175D !important;
+    border-color: #E8175D !important;
+}
+
+.active{
+    background-color: #871037 !important;
+}
+
+.dashboard-card{
+    border-color: #E8175D !important;
+}
+
+.card-header{
+    background-color: #E8175D;
+    color: #f8faff;
+}
+
+.card-body{
+    color: #f8faff;
+    background-color: #2e2e2e;
+}
+
+.table{
+    color: #f8faff;
+    background-color: #2e2e2e;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color: #E8175D;
+  }
+
+.tag{
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px !important;
+    color: #FFE4FA;
+    border-color: #E8175D !important;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 1% 2%;
+}
+
+.custom-input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #E8175D;
+    color: #f8faff;
+    letter-spacing: 2px;
+    text-align: left;
+    margin: 2% 0% !important;
+    box-shadow: none !important;
+    width: 100%;
+}
+
+.icon-upload {
+    font-size: 500%;
+  }
+  
+  .card-upload {
+    border-width: 0;
+  }
+  
+  .card-file {
+    margin: 1% 1% 1% 0%;
+  }
+  
+  .card-file-body {
+    padding-top: 10%;
+    padding-bottom: 2%;
+    cursor: pointer;
+  }
+  
+  .card-file-footer {
+    cursor: pointer;
+  }
+  
+  .custom-file {
+    width: 100%;
+    min-height: 240px;
+    height: 100%;
+  }
+  
+  .custom-file-input {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .custom-file-label {
+    height: 100%;
+    width: 100%;
+    border-radius: 0%;
+  }
+  
+  .custom-file-input ~ .custom-file-label::after {
+    display: none;
+  }
+  
+  .bg-jav4free {
+    background-color: #e8175d;
+  }

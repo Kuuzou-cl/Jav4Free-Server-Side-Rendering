@@ -1,6 +1,5 @@
 <template>
-  <div class="container-fluid">
-    <div class="need-space"></div>
+  <div class="container-fluid content">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -195,11 +194,11 @@
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
                     role="progressbar"
-                    :aria-valuenow="(loadingSprites * 0.2) + (loadingVtts * 0.2) + (loadingCovers * 0.2) + (loadingIdols * 0.2) + (loadingJavs * 0.2)"
+                    :aria-valuenow="loadingTotal"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                    :style="{'width': `${(loadingSprites * 0.2) + (loadingVtts * 0.2) + (loadingCovers * 0.2) + (loadingIdols * 0.2) + (loadingJavs * 0.2)}%`}"
-                  >{{ (loadingSprites * 0.2) + (loadingVtts * 0.2) + (loadingCovers * 0.2) + (loadingIdols * 0.2) + (loadingJavs * 0.2) }}%</div>
+                    :style="{'width': `${(loadingTotal)}%`}"
+                  >{{loadingTotal}}%</div>
                 </div>
               </div>
             </div>
@@ -321,7 +320,8 @@ export default {
       viewLoadingVtts: false,
       sprites: [],
       loadingSprites: 0,
-      viewLoadingSprites: false
+      viewLoadingSprites: false,
+      loadingTotal: 0
     };
   },
   methods: {
@@ -331,6 +331,7 @@ export default {
       this.loadingIdols = 0;
       this.loadingVtts = 0;
       this.loadingSprites = 0;
+      this.loadingTotal= 0;
       this.submitJavs();
       this.submitIdols();
       this.submitCovers();
@@ -350,6 +351,7 @@ export default {
             this.loadingJavs = Math.round(
               (uploadEvent.loaded / uploadEvent.total) * 100
             );
+            this.loadingTotal +=  this.viewLoadingJavs * 0.2;
             console.log(
               "Upload Progress: " +
                 Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
@@ -389,6 +391,7 @@ export default {
             this.loadingCovers = Math.round(
               (uploadEvent.loaded / uploadEvent.total) * 100
             );
+            this.loadingTotal +=  this.loadingCovers * 0.2;
             console.log(
               "Upload Progress: " +
                 Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
@@ -427,6 +430,7 @@ export default {
             this.loadingIdols = Math.round(
               (uploadEvent.loaded / uploadEvent.total) * 100
             );
+            this.loadingTotal +=  this.loadingIdols * 0.2;
             console.log(
               "Upload Progress: " +
                 Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
@@ -465,6 +469,7 @@ export default {
             this.loadingVtts = Math.round(
               (uploadEvent.loaded / uploadEvent.total) * 100
             );
+            this.loadingTotal +=  this.loadingVtts * 0.2;
             console.log(
               "Upload Progress: " +
                 Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
@@ -503,6 +508,7 @@ export default {
             this.loadingSprites = Math.round(
               (uploadEvent.loaded / uploadEvent.total) * 100
             );
+            this.loadingTotal +=  this.loadingSprites * 0.2;
             console.log(
               "Upload Progress: " +
                 Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
@@ -535,50 +541,5 @@ export default {
 </script>
 
 <style lang="scss">
-.icon-upload {
-  font-size: 500%;
-}
 
-.card-upload {
-  border-width: 0;
-}
-
-.card-file {
-  margin: 1% 1% 1% 0%;
-}
-
-.card-file-body {
-  padding-top: 10%;
-  padding-bottom: 2%;
-  cursor: pointer;
-}
-
-.card-file-footer {
-  cursor: pointer;
-}
-
-.custom-file {
-  width: 100%;
-  min-height: 240px;
-  height: 100%;
-}
-
-.custom-file-input {
-  height: 100%;
-  width: 100%;
-}
-
-.custom-file-label {
-  height: 100%;
-  width: 100%;
-  border-radius: 0%;
-}
-
-.custom-file-input ~ .custom-file-label::after {
-  display: none;
-}
-
-.bg-jav4free {
-  background-color: #e8175d;
-}
 </style>

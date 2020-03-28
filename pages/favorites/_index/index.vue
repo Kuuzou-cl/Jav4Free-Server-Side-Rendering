@@ -4,14 +4,14 @@
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h6 class="title-white text-left">Your History</h6>
+          <h6 class="title-white text-left">Your favorites videos</h6>
         </div>
       </div>
     </div>
     <div class="need-space"></div>
     <div v-if="$device.isDesktop" class="container">
       <div class="row">
-        <div v-for="jav in history" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div v-for="jav in favorites" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJav v-bind:dataJav="jav" />
         </div>
       </div>
@@ -25,7 +25,7 @@ import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav00";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 export default {
-  name: "History",
+  name: "Favorites",
   components: {
     Crumbs,
     CardJav,
@@ -34,7 +34,7 @@ export default {
   head() {
     return {
       title:
-        "What you have watched | History on Jav4Free | Japanese Adult Videos for Free",
+        "Your favorites videos | Favorites on Jav4Free | Japanese Adult Videos for Free",
       meta: [
         {
           name: "description",
@@ -54,23 +54,23 @@ export default {
     ) {
       page = "1";
     }
-    var dataHistory = {
-      javsBatch: store.getters.getHistory
+    var dataFavorites = {
+      javsBatch: store.getters.getFavorites
     };
-    const history = await axios.post(
+    const favorites = await axios.post(
       "https://jav.souzou.dev/jav4free/javs/getJavsByBatch/" + page,
-      dataHistory
+      dataFavorites
     );
     return {
-      history: history.data.history,
-      nextPage: history.data.nextPage
+      favorites: favorites.data.history,
+      nextPage: favorites.data.nextPage
     };
   },
   beforeCreate() {
     this.$store.dispatch("addCrumb", {
-      page: "History",
-      show: "History",
-      route: "history/1"
+      page: "Favorites",
+      show: "Favorites",
+      route: "favorites/1"
     });
   }
 };
