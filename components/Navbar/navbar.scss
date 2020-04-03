@@ -10,15 +10,16 @@ nav {
     z-index: 6;
 }
 
+.menu-toggle{
+    width: auto;
+    height: auto;
+    padding-right: 1%;
+    color: #f8faff;
+    background-color: #2e2e2e !important;
+}
+
 .main-navbar{
     padding-left: 1.5%;
-    .menu-toggle{
-        width: auto;
-        height: 35px;
-        padding-right: 1%;
-        color: #f8faff;
-        background-color: #2e2e2e !important;
-    }
 }
 
 .heart {

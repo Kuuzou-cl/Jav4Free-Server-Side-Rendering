@@ -12,7 +12,7 @@
     <Crumbs />
     <div class="container-fluid content-jav">
       <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
           <div class="container-jav">
             <vue-plyr class="jav-player0" :options="playerOptions">
               <video preload="metadata" controls :poster="jav.imageIndexUrl">
@@ -67,13 +67,13 @@
       </div>
       <div class="need-space"></div>
       <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div v-if="$device.isDesktop" class="container-recommended">
             <div class="row">
               <div
                 v-for="jav in relatedJavs"
                 :key="jav._id"
-                class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+                class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
               >
                 <CardJav v-bind:dataJav="jav" />
               </div>

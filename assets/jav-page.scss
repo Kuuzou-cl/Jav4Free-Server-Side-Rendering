@@ -72,16 +72,10 @@
     color: #f8faff;
 }
 
-.jav-extra b{
-    font-size:12px;
-    display:inline;
-    padding-right: 1%;
-}
-
 .jav-extra a {
     color: #E8175D;
     padding-right: 0.15%;
-
+    display: inline-block;
 }
 
 .jav-extra a:hover {
@@ -123,7 +117,32 @@
 }
 
 @media screen and (min-width: 800px) and (max-width: 991px) {
+    .content-jav{
+        padding-top: 1% !important;
+        right: 0%;
+        width: 100%;
+    }
+    
+    .jav-title{
+        display: flex;
+        padding: 1% 5% 1% 2%;
+        text-align: left;
+        justify-content:center;
+        align-items:center;
+        height: 8%;
+        font-size: 9px;
+        letter-spacing: 1px;
+        .favorite-button{
+            width:5%;
+            padding-left: 8%;
+            padding-right: 3%;
+            font-size: 20px;
+        }
+    }
 
+    .jav-extra{
+        text-align: left;
+    }
 }
 
 @media screen and (min-width: 620px) and (max-width: 799px) {
@@ -131,5 +150,30 @@
 }
 
 @media screen and (max-width: 620px) {
+    .content-jav{
+        padding-top: 20% !important;
+        right: 0%;
+        width: 100%;
+    }
 
+    .jav-title{
+        display: flex;
+        padding: 1% 5% 1% 2%;
+        text-align: left;
+        justify-content:center;
+        align-items:center;
+        height: 8%;
+        font-size: 9px;
+        letter-spacing: 1px;
+        .favorite-button{
+            width:5%;
+            padding-left: 8%;
+            padding-right: 3%;
+            font-size: 20px;
+        }
+    }
+
+    .jav-extra{
+        text-align: left;
+    }
 }
