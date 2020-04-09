@@ -84,7 +84,7 @@
     
     .side-navbar ul {
         a {
-            padding-left: 5% !important;
+            padding-left: 10% !important;
             letter-spacing: 4px;
             font-size: 0.5em;
             .icon-sidebar{
@@ -96,6 +96,7 @@
 
 @media screen and (min-width: 800px) and (max-width: 991px) {
     .side-navbar{
+        padding-top: 5%;
         width: 10%;
     }
     
@@ -113,6 +114,7 @@
 
 @media screen and (min-width: 620px) and (max-width: 799px) {
     .side-navbar{
+        padding-top: 2%;
         width: 12%;
     }
     

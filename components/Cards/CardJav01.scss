@@ -70,38 +70,68 @@
     .box21 .box-time{top:55%;}
     .box21 .box-code-v2{top:60%;}
     .box21 .box-time-v2{top:60%;}
-    .box21 .title{font-size:11px;}
+    .box21 .title{font-size:10px;}
+    .box21 .box-content{padding:5px 0px;}
 }
 
 @media screen and (min-width: 992px) and (max-width: 1280px) {
     .box21 {
-        margin: 0% 2% 2% 2%;
+        margin: 0% 0% 2% 0%;
     }
-    .box21 .box-code{top:54%;}
-    .box21 .box-time{top:54%;}
-    .box21 .box-code-v2{top:59%;}
-    .box21 .box-time-v2{top:59%;}
+    .box21 .box-code{top:58%;}
+    .box21 .box-time{top:58%;}
+    .box21 .box-code-v2{top:62%;}
+    .box21 .box-time-v2{top:62%;}
+    .box21 .post{font-size:10px;}
+    
     .box21 .title{font-size:9px;}
+    .box21 .box-content{padding:5px 0px;}
 }
 
 @media screen and (min-width: 800px) and (max-width: 991px) {
     .box21 {
-        margin: 0% 1% 1% 1%;
+        margin: 0% 0% 2% 0%;
     }
-    .box21 .box-code{top:54%;}
-    .box21 .box-time{top:54%;}
-    .box21 .box-code-v2{top:59%;}
-    .box21 .box-time-v2{top:59%;}
-    .box21 .title{font-size:9px;}
+    .box21 .box-code{top:52%;}
+    .box21 .box-time{top:52%;}
+    .box21 .box-code-v2{top:55%;}
+    .box21 .box-time-v2{top:55%;}
+    .box21 .post{font-size:9px;}
+    
+    .box21 .title{font-size:8px;}
+    .box21 .box-content{padding:5px 0px;}
 }
 
-@media screen and (min-width: 620px) and (max-width: 799px) {
-
+@media screen and (min-width: 621px) and (max-width: 799px) {
+    .box21 {
+        margin: 0% 0% 2% 0%;
+    }
+    .box21 .box-code{top:52%;}
+    .box21 .box-time{top:52%;}
+    .box21 .box-code-v2{top:55%;}
+    .box21 .box-time-v2{top:55%;}
+    .box21 .post{font-size:9px;}
+    
+    .box21 .title{font-size:7px;}
+    .box21 .box-content{padding:5px 0px;}
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (min-width: 380px) and (max-width: 620px) {
     .box21 {
         margin: 0% 2% 3% 2%;
     }
+    .box21 .box-code{top:67%;}
+    .box21 .box-time{top:67%;}
+    .box21 .box-code-v2{top:74%;}
+    .box21 .box-time-v2{top:74%;}
+}
+
+@media screen and (max-width: 379px) {
+    .box21 {
+        margin: 0% 2% 3% 2%;
+    }
+    .box21 .box-code{top:64%;}
     .box21 .box-time{top:64%;}
+    .box21 .box-code-v2{top:70%;}
+    .box21 .box-time-v2{top:70%;}
 }

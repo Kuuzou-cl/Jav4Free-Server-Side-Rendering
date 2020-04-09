@@ -51,7 +51,7 @@ export default {
       }
     },
     titleType: function(_name) {
-      if (_name.length >= 28) {
+      if (_name.length >= 34) {
         return true;
       } else {
         return false;
