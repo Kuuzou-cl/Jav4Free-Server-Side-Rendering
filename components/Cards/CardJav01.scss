@@ -58,6 +58,16 @@
     opacity:0;
 }
 
+@media screen and (min-width: 2480px) {
+    .box21 {
+        margin: 0% 2% 3% 2%;
+    }
+    .box21 .box-code{top:70%;}
+    .box21 .box-time{top:70%;}
+    .box21 .box-code-v2{top:76%;}
+    .box21 .box-time-v2{top:76%;}
+}
+
 @media screen and (min-width: 1601px) and (max-width: 1919px) {
 
 }
