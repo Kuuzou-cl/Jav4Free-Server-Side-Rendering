@@ -37,7 +37,7 @@
               class="btn paginate-index"
               @click="pushPage(Number(nextPage))"
             >{{nextPage}}</button>
-            <button v-if="page!=lastPage" disabled type="button" class="btn paginate-index">...</button>
+            <button v-if="page< lastPage - 1" disabled type="button" class="btn paginate-index">...</button>
             <button
               v-if="page!=lastPage"
               type="button"

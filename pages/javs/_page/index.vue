@@ -108,7 +108,8 @@ export default {
     return {
       javs: javs.data.javs,
       page: page,
-      nextPage: javs.data.nextPage
+      nextPage: javs.data.nextPage,
+      lastPage: javs.data.lastPage
     };
   },
   beforeCreate() {
@@ -129,12 +130,43 @@ export default {
       this.$router.push({ path: "/javs/" + newPage });
     },
     pullPage(indexPage) {
-      var newPage = Number(this.page) - Number(indexPage);
+      var newPage = Number(indexPage);
       this.$router.push({ path: "/javs/" + newPage });
     },
     pushPage(indexPage) {
-      var newPage = Number(this.page) + Number(indexPage);
+      var newPage = Number(indexPage);
       this.$router.push({ path: "/javs/" + newPage });
+    }
+  },
+  computed: {
+    previousPages() {
+      this.prevPages = [];
+      for (let index = 1; index < Number(this.page); index++) {
+        this.prevPages.push(index);
+      }
+      if (this.prevPages.length > 4) {
+        return this.prevPages.slice(
+          this.prevPages.length - 4,
+          this.prevPages.length
+        );
+      } else {
+        return this.prevPages;
+      }
+    },
+    actualNextPages() {
+      this.nextPages = [];
+      for (
+        let index = Number(this.page) + 1;
+        index < Number(this.lastPage);
+        index++
+      ) {
+        this.nextPages.push(index);
+      }
+      if (this.nextPages.length > 4) {
+        return this.nextPages.slice(0, 4);
+      } else {
+        return this.nextPages;
+      }
     }
   }
 };
