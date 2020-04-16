@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid content">
     <Crumbs v-if="this.$store.state.breadCrumbs" />
-    <div v-if="$device.isDesktop" class="container">
+    <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h6 class="title-white text-left">Your favorites videos</h6>
@@ -9,15 +9,55 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div v-if="$device.isDesktop" class="container">
+    <div class="container">
       <div class="row">
         <div v-for="jav in favorites" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJav v-bind:dataJav="jav" />
         </div>
       </div>
     </div>
+    <div class="need-space"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
+          <div class="pagination">
+            <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
+            <button
+              v-for="(prevPage, index) in previousPages"
+              :key="index"
+              type="button"
+              class="btn paginate-index"
+              @click="pullPage(Number(prevPage))"
+            >{{prevPage}}</button>
+            <button disabled type="button" class="btn paginate-actual">{{page}}</button>
+            <button
+              v-for="(nextPage, index) in actualNextPages"
+              :key="index"
+              type="button"
+              class="btn paginate-index"
+              @click="pushPage(Number(nextPage))"
+            >{{nextPage}}</button>
+            <button v-if="page< lastPage - 1" disabled type="button" class="btn paginate-index">...</button>
+            <button
+              v-if="page!=lastPage && lastPage != 0"
+              type="button"
+              @click="pushPage(Number(lastPage))"
+              class="btn paginate-index"
+            >{{Number(lastPage)}}</button>
+            <button
+              v-if="nextPage"
+              type="button"
+              class="btn paginate-next"
+              @click="nextClick()"
+            >Next</button>
+            <button v-else disabled type="button" class="btn paginate-next">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 import axios from "axios";
 
@@ -30,6 +70,12 @@ export default {
     Crumbs,
     CardJav,
     CardJavMobile
+  },
+  data() {
+    return {
+      prevPages: null,
+      nextPages: null
+    };
   },
   head() {
     return {
@@ -62,8 +108,10 @@ export default {
       dataFavorites
     );
     return {
+      page: page,
       favorites: favorites.data.history,
-      nextPage: favorites.data.nextPage
+      nextPage: favorites.data.nextPage,
+      lastPage: favorites.data.lastPage
     };
   },
   beforeCreate() {
@@ -72,6 +120,63 @@ export default {
       show: "Favorites",
       route: "favorites/1"
     });
+  },
+  methods: {
+    nextClick() {
+      var newPage = Number(this.page) + 1;
+      this.$router.push({
+        path: "/categories/" + newPage + "/" + this.category._id
+      });
+    },
+    prevClick() {
+      var newPage = Number(this.page) - 1;
+      this.$router.push({
+        path: "/categories/" + newPage + "/" + this.category._id
+      });
+    },
+    pullPage(indexPage) {
+      var newPage = Number(indexPage);
+      this.$router.push({
+        path: "/categories/" + newPage + "/" + this.category._id
+      });
+    },
+    pushPage(indexPage) {
+      var newPage = Number(indexPage);
+      this.$router.push({
+        path: "/categories/" + newPage + "/" + this.category._id
+      });
+    }
+  },
+  computed: {
+    previousPages() {
+      this.prevPages = [];
+      for (let index = 1; index < Number(this.page); index++) {
+        this.prevPages.push(index);
+      }
+      if (this.prevPages.length > 4) {
+        return this.prevPages.slice(
+          this.prevPages.length - 4,
+          this.prevPages.length
+        );
+      } else {
+        return this.prevPages;
+      }
+    },
+    actualNextPages() {
+      this.nextPages = [];
+      for (
+        let index = Number(this.page) + 1;
+        index < Number(this.lastPage);
+        index++
+      ) {
+        this.nextPages.push(index);
+      }
+      if (this.nextPages.length > 4) {
+        return this.nextPages.slice(0, 4);
+      } else {
+        return this.nextPages;
+      }
+    }
   }
 };
 </script>
