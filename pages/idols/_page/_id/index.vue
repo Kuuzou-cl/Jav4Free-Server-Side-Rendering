@@ -2,24 +2,17 @@
   <div class="container-fluid content">
     <Crumbs />
     <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <div class="row">
-            <h6 class="title-white text-left">{{ idol.name }} | JAV Idol</h6>
-          </div>
-          <div class="row">
-            <CardIdol
-              v-bind:dataId="idol._id"
-              v-bind:dataName="idol.name"
-              v-bind:dataUrl="idol.imageUrl"
-            />
-          </div>
-          <div class="row">
-            <h6 class="title-white text-left">Featured Videos | {{ javs.length }} JAV's</h6>
-          </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <h6 class="title-white text-left">{{ idol.name }} | JAV Idol</h6>
+          <CardIdol
+            v-bind:dataId="idol._id"
+            v-bind:dataName="idol.name"
+            v-bind:dataUrl="idol.imageUrl"
+          />
+          <h6 class="title-white text-left">Featured Videos | {{ javs.length }} JAV's</h6>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
       </div>
     </div>
     <div class="need-space"></div>

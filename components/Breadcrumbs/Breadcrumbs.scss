@@ -32,6 +32,12 @@
     opacity: 0;
 }
 
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+    .crumbs-content{
+        top: 10%;
+    }   
+}
+
 @media screen and (min-width: 800px) and (max-width: 991px) {
     .crumbs-content{
         top: 6%;

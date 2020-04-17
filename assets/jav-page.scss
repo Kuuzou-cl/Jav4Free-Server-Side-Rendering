@@ -9,16 +9,14 @@
 .container-jav{
     border-style: solid;
     border-radius: 0.5%;
-    border-width: 1px;
-    border-color: #1e1e1e;
+    border: 1px solid #2e2e2e;
 }
 
 .container-recommended{
     background-color: #1e1e1e;
     border-style: solid;
-    border-width: 1px;
     border-radius: 0.5%;
-    border-color: #1e1e1e;
+    border: 1px solid #2e2e2e;
     padding: 1.5% 0.5%;
 }
 
@@ -34,6 +32,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #f8faff;
+    border-bottom: 2px solid #E8175D;
     .favorite-button{
         margin-left:auto; 
         margin-right:0;
@@ -110,6 +109,7 @@
 
 @media screen and (min-width: 1280px) and (max-width: 1600px) {
     .content-jav{
+        padding-top: 2% !important;
         right: 0%;
         width: 100%;
     }

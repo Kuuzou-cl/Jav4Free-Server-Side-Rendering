@@ -14,10 +14,10 @@
         </div>
         <form>
           <div class="form-row justify-content-center">
-            <input v-model="email" class="custom-input" placeholder="Email" />
+            <input v-model="email" class="custom-input-login" placeholder="Email" />
           </div>
           <div class="form-row justify-content-center">
-            <input type="password" v-model="password" class="custom-input" placeholder="Password" />
+            <input type="password" v-model="password" class="custom-input-login" placeholder="Password" />
           </div>
           <div class="form-row justify-content-center">
             <button type="button" name="button" class="btn btn-more" @click="login">Login</button>
