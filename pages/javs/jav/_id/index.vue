@@ -69,11 +69,11 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div v-if="$device.isDesktop" class="container-recommended">
-            <div class="row">
+            <div class="row row-fix">
               <div
                 v-for="jav in relatedJavs"
                 :key="jav._id"
-                class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-fix"
               >
                 <CardJav v-bind:dataJav="jav" />
               </div>
@@ -84,7 +84,7 @@
               <div
                 v-for="jav in relatedJavs"
                 :key="jav._id"
-                class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+                class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
               >
                 <CardJavMobile v-bind:dataJav="jav" />
               </div>

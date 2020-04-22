@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-dark box2">
     <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-      <img class="static" :src="dataJav.imageIndexUrl" v-lazy-load>
+      <img :src="dataJav.imageIndexUrl" v-lazy-load />
     </nuxt-link>
     <video autoplay loop v-lazy-load>
       <source :src="dataJav.imageUrl" type="video/mp4" />

@@ -1,7 +1,7 @@
 # jav4free-ssr
-Server Side Rendering Jav4Free.watch
+Jav4Free.watch
 
-Frontend for Adult Video Streaming service
+Adult Video Streaming service
 
 **TODO
 

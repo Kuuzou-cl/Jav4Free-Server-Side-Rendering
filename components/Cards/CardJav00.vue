@@ -1,11 +1,12 @@
 <template>
   <div class="card bg-dark box2">
+    <div class="loading-box"></div>
     <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-      <img :src="dataJav.imageIndexUrl" class="static" v-lazy-load/>
+      <img :src="dataJav.imageIndexUrl" v-lazy-load />
     </nuxt-link>
     <video autoplay loop v-lazy-load>
-        <source :src="dataJav.imageUrl" type="video/mp4" />
-      </video>
+      <source :src="dataJav.imageUrl" type="video/mp4" />
+    </video>
     <div v-if="titleType(dataJav.name)" class="box-time">
       <span class="post">
         <b>{{dataJav.duration}}:00</b>
@@ -51,15 +52,15 @@ export default {
       }
     },
     titleType: function(_name) {
-      if (_name.length >= 38) {
+      if (_name.length > 38) {
         return true;
       } else {
         return false;
       }
     },
     addToFavorites: function(_id) {
-      this.$store.dispatch("addToFavorites", {javId: _id});
-    },
+      this.$store.dispatch("addToFavorites", { javId: _id });
+    }
   }
 };
 </script>
