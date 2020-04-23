@@ -2,10 +2,10 @@
   <div class="card bg-dark box2">
     <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
       <img :src="dataJav.imageIndexUrl" v-lazy-load />
+      <video autoplay loop v-lazy-load>
+        <source :src="dataJav.imageUrl" type="video/mp4" />
+      </video>
     </nuxt-link>
-    <video autoplay loop v-lazy-load>
-      <source :src="dataJav.imageUrl" type="video/mp4" />
-    </video>
     <div v-if="titleType(dataJav.name)" class="box-time">
       <span class="post">
         <b>{{dataJav.duration}}:00</b>
