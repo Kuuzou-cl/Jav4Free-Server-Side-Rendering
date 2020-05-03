@@ -1,6 +1,9 @@
 <template>
-  <nav role="navbar navigation" class="navbar-expand-sm">
+  <nav role="navbar navigation" class="navbar-expand-lg" v-bind:class="{ 'show': show }">
     <div class="container">
+      <button class="navbar-toggler custom-toggler" type="button" @click.stop="toggleNavbar">
+        <font-awesome-icon :icon="['fas', 'bars']" class="menu-toggle" />
+      </button>
       <div v-show="showNav" class="navbar-collapse main-navbar">
         <nuxt-link :to="'/'" class="heart" tag="li" type="button">
           <img src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.png" />
@@ -34,6 +37,7 @@
 <script>
 export default {
   name: "Navbar",
+  props: ['show','showNav','toggleNavbar'],
   data() {
     return {
       query: ""

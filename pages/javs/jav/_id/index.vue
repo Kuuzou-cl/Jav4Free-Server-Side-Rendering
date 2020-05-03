@@ -10,7 +10,7 @@
     ></script>
     <!-- JuicyAds v3.2P End -->
     <Crumbs />
-    <div class="container-fluid content-jav">
+    <div class="container content-jav">
       <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
           <div class="container-jav">
@@ -20,23 +20,50 @@
               </video>
             </vue-plyr>
             <div class="jav-title">
-              <span>
-                <b>{{jav.code}} - {{jav.name}}</b>
-              </span>
-              <div class="favorite-button float-right">
-                <font-awesome-icon
-                  :icon="['fas', 'heart']"
-                  v-if="!checkFavorite"
-                  class="favorite-icon"
-                  @click="addToFavorites(jav._id)"
-                />
-                <font-awesome-icon
-                  :icon="['fas', 'heart']"
-                  v-if="checkFavorite"
-                  class="favorite-icon-active"
-                  @click="addToFavorites(jav._id)"
-                />
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <p class="title">{{jav.name}}</p>
+                </div>
               </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="jav-details">
+                    <font-awesome-icon :icon="['fas', 'eye']" class="view-icon" />
+                    <p>Views:200.000</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <div class="btn btn-options" @click="addToFavorites(jav._id)">
+                    <p>{{messageFavorite}}</p>
+                    <font-awesome-icon
+                      :icon="['fas', 'heart']"
+                      v-if="!checkFavorite"
+                      class="favorite-icon"
+                    />
+                    <font-awesome-icon
+                      :icon="['fas', 'heart']"
+                      v-if="checkFavorite"
+                      class="favorite-icon-active"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <div class="btn btn-options">
+                    <p>Report a bug</p>
+                    <font-awesome-icon :icon="['fas', 'bug']" class="bug-icon" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="jav-extra">
+              <span>
+                Code: {{jav.code}}
+              </span>
+            </div>
+            <div class="jav-extra">
+              <span>
+                Duration: {{jav.duration}} min
+              </span>
             </div>
             <div class="jav-extra">
               <span>
@@ -180,8 +207,15 @@ export default {
     }
   },
   computed: {
-    checkFavorite () {
+    checkFavorite() {
       return this.$store.getters.checkFavorite(this.jav._id);
+    },
+    messageFavorite() {
+      if (!this.$store.getters.checkFavorite(this.jav._id)) {
+        return "Add to favorites";
+      } else {
+        return "Remove video";
+      }
     }
   }
 };

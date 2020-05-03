@@ -1,9 +1,5 @@
 .content-jav{
-    margin-left:auto;
-    margin-right: 0;
     position: relative;
-    right: 0%;
-    width: 85%;
 }
 
 .container-jav{
@@ -21,7 +17,6 @@
 }
 
 .jav-title{
-    display: flex;
     padding: 1% 2% 1% 2%;
     text-align: justify;
     justify-content:center;
@@ -30,34 +25,54 @@
     background-color: #2e2e2e;
     font-size:12px;
     letter-spacing: 2px;
-    text-transform: uppercase;
     color: #f8faff;
     border-bottom: 2px solid #E8175D;
-    .favorite-button{
-        margin-left:auto; 
-        margin-right:0;
-        display:flex;
-        justify-content:center;
+    .title{
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}
+
+.jav-details{
+    height: 100%;
+    .view-icon{
+        display:inline;
         align-items:center;
-        width:5%;
-        padding-left: 8%;
-        padding-right: 3%;
-        font-size: 40px;
-        .favorite-icon{
-            color:#871037; 
-        }
-        .favorite-icon-active{
-            color:#E8175D; 
-        }
     }
-    
-    .favorite-button .favorite-icon :hover{
-        color:#E8175D;
+    p{
+        display:inline;
+        align-items:center;        
+        font-size:10px;
+        margin-left: 10px;
     }
-    
-    .favorite-button .favorite-icon-active :hover{
-        color:#871037;
+}
+
+.btn-options{
+    color: #f8faff;
+    font-size: 9px;
+    border: 1px solid #E8175D;
+    width: 100%;
+    text-transform: uppercase;
+    p{
+        display: inline;
     }
+    .favorite-icon{
+        color:#E8175D; 
+    }
+    .favorite-icon-active{
+        color:#871037; 
+    }
+    .bug-icon{
+        color:#E8175D; 
+    }
+    .bug-icon-active{
+        color:#871037; 
+    }
+}
+
+.btn-options:hover{
+    color: #f8faff;
+    background-color: #444444;
 }
 
 .jav-extra{
@@ -108,31 +123,16 @@
 }
 
 @media screen and (min-width: 1280px) and (max-width: 1600px) {
-    .content-jav{
-        padding-top: 2% !important;
-        right: 0%;
-        width: 100%;
-    }
     .container-recommended{
         padding: 1.5% 0.5%;
     }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1279px) {
-    .content-jav{
-        padding-top: 5% !important;
-        right: 0%;
-        width: 100%;
-    }
+
 }
 
 @media screen and (min-width: 800px) and (max-width: 991px) {
-    .content-jav{
-        padding-top: 5% !important;
-        right: -3%;
-        width: 100%;
-    }
-    
     .jav-title{
         display: flex;
         padding: 1% 5% 1% 2%;
@@ -185,11 +185,6 @@
 }
 
 @media screen and (max-width: 620px) {
-    .content-jav{
-        padding-top: 20% !important;
-        right: 0%;
-        width: 100%;
-    }
 
     .jav-title{
         display: flex;

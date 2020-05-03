@@ -7,25 +7,11 @@
       <source :src="dataJav.imageUrl" type="video/mp4" />
     </video>
     </nuxt-link>
-    <div v-if="titleType(dataJav.name)" class="box-time">
-      <span class="post">
-        <b>{{dataJav.duration}}:00</b>
-      </span>
+    <div class="box-time">
+      <b class="post">{{dataJav.duration}}:00</b>
     </div>
-    <div v-else class="box-time-v2">
-      <span class="post">
-        <b>{{dataJav.duration}}:00</b>
-      </span>
-    </div>
-    <div v-if="titleType(dataJav.name)" class="box-code">
-      <span class="post">
-        <b>{{dataJav.code}}</b>
-      </span>
-    </div>
-    <div v-else class="box-code-v2">
-      <span class="post">
-        <b>{{dataJav.code}}</b>
-      </span>
+    <div class="box-code">
+      <b class="post">{{dataJav.code}}</b>
     </div>
     <div class="box-content">
       <h3 class="title">
@@ -49,13 +35,6 @@ export default {
         return newName;
       } else {
         return _name;
-      }
-    },
-    titleType: function(_name) {
-      if (_name.length > 38) {
-        return true;
-      } else {
-        return false;
       }
     },
     addToFavorites: function(_id) {
