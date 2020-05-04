@@ -126,7 +126,12 @@ body
     border-color: #444444 !important;
     background-color: #444444 !important;
 }
-
+@media screen and (min-width: 2100px) {
+    .content{
+        position: relative;
+        padding-top: 10% !important;
+    }
+}
 
 @media screen and (min-width: 1601px) and (max-width: 1919px) {
     .content{

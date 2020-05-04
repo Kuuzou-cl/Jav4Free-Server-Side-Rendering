@@ -67,13 +67,14 @@ li[type=button]{
 }
 
 .log-navbar{
-    width: 20%;
+    width: 10%;
     color: #f8faff;
     font-size: 12px;
     letter-spacing: 3px;
     cursor: pointer;  
     .signin{
-        display: inline;
+        display:flex;justify-content:flex-end;align-items:center;
+        
     }
     .signup{
         display: inline;
