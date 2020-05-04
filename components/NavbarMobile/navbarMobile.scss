@@ -1,0 +1,119 @@
+nav {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 6%;
+    display:flex;align-items:center;
+    background: #2e2e2e;
+    border-bottom: 3px solid #E8175D;
+    z-index: 6;
+    transition: height .8s;
+}
+
+.menu-toggle{
+    width: auto;
+    height: auto;
+    padding-right: 1%;
+    color: #f8faff;
+    background-color: #2e2e2e !important;
+}
+
+.main-navbar{
+    padding-left: 0%;
+}
+
+.heart {
+    margin: 0 auto;
+    display: block;
+    margin: initial;
+    padding: 0px 10px 0px 0px;
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.search-navbar{    
+    width: 100%;
+    height: 6%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    input{
+        width: 90% !important;
+        height: 35px !important;
+        font-size: 11px !important;
+    }
+    input, textarea{
+        background-color:#383838;
+        color: #f8faff;
+    }
+    input:focus{
+        background-color:#383838;
+        color: #f8faff;
+        border-color: #E8175D;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #E8175D;
+    }
+    .icon-search-navbar{
+        width: 5%;
+        color: #f8faff;
+        cursor: pointer;    
+    }
+}
+
+.show{
+    transition: height .8s;
+    width: 100%;
+    height: 40%;
+} 
+
+.mobile-list{
+    width: 90%;
+    margin-bottom: 0%;
+    li{
+        font-size: 11px;
+        list-style-type: none;
+        margin-bottom: 3%;
+        a{
+            display:flex;justify-content:center;align-items:center;
+            width: 100%;
+            height: auto;
+            height: 100%;
+            color: #f8faff;
+            letter-spacing: 2px;
+            font-size: 11px;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 5px 0px 5px 0px;
+            .icon-sidebar{
+                margin-right: 5px;
+            }
+        }     
+    }
+    li:hover {
+        background: #383838;
+        border-bottom: 3px solid #383838;
+      }
+}
+
+@media screen and (min-width: 620px) and (max-width: 799px) {
+    nav {
+        height: 12%;
+    }
+    .show{
+        height: 100%;
+    } 
+}
+
+@media screen and (min-width: 320px) and (max-width: 420px) {
+    .show{
+        height: 45%;
+    } 
+}
+
+@media screen and (max-width: 319px) {
+    .show{
+        height: 50%;
+    } 
+}

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Sitemap/>
-    <Navbar/>
-    <Secondarybar/>
+    <Sitemap v-if="$device.isDesktop"/>
+    <Navbar v-if="$device.isDesktop"/>
+    <NavbarMobile v-if="$device.isMobileOrTablet" />
+    <Secondarybar v-if="$device.isDesktop"/>
     <nuxt />
     <Footer />
   </div>
@@ -11,25 +12,12 @@
 <script>
 import Sitemap from '~/components/Sitemap/Sitemap.vue';
 import Navbar from '~/components/Navbar/Navbar.vue';
+import NavbarMobile from '~/components/NavbarMobile/NavbarMobile.vue';
 import Secondarybar from '~/components/Secondarybar/Secondarybar.vue';
 import Footer from '~/components/Footer/Footer.vue';
 export default {
   components: {
-    Sitemap,Navbar,Secondarybar,Footer
-  },
-  data() {
-    return {
-      show: false,
-      showSecondary: false,
-      showNav: false,
-    };
-  },
-  methods:{
-    toggleNavbar() {
-      this.show = !this.show;
-      this.showSecondary = !this.showSecondary,
-      this.showNav = !this.showNav;
-    }
+    Sitemap,Navbar,NavbarMobile,Secondarybar,Footer
   }
 }
 </script>
