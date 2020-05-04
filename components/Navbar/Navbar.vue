@@ -21,8 +21,7 @@
             Sign In
             <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
           </nuxt-link>
-          <nuxt-link to="/login" tag="div" class="signin" v-if="$store.state.authUser">
-            {{$store.state.authUser}}
+          <nuxt-link to="/dashboard" tag="div" class="signin" v-if="$store.state.authUser">
             <font-awesome-icon :icon="['fas', 'user-astronaut']" class="icon-navbar" />
           </nuxt-link>
         </div>
