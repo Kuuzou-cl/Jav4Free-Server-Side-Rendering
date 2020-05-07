@@ -1,14 +1,11 @@
 <template>
   <div class="container-fluid content">
-    <!-- JuicyAds v3.2P Start -->
-    <script type="application/javascript">
-  var juicy_tags = ["a", "img"];
-    </script>
+    <!-- JuicyAds PopUnders v3 Start -->
     <script
       type="application/javascript"
-      src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=https%3A%2F%2Fwww.jav4free.watch"
+      src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=http%3A%2F%2Fwww.juicyads.rocks"
     ></script>
-    <!-- JuicyAds v3.2P End -->
+    <!-- JuicyAds PopUnders v3 End -->
     <Crumbs />
     <div class="container content-jav">
       <div class="row">
@@ -56,14 +53,10 @@
               </div>
             </div>
             <div class="jav-extra">
-              <span>
-                Code: {{jav.code}}
-              </span>
+              <span>Code: {{jav.code}}</span>
             </div>
             <div class="jav-extra">
-              <span>
-                Duration: {{jav.duration}} min
-              </span>
+              <span>Duration: {{jav.duration}} min</span>
             </div>
             <div class="jav-extra">
               <span>

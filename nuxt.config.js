@@ -17,6 +17,11 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.webp' },
     ],
     script: [
+      { src: "http://js.juicyads.com/jam_min.js", type: "text/javascript", defer: true },
+      {
+        src: "window.onload=check_mobile(22598,246527)",
+        type: "text/javascript", defer: true
+      }
     ]
   },
   /*
