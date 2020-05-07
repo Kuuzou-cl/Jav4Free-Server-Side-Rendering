@@ -5,7 +5,7 @@
     border-radius: 0;
     height: auto;
     a{
-        color: #f8faff !important;
+        color: #E8175D   !important;
     }
     cursor: pointer;
     margin-top: 1%;
@@ -17,9 +17,17 @@
     video{
         display: none;
     }
-    margin-bottom: 10%;
 }
 .box21:hover{
+    a{
+        color: #E8175D !important;
+    }
+    .loading-box{
+        width:100%;
+    }
+}
+
+.box21-media:hover, .box21-media:active, .box21-media:focus{
     a{
         color: #E8175D !important;
     }
@@ -34,6 +42,7 @@
         width: 100%;
         height: auto;
         z-index:1;
+        background-color: #080808;
     }
 }
 
@@ -49,29 +58,32 @@
     top:0%; 
     height: 20%;
     color:#f8faff; 
-    text-align: right;
+    text-align: left;
     width:100%;
-    padding-right: 2%;
+    padding-left: 2%;
     position:absolute;
     left:0;
     z-index:4; 
-    -webkit-box-shadow: inset 0px -40px 60px -30px #16151c7e !important;
-    -moz-box-shadow: inset 0px -40px 60px -30px #16151c7e !important;
-    box-shadow: inset 0px -40px 60px -40px #16151c7e !important;
 }
 
 .box21 .box-code{
     top:0%; 
     color:#f8faff; 
-    text-align: left;
+    text-align: right;
     width:50%;
-    padding-left: 2%;
+    padding-right: 4%;
     position:absolute;
-    left:0;
+    right:0%;
     z-index:4;
 }
 
-.box2 .post{
+.box21 .post{
+    .box-code{
+        display:flex;justify-content:flex-end;align-items:right;
+    }
+    .box-time{
+        display:flex;justify-content:flex-end;align-items:center;
+    }
     text-transform:uppercase;
     text-align:center !important;
     font-size:11px;

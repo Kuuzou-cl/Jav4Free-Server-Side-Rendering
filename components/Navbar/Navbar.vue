@@ -1,7 +1,7 @@
 <template>
   <nav role="navbar navigation" class="navbar-expand-sm">
     <div class="container">
-      <div v-show="showNav" class="navbar-collapse main-navbar">
+      <div class="navbar-collapse main-navbar">
         <nuxt-link :to="'/'" class="heart" tag="li" type="button">
           <img src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.png" />
         </nuxt-link>

@@ -1,14 +1,13 @@
 <template>
   <div class="card bg-dark box21">
     <div class="loading-box"></div>
-    <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-      <img :src="dataJav.imageIndexUrl" v-lazy-load />
-      <video autoplay loop v-lazy-load>
-        <source :src="dataJav.imageUrl" type="video/mp4" />
-      </video>
-    </nuxt-link>
-    <div class="box-time">
-      <b class="post">{{dataJav.duration}}:00</b>
+    <div class="box21-media">
+      <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
+        <img :src="dataJav.imageIndexUrl" v-lazy-load />
+        <video class="video-jav" @mouseleave="restart()" autoplay loop v-lazy-load>
+          <source :src="dataJav.imageUrl" type="video/mp4" />
+        </video>
+      </nuxt-link>
     </div>
     <div class="box-code">
       <b class="post">{{dataJav.code}}</b>
@@ -30,12 +29,17 @@ export default {
   methods: {
     getName: function(_name) {
       let newName;
-      if (_name.length > 48) {
-        newName = _name.slice(0, 48) + " ...";
+      if (_name.length > 52) {
+        newName = _name.slice(0, 52) + " ...";
         return newName;
       } else {
         return _name;
       }
+    },
+    restart: function() {
+      $(".video-jav").on("mouseout", function(event) {
+        this.load();
+      });
     }
   }
 };

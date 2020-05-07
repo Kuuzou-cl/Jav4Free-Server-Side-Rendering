@@ -31,16 +31,14 @@ body
 
 .title-white{
     color:#f8faff;
-    font-weight: 100;
+    font-weight: 500;
     letter-spacing: 2.5px;
     padding-top:5px;
-    text-decoration: underline;
-    text-decoration-color: #E8175D;
 }
 
 .title-white:hover{
     color:#f8faff;
-    text-decoration-color: #E8175D;
+    text-decoration-color: #f8faff;
 }
 
 .btn-more{
@@ -150,7 +148,7 @@ body
 
 @media screen and (min-width: 1280px) and (max-width: 1366px) {
     .content{
-        padding-top: 12% !important;
+        padding-top: 11% !important;
         padding-bottom: 6% !important;
     }
 }
@@ -196,7 +194,7 @@ body
 
 @media screen and (min-width: 620px) and (max-width: 799px) {
     .content{
-        padding-top: 8% !important;
+        padding-top: 10% !important;
         padding-bottom: 12% !important;
     }
     .btn-more{

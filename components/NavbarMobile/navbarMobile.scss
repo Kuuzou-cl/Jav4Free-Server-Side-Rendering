@@ -97,7 +97,16 @@
       }
 }
 
-@media screen and (min-width: 620px) and (max-width: 799px) {
+@media screen and (min-width: 760px) and (max-width: 1024px) {
+    nav-mobile {
+        height: 12%;
+    }
+    .show{
+        height: 40%;
+    } 
+}
+
+@media screen and (min-width: 620px) and (max-width: 760px) {
     nav-mobile {
         height: 12%;
     }

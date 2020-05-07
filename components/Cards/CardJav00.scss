@@ -9,7 +9,6 @@
         color: #E8175D !important;
     }
     margin-top: 1%;
-    margin-bottom: 1%;
     cursor: pointer;
     img{
         width:100%;
@@ -31,7 +30,7 @@
     }
 }
 
-.box2-media:hover{
+.box2-media:hover, .box2-media:active, .box2-media:focus{
     a{
         color: #E8175D !important;
     }
@@ -157,9 +156,9 @@
         height: 15%;
     }
     
-    .box2 .post{font-size:8px !important;}
+    .box2 .post{font-size:12px !important;}
 
-    .box2 .title{font-size:8px;}
+    .box2 .title{font-size:10px;}
 
     .box2 .box-content{padding:5px 2px;}
 }

@@ -34,15 +34,12 @@ export default {
   methods: {
     getName: function(_name) {
       let newName;
-      if (_name.length > 52) {
+      if (_name.length > 65) {
         newName = _name.slice(0, 65) + " ...";
         return newName;
       } else {
         return _name;
       }
-    },
-    addToFavorites: function(_id) {
-      this.$store.dispatch("addToFavorites", { javId: _id });
     },
     restart: function() {
       $(".video-jav").on("mouseout", function(event) {
