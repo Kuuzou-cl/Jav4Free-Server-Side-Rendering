@@ -4,7 +4,7 @@
     <div class="box2-media">
       <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
         <img :src="dataJav.imageIndexUrl" v-lazy-load />
-        <video class="video-jav" @mouseleave="restart()" @mouseover="start()" loop v-lazy-load>
+        <video class="video-jav" @mouseleave="restart()" @mouseover="start()" preload="auto" loop>
           <source :src="dataJav.imageUrl" type="video/mp4" />
         </video>
       </nuxt-link>
