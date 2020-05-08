@@ -102,9 +102,11 @@ export default {
     if (page == null || page == "") {
       page = "1";
     }
-    let javs = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/getJavsByPage/" + page
-    );
+    let javs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/getJavsByPage/" + page)
+      .catch(e => {
+        console.log(e);
+      });
     return {
       javs: javs.data.javs,
       page: page,

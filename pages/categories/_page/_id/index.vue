@@ -93,15 +93,21 @@ export default {
       page = "1";
     }
     let categoryId = params.id;
-    let category = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/" + categoryId
-    );
-    let javs = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/getJavByCategory/" +
-        page +
-        "/" +
-        categoryId
-    );
+    let category = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/" + categoryId)
+      .catch(e => {
+        console.log(e);
+      });
+    let javs = await axios
+      .get(
+        "https://jav.souzou.dev/jav4free/javs/getJavByCategory/" +
+          page +
+          "/" +
+          categoryId
+      )
+      .catch(e => {
+        console.log(e);
+      });
     return {
       titleC: category.data.category.name,
       category: category.data.category,

@@ -123,10 +123,16 @@ export default {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
-    let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
-    let spaceDataIdols = await axios.get(
-      "https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/"
-    );
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/")
+      .catch(e => {
+        console.log(e);
+      });
+    let spaceDataIdols = await axios
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/")
+      .catch(e => {
+        console.log(e);
+      });
     var resultIdols = JSON.parse(
       convert.xml2json(spaceDataIdols.data, options)
     );
@@ -172,10 +178,11 @@ export default {
           ".jpg",
         hidden: this.hidden
       };
-      let response = await axios.post(
-        "https://jav.souzou.dev/jav4free/idols/newIdol/",
-        obj
-      );
+      let response = await axios
+        .post("https://jav.souzou.dev/jav4free/idols/newIdol/", obj)
+        .catch(e => {
+          console.log(e);
+        });
       this.$router.push({ path: "/dashboard" });
     }
   }

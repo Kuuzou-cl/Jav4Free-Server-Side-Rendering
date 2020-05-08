@@ -17,7 +17,12 @@
             <input v-model="email" class="custom-input-login" placeholder="Email" />
           </div>
           <div class="form-row justify-content-center">
-            <input type="password" v-model="password" class="custom-input-login" placeholder="Password" />
+            <input
+              type="password"
+              v-model="password"
+              class="custom-input-login"
+              placeholder="Password"
+            />
           </div>
           <div class="form-row justify-content-center">
             <button type="button" name="button" class="btn btn-more" @click="login">Login</button>
@@ -40,10 +45,14 @@ export default {
   methods: {
     async login() {
       try {
-        await this.$store.dispatch("login", {
-          email: this.email,
-          password: this.password
-        });
+        await this.$store
+          .dispatch("login", {
+            email: this.email,
+            password: this.password
+          })
+          .catch(e => {
+            console.log(e);
+          });
         this.email = "";
         this.password = "";
         this.loginError = null;

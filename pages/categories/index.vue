@@ -49,10 +49,11 @@ export default {
     };
   },
   async asyncData() {
-    const { data } = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories"
-    );
-
+    const { data } = await axios
+      .get("https://jav.souzou.dev/jav4free/categories")
+      .catch(e => {
+        console.log(e);
+      });
     return { categories: data.categories };
   },
   beforeCreate() {

@@ -78,11 +78,7 @@
             <label for="inputJav07" class="title-white">Categories</label>
           </div>
           <div class="row">
-            <p
-              class="tag"
-              v-for="category in categoriesJav"
-              :key="category._id"
-            >{{category.name}}</p>
+            <p class="tag" v-for="category in categoriesJav" :key="category._id">{{category.name}}</p>
           </div>
           <div class="row">
             <label for="inputJav07" class="title-white">Idols</label>
@@ -102,10 +98,10 @@
     <div class="need-space"></div>
     <div class="containter">
       <div class="row justify-content-center">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
           <button class="btn category-title" @click="viewCategoriesContainer()">View Categories</button>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
           <button class="btn category-title" @click="viewIdolsContainer()">View Idols</button>
         </div>
       </div>
@@ -113,7 +109,12 @@
     <div v-if="this.viewCategories" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-          <input type="text"  class="custom-input" v-model="searchCategories" placeholder="Search..." />
+          <input
+            type="text"
+            class="custom-input"
+            v-model="searchCategories"
+            placeholder="Search..."
+          />
         </div>
       </div>
       <div class="row justify-content-center">
@@ -186,11 +187,21 @@ export default {
   },
   async asyncData({ params }) {
     let id = params.id;
-    let jav = await axios.get("https://jav.souzou.dev/jav4free/javs/" + id);
-    let categories = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/"
-    );
-    let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
+    let jav = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/" + id)
+      .catch(e => {
+        console.log(e);
+      });
+    let categories = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/")
+      .catch(e => {
+        console.log(e);
+      });
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/")
+      .catch(e => {
+        console.log(e);
+      });
     return {
       jav: jav.data.jav,
       categoriesJav: jav.data.categories,
@@ -254,10 +265,11 @@ export default {
         categories: this.jav.categories,
         idols: this.jav.idols
       };
-      let response = await axios.patch(
-        "https://jav.souzou.dev/jav4free/javs/" + this.jav._id,
-        obj
-      );
+      let response = await axios
+        .patch("https://jav.souzou.dev/jav4free/javs/" + this.jav._id, obj)
+        .catch(e => {
+          console.log(e);
+        });
       this.$router.push({ path: "/dashboard" });
     },
     viewCategoriesContainer() {

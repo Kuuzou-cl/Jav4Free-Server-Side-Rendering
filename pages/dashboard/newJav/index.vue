@@ -208,14 +208,26 @@ export default {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
-    let allJavs = await axios.get("https://jav.souzou.dev/jav4free/javs/");
-    let categories = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/"
-    );
-    let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
-    let spaceData = await axios.get(
-      "https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/"
-    );
+    let allJavs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/")
+      .catch(e => {
+        console.log(e);
+      });
+    let categories = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/")
+      .catch(e => {
+        console.log(e);
+      });
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/")
+      .catch(e => {
+        console.log(e);
+      });
+    let spaceData = await axios
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
+      .catch(e => {
+        console.log(e);
+      });
     var result = JSON.parse(convert.xml2json(spaceData.data, options));
     return {
       javs: allJavs.data.javs,
@@ -315,10 +327,11 @@ export default {
         categories: this.javCategories,
         idols: this.javIdols
       };
-      let response = await axios.post(
-        "https://jav.souzou.dev/jav4free/javs/newJav/",
-        obj
-      );
+      let response = await axios
+        .post("https://jav.souzou.dev/jav4free/javs/newJav/", obj)
+        .catch(e => {
+          console.log(e);
+        });
       this.$router.push({ path: "/dashboard" });
     },
     viewCategoriesContainer() {

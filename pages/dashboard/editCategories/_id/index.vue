@@ -32,29 +32,35 @@ export default {
   name: "Dashboard",
   data() {
     return {
-      category: null,
+      category: null
     };
   },
   async asyncData({ params }) {
     let id = params.id;
-    let category = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/" + id
-    );
+    let category = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/" + id)
+      .catch(e => {
+        console.log(e);
+      });
     return {
-      category: category.data.category,
+      category: category.data.category
     };
   },
   methods: {
     async updateJav() {
       let obj = {
-        name: this.category.name,
+        name: this.category.name
       };
-      let response = await axios.patch(
-        "https://jav.souzou.dev/jav4free/categories/" + this.category._id,
-        obj
-      );
+      let response = await axios
+        .patch(
+          "https://jav.souzou.dev/jav4free/categories/" + this.category._id,
+          obj
+        )
+        .catch(e => {
+          console.log(e);
+        });
       this.$router.push({ path: "/dashboard" });
-    },
+    }
   }
 };
 </script>

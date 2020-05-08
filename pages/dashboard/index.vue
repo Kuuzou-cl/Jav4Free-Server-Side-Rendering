@@ -147,18 +147,34 @@ export default {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
-    let javs = await axios.get("https://jav.souzou.dev/jav4free/javs/");
-    let categories = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/"
-    );
-    let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
-    let spaceDataJavs = await axios.get(
-      "https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/"
-    );
-    var result = JSON.parse(convert.xml2json(spaceDataJavs.data, options));
-    let spaceDataIdols = await axios.get(
-      "https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/"
-    );
+    let javs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/")
+      .catch(e => {
+        console.log(e);
+      });
+    let categories = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/")
+      .catch(e => {
+        console.log(e);
+      });
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/")
+      .catch(e => {
+        console.log(e);
+      });
+    let spaceDataJavs = await axios
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
+      .catch(e => {
+        console.log(e);
+      });
+    var result = JSON.parse(
+      convert.xml2json(spaceDataJavs.data, options)
+    )
+    let spaceDataIdols = await axios
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/")
+      .catch(e => {
+        console.log(e);
+      });
     var resultIdols = JSON.parse(
       convert.xml2json(spaceDataIdols.data, options)
     );
@@ -229,5 +245,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

@@ -103,10 +103,14 @@ export default {
     var dataFavorites = {
       javsBatch: store.getters.getFavorites
     };
-    const favorites = await axios.post(
-      "https://jav.souzou.dev/jav4free/javs/getJavsByBatch/" + page,
-      dataFavorites
-    );
+    const favorites = await axios
+      .post(
+        "https://jav.souzou.dev/jav4free/javs/getJavsByBatch/" + page,
+        dataFavorites
+      )
+      .catch(e => {
+        console.log(e);
+      });
     return {
       page: page,
       favorites: favorites.data.history,

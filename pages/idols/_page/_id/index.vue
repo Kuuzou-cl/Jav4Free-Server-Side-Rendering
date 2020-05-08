@@ -109,12 +109,21 @@ export default {
       page = "1";
     }
     let idolId = params.id;
-    let idol = await axios.get(
-      "https://jav.souzou.dev/jav4free/idols/" + idolId
-    );
-    let javs = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/getJavByIdol/" + page + "/" + idolId
-    );
+    let idol = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/" + idolId)
+      .catch(e => {
+        console.log(e);
+      });
+    let javs = await axios
+      .get(
+        "https://jav.souzou.dev/jav4free/javs/getJavByIdol/" +
+          page +
+          "/" +
+          idolId
+      )
+      .catch(e => {
+        console.log(e);
+      });
     return {
       titleI: idol.data.idol.name,
       idol: idol.data.idol,

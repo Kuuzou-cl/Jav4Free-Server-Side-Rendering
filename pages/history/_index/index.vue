@@ -104,10 +104,14 @@ export default {
     var dataHistory = {
       javsBatch: store.getters.getHistory
     };
-    const history = await axios.post(
-      "https://jav.souzou.dev/jav4free/javs/getJavsByBatch/" + page,
-      dataHistory
-    );
+    const history = await axios
+      .post(
+        "https://jav.souzou.dev/jav4free/javs/getJavsByBatch/" + page,
+        dataHistory
+      )
+      .catch(e => {
+        console.log(e);
+      });
     return {
       page: page,
       history: history.data.history,

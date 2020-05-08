@@ -21,7 +21,7 @@ export const getters = {
   checkFavorite: (state) => (javId) => {
     if (state.favorites.some(item => item === javId)) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
@@ -73,9 +73,9 @@ export const mutations = {
     if (javId) {
       if (!state.favorites.some(item => item === javId)) {
         state.favorites.unshift(javId);
-      }else{
+      } else {
         const index = state.favorites.findIndex(item => item === javId);
-        state.favorites.splice(index,1);
+        state.favorites.splice(index, 1);
       }
       this.$cookies.set('favorites', state.favorites, {
         path: '/',
@@ -150,7 +150,7 @@ export const mutations = {
                           let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
                           state.breadCrumbs = newCrumbs;
                         } else {
-                          
+
                         }
                       }
                     }
@@ -200,7 +200,7 @@ export const actions = {
 
   addToFavorites({ commit }, { javId }) {
     commit('ADD_FAVORITE', javId);
-  },  
+  },
 
   async login({ commit }, { email, password }) {
     try {
@@ -215,31 +215,48 @@ export const actions = {
   },
 
   async logout({ commit }) {
-    commit('SET_USER', null)
+    try {
+      commit('SET_USER', null)
+    } catch (error) {
+      throw error;
+    }
+    
   },
 
   async addCrumb({ commit }, { page, show, route }) {
     let newPage;
     if (page == "Idol") {
-      let idolId = show;
-      let idol = await axios.get(
-        "https://jav.souzou.dev/jav4free/idols/" + idolId
-      );
-      newPage = { page: page, show: idol.data.idol.name, route: route }
+      try {
+        let idolId = show;
+        let idol = await axios.get(
+          "https://jav.souzou.dev/jav4free/idols/" + idolId
+        );
+        newPage = { page: page, show: idol.data.idol.name, route: route }
+      } catch (error) {
+        throw error
+      }
     } else {
       if (page == "Category") {
-        let categoryId = show;
-        let category = await axios.get(
-          "https://jav.souzou.dev/jav4free/categories/" + categoryId
-        );
-        newPage = { page: page, show: category.data.category.name, route: route }
+        try {
+          let categoryId = show;
+          let category = await axios.get(
+            "https://jav.souzou.dev/jav4free/categories/" + categoryId
+          );
+          newPage = { page: page, show: category.data.category.name, route: route }
+        } catch (error) {
+          throw error
+        }
       } else {
         if (page == "Jav") {
-          let javId = show;
-          let jav = await axios.get(
-            "https://jav.souzou.dev/jav4free/javs/" + javId
-          );
-          newPage = { page: page, show: jav.data.jav.code, route: route }
+          try {
+            let javId = show;
+            let jav = await axios.get(
+              "https://jav.souzou.dev/jav4free/javs/" + javId
+            );
+            newPage = { page: page, show: jav.data.jav.code, route: route }
+          } catch (error) {
+            throw error
+          }
         } else {
           if (page == "Search") {
             newPage = { page: page, show: show, route: route }

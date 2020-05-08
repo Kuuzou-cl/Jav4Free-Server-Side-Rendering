@@ -146,23 +146,30 @@ export default {
     };
   },
   async asyncData() {
-    const cat1 = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/getRandomCategory"
-    );
-    const javs = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/getLatestJavs"
-    );
-    const javsMobile = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/",
-      {
+    const cat1 = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/getRandomCategory")
+      .catch(e => {
+        console.log(e);
+      });
+    const javs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/getLatestJavs")
+      .catch(e => {
+        console.log(e);
+      });
+    const javsMobile = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
           quantity: 8
         }
-      }
-    );
-    const idols = await axios.get(
-      "https://jav.souzou.dev/jav4free/idols/getRandomIdols"
-    );
+      })
+      .catch(e => {
+        console.log(e);
+      });
+    const idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
+      .catch(e => {
+        console.log(e);
+      });
     return {
       category1: cat1.data.category,
       javsCategory1: cat1.data.javs,

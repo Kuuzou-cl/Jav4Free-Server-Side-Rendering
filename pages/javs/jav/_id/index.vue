@@ -161,10 +161,16 @@ export default {
     if (id == null || id == "") {
       id = "";
     }
-    let jav = await axios.get("https://jav.souzou.dev/jav4free/javs/" + id);
-    let related = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/getRelatedJavs/" + id
-    );
+    let jav = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/" + id)
+      .catch(e => {
+        console.log(e);
+      });
+    let related = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/getRelatedJavs/" + id)
+      .catch(e => {
+        console.log(e);
+      });
     let playerOptions = {
       previewThumbnails: {
         enabled: true,

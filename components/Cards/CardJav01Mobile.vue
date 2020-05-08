@@ -4,7 +4,7 @@
     <div class="box21-media">
       <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
         <img :src="dataJav.imageIndexUrl" v-lazy-load />
-        <video class="video-jav" @mouseleave="restart()" autoplay loop v-lazy-load>
+        <video class="video-jav" @mouseleave="restart()" @mouseenter="start()" loop v-lazy-load>
           <source :src="dataJav.imageUrl" type="video/mp4" />
         </video>
       </nuxt-link>
@@ -38,6 +38,11 @@ export default {
     restart: function() {
       $(".video-jav").on("mouseout", function(event) {
         this.load();
+      });
+    },
+    start: function() {
+      $(".video-jav").on("mouseenter", function(event) {
+        this.start();
       });
     }
   }

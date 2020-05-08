@@ -117,9 +117,11 @@ export default {
     ) {
       page = "1";
     }
-    let idols = await axios.get(
-      "https://jav.souzou.dev/jav4free/idols/getIdolsByPage/" + page
-    );
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/getIdolsByPage/" + page)
+      .catch(e => {
+        console.log(e);
+      });
     return {
       idols: idols.data.idols,
       page: page,

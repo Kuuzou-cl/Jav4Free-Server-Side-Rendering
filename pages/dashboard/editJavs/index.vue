@@ -126,11 +126,21 @@ export default {
     };
   },
   async asyncData() {
-    let javs = await axios.get("https://jav.souzou.dev/jav4free/javs/");
-    let categories = await axios.get(
-      "https://jav.souzou.dev/jav4free/categories/"
-    );
-    let idols = await axios.get("https://jav.souzou.dev/jav4free/idols/");
+    let javs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/")
+      .catch(e => {
+        console.log(e);
+      });
+    let categories = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/")
+      .catch(e => {
+        console.log(e);
+      });
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/")
+      .catch(e => {
+        console.log(e);
+      });
     return {
       javs: javs.data.javs,
       categories: categories.data.categories,
@@ -139,12 +149,13 @@ export default {
   },
   methods: {
     async deleteJav(_id) {
-      let message = await axios.delete(
-        "https://jav.souzou.dev/jav4free/javs/" + _id
-      );
+      let message = await axios
+        .delete("https://jav.souzou.dev/jav4free/javs/" + _id)
+        .catch(e => {
+          console.log(e);
+        });
       this.$router.push({ path: "/dashboard" });
-    },
-    
+    }
   },
   computed: {
     filterJavs() {

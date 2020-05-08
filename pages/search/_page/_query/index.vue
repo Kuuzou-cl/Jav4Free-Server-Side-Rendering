@@ -108,9 +108,13 @@ export default {
     if (page == null || page == "") {
       page = "1";
     }
-    const javs = await axios.get(
-      "https://jav.souzou.dev/jav4free/javs/searchJav/" + page + "/" + query
-    );
+    const javs = await axios
+      .get(
+        "https://jav.souzou.dev/jav4free/javs/searchJav/" + page + "/" + query
+      )
+      .catch(e => {
+        console.log(e);
+      });
     return {
       query: query,
       page: page,
@@ -121,8 +125,12 @@ export default {
   },
   beforeCreate() {
     let routePage = "search/1/" + this.$route.params.query;
-    let show = "Search/"+ this.$route.params.query;
-    this.$store.dispatch("addCrumb", { page: "Search", show: show, route: routePage });
+    let show = "Search/" + this.$route.params.query;
+    this.$store.dispatch("addCrumb", {
+      page: "Search",
+      show: show,
+      route: routePage
+    });
   },
   methods: {
     nextClick() {

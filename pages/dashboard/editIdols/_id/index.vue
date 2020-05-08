@@ -48,16 +48,18 @@ export default {
   name: "Dashboard",
   data() {
     return {
-      idol: null,
+      idol: null
     };
   },
   async asyncData({ params }) {
     let id = params.id;
-    let idol = await axios.get(
-      "https://jav.souzou.dev/jav4free/idols/" + id
-    );
+    let idol = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/" + id)
+      .catch(e => {
+        console.log(e);
+      });
     return {
-      idol: idol.data.idol,
+      idol: idol.data.idol
     };
   },
   methods: {
@@ -67,12 +69,13 @@ export default {
         imageUrl: this.idol.imageUrl,
         hidden: this.idol.hidden
       };
-      let response = await axios.patch(
-        "https://jav.souzou.dev/jav4free/idols/" + this.idol._id,
-        obj
-      );
+      let response = await axios
+        .patch("https://jav.souzou.dev/jav4free/idols/" + this.idol._id, obj)
+        .catch(e => {
+          console.log(e);
+        });
       this.$router.push({ path: "/dashboard" });
-    },
+    }
   }
 };
 </script>
