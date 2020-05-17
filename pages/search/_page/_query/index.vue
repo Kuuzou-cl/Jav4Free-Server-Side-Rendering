@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
+    <div v-if="categories.length > 0" class="need-space"></div>
     <div v-if="categories.length > 0" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
+    <div v-if="categories.length > 0" class="need-space"></div>
     <div v-if="idols.length > 0" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
+    <div v-if="idols.length > 0" class="need-space"></div>
     <div v-if="idols.length > 0" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
+    <div v-if="idols.length > 0" class="need-space"></div>
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
