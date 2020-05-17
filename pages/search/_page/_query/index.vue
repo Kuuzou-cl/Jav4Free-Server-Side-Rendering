@@ -1,6 +1,54 @@
 <template>
   <div class="container-fluid content">
     <Crumbs />
+    <div v-if="categories.length > 0" class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h6 class="title-white text-left">Categories found by "{{this.query.toUpperCase()}}":</h6>
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
+    <div v-if="categories.length > 0" class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div v-for="category in categories" :key="category._id">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <nuxt-link :to="'/categories/1/'+category._id">
+                  <button class="btn category-title">{{ category.name }}</button>
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
+    <div v-if="idols.length > 0" class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h6 class="title-white text-left">Idols found by "{{this.query.toUpperCase()}}":</h6>
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
+    <div v-if="idols.length > 0" class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div v-for="idol in idols" :key="idol._id">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <nuxt-link :to="'/idols/1/'+idol._id">
+                  <button class="btn category-title">{{ idol.name }}</button>
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
     <div v-if="$device.isDesktop" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -120,7 +168,9 @@ export default {
       page: page,
       javs: javs.data.dataPage,
       nextPage: javs.data.nextPage,
-      lastPage: javs.data.lastPage
+      lastPage: javs.data.lastPage, 
+      idols: javs.data.idols,
+      categories: javs.data.categories
     };
   },
   beforeCreate() {
