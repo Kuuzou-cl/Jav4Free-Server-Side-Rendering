@@ -1,10 +1,10 @@
 .crumbs-content{
     position: fixed;
     z-index: 6;
-    top: 15%;
+    top: 14%;
     width: 100%;
-    background-color: #1e1e1e;
-    padding-top: 0.05%;
+    background-color: #131313;
+    padding-top: 0%;
     padding-bottom: 0.05%;
 }
 
@@ -34,25 +34,25 @@
 
 @media screen and (min-width: 1601px) and (max-width: 1919px) {
     .crumbs-content{
-        top: 16%;
+        top: 17%;
     }
 }
 
 @media screen and (min-width: 1367px) and (max-width: 1600px) {
     .crumbs-content{
-        top: 15%;
+        top: 17%;
     }   
   }
 
 @media screen and (min-width: 1280px) and (max-width: 1366px) {
     .crumbs-content{
-        top: 15%;
+        top: 17%;
     }   
 }
 
 @media screen and (min-width: 992px) and (max-width: 1279px) {
     .crumbs-content{
-        top: 14%;
+        top: 17%;
     }
 }
 

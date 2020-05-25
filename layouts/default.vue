@@ -3,7 +3,6 @@
     <Sitemap v-if="$device.isDesktop"/>
     <Navbar v-if="$device.isDesktop"/>
     <NavbarMobile v-if="$device.isMobileOrTablet" />
-    <Secondarybar v-if="$device.isDesktop"/>
     <nuxt />
     <Footer />
   </div>

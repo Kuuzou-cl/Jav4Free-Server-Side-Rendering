@@ -32,6 +32,12 @@
     }
   }
 
+  @media (min-width: 2120px) {
+    .container {
+      max-width: 1600px !important;
+    }
+  }
+
   @media (min-width: 576px) {
     .container, .container-sm {
       max-width: 540px !important;
@@ -55,20 +61,30 @@
       max-width: 1400px !important;
     }
   }
+
+  @media (min-width: 2120px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+      max-width: 1600px !important;
+    }
+  }
 body
 {	
-    background-color: #080808;
+    background-color: #000;
     font-family: 'Roboto', sans-serif;
     width: 100%;    
 }
 
 .content{
-    padding-top: 11%;
+    padding-top: 9%;
     padding-bottom: 5%;
 }
 
 .height-fix{
     height: 100%;
+}
+
+.width-fix{
+    width: 100%;
 }
 
 .need-space{
@@ -171,31 +187,25 @@ body
     border-color: #444444 !important;
     background-color: #444444 !important;
 }
-@media screen and (min-width: 2100px) {
-    .content{
-        position: relative;
-        padding-top: 10% !important;
-    }
-}
 
 @media screen and (min-width: 1601px) and (max-width: 1919px) {
     .content{
         position: relative;
-        padding-top: 12% !important;
+        padding-top: 11% !important;
     }
 }
 
 @media screen and (min-width: 1367px) and (max-width: 1600px) {
     .content{
         position: relative;
-        padding-top: 13% !important;
+        padding-top: 14% !important;
         padding-bottom: 6% !important;
     }
 }
 
 @media screen and (min-width: 1280px) and (max-width: 1366px) {
     .content{
-        padding-top: 10% !important;
+        padding-top: 14% !important;
         padding-bottom: 6% !important;
     }
 }
@@ -203,7 +213,7 @@ body
 @media screen and (min-width: 1200px) and (max-width: 1279px) {
     .content{
         padding-top: 14% !important;
-        padding-bottom: 11% !important;
+        padding-bottom: 6% !important;
     }
     .btn-more{
         font-size: 80%;
@@ -215,8 +225,8 @@ body
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
     .content{
-        padding-top: 15% !important;
-        padding-bottom: 11% !important;
+        padding-top: 20% !important;
+        padding-bottom: 8% !important;
     }
     .btn-more{
         font-size: 80%;
