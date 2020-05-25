@@ -73,30 +73,30 @@
                     <div class="title-sidebar">History</div>
                   </nuxt-link>
                 </li>
-                <li v-if="$store.state.authUser" class="navbar-nav-link">
-                  <nuxt-link :to="'/dashboard'">
-                    <font-awesome-icon :icon="['fas', 'edit']" class="icon-sidebar" />
-                    <div class="title-sidebar">Dashboard</div>
-                  </nuxt-link>
-                </li>
-                <li v-if="$store.state.authUser" @click="logout()" class="navbar-nav-link">
-                  <nuxt-link to="/">
-                    <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="icon-sidebar" />
-                    <div class="title-sidebar">Log Out</div>
-                  </nuxt-link>
-                </li>
+                <li class="navbar-nav-link"></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="log-navbar">
-          <nuxt-link to="/login" tag="div" class="signin" v-if="!$store.state.authUser">
-            Sign In
-            <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
-          </nuxt-link>
-          <nuxt-link to="/dashboard" tag="div" class="signin" v-if="$store.state.authUser">
-            <font-awesome-icon :icon="['fas', 'user-astronaut']" class="icon-navbar" />
-          </nuxt-link>
+          <div class="row width-fix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto text-center">
+              <nuxt-link to="/login" tag="div" class="signin" v-if="!$store.state.authUser">
+                Sign In
+                <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
+              </nuxt-link>
+              <nuxt-link to="/dashboard" tag="div" class="signin" v-if="$store.state.authUser">
+                Account
+                <font-awesome-icon :icon="['fas', 'user-astronaut']" class="icon-navbar" />
+              </nuxt-link>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto text-center">
+              <div class="signin" v-if="$store.state.authUser" @click="logout()">
+                Log Out
+                <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="icon-navbar" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,6 +118,12 @@ export default {
         this.$router.replace("/search/1/" + formatedQuery);
         this.query = "";
       }
+    },
+    async logout() {
+      try {
+        await this.$store.dispatch("logout");
+        this.$router.push({ path: "/" });
+      } catch (e) {}
     }
   }
 };

@@ -233,11 +233,13 @@ export default {
         for (var i = 0; i < this.jav.categories.length; i++) {
           if (this.jav.categories[i] === _id) {
             this.jav.categories.splice(i, 1);
+            this.searchCategories ="";
             i--;
           }
         }
       } else {
         this.jav.categories.push(_id);
+        this.searchCategories ="";
       }
     },
     addIdol: function(_id) {
@@ -246,11 +248,13 @@ export default {
         for (var i = 0; i < this.jav.idols.length; i++) {
           if (this.jav.idols[i] === _id) {
             this.jav.idols.splice(i, 1);
+            this.searchIdols ="";
             i--;
           }
         }
       } else {
         this.jav.idols.push(_id);
+        this.searchIdols ="";
       }
     },
     async updateJav() {

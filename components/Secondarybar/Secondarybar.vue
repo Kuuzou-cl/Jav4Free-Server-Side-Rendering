@@ -51,7 +51,6 @@
 
 <script>
 export default {
-  props: ['showSecondary','showNav'],
   methods: {
     async logout() {
       try {

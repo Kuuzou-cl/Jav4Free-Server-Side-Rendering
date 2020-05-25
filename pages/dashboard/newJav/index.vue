@@ -270,11 +270,13 @@ export default {
         for (var i = 0; i < this.javCategories.length; i++) {
           if (this.javCategories[i] === _id) {
             this.javCategories.splice(i, 1);
+            this.searchCategories = "";
             i--;
           }
         }
       } else {
         this.javCategories.push(_id);
+        this.searchCategories = "";
       }
     },
     checkCategory: function(_id) {
@@ -292,10 +294,12 @@ export default {
           if (this.javIdols[i] === _id) {
             this.javIdols.splice(i, 1);
             i--;
+            this.searchIdols = "";
           }
         }
       } else {
         this.javIdols.push(_id);
+        this.searchIdols = "";
       }
     },
     checkIdol: function(_id) {

@@ -19,7 +19,7 @@
             <div class="jav-title">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <p class="title">{{jav.name}}</p>
+                  <p class="title">{{getName(jav.name)}}</p>
                 </div>
               </div>
               <div class="row">
@@ -203,6 +203,15 @@ export default {
   methods: {
     addToFavorites: function(_id) {
       this.$store.dispatch("addToFavorites", { javId: _id });
+    },
+    getName: function(_name) {
+      let newName;
+      if (_name.length > 180) {
+        newName = _name.slice(0, 180) + " ...";
+        return newName;
+      } else {
+        return _name;
+      }
     }
   },
   computed: {
