@@ -4,13 +4,13 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <h6 class="title-white text-left">{{ idol.name }} | JAV Idol</h6>
+          <h6 class="title-white mx-auto">{{ idol.name }} | JAV Idol</h6>
           <CardIdol
             v-bind:dataId="idol._id"
             v-bind:dataName="idol.name"
             v-bind:dataUrl="idol.imageUrl"
           />
-          <h6 class="title-white text-left">Featured Videos | {{ javs.length }} JAV's</h6>
+          <h6 class="title-white">Featured Videos | {{ javs.length }} JAV's</h6>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
       </div>
