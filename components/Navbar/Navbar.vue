@@ -14,7 +14,7 @@
     <div class="container">
       <div class="navbar-collapse main-navbar">
         <nuxt-link :to="'/'" class="heart" tag="div" type="button">
-          <img src="https://javdata.sfo2.cdn.digitaloceanspaces.com/logo-long-02.png" />
+          <img src="https://javdata.sfo2.cdn.digitaloceanspaces.com/logo-short-02.png" />
         </nuxt-link>
         <div class="search-navbar">
           <div class="row width-fix">
