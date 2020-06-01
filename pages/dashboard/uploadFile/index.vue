@@ -186,24 +186,7 @@
     <div class="need-space"></div>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-          <div class="container h-100">
-            <div class="row justify-content-center align-items-center h-100">
-              <div class="col-12 mx-auto">
-                <div v-if="this.uploading" class="progress">
-                  <div
-                    class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
-                    role="progressbar"
-                    :aria-valuenow="loadingTotal"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    :style="{'width': `${(loadingTotal)}%`}"
-                  >{{loadingTotal}}%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <button class="btn btn-more float-right" v-on:click="submitFiles()">
             Upload All Files
@@ -219,71 +202,118 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">File Name</th>
-                <th scope="col">Size</th>
-                <th scope="col">Action</th>
+                <th class="text-center" scope="col">File Name</th>
+                <th class="text-center" scope="col">Size</th>
+                <th class="text-center" scope="col">Destination</th>
+                <th class="text-center" scope="col">Status</th>
+                <th class="text-center" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th colspan="3" class="text-center">Upload to Javs Folder</th>
-              </tr>
               <tr v-for="(file, key) in javs" :key="key">
-                <td scope="row">{{file.name}}</td>
-                <td>{{Math.round(file.size / 10240)}} MB</td>
-                <td>
+                <td class="text-center">{{file[0].name}}</td>
+                <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                <td class="text-center">{{file[2]}}</td>
+                <td v-if="file[1] != 0" class="text-center">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                    role="progressbar"
+                    :aria-valuenow="loadingTotal"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    :style="{'width': `${(file[1])}%`}"
+                  >{{file[1]}}%</div>
+                </td>
+                <td class="text-center" v-else>Waiting</td>
+                <td class="text-center">
                   <span v-on:click="removeFileJavs( key )">
                     Remove
                     <font-awesome-icon :icon="['fas', 'minus-circle']" />
                   </span>
                 </td>
               </tr>
-              <tr>
-                <th colspan="3" class="text-center">Upload to Idols Folder</th>
-              </tr>
               <tr v-for="(file, key) in idols" :key="key">
-                <td scope="row">{{file.name}}</td>
-                <td>{{Math.round(file.size / 10240)}} MB</td>
-                <td>
+                <td class="text-center">{{file[0].name}}</td>
+                <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                <td class="text-center">{{file[2]}}</td>
+                <td v-if="file[1] != 0" class="text-center">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                    role="progressbar"
+                    :aria-valuenow="loadingTotal"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    :style="{'width': `${(file[1])}%`}"
+                  >{{file[1]}}%</div>
+                </td>
+                <td class="text-center" v-else>Waiting</td>
+                <td class="text-center">
                   <span v-on:click="removeFileIdols( key )">
                     Remove
                     <font-awesome-icon :icon="['fas', 'minus-circle']" />
                   </span>
                 </td>
               </tr>
-              <tr>
-                <th colspan="3" class="text-center">Upload to Covers Folder</th>
-              </tr>
               <tr v-for="(file, key) in covers" :key="key">
-                <td scope="row">{{file.name}}</td>
-                <td>{{Math.round(file.size / 10240)}} MB</td>
-                <td>
+                <td class="text-center">{{file[0].name}}</td>
+                <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                <td class="text-center">{{file[2]}}</td>
+                <td v-if="file[1] != 0" class="text-center">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                    role="progressbar"
+                    :aria-valuenow="loadingTotal"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    :style="{'width': `${(file[1])}%`}"
+                  >{{file[1]}}%</div>
+                </td>
+                <td class="text-center" v-else>Waiting</td>
+                <td class="text-center">
                   <span v-on:click="removeFileCovers( key )">
                     Remove
                     <font-awesome-icon :icon="['fas', 'minus-circle']" />
                   </span>
                 </td>
               </tr>
-              <tr>
-                <th colspan="3" class="text-center">Upload to Vtts Folder</th>
-              </tr>
               <tr v-for="(file, key) in vtts" :key="key">
-                <td scope="row">{{file.name}}</td>
-                <td>{{Math.round(file.size / 10240)}} MB</td>
-                <td>
+                <td class="text-center">{{file[0].name}}</td>
+                <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                <td class="text-center">{{file[2]}}</td>
+                <td v-if="file[1] != 0" class="text-center">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                    role="progressbar"
+                    :aria-valuenow="loadingTotal"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    :style="{'width': `${(file[1])}%`}"
+                  >{{file[1]}}%</div>
+                </td>
+                <td class="text-center" v-else>Waiting</td>
+                <td class="text-center">
                   <span v-on:click="removeFileVtts( key )">
                     Remove
                     <font-awesome-icon :icon="['fas', 'minus-circle']" />
                   </span>
                 </td>
               </tr>
-              <tr>
-                <th colspan="3" class="text-center">Upload to Sprites Folder</th>
-              </tr>
               <tr v-for="(file, key) in sprites" :key="key">
-                <td scope="row">{{file.name}}</td>
-                <td>{{Math.round(file.size / 10240)}} MB</td>
-                <td>
+                <td class="text-center">{{file[0].name}}</td>
+                <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                <td class="text-center">{{file[2]}}</td>
+                <td v-if="file[1] != 0" class="text-center">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
+                    role="progressbar"
+                    :aria-valuenow="loadingTotal"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    :style="{'width': `${(file[1])}%`}"
+                  >{{file[1]}}%</div>
+                </td>
+                <td class="text-center" v-else>Waiting</td>
+                <td class="text-center">
                   <span v-on:click="removeFileSprites( key )">
                     Remove
                     <font-awesome-icon :icon="['fas', 'minus-circle']" />
@@ -305,33 +335,15 @@ export default {
   name: "uploadFile",
   data() {
     return {
-      uploading: false,
       javs: [],
-      loadingJavs: 0,
-      viewLoadingJavs: false,
       covers: [],
-      loadingCovers: 0,
-      viewLoadingCovers: false,
       idols: [],
-      loadingIdols: 0,
-      viewLoadingIdols: false,
       vtts: [],
-      loadingVtts: 0,
-      viewLoadingVtts: false,
-      sprites: [],
-      loadingSprites: 0,
-      viewLoadingSprites: false,
-      loadingTotal: 0
+      sprites: []
     };
   },
   methods: {
     async submitFiles() {
-      this.loadingJavs = 0;
-      this.loadingCovers = 0;
-      this.loadingIdols = 0;
-      this.loadingVtts = 0;
-      this.loadingSprites = 0;
-      this.loadingTotal= 0;
       this.submitJavs();
       this.submitIdols();
       this.submitCovers();
@@ -339,198 +351,140 @@ export default {
       this.submitSprites();
     },
     async submitJavs() {
-      this.uploading = true;
-      this.viewLoadingJavs = true;
-      let formData = new FormData();
-      this.javs.forEach(file => {
-        formData.append("file", file, file.name);
-      });
-      await axios
-        .post("https://jav.souzou.dev/jav4free/uploads/upJav", formData, {
-          onUploadProgress: uploadEvent => {
-            this.loadingJavs = Math.round(
-              (uploadEvent.loaded / uploadEvent.total) * 100
-            );
-            this.loadingTotal +=  this.viewLoadingJavs * 0.2;
-            console.log(
-              "Upload Progress: " +
-                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
-                "%"
-            );
+      this.javs.forEach(async file => {
+        let formData = new FormData();
+        formData.append("file", file[0], file[0].name);
+        await axios.post(
+          "https://jav.souzou.dev/jav4free/uploads/upJav",
+          formData,
+          {
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+            }
           }
-        })
-        .then(function() {
-          console.log("uploaded files");
-          this.loadingJavs = 100;
-        })
-        .catch(function(e) {
-          console.log(e);
-        });
+        );
+      });
       this.javs = [];
-
-      this.viewLoadingJavs = false;
     },
     handleFilesUploadJavs() {
       let uploadedFiles = this.$refs.javs.files;
       for (var i = 0; i < uploadedFiles.length; i++) {
-        this.javs.push(uploadedFiles[i]);
+        let jav = [uploadedFiles[i], 0, "/Javs"];
+        this.javs.push(jav);
       }
     },
     removeFileJavs(key) {
       this.javs.splice(key, 1);
     },
     async submitCovers() {
-      this.viewLoadingCovers = true;
-      let formData = new FormData();
-      this.covers.forEach(file => {
-        formData.append("file", file, file.name);
-      });
-      await axios
-        .post("https://jav.souzou.dev/jav4free/uploads/upCover", formData, {
-          onUploadProgress: uploadEvent => {
-            this.loadingCovers = Math.round(
-              (uploadEvent.loaded / uploadEvent.total) * 100
-            );
-            this.loadingTotal +=  this.loadingCovers * 0.2;
-            console.log(
-              "Upload Progress: " +
-                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
-                "%"
-            );
+      this.covers.forEach(async file => {
+        let formData = new FormData();
+        formData.append("file", file[0], file[0].name);
+        await axios.post(
+          "https://jav.souzou.dev/jav4free/uploads/upCover",
+          formData,
+          {
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+            }
           }
-        })
-        .then(function() {
-          this.loadingCovers = 100;
-          console.log("uploaded files");
-        })
-        .catch(function(e) {
-          console.log(e);
-        });
+        );
+      });
       this.covers = [];
-      this.viewLoadingCovers = false;
     },
     handleFilesUploadCovers() {
       let uploadedFiles = this.$refs.covers.files;
       for (var i = 0; i < uploadedFiles.length; i++) {
-        this.covers.push(uploadedFiles[i]);
+        let cover = [uploadedFiles[i], 0, "/Covers"];
+        this.covers.push(cover);
       }
     },
     removeFileCovers(key) {
       this.covers.splice(key, 1);
     },
     async submitIdols() {
-      this.viewLoadingIdols = true;
-      let formData = new FormData();
-      this.idols.forEach(file => {
-        formData.append("file", file, file.name);
-      });
-      await axios
-        .post("https://jav.souzou.dev/jav4free/uploads/upIdol", formData, {
-          onUploadProgress: uploadEvent => {
-            this.loadingIdols = Math.round(
-              (uploadEvent.loaded / uploadEvent.total) * 100
-            );
-            this.loadingTotal +=  this.loadingIdols * 0.2;
-            console.log(
-              "Upload Progress: " +
-                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
-                "%"
-            );
+      this.idols.forEach(async file => {
+        let formData = new FormData();
+        formData.append("file", file[0], file[0].name);
+        await axios.post(
+          "https://jav.souzou.dev/jav4free/uploads/upIdol",
+          formData,
+          {
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+            }
           }
-        })
-        .then(function() {
-          console.log("uploaded files");
-          this.loadingIdols = 100;
-        })
-        .catch(function(e) {
-          console.log(e);
-        });
+        );
+      });
       this.idols = [];
-      this.viewLoadingIdols = false;
     },
     handleFilesUploadIdols() {
       let uploadedFiles = this.$refs.idols.files;
       for (var i = 0; i < uploadedFiles.length; i++) {
-        this.idols.push(uploadedFiles[i]);
+        let idol = [uploadedFiles[i], 0, "/Idols"];
+        this.idols.push(idol);
       }
     },
     removeFileIdols(key) {
       this.idols.splice(key, 1);
     },
     async submitVtts() {
-      this.viewLoadingVtts = true;
-      let formData = new FormData();
-      this.vtts.forEach(file => {
-        formData.append("file", file, file.name);
-      });
-      await axios
-        .post("https://jav.souzou.dev/jav4free/uploads/upVtt", formData, {
-          onUploadProgress: uploadEvent => {
-            this.loadingVtts = Math.round(
-              (uploadEvent.loaded / uploadEvent.total) * 100
-            );
-            this.loadingTotal +=  this.loadingVtts * 0.2;
-            console.log(
-              "Upload Progress: " +
-                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
-                "%"
-            );
+      this.vtts.forEach(async file => {
+        let formData = new FormData();
+        formData.append("file", file[0], file[0].name);
+        await axios.post(
+          "https://jav.souzou.dev/jav4free/uploads/upVtt",
+          formData,
+          {
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+            }
           }
-        })
-        .then(function() {
-          console.log("uploaded files");
-          this.loadingVtts = 100;
-        })
-        .catch(function(e) {
-          console.log(e);
-        });
+        );
+      });
       this.vtts = [];
-      this.viewLoadingVtts = false;
     },
     handleFilesUploadVtts() {
       let uploadedFiles = this.$refs.vtts.files;
       for (var i = 0; i < uploadedFiles.length; i++) {
-        this.vtts.push(uploadedFiles[i]);
+        let vtt = [uploadedFiles[i], 0, "/Vtts"];
+        this.vtts.push(vtt);
       }
     },
     removeFileVtts(key) {
       this.vtts.splice(key, 1);
     },
     async submitSprites() {
-      this.viewLoadingSprites = true;
-      let formData = new FormData();
-      this.sprites.forEach(file => {
-        formData.append("file", file, file.name);
-      });
-      await axios
-        .post("https://jav.souzou.dev/jav4free/uploads/upSprite", formData, {
-          onUploadProgress: uploadEvent => {
-            this.loadingSprites = Math.round(
-              (uploadEvent.loaded / uploadEvent.total) * 100
-            );
-            this.loadingTotal +=  this.loadingSprites * 0.2;
-            console.log(
-              "Upload Progress: " +
-                Math.round((uploadEvent.loaded / uploadEvent.total) * 100) +
-                "%"
-            );
+      this.sprites.forEach(async file => {
+        let formData = new FormData();
+        formData.append("file", file[0], file[0].name);
+        await axios.post(
+          "https://jav.souzou.dev/jav4free/uploads/upSprite",
+          formData,
+          {
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+            }
           }
-        })
-        .then(function() {
-          console.log("uploaded files");
-          this.loadingSprites = 100;
-        })
-        .catch(function(e) {
-          console.log(e);
-        });
+        );
+      });
       this.sprites = [];
-      this.uploading = false;
-      this.viewLoadingSprites = false;
     },
     handleFilesUploadSprites() {
       let uploadedFiles = this.$refs.sprites.files;
       for (var i = 0; i < uploadedFiles.length; i++) {
-        this.sprites.push(uploadedFiles[i]);
+        let sprite = [uploadedFiles[i], 0, "/Sprites"];
+        this.sprites.push(sprite);
       }
     },
     removeFileSprites(key) {
@@ -541,5 +495,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
