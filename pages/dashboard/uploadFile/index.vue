@@ -186,7 +186,7 @@
     <div class="need-space"></div>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">{{this.progress}}</div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <button class="btn btn-more float-right" v-on:click="submitFiles()">
             Upload All Files
@@ -214,17 +214,16 @@
                 <td class="text-center">{{file[0].name}}</td>
                 <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
                 <td class="text-center">{{file[2]}}</td>
-                <td v-if="file[1] != 0" class="text-center">
+                <td class="text-center">
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
                     role="progressbar"
-                    :aria-valuenow="loadingTotal"
+                    :aria-valuenow="file[1]"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                    :style="{'width': `${(file[1])}%`}"
+                    :style="{'width': `${(100)}%`}"
                   >{{file[1]}}%</div>
                 </td>
-                <td class="text-center" v-else>Waiting</td>
                 <td class="text-center">
                   <span v-on:click="removeFileJavs( key )">
                     Remove
@@ -236,17 +235,16 @@
                 <td class="text-center">{{file[0].name}}</td>
                 <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
                 <td class="text-center">{{file[2]}}</td>
-                <td v-if="file[1] != 0" class="text-center">
+                <td class="text-center">
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
                     role="progressbar"
-                    :aria-valuenow="loadingTotal"
+                    :aria-valuenow="file[1]"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                    :style="{'width': `${(file[1])}%`}"
+                    :style="{'width': `${(100)}%`}"
                   >{{file[1]}}%</div>
                 </td>
-                <td class="text-center" v-else>Waiting</td>
                 <td class="text-center">
                   <span v-on:click="removeFileIdols( key )">
                     Remove
@@ -258,17 +256,16 @@
                 <td class="text-center">{{file[0].name}}</td>
                 <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
                 <td class="text-center">{{file[2]}}</td>
-                <td v-if="file[1] != 0" class="text-center">
+                <td class="text-center">
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
                     role="progressbar"
-                    :aria-valuenow="loadingTotal"
+                    :aria-valuenow="file[1]"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                    :style="{'width': `${(file[1])}%`}"
+                    :style="{'width': `${(100)}%`}"
                   >{{file[1]}}%</div>
                 </td>
-                <td class="text-center" v-else>Waiting</td>
                 <td class="text-center">
                   <span v-on:click="removeFileCovers( key )">
                     Remove
@@ -280,17 +277,16 @@
                 <td class="text-center">{{file[0].name}}</td>
                 <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
                 <td class="text-center">{{file[2]}}</td>
-                <td v-if="file[1] != 0" class="text-center">
+                <td class="text-center">
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
                     role="progressbar"
-                    :aria-valuenow="loadingTotal"
+                    :aria-valuenow="file[1]"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                    :style="{'width': `${(file[1])}%`}"
+                    :style="{'width': `${(100)}%`}"
                   >{{file[1]}}%</div>
                 </td>
-                <td class="text-center" v-else>Waiting</td>
                 <td class="text-center">
                   <span v-on:click="removeFileVtts( key )">
                     Remove
@@ -302,17 +298,16 @@
                 <td class="text-center">{{file[0].name}}</td>
                 <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
                 <td class="text-center">{{file[2]}}</td>
-                <td v-if="file[1] != 0" class="text-center">
+                <td class="text-center">
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
                     role="progressbar"
-                    :aria-valuenow="loadingTotal"
+                    :aria-valuenow="file[1]"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                    :style="{'width': `${(file[1])}%`}"
+                    :style="{'width': `${(100)}%`}"
                   >{{file[1]}}%</div>
                 </td>
-                <td class="text-center" v-else>Waiting</td>
                 <td class="text-center">
                   <span v-on:click="removeFileSprites( key )">
                     Remove
@@ -339,7 +334,8 @@ export default {
       covers: [],
       idols: [],
       vtts: [],
-      sprites: []
+      sprites: [],
+      progress: 0
     };
   },
   methods: {
@@ -362,11 +358,11 @@ export default {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
+              this.progress = file[1];
             }
           }
         );
       });
-      this.javs = [];
     },
     handleFilesUploadJavs() {
       let uploadedFiles = this.$refs.javs.files;
@@ -390,11 +386,11 @@ export default {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
+              this.progress = file[1];
             }
           }
         );
       });
-      this.covers = [];
     },
     handleFilesUploadCovers() {
       let uploadedFiles = this.$refs.covers.files;
@@ -418,11 +414,11 @@ export default {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
+              this.progress = file[1];
             }
           }
         );
       });
-      this.idols = [];
     },
     handleFilesUploadIdols() {
       let uploadedFiles = this.$refs.idols.files;
@@ -446,11 +442,11 @@ export default {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
+              this.progress = file[1];
             }
           }
         );
       });
-      this.vtts = [];
     },
     handleFilesUploadVtts() {
       let uploadedFiles = this.$refs.vtts.files;
@@ -474,11 +470,11 @@ export default {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
+              this.progress = file[1];
             }
           }
         );
       });
-      this.sprites = [];
     },
     handleFilesUploadSprites() {
       let uploadedFiles = this.$refs.sprites.files;
