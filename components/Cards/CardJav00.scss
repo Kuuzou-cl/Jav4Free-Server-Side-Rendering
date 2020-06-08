@@ -34,9 +34,6 @@
     a{
         color: #E8175D !important;
     }
-    .loading-box{
-        width:100%;
-    }
     img{
         display: none;
     }
@@ -51,7 +48,7 @@
 
 .loading-box{
     position: absolute;
-    z-index: 5;
+    z-index:1;
     border-top: 2px solid #E8175D;
     width:0;
     transition: width 0.5s ease-in-out;

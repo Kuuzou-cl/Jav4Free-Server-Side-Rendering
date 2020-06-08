@@ -346,22 +346,22 @@ export default {
       this.submitVtts();
       this.submitSprites();
     },
-    async submitJavs() {
-      this.javs.forEach(async file => {
+    submitJavs() {
+      this.javs.forEach((file, index) => {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
-        await axios.post(
-          "https://jav.souzou.dev/jav4free/uploads/upJav",
-          formData,
-          {
+        axios
+          .post("https://jav.souzou.dev/jav4free/uploads/upJav", formData, {
             onUploadProgress: uploadEvent => {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
               this.progress = file[1];
             }
-          }
-        );
+          })
+          .then(response => {
+            this.javs.splice(index, 1);
+          });
       });
     },
     handleFilesUploadJavs() {
@@ -374,22 +374,22 @@ export default {
     removeFileJavs(key) {
       this.javs.splice(key, 1);
     },
-    async submitCovers() {
-      this.covers.forEach(async file => {
+    submitCovers() {
+      this.covers.forEach((file, index) => {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
-        await axios.post(
-          "https://jav.souzou.dev/jav4free/uploads/upCover",
-          formData,
-          {
+        axios
+          .post("https://jav.souzou.dev/jav4free/uploads/upCover", formData, {
             onUploadProgress: uploadEvent => {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
               this.progress = file[1];
             }
-          }
-        );
+          })
+          .then(response => {
+            this.covers.splice(index, 1);
+          });
       });
     },
     handleFilesUploadCovers() {
@@ -402,22 +402,22 @@ export default {
     removeFileCovers(key) {
       this.covers.splice(key, 1);
     },
-    async submitIdols() {
-      this.idols.forEach(async file => {
+    submitIdols() {
+      this.idols.forEach((file, index) => {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
-        await axios.post(
-          "https://jav.souzou.dev/jav4free/uploads/upIdol",
-          formData,
-          {
+        axios
+          .post("https://jav.souzou.dev/jav4free/uploads/upIdol", formData, {
             onUploadProgress: uploadEvent => {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
               this.progress = file[1];
             }
-          }
-        );
+          })
+          .then(response => {
+            this.idols.splice(index, 1);
+          });
       });
     },
     handleFilesUploadIdols() {
@@ -430,22 +430,22 @@ export default {
     removeFileIdols(key) {
       this.idols.splice(key, 1);
     },
-    async submitVtts() {
-      this.vtts.forEach(async file => {
+    submitVtts() {
+      this.vtts.forEach((file, index) => {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
-        await axios.post(
-          "https://jav.souzou.dev/jav4free/uploads/upVtt",
-          formData,
-          {
+        axios
+          .post("https://jav.souzou.dev/jav4free/uploads/upVtt", formData, {
             onUploadProgress: uploadEvent => {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
               this.progress = file[1];
             }
-          }
-        );
+          })
+          .then(response => {
+            this.vtts.splice(index, 1);
+          });
       });
     },
     handleFilesUploadVtts() {
@@ -458,22 +458,22 @@ export default {
     removeFileVtts(key) {
       this.vtts.splice(key, 1);
     },
-    async submitSprites() {
-      this.sprites.forEach(async file => {
+    submitSprites() {
+      this.sprites.forEach((file, index) => {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
-        await axios.post(
-          "https://jav.souzou.dev/jav4free/uploads/upSprite",
-          formData,
-          {
+        axios
+          .post("https://jav.souzou.dev/jav4free/uploads/upSprite", formData, {
             onUploadProgress: uploadEvent => {
               file[1] = Math.round(
                 (uploadEvent.loaded / uploadEvent.total) * 100
               );
               this.progress = file[1];
             }
-          }
-        );
+          })
+          .then(response => {
+            this.vtts.splice(index, 1);
+          });
       });
     },
     handleFilesUploadSprites() {

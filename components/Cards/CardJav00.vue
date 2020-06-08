@@ -9,11 +9,6 @@
         </video>
       </nuxt-link>
     </div>
-    <!-- 
-    <div class="box-time">
-      <b class="post">{{dataJav.duration}}:00</b>
-    </div> 
-    -->
     <div class="box-code">
       <b class="post">{{dataJav.code}}</b>
     </div>
