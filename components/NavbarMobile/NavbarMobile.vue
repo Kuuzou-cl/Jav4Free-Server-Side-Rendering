@@ -1,5 +1,5 @@
 <template>
-  <nav role="navbar navigation" class="navbar-expand-lg nav-mobile" v-bind:class="{ 'show': show }">
+  <nav role="navbar navigation" class="nav-mobile" v-bind:class="{ 'show': show }">
     <button class="navbar-toggler custom-toggler" type="button" @click.stop="toggleNavbar">
       <font-awesome-icon :icon="['fas', 'bars']" class="menu-toggle" />
     </button>
