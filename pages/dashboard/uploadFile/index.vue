@@ -339,7 +339,7 @@ export default {
     };
   },
   methods: {
-    async submitFiles() {
+    submitFiles() {
       this.submitJavs();
       this.submitIdols();
       this.submitCovers();
@@ -472,7 +472,7 @@ export default {
             }
           })
           .then(response => {
-            this.vtts.splice(index, 1);
+            this.sprites.splice(index, 1);
           });
       });
     },
