@@ -3,11 +3,6 @@
 @import 'dashboard-page.scss';
 @import 'categories-page.scss';
 
-#app{
-    min-height: 100%;
-    position: relative;
-}
-
 @media (min-width: 576px) {
     .container {
       max-width: 540px !important;
@@ -67,6 +62,7 @@
       max-width: 1600px !important;
     }
   }
+  
 body
 {	
     background-color: #000;
@@ -75,8 +71,8 @@ body
 }
 
 .content{
-    padding-top: 9%;
-    padding-bottom: 5%;
+    padding-top: 0%;
+    padding-bottom: 2%;
 }
 
 .height-fix{
