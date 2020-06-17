@@ -1,23 +1,25 @@
 <template>
-  <div class="container-fluid content">
+  <div>
     <Crumbs />
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h6 class="title-white text-left">Categories</h6>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h6 class="title-white text-left">Categories</h6>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="row justify-content-center">
-            <div v-for="category in categories" :key="category._id">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <nuxt-link :to="'/categories/1/'+category._id">
-                  <button class="btn category-title">{{ category.name }}</button>
-                </nuxt-link>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row justify-content-center">
+              <div v-for="category in categories" :key="category._id">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <nuxt-link :to="'/categories/1/'+category._id">
+                    <button class="btn category-title">{{ category.name }}</button>
+                  </nuxt-link>
+                </div>
               </div>
             </div>
           </div>

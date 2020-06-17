@@ -1,73 +1,88 @@
 <template>
-  <div class="container-fluid content">
+  <div>
     <Crumbs />
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h6 class="title-white text-left">All JAV Idols</h6>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h6 class="title-white text-left">All JAV Idols</h6>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div v-if="$device.isDesktop" class="container">
-      <div class="row justify-content-center">
-        <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <CardIdol
-            v-if="idol != null"
-            v-bind:dataId="idol._id"
-            v-bind:dataName="idol.name"
-            v-bind:dataUrl="idol.imageUrl"
-          ></CardIdol>
+      <div class="need-space"></div>
+      <div v-if="$device.isDesktop" class="container">
+        <div class="row justify-content-center">
+          <div
+            v-for="(idol,index) in idols"
+            :key="index"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          >
+            <CardIdol
+              v-if="idol != null"
+              v-bind:dataId="idol._id"
+              v-bind:dataName="idol.name"
+              v-bind:dataUrl="idol.imageUrl"
+            ></CardIdol>
+          </div>
         </div>
       </div>
-    </div>
-    <div v-if="$device.isMobileOrTablet" class="container">
-      <div class="row justify-content-center">
-        <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <CardIdolMobile
-            v-if="idol != null"
-            v-bind:dataId="idol._id"
-            v-bind:dataName="idol.name"
-            v-bind:dataUrl="idol.imageUrl"
-          ></CardIdolMobile>
+      <div v-if="$device.isMobileOrTablet" class="container">
+        <div class="row justify-content-center">
+          <div
+            v-for="(idol,index) in idols"
+            :key="index"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          >
+            <CardIdolMobile
+              v-if="idol != null"
+              v-bind:dataId="idol._id"
+              v-bind:dataName="idol.name"
+              v-bind:dataUrl="idol.imageUrl"
+            ></CardIdolMobile>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
-          <div class="pagination">
-            <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
-            <button
-              v-for="(prevPage, index) in previousPages"
-              :key="index"
-              type="button"
-              class="btn paginate-index"
-              @click="pullPage(Number(prevPage))"
-            >{{prevPage}}</button>
-            <button disabled type="button" class="btn paginate-actual">{{page}}</button>
-            <button
-              v-for="(nextPage, index) in actualNextPages"
-              :key="index"
-              type="button"
-              class="btn paginate-index"
-              @click="pushPage(Number(nextPage))"
-            >{{nextPage}}</button>
-            <button v-if="page!=lastPage" disabled type="button" class="btn paginate-index">...</button>
-            <button
-              v-if="page!=lastPage"
-              type="button"
-              @click="pushPage(Number(lastPage))"
-              class="btn paginate-index"
-            >{{Number(lastPage)}}</button>
-            <button
-              v-if="nextPage"
-              type="button"
-              class="btn paginate-next"
-              @click="nextClick()"
-            >Next</button>
-            <button v-else disabled type="button" class="btn paginate-next">Next</button>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
+            <div class="pagination">
+              <button
+                v-if="page!=1"
+                @click="prevClick()"
+                type="button"
+                class="btn paginate-prev"
+              >Prev</button>
+              <button
+                v-for="(prevPage, index) in previousPages"
+                :key="index"
+                type="button"
+                class="btn paginate-index"
+                @click="pullPage(Number(prevPage))"
+              >{{prevPage}}</button>
+              <button disabled type="button" class="btn paginate-actual">{{page}}</button>
+              <button
+                v-for="(nextPage, index) in actualNextPages"
+                :key="index"
+                type="button"
+                class="btn paginate-index"
+                @click="pushPage(Number(nextPage))"
+              >{{nextPage}}</button>
+              <button v-if="page!=lastPage" disabled type="button" class="btn paginate-index">...</button>
+              <button
+                v-if="page!=lastPage"
+                type="button"
+                @click="pushPage(Number(lastPage))"
+                class="btn paginate-index"
+              >{{Number(lastPage)}}</button>
+              <button
+                v-if="nextPage"
+                type="button"
+                class="btn paginate-next"
+                @click="nextClick()"
+              >Next</button>
+              <button v-else disabled type="button" class="btn paginate-next">Next</button>
+            </div>
           </div>
         </div>
       </div>

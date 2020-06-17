@@ -1,7 +1,8 @@
 .crumbs-content{
     width: 100%;
     background-color: #131313;
-    padding-bottom: 0.05%;
+    padding-bottom: 0.2%;
+    margin-bottom: 1%;
 }
 
 .crumbs-content a {
@@ -26,44 +27,4 @@
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
-}
-
-@media screen and (min-width: 1601px) and (max-width: 1919px) {
-    .crumbs-content{
-    }
-}
-
-@media screen and (min-width: 1367px) and (max-width: 1600px) {
-    .crumbs-content{
-    }   
-  }
-
-@media screen and (min-width: 1280px) and (max-width: 1366px) {
-    .crumbs-content{
-        top: 17%;
-    }   
-}
-
-@media screen and (min-width: 992px) and (max-width: 1279px) {
-    .crumbs-content{
-        top: 17%;
-    }
-}
-
-@media screen and (min-width: 800px) and (max-width: 991px) {
-    .crumbs-content{
-        top: 12%;
-    }   
-}
-
-@media screen and (min-width: 620px) and (max-width: 799px) {
-    .crumbs-content{
-        top: 11%;
-    }   
-}
-
-@media screen and (max-width: 620px) {
-    .crumbs-content{
-        top: 12%;
-    }   
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid content">
+  <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="user_card">
         <div class="row justify-content-center">

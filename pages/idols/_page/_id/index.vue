@@ -1,67 +1,74 @@
 <template>
-  <div class="container-fluid content">
+  <div>
     <Crumbs />
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <h6 class="title-white mx-auto">{{ idol.name }} | JAV Idol</h6>
-          <CardIdol
-            v-bind:dataId="idol._id"
-            v-bind:dataName="idol.name"
-            v-bind:dataUrl="idol.imageUrl"
-          />
-          <h6 class="title-white">Featured Videos | {{ javs.length }} JAV's</h6>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <h6 class="title-white mx-auto">{{ idol.name }} | JAV Idol</h6>
+            <CardIdol
+              v-bind:dataId="idol._id"
+              v-bind:dataName="idol.name"
+              v-bind:dataUrl="idol.imageUrl"
+            />
+            <h6 class="title-white">Featured Videos | {{ javs.length }} JAV's</h6>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="row">
-            <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-              <CardJav v-bind:dataJav="jav" />
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+              <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <CardJav v-bind:dataJav="jav" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
-          <div class="pagination">
-            <button v-if="page!=1" @click="prevClick()" type="button" class="btn paginate-prev">Prev</button>
-            <button
-              v-for="(prevPage, index) in previousPages"
-              :key="index"
-              type="button"
-              class="btn paginate-index"
-              @click="pullPage(Number(prevPage))"
-            >{{prevPage}}</button>
-            <button disabled type="button" class="btn paginate-actual">{{page}}</button>
-            <button
-              v-for="(nextPage, index) in actualNextPages"
-              :key="index"
-              type="button"
-              class="btn paginate-index"
-              @click="pushPage(Number(nextPage))"
-            >{{nextPage}}</button>
-            <button v-if="page!=lastPage" disabled type="button" class="btn paginate-index">...</button>
-            <button
-              v-if="page!=lastPage"
-              type="button"
-              @click="pushPage(Number(lastPage))"
-              class="btn paginate-index"
-            >{{Number(lastPage)}}</button>
-            <button
-              v-if="nextPage"
-              type="button"
-              class="btn paginate-next"
-              @click="nextClick()"
-            >Next</button>
-            <button v-else disabled type="button" class="btn paginate-next">Next</button>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
+            <div class="pagination">
+              <button
+                v-if="page!=1"
+                @click="prevClick()"
+                type="button"
+                class="btn paginate-prev"
+              >Prev</button>
+              <button
+                v-for="(prevPage, index) in previousPages"
+                :key="index"
+                type="button"
+                class="btn paginate-index"
+                @click="pullPage(Number(prevPage))"
+              >{{prevPage}}</button>
+              <button disabled type="button" class="btn paginate-actual">{{page}}</button>
+              <button
+                v-for="(nextPage, index) in actualNextPages"
+                :key="index"
+                type="button"
+                class="btn paginate-index"
+                @click="pushPage(Number(nextPage))"
+              >{{nextPage}}</button>
+              <button v-if="page!=lastPage" disabled type="button" class="btn paginate-index">...</button>
+              <button
+                v-if="page!=lastPage"
+                type="button"
+                @click="pushPage(Number(lastPage))"
+                class="btn paginate-index"
+              >{{Number(lastPage)}}</button>
+              <button
+                v-if="nextPage"
+                type="button"
+                class="btn paginate-next"
+                @click="nextClick()"
+              >Next</button>
+              <button v-else disabled type="button" class="btn paginate-next">Next</button>
+            </div>
           </div>
         </div>
       </div>

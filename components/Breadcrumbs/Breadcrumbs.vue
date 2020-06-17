@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$device.isDesktop" class="row crumbs-content">
+  <div v-if="$device.isDesktop" class="crumbs-content">
     <div class="container">
       <nuxt-link
         v-for="(page, id) in this.$store.state.breadCrumbs"
