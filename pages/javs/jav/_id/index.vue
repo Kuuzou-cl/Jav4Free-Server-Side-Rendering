@@ -103,7 +103,7 @@
                 <div
                   v-for="jav in relatedJavs"
                   :key="jav._id"
-                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-fix"
+                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
                 >
                   <CardJav v-bind:dataJav="jav" />
                 </div>
