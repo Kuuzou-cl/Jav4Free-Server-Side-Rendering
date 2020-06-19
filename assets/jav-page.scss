@@ -4,7 +4,7 @@
 .container-jav{
     border-style: solid;
     border-radius: 0.5%;
-    border: 1px solid #E8175D;
+    border: 0;
     position: relative;
     z-index:1;
 }
@@ -13,8 +13,20 @@
     background-color: #000000;
     border-style: solid;
     border-radius: 0.5%;
-    border: 1px solid #f8faff;
+    border-top: 1px solid #202020;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #202020;
     padding: 1.5% 0.5%;
+}
+
+.recommended-title{
+    h3{
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 12px;
+        color: #f8faff;
+    }
 }
 
 .jav-title{
@@ -27,7 +39,7 @@
     font-size:12px;
     letter-spacing: 2px;
     color: #f8faff;
-    border-bottom: 2px solid #E8175D;
+    border-bottom: 1px solid #E8175D;
     .title{
         text-transform: uppercase;
     }
@@ -90,6 +102,7 @@
     font-size:10px;
     letter-spacing: 1px;
     color: #f8faff;
+    border-bottom: 1px solid #202020;
 }
 
 .jav-extra a {

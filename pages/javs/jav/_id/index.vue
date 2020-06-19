@@ -92,27 +92,20 @@
           </div>
         </div>
         <div class="need-space"></div>
+        <div class="need-space"></div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div v-if="$device.isDesktop" class="container-recommended">
-              <div class="row row-fix">
+            <div class="row justify-content-center recommended-title">
+              <h3>Recommended videos</h3>
+            </div>
+            <div class="container-recommended">
+              <div class="row">
                 <div
                   v-for="jav in relatedJavs"
                   :key="jav._id"
                   class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-fix"
                 >
                   <CardJav v-bind:dataJav="jav" />
-                </div>
-              </div>
-            </div>
-            <div v-if="$device.isMobileOrTablet" class="container-recommended">
-              <div class="row">
-                <div
-                  v-for="jav in relatedJavs"
-                  :key="jav._id"
-                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                >
-                  <CardJavMobile v-bind:dataJav="jav" />
                 </div>
               </div>
             </div>

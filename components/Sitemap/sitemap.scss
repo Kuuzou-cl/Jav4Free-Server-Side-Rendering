@@ -2,7 +2,7 @@
     width: 100%;
     height: 2%;
     display:flex;align-items:center;
-    background: #131313;
+    background: #000;
     z-index: 6;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -11,8 +11,8 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #131313;
-        font-size: 12px;
+        background-color: #000;
+        font-size: 11px;
       }
       
       li {
@@ -30,7 +30,7 @@
       }
       
       li a:hover {
-        background-color: #131313;
+        background-color: #000;
         color: #E8175D;
       }
 
@@ -38,14 +38,6 @@
           margin-right: 5px;
           display:flex;justify-content:center;align-items:center;
       }
-}
-
-@media screen and (min-width: 1280px) and (max-width: 1366px) {
-  .sitemap{
-    ul {
-        font-size: 11px;
-      }
-  }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1279px) {
