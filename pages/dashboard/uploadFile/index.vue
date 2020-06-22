@@ -360,7 +360,11 @@ export default {
             }
           })
           .then(response => {
-            this.javs.splice(index, 1);
+            this.javs.forEach((jav, index2) => {
+              if (jav[0].name == file[0].name) {
+                this.javs.splice(index2, 1);
+              }
+            });
           });
       });
     },
@@ -388,7 +392,11 @@ export default {
             }
           })
           .then(response => {
-            this.covers.splice(index, 1);
+            this.covers.forEach((cover, index2) => {
+              if (cover[0].name == file[0].name) {
+                this.covers.splice(index2, 1);
+              }
+            });
           });
       });
     },
@@ -416,7 +424,11 @@ export default {
             }
           })
           .then(response => {
-            this.idols.splice(index, 1);
+            this.idols.forEach((idol, index2) => {
+              if (idol[0].name == file[0].name) {
+                this.idols.splice(index2, 1);
+              }
+            });            
           });
       });
     },
@@ -444,7 +456,11 @@ export default {
             }
           })
           .then(response => {
-            this.vtts.splice(index, 1);
+            this.vtts.forEach((vtt, index2) => {
+              if (vtt[0].name == file[0].name) {
+                this.vtts.splice(index2, 1);
+              }
+            });  
           });
       });
     },
@@ -472,7 +488,11 @@ export default {
             }
           })
           .then(response => {
-            this.sprites.splice(index, 1);
+            this.sprites.forEach((sprite, index2) => {
+              if (sprite[0].name == file[0].name) {
+                this.sprites.splice(index2, 1);
+              }
+            });  
           });
       });
     },
