@@ -138,6 +138,7 @@
 import axios from "axios";
 
 export default {
+  layout: (ctx) => ctx.isMobile ? 'mobile' : 'default',
   middleware: "auth",
   name: "Dashboard",
   data() {
@@ -162,6 +163,7 @@ export default {
       .catch(e => {
         console.log(e);
       });
+      
     let spaceDataJavs = await axios
       .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
       .catch(e => {
