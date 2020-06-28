@@ -98,6 +98,14 @@
     z-index:1;
 }
 
+.box21 .box-content-mobile{
+    width:100%;
+    padding:1% 0%;
+    color:#f8faff;
+    background-color: #18191a;
+    text-align: center;
+}
+
 @media screen and (min-width: 2480px) {
     .box21 {
         margin: 0% 2% 3% 2%;
@@ -152,28 +160,4 @@
     .box21 .title{font-size:8px;}
 
     .box21 .box-content{padding:5px 0px;}
-}
-
-@media screen and (min-width: 621px) and (max-width: 799px) {
-    .box21 {
-        margin: 0% 0% 2% 0%;
-    }
-
-    .box21 .post{font-size:9px;}
-    
-    .box21 .title{font-size:7px;}
-    
-    .box21 .box-content{padding:5px 0px;}
-}
-
-@media screen and (min-width: 380px) and (max-width: 620px) {
-    .box21 {
-        margin: 0% 2% 3% 2%;
-    }
-}
-
-@media screen and (max-width: 379px) {
-    .box21 {
-        margin: 0% 2% 3% 2%;
-    }
 }

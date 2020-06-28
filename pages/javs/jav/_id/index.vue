@@ -1,116 +1,198 @@
 <template>
   <div>
-    <Crumbs />
-    <div class="container-fluid">
-      <!-- JuicyAds PopUnders v3 Start -->
-      <script
-        type="application/javascript"
-        src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=http%3A%2F%2Fwww.juicyads.rocks"
-      ></script>
-      <!-- JuicyAds PopUnders v3 End -->
-      <div class="container content-jav">
-        <div class="row">
-          <div :class="resize">
-            <div class="container-jav">
-              <button class="resize-hidden" type="button" @click="resizeColumn" id="resizeButton">
-                <svg class="icon">
-                  <use xlink:href="#plyr-pip" />
-                </svg>
-              </button>
-              <vue-plyr :options="playerOptions">
-                <video preload="metadata" controls :poster="jav.imageIndexUrl">
-                  <source :src="jav.url" type="video/mp4" />
-                </video>
-              </vue-plyr>
-              <div class="jav-title">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <p class="title">{{getName(jav.name)}}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="jav-details">
-                      <font-awesome-icon :icon="['fas', 'eye']" class="view-icon" />
-                      <p>Views:200.000</p>
+    <div v-if="$device.isDesktop">
+      <Crumbs />
+      <div class="container-fluid">
+        <div class="container content-jav">
+          <div class="row">
+            <div :class="resize">
+              <div class="container-jav">
+                <button class="resize-hidden" type="button" @click="resizeColumn" id="resizeButton">
+                  <svg class="icon">
+                    <use xlink:href="#plyr-pip" />
+                  </svg>
+                </button>
+                <vue-plyr :options="playerOptions">
+                  <video preload="metadata" controls :poster="jav.imageIndexUrl">
+                    <source :src="jav.url" type="video/mp4" />
+                  </video>
+                </vue-plyr>
+                <div class="jav-title">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <p class="title">{{getName(jav.name)}}</p>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="btn btn-options" @click="addToFavorites(jav._id)">
-                      <p>{{messageFavorite}}</p>
-                      <font-awesome-icon
-                        :icon="['fas', 'heart']"
-                        v-if="!checkFavorite"
-                        class="favorite-icon"
-                      />
-                      <font-awesome-icon
-                        :icon="['fas', 'heart']"
-                        v-if="checkFavorite"
-                        class="favorite-icon-active"
-                      />
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <div class="jav-details">
+                        <font-awesome-icon :icon="['fas', 'eye']" class="view-icon" />
+                        <p>Views:200.000</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="btn btn-options">
-                      <p>Report a bug</p>
-                      <font-awesome-icon :icon="['fas', 'bug']" class="bug-icon" />
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                      <div class="btn btn-options" @click="addToFavorites(jav._id)">
+                        <p>{{messageFavorite}}</p>
+                        <font-awesome-icon
+                          :icon="['fas', 'heart']"
+                          v-if="!checkFavorite"
+                          class="favorite-icon"
+                        />
+                        <font-awesome-icon
+                          :icon="['fas', 'heart']"
+                          v-if="checkFavorite"
+                          class="favorite-icon-active"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                      <div class="btn btn-options">
+                        <p>Report a bug</p>
+                        <font-awesome-icon :icon="['fas', 'bug']" class="bug-icon" />
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div class="jav-extra">
+                  <span>Code: {{jav.code}}</span>
+                </div>
+                <div class="jav-extra">
+                  <span>Duration: {{jav.duration}} min</span>
+                </div>
+                <div class="jav-extra">
+                  <span>
+                    Categories:
+                    <nuxt-link
+                      v-for="category in categories"
+                      :key="category._id"
+                      :to="'/categories/1/'+category._id"
+                      tag="a"
+                      class="links"
+                    >{{category.name}},</nuxt-link>
+                  </span>
+                </div>
+                <div class="jav-extra">
+                  <span>
+                    Idols:
+                    <nuxt-link
+                      v-for="idol in idols"
+                      :key="idol._id"
+                      :to="'/idols/1/'+idol._id"
+                      tag="a"
+                      class="links"
+                    >{{idol.name}},</nuxt-link>
+                  </span>
+                </div>
               </div>
-              <div class="jav-extra">
-                <span>Code: {{jav.code}}</span>
+            </div>
+          </div>
+          <div class="need-space"></div>
+          <div class="need-space"></div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="row justify-content-center recommended-title">
+                <h3>Recommended videos</h3>
               </div>
-              <div class="jav-extra">
-                <span>Duration: {{jav.duration}} min</span>
-              </div>
-              <div class="jav-extra">
-                <span>
-                  Categories:
-                  <nuxt-link
-                    v-for="category in categories"
-                    :key="category._id"
-                    :to="'/categories/1/'+category._id"
-                    tag="a"
-                    class="links"
-                  >{{category.name}},</nuxt-link>
-                </span>
-              </div>
-              <div class="jav-extra">
-                <span>
-                  Idols:
-                  <nuxt-link
-                    v-for="idol in idols"
-                    :key="idol._id"
-                    :to="'/idols/1/'+idol._id"
-                    tag="a"
-                    class="links"
-                  >{{idol.name}},</nuxt-link>
-                </span>
+              <div class="container-recommended">
+                <div class="row">
+                  <div
+                    v-for="jav in relatedJavs"
+                    :key="jav._id"
+                    class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                  >
+                    <CardJav v-bind:dataJav="jav" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="need-space"></div>
+      </div>
+    </div>
+    <div v-if="$device.isMobile" class="container-fluid">
+      <div class="need-space"></div>
+      <div class="container-fluid content-jav">
+        <div class="row">
+          <div class="container-jav">
+            <vue-plyr :options="playerOptions">
+              <video preload="metadata" controls :poster="jav.imageIndexUrl">
+                <source :src="jav.url" type="video/mp4" />
+              </video>
+            </vue-plyr>
+            <div class="jav-title-mobile">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <p class="title">{{getName(jav.name)}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="btn btn-options" @click="addToFavorites(jav._id)">
+                    <font-awesome-icon
+                      :icon="['fas', 'heart']"
+                      v-if="!checkFavorite"
+                      class="favorite-icon"
+                    />
+                    <font-awesome-icon
+                      :icon="['fas', 'heart']"
+                      v-if="checkFavorite"
+                      class="favorite-icon-active"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="jav-extra">
+              <span>Code: {{jav.code}}</span>
+            </div>
+            <div class="jav-extra">
+              <span>
+                Categories:
+                <nuxt-link
+                  v-for="category in categories"
+                  :key="category._id"
+                  :to="'/categories/1/'+category._id"
+                  tag="a"
+                  class="links"
+                >{{category.name}},</nuxt-link>
+              </span>
+            </div>
+            <div class="jav-extra">
+              <span>
+                Idols:
+                <nuxt-link
+                  v-for="idol in idols"
+                  :key="idol._id"
+                  :to="'/idols/1/'+idol._id"
+                  tag="a"
+                  class="links"
+                >{{idol.name}},</nuxt-link>
+              </span>
+            </div>
+          </div>
+        </div>
         <div class="need-space"></div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row justify-content-center recommended-title">
               <h3>Recommended videos</h3>
             </div>
-            <div class="container-recommended">
+            <div class="container-recommended-mobile">
               <div class="row">
                 <div
                   v-for="jav in relatedJavs"
                   :key="jav._id"
-                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                  class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
                 >
-                  <CardJav v-bind:dataJav="jav" />
+                  <CardJavMobile v-bind:dataJav="jav" />
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
       </div>
     </div>
   </div>
@@ -124,6 +206,7 @@ import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
 
 export default {
+  layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   name: "JAV",
   components: {
     Crumbs,

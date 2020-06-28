@@ -12,7 +12,7 @@
     <div class="box-code">
       <b class="post">{{dataJav.code}}</b>
     </div>
-    <div class="box-content">
+    <div class="box-content-mobile">
       <h3 class="title">
         <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">{{getName(dataJav.name)}}</nuxt-link>
       </h3>
@@ -28,8 +28,8 @@ export default {
   methods: {
     getName: function(_name) {
       let newName;
-      if (_name.length > 38) {
-        newName = _name.slice(0, 38) + " ...";
+      if (_name.length > 45) {
+        newName = _name.slice(0, 45) + " ...";
         return newName;
       } else {
         return _name;
