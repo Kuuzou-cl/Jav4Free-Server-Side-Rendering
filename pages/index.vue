@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div v-if="$device.isMobile" class="container-fluid fix-width-mobile">
+    <div v-if="$device.isMobile">
       <PopUp />
       <div class="need-space"></div>
       <div class="container-fluid">
