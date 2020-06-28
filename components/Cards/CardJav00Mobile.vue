@@ -9,16 +9,11 @@
         </video>
       </nuxt-link>
     </div>
-    <!-- 
-    <div class="box-time">
-      <b class="post">{{dataJav.duration}}:00</b>
-    </div> 
-    -->
     <div class="box-code">
       <b class="post">{{dataJav.code}}</b>
     </div>
-    <div class="box-content">
-      <h3 class="title">
+    <div class="box-content-mobile">
+      <h3 class="title-mobile">
         <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">{{getName(dataJav.name)}}</nuxt-link>
       </h3>
     </div>
@@ -34,8 +29,8 @@ export default {
   methods: {
     getName: function(_name) {
       let newName;
-      if (_name.length > 58) {
-        newName = _name.slice(0, 58) + " ...";
+      if (_name.length > 45) {
+        newName = _name.slice(0, 45) + " ...";
         return newName;
       } else {
         return _name;

@@ -73,7 +73,6 @@
                     <div class="title-sidebar">History</div>
                   </nuxt-link>
                 </li>
-                <li class="navbar-nav-link"></li>
               </ul>
             </div>
           </div>

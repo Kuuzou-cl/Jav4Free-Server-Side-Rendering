@@ -1,125 +1,147 @@
 <template>
-  <div class="container-fluid">
-    <!-- JuicyAds v3.2P Start -->
-    <script type="application/javascript">
-  var juicy_tags = ["a", "img"];
-    </script>
-    <script
-      type="application/javascript"
-      src="https://js.juicyads.com/jp.php?c=4474z233x256s2s2u2b4z2c4&u=https%3A%2F%2Fwww.jav4free.watch"
-    ></script>
-    <!-- JuicyAds v3.2P End -->
-    <div class="need-space"></div>
-    <div v-if="$device.isDesktop" class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-          <h6 class="title-index">
-            <nuxt-link
-              :to="'/categories/1/'+category1._id"
-              tag="a"
-              class="title-white"
-            >Recommended Category - {{category1.name}} JAV's</nuxt-link>
-          </h6>
+  <div>
+    <PopUp />
+    <div v-if="$device.isDesktop" class="container-fluid">
+      <PopUp />
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <h6 class="title-index">
+              <nuxt-link
+                :to="'/categories/1/'+category1._id"
+                tag="a"
+                class="title-white"
+              >Recommended Category - {{category1.name}} JAV's</nuxt-link>
+            </h6>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more float-right">
+              watch more
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more float-right">
-            watch more
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
+      </div>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row">
+          <div
+            v-for="jav in javsCategory1"
+            :key="jav._id"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          >
+            <CardJav v-bind:dataJav="jav" />
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <h6 class="title-index">
+              <nuxt-link :to="'/javs/1'" tag="a" class="title-white">Recently Added Videos</nuxt-link>
+            </h6>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <nuxt-link :to="'/javs/1'" class="btn btn-more float-right">
+              watch more
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row">
+          <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <CardJav v-bind:dataJav="jav" />
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <h6 class="title-index">
+              <nuxt-link :to="'/idols/1'" tag="a" class="title-white">Featured Jav Idols</nuxt-link>
+            </h6>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <nuxt-link :to="'/idols/1'" class="btn btn-more float-right">
+              watch more
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div
+            v-for="(idol,index) in idols"
+            :key="index"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          >
+            <CardIdol
+              v-if="idol != null"
+              v-bind:dataId="idol._id"
+              v-bind:dataName="idol.name"
+              v-bind:dataUrl="idol.imageUrl"
+            ></CardIdol>
+          </div>
         </div>
       </div>
     </div>
-    <div class="need-space"></div>
-    <div v-if="$device.isDesktop" class="container">
+    <div v-if="$device.isMobile" class="container-fluid fix-width-mobile">
+      <PopUp />
+      <div class="need-space"></div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more">
+              Recommended Videos from "{{category1.name}}"
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
       <div class="row">
         <div
           v-for="jav in javsCategory1"
           :key="jav._id"
-          class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
         >
-          <CardJav v-bind:dataJav="jav" />
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-          <h6 class="title-index">
-            <nuxt-link :to="'/javs/1'" tag="a" class="title-white">Recently Added Videos</nuxt-link>
-          </h6>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/javs/1'" class="btn btn-more float-right">
-            watch more
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div v-if="$device.isMobileOrTablet" class="container">
-      <div class="row">
-        <div v-for="jav in javsMobile" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
-    </div>
-    <div v-if="$device.isDesktop" class="container">
+      <div class="need-space"></div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <nuxt-link :to="'/javs/1'" class="btn btn-more">
+              Recently Added Videos
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
       <div class="row">
-        <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <CardJav v-bind:dataJav="jav" />
+        <div v-for="jav in javs" :key="jav._id" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
+      <div class="need-space"></div>
     </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-          <h6 class="title-index">
-            <nuxt-link :to="'/idols/1'" tag="a" class="title-white">Featured Jav Idols</nuxt-link>
-          </h6>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/idols/1'" class="btn btn-more float-right">
-            watch more
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div v-if="$device.isDesktop" class="container">
-      <div class="row justify-content-center">
-        <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <CardIdol
-            v-if="idol != null"
-            v-bind:dataId="idol._id"
-            v-bind:dataName="idol.name"
-            v-bind:dataUrl="idol.imageUrl"
-          ></CardIdol>
-        </div>
-      </div>
-    </div>
-    <div v-if="$device.isMobileOrTablet" class="container">
-      <div class="row justify-content-center">
-        <div v-for="(idol,index) in idols" :key="index" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <CardIdolMobile
-            v-if="idol != null"
-            v-bind:dataId="idol._id"
-            v-bind:dataName="idol.name"
-            v-bind:dataUrl="idol.imageUrl"
-          ></CardIdolMobile>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 
+import PopUp from "~/components/PopUpAd/popUpAd.vue";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "../components/Cards/CardJav00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
@@ -127,7 +149,9 @@ import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 
 export default {
+  layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   components: {
+    PopUp,
     Crumbs,
     CardJav,
     CardIdol,
