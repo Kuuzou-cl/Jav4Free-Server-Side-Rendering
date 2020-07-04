@@ -4,6 +4,9 @@
       <Crumbs />
       <div class="container-fluid">
         <div class="container content-jav">
+          <div class="row justify-content-center">
+            <DesktopAd01 />
+          </div>
           <div class="row">
             <div :class="resize">
               <div class="container-jav">
@@ -85,8 +88,14 @@
                 </div>
               </div>
             </div>
+            <div :class="resizeToHide">
+              <DesktopAd03 />
+            </div>
           </div>
           <div class="need-space"></div>
+          <div class="row justify-content-center">
+            <DesktopAd02 />
+          </div>
           <div class="need-space"></div>
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -112,6 +121,9 @@
     <div v-if="$device.isMobile" class="container-fluid">
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
+        <div class="row justify-content-center">
+            <MobileAd01 />
+          </div>
         <div class="row">
           <div class="container-jav">
             <vue-plyr :options="playerOptions">
@@ -204,6 +216,10 @@ import axios from "axios";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
+import DesktopAd01 from "~/components/DesktopAd/DesktopAd01";
+import DesktopAd02 from "~/components/DesktopAd/DesktopAd02";
+import DesktopAd03 from "~/components/DesktopAd/DesktopAd03";
+import MobileAd01 from "~/components/DesktopAd/MobileAd01";
 
 export default {
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
@@ -211,11 +227,16 @@ export default {
   components: {
     Crumbs,
     CardJav,
-    CardJavMobile
+    CardJavMobile,
+    DesktopAd01,
+    DesktopAd02,
+    DesktopAd03,
+    MobileAd01
   },
   data() {
     return {
-      resize: "col-lg-9 col-md-9 col-sm-9 col-xs-9"
+      resize: "col-lg-9 col-md-9 col-sm-9 col-xs-9",
+      resizeToHide: "col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center"
     };
   },
   head() {
@@ -369,8 +390,10 @@ export default {
     resizeColumn: function() {
       if (this.resize == "col-lg-9 col-md-9 col-sm-9 col-xs-9") {
         this.resize = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
+        this.resizeToHide = "hide";
       } else {
         this.resize = "col-lg-9 col-md-9 col-sm-9 col-xs-9";
+        this.resizeToHide = "col-lg-3 col-md-3 col-sm-3 col-xs-3";
       }
     }
   },
