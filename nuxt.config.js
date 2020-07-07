@@ -11,13 +11,16 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
       { name: "juicyads-site-verification", content: "c23a8ba63c9c4356619c93eb2953dfaf" },
-      { name: "trafficjunky-site-verification", content: "v0u01vat0" }
+      { name: "trafficjunky-site-verification", content: "v0u01vat0" },
+      { name: "clckd", content: "500188c900ca3a3b888e589192281bd2" }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.cdn.digitaloceanspaces.com/logo-short-01.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ],
     script: [
+      { type: 'text/javascript', src:'http://js.juicyads.com/jam_min.js'},
+      { type: 'text/javascript', innerHTML:'window.onload=check_mobile(22598,246527)', charset: 'utf-8' }
     ]
   },
   /*
