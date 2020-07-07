@@ -19,8 +19,8 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ],
     script: [
-      { type: 'text/javascript', src:'http://js.juicyads.com/jam_min.js'},
-      { type: 'text/javascript', innerHTML:'window.onload=check_mobile(22598,246527)', charset: 'utf-8' }
+      { type: 'application/javascript', src:'http://js.juicyads.com/jam_min.js'},
+      { type: 'application/javascript', innerHTML:'window.onload=check_mobile(22598,246527)', charset: 'utf-8' }
     ]
   },
   /*
