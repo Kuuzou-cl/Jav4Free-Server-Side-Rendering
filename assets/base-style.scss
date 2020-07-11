@@ -63,11 +63,17 @@
     }
   }
   
+#app{
+    height: 100vh !important;
+    min-height: 100vh !important;
+    height: 100%;
+}
+
 body
 {	
     background-color: #18191a;
     font-family: 'Roboto', sans-serif;
-    width: 100%;    
+    width: 100%;
 }
 
 .hide{
@@ -191,91 +197,4 @@ body
 .pagination .paginate-next:hover{
     border-color: #444444 !important;
     background-color: #444444 !important;
-}
-
-@media screen and (min-width: 1601px) and (max-width: 1919px) {
-    .content{
-        position: relative;
-        padding-top: 11% !important;
-    }
-}
-
-@media screen and (min-width: 1367px) and (max-width: 1600px) {
-    .content{
-        position: relative;
-        padding-top: 14% !important;
-        padding-bottom: 6% !important;
-    }
-}
-
-@media screen and (min-width: 1280px) and (max-width: 1366px) {
-    .content{
-        padding-top: 14% !important;
-        padding-bottom: 6% !important;
-    }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1279px) {
-    .content{
-        padding-top: 14% !important;
-        padding-bottom: 6% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-    .content{
-        padding-top: 20% !important;
-        padding-bottom: 8% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (min-width: 800px) and (max-width: 991px) {
-    .content{
-        padding-top: 16% !important;
-        padding-bottom: 10% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (min-width: 620px) and (max-width: 799px) {
-    .content{
-        padding-top: 10% !important;
-        padding-bottom: 12% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 620px) {
-    .content{
-        padding-top: 15% !important;
-        padding-bottom: 15% !important;
-    }
-    .btn-more{
-        font-size: 80%;
-    }
-    .title-white{
-        font-size: 80%;
-    }
 }
