@@ -1,148 +1,67 @@
 <template>
-  <div class="container-fluid content">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newJav/'" class="btn simple-button">
-            New Jav
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newCategory/'" class="btn simple-button">
-            New Category
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newIdol/'" class="btn simple-button">
-            New Idol
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">View Javs</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editCategories/'" class="btn simple-button">View Categories</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button">View Idols</nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">Upload File</nuxt-link>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="card dashboard-card text-center">
-            <div class="card-header">Javs Count</div>
-            <div class="card-body">
-              <h5 class="card-title">{{javs.length}}</h5>
+  <div id="wrapper">
+    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="tableFixHead">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        class="t-header"
+                      >Pending Idols ({{this.spaceCheckIdols(resultIdols, idols).length}})</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(idol, key) in this.spaceCheckIdols(resultIdols, idols)" :key="key">
+                      <th>{{idol}}</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="tableFixHead">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        class="t-header"
+                      >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
+                      <th>{{jav}}</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="card dashboard-card text-center">
-            <div class="card-header">Categories Count</div>
-            <div class="card-body">
-              <h5 class="card-title">{{categories.length}}</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="card dashboard-card text-center">
-            <div class="card-header">Idols Count</div>
-            <div class="card-body">
-              <h5 class="card-title">{{idols.length}}</h5>
-            </div>
-          </div>
-        </div>
+        <!-- /.container-fluid -->
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <div class="tableFixHead">
-            <table class="table table-hover text-center">
-              <thead>
-                <tr>
-                  <th scope="col" class="t-header">Code</th>
-                  <th scope="col" class="t-header">Hidden</th>
-                  <th scope="col" class="t-header">Categories</th>
-                  <th scope="col" class="t-header">Idols</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="jav in javs" :key="jav._id">
-                  <th>{{jav.code}}</th>
-                  <td>{{jav.hidden}}</td>
-                  <td>{{jav.categories.length}}</td>
-                  <td>{{jav.idols.length}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <div class="tableFixHead">
-            <table class="table table-hover text-center">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    class="t-header"
-                  >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
-                  <th>{{jav}}</th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <br />
-          <div class="tableFixHead">
-            <table class="table table-hover text-center">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    class="t-header"
-                  >Pending Idols ({{this.spaceCheckIdols(resultIdols, idols).length}})</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(idol, key) in this.spaceCheckIdols(resultIdols, idols)" :key="key">
-                  <th>{{idol}}</th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <!-- End of Main Content -->
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import SidebarAdmin from "~/components/SidebarAdmin/sidebarAdmin.vue";
 export default {
-  layout: (ctx) => ctx.isMobile ? 'mobile' : 'default',
-  middleware: "auth",
+  layout: "admin",
   name: "Dashboard",
-  data() {
-    return {};
+  components: {
+    SidebarAdmin
   },
   async asyncData() {
     var convert = require("xml-js");
@@ -163,15 +82,13 @@ export default {
       .catch(e => {
         console.log(e);
       });
-      
+
     let spaceDataJavs = await axios
       .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
       .catch(e => {
         console.log(e);
       });
-    var result = JSON.parse(
-      convert.xml2json(spaceDataJavs.data, options)
-    )
+    var result = JSON.parse(convert.xml2json(spaceDataJavs.data, options));
     let spaceDataIdols = await axios
       .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/")
       .catch(e => {

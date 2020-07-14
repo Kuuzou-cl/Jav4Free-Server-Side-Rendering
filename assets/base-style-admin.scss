@@ -1,0 +1,141 @@
+.body-admin{
+    background-color: #fff;
+}
+
+.fluid-full{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  #wrapper {
+    display: flex;
+  }
+  
+  #content-wrapper{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+  }
+  
+  .video-admin{
+    max-width: 100%;
+  }
+  
+  .custom-input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9b0088 !important;
+    color: #3f3844 !important;
+    letter-spacing: 2px;
+    text-align: left;
+    margin: 2% 0% !important;
+    box-shadow: none !important;
+    width: 100%;
+  }
+  
+  .category-button{
+    color: #3f3844 !important;
+    border-color: #3f3844 !important;
+    width: 200px;
+    margin: 5px 0px;
+    box-shadow: none !important;
+  }
+  
+  .category-button:hover{
+    color: #eeeeee !important;
+    background-color: #9b0088;
+    border-color: #9b0088 !important;
+  }
+  
+  .active-category{
+    color: #eeeeee !important;
+    background-color: #9b0088;
+    border-color: #9b0088 !important;
+  }
+  
+  .simple-button{
+    color: #3f3844 !important;
+    border-color: #3f3844 !important;
+    width: 100%;
+    margin: 5px 0px;
+    box-shadow: none !important;
+  }
+  
+  .simple-button:hover{
+    color: #eeeeee !important;
+    background-color: #9b0088;
+    border-color: #9b0088 !important;
+  }
+  
+  .custom-file-input {
+    height: 80vh;
+    width: 90%;
+    cursor: pointer;
+    position: absolute; z-index:2;
+  }
+  
+  .custom-file-label {
+    height: 80vh;
+    width: 100%;
+    background-color: #eeeeee;
+    position: absolute; z-index:1;
+    border: 0;
+    .icon-upload{
+      font-size: 50px;
+      opacity: 0.3;
+    }
+    h6{
+      font-size: 50px;
+      opacity: 0.3;
+    }
+  }
+  
+  .custom-file-input ~ .custom-file-label::after {
+    display: none;
+  }
+  
+  .nav-item{
+    .nav-link.active{
+      color: #9b0088;
+      border-bottom: 1px solid #9b0088 !important;  
+      background-color: #eeeeee;
+    }
+  }
+  
+  .table-files{
+    display:block;
+    overflow-y : scroll;
+    max-height: 80vh;
+    width: 100%;
+    position:absolute; z-index:3;
+    tbody{
+      width: 100%;
+      display: table;
+    }
+    tr{
+      display:flex;justify-content:center;align-items:center;
+    }
+  }
+  
+  .btn-admin{
+    background-color: #ff00e0;
+    color: #eeeeee;
+    font-size: 15px;
+    padding: 8px 24px;
+    border-radius: 16px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  
+  .btn-admin:hover{
+    background-color: #9b0088;
+    color: #eeeeee;
+  }
+  
+  .card-file-upload{
+    width: 80%;
+    border-radius: 20px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;  
+    opacity: 0.6;
+  }
