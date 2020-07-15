@@ -352,7 +352,8 @@ export default {
         iosNative: true,
         container: null
       },
-      controls: controls
+      controls: controls,
+      ads:{ enabled:true,  tagUrl:'https://lologhfd.com/ceef/gdt3g0/tbt/1769742/tlk.xml'}
     };
     return {
       titleJ: jav.data.jav.code,
