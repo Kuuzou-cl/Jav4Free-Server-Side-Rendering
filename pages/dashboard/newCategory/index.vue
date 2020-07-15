@@ -66,7 +66,7 @@
 
 <script>
 import axios from "axios";
-import SidebarAdmin from "~/components/SidebarAdmin/sidebarAdmin.vue";
+import SidebarAdmin from "~/components/SidebarAdmin/SidebarAdmin.vue";
 export default {
   layout: "admin",
   name: "NewCategory",
