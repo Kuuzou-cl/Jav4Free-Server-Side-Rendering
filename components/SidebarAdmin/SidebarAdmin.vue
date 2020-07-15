@@ -45,14 +45,14 @@
     <!-- Heading -->
     <div class="sidebar-heading">Data Center</div>
     <li class="nav-item">
-      <nuxt-link :to="'/dashboard/editVideos/'" class="nav-link">
+      <nuxt-link :to="'/dashboard/editJavs/'" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
         <span>List Videos</span>
         <span>{{videos.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="'/dashboard/editCharacters/'" class="nav-link">
+      <nuxt-link :to="'/dashboard/editIdols/'" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
         <span>List Idols</span>
         <span>{{idols.length}}</span>

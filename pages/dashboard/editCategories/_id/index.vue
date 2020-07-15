@@ -1,35 +1,60 @@
 <template>
-  <div class="container-fluid content">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div id="wrapper">
+    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
           <div class="row">
-            <label for="inputJav04" class="title-white">Category Name</label>
-            <input
-              v-model="category.name"
-              class="form-control custom-input"
-              id="inputJav04"
-              placeholder="Enter new image url"
-            />
+            <div class="title-admin">
+              <h2>Overview</h2>
+            </div>
           </div>
         </div>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="container container-admin">
+                <div class="row justify-content-center">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                      <label for="inputJav04">Category Name</label>
+                      <input
+                        v-model="category.name"
+                        class="input-admin"
+                        id="inputJav04"
+                        placeholder="Enter new category name"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <button class="btn category-admin" @click="updateJav()">Update Category</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <button class="btn category-title" @click="updateJav()">Update Category</button>
-      </div>
+      <!-- End of Main Content -->
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import SidebarAdmin from "~/components/SidebarAdmin/sidebarAdmin.vue";
 
 export default {
-  middleware: "auth",
-  name: "Dashboard",
+  layout: "admin",
+  name: "editCategory",
+  components: {
+    SidebarAdmin
+  },
   data() {
     return {
       category: null
@@ -37,12 +62,30 @@ export default {
   },
   async asyncData({ params }) {
     let id = params.id;
+    let javs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/")
+      .catch(e => {
+        console.log(e);
+      });
+    let categories = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/")
+      .catch(e => {
+        console.log(e);
+      });
+    let idols = await axios
+      .get("https://jav.souzou.dev/jav4free/idols/")
+      .catch(e => {
+        console.log(e);
+      });
     let category = await axios
       .get("https://jav.souzou.dev/jav4free/categories/" + id)
       .catch(e => {
         console.log(e);
       });
     return {
+      javs: javs.data.javs,
+      categories: categories.data.categories,
+      idols: idols.data.idols,
       category: category.data.category
     };
   },

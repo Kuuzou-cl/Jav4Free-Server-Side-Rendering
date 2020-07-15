@@ -1,123 +1,78 @@
 <template>
-  <div class="container-fluid content">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newJav/'" class="btn simple-button">
-            New Jav
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newCategory/'" class="btn simple-button">
-            New Category
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newIdol/'" class="btn simple-button">
-            New Idol
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">View Javs</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link
-            :to="'/dashboard/editCategories/'"
-            class="btn simple-button disabled"
-          >View Categories</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button">View Idols</nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">Upload File</nuxt-link>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="card dashboard-card text-center">
-            <div class="card-header">Javs Count</div>
-            <div class="card-body">
-              <h5 class="card-title">{{javs.length}}</h5>
+  <div id="wrapper">
+    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="title-admin">
+              <h2>List of Published Categories</h2>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="card dashboard-card text-center">
-            <div class="card-header">Categories Count</div>
-            <div class="card-body">
-              <h5 class="card-title">{{categories.length}}</h5>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <input
+                class="input-admin"
+                type="text"
+                v-model="search"
+                placeholder="Search by name..."
+              />
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="tableFixHead">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="t-header">Title</th>
+                      <th scope="col" class="t-header">Code</th>
+                      <th scope="col" class="t-header"></th>
+                      <th scope="col" class="t-header"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="category in filterCategories" :key="category._id">
+                      <th scope="row">{{category.name}}</th>
+                      <td>{{category._id}}</td>
+                      <td>
+                        <nuxt-link
+                          :to="'/dashboard/editCategories/'+category._id"
+                          class="btn button-admin"
+                        >Edit</nuxt-link>
+                      </td>
+                      <td>
+                        <button @click="deleteCat(category._id)" class="btn button-admin">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="card dashboard-card text-center">
-            <div class="card-header">Idols Count</div>
-            <div class="card-body">
-              <h5 class="card-title">{{idols.length}}</h5>
-            </div>
-          </div>
-        </div>
+        <!-- /.container-fluid -->
       </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <input class="custom-input" type="text" v-model="search" placeholder="Search by name..." />
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="tableFixHead">
-            <table class="table table-hove text-center">
-              <thead>
-                <tr>
-                  <th scope="col" class="t-header">Title</th>
-                  <th scope="col" class="t-header">Code</th>
-                  <th scope="col" class="t-header"></th>
-                  <th scope="col" class="t-header"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="category in filterCategories" :key="category._id">
-                  <th scope="row">{{category.name}}</th>
-                  <td>{{category._id}}</td>
-                  <td>
-                    <nuxt-link
-                      :to="'/dashboard/editCategories/'+category._id"
-                      class="btn simple-button"
-                    >Edit</nuxt-link>
-                  </td>
-                  <td>
-                    <button @click="deleteCat(category._id)" class="btn simple-button">Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <!-- End of Main Content -->
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import SidebarAdmin from "~/components/SidebarAdmin/sidebarAdmin.vue";
 export default {
-  middleware: "auth",
-  name: "Dashboard",
+  layout: "admin",
+  name: "editCategories",
+  components: {
+    SidebarAdmin
+  },
   data() {
     return {
       search: "",

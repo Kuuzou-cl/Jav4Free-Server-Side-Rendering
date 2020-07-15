@@ -1,191 +1,176 @@
 <template>
-  <div class="container-fluid content">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newJav/'" class="btn simple-button disabled">
-            New Jav
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newCategory/'" class="btn simple-button">
-            New Category
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newIdol/'" class="btn simple-button">
-            New Idol
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">View Javs</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editCategories/'" class="btn simple-button">View Categories</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button">View Idols</nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">Upload File</nuxt-link>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <form>
-                  <div class="form-row">
-                    <label for="inputJav01" class="title-white">Jav Title</label>
-                    <input
-                      v-model="javName"
-                      class="form-control custom-input"
-                      id="inputJav01"
-                      placeholder="Enter title"
-                    />
-                  </div>
-                  <div class="form-row">
-                    <label for="inputJav02" class="title-white">Jav Code</label>
-                    <input
-                      v-model="javCode"
-                      class="form-control custom-input"
-                      id="inputJav02"
-                      placeholder="Enter code"
-                    />
-                  </div>
-                  <div class="form-row">
-                    <label for="inputJav03" class="title-white">Jav Video Duration</label>
-                    <input
-                      v-model="javDuration"
-                      class="form-control custom-input"
-                      id="inputJav03"
-                      placeholder="Enter duration in minutes"
-                    />
-                  </div>
-                </form>
-              </div>
+  <div id="wrapper">
+    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="title-admin">
+              <h2>Add new Video</h2>
             </div>
           </div>
-          <div class="need-space"></div>
-          <div class="containter">
-            <div class="row justify-content-center">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                <button
-                  class="btn category-title"
-                  @click="viewCategoriesContainer()"
-                >View Categories</button>
+        </div>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              <div class="container container-admin">
+                <div class="row justify-content-center">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-row">
+                      <label for="inputJav01">Video Title</label>
+                      <input
+                        v-model="javName"
+                        class="input-admin"
+                        id="inputJav01"
+                        placeholder="Enter video title, no characters limit"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-row">
+                      <label for="inputJav02">Video Code</label>
+                      <input
+                        v-model="javCode"
+                        class="input-admin"
+                        id="inputJav02"
+                        placeholder="Enter video code, example 'ABC-000'"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-row">
+                      <label for="inputJav03">Video Duration</label>
+                      <input
+                        v-model="javDuration"
+                        class="input-admin"
+                        id="inputJav03"
+                        placeholder="Enter duration in minutes"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                <button class="btn category-title" @click="viewIdolsContainer()">View Idols</button>
+              <div class="need-space"></div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                    <button
+                      class="btn category-admin"
+                      @click="viewCategoriesContainer()"
+                    >View Categories</button>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                    <button class="btn category-admin" @click="viewIdolsContainer()">View Idols</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="need-space"></div>
-          <div v-if="this.viewCategories" class="container-fluid">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <input
-                  class="custom-input"
-                  type="text"
-                  v-model="searchCategories"
-                  placeholder="Search..."
-                />
+              <div class="need-space"></div>
+              <div v-if="this.viewCategories" class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input
+                      class="input-admin"
+                      type="text"
+                      v-model="searchCategories"
+                      placeholder="Filter categories here ..."
+                    />
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div v-for="category in filterCategories" :key="category._id">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button
+                        v-if="checkCategory(category._id)"
+                        @click="addCategory(category._id)"
+                        class="btn category-button"
+                      >{{ category.name }}</button>
+                      <button
+                        v-else
+                        @click="addCategory(category._id)"
+                        class="active btn category-button"
+                      >{{ category.name }}</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row justify-content-center">
-              <div v-for="category in filterCategories" :key="category._id">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <button
-                    v-if="checkCategory(category._id)"
-                    @click="addCategory(category._id)"
-                    class="btn category-button"
-                  >{{ category.name }}</button>
-                  <button
-                    v-else
-                    @click="addCategory(category._id)"
-                    class="active btn category-button"
-                  >{{ category.name }}</button>
+              <div v-if="this.viewIdols" class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input
+                      class="input-admin"
+                      type="text"
+                      v-model="searchIdols"
+                      placeholder="Filter idols here ..."
+                    />
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div v-for="idol in filterIdols" :key="idol._id">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button
+                        v-if="checkIdol(idol._id)"
+                        @click="addIdol(idol._id)"
+                        class="btn category-button"
+                      >{{ idol.name }}</button>
+                      <button
+                        v-else
+                        @click="addIdol(idol._id)"
+                        class="active btn category-button"
+                      >{{ idol.name }}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="need-space"></div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <button class="btn category-admin" @click="postJav()">Add Video</button>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="need-space"></div>
-          <div v-if="this.viewIdols" class="container-fluid">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <input
-                  class="custom-input"
-                  type="text"
-                  v-model="searchIdols"
-                  placeholder="Search..."
-                />
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div v-for="idol in filterIdols" :key="idol._id">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <button
-                    v-if="checkIdol(idol._id)"
-                    @click="addIdol(idol._id)"
-                    class="btn category-button"
-                  >{{ idol.name }}</button>
-                  <button
-                    v-else
-                    @click="addIdol(idol._id)"
-                    class="active btn category-button"
-                  >{{ idol.name }}</button>
-                </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div class="tableFixHead">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        class="t-header"
+                      >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
+                      <th>{{jav}}</th>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <div class="need-space"></div>
-          <div class="container">
-            <div class="row justify-content-center">
-              <button class="btn category-title" @click="postJav()">Add Video</button>
-            </div>
-          </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="tableFixHead">
-            <table class="table table-hover text-center">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    class="t-header"
-                  >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
-                  <th>{{jav}}</th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <!-- /.container-fluid -->
       </div>
+      <!-- End of Main Content -->
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import SidebarAdmin from "~/components/SidebarAdmin/sidebarAdmin.vue";
 export default {
-  middleware: "auth",
-  name: "Dashboard",
+  layout: "admin",
+  name: "NewJav",
+  components: {
+    SidebarAdmin
+  },
   data() {
     return {
       javName: "",
@@ -208,7 +193,7 @@ export default {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
-    let allJavs = await axios
+    let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
       .catch(e => {
         console.log(e);
@@ -230,7 +215,7 @@ export default {
       });
     var result = JSON.parse(convert.xml2json(spaceData.data, options));
     return {
-      javs: allJavs.data.javs,
+      javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
       result: result

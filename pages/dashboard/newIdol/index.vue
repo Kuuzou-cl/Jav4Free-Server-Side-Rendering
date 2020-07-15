@@ -1,117 +1,98 @@
 <template>
-  <div class="container-fluid content">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newJav/'" class="btn simple-button">
-            New Jav
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
+  <div id="wrapper">
+    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="title-admin">
+              <h2>Add new Idol</h2>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newCategory/'" class="btn simple-button">
-            New Category
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              <div class="container container-admin">
+                <div class="row justify-content-center">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-row">
+                      <img
+                        id="inputJav06"
+                        :src="'https://javdata.sfo2.digitaloceanspaces.com/idols/'+this.idolUrl+'.jpg'"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <div class="form-row">
+                      <label for="inputCat01">Idol Name</label>
+                      <input
+                        v-model="idolName"
+                        class="input-admin"
+                        id="inputCat01"
+                        placeholder="Enter idol's name"
+                      />
+                    </div>
+                    <div class="form-row">
+                      <label for="inputJav02">Idol Name index</label>
+                      <input
+                        v-model="idolUrl"
+                        class="input-admin"
+                        id="inputJav02"
+                        placeholder="Enter file name, example: 'name-surname'"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="need-space"></div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <button class="btn category-admin" @click="postIdol()">Add Idol</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div class="tableFixHead">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        class="t-header"
+                      >Pending Idols ({{this.spaceCheckIdols(resultIdols, idols).length}})</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(idol, key) in this.spaceCheckIdols(resultIdols, idols)" :key="key">
+                      <th>{{idol}}</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/newIdol/'" class="btn simple-button disabled">
-            New Idol
-            <font-awesome-icon :icon="['fas', 'plus']" />
-          </nuxt-link>
-        </div>
+        <!-- /.container-fluid -->
       </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editJavs/'" class="btn simple-button">View Javs</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editCategories/'" class="btn simple-button">View Categories</nuxt-link>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <nuxt-link :to="'/dashboard/editIdols/'" class="btn simple-button">View Idols</nuxt-link>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <nuxt-link :to="'/dashboard/uploadFile/'" class="btn simple-button">Upload File</nuxt-link>
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <div class="row">
-            <label class="title-white">Preview Image</label>
-          </div>
-          <div class="row">
-            <img
-              id="inputJav06"
-              :src="'https://javdata.sfo2.digitaloceanspaces.com/idols/' +
-          this.idolUrl +
-          '.jpg'"
-            />
-          </div>
-          <div class="row">
-            <label for="inputJav07" class="title-white">Hidden</label>
-            <input type="checkbox" v-model="hidden" />
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-          <div class="row">
-            <label for="inputCat01" class="title-white">Idol Name</label>
-            <input
-              v-model="idolName"
-              class="form-control custom-input"
-              id="inputCat01"
-              placeholder="Enter new category"
-            />
-          </div>
-          <div class="row">
-            <label for="inputJav02" class="title-white">Idol Name index</label>
-            <input
-              v-model="idolUrl"
-              class="form-control custom-input"
-              id="inputJav02"
-              placeholder="Enter new code"
-            />
-          </div>
-          <div class="need-space"></div>
-          <div class="row justify-content-center">
-            <button class="btn category-title" @click="postIdol()">Add Idol</button>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <div class="tableFixHead">
-            <table class="table table-hover text-center">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    class="t-header"
-                  >Pending Idols ({{this.spaceCheckIdols(resultIdols, idols).length}})</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(idol, key) in this.spaceCheckIdols(resultIdols, idols)" :key="key">
-                  <th>{{idol}}</th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <!-- End of Main Content -->
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import SidebarAdmin from "~/components/SidebarAdmin/sidebarAdmin.vue";
 export default {
-  middleware: "auth",
-  name: "Dashboard",
+  layout: "admin",
+  name: "NewIdol",
+  components: {
+    SidebarAdmin
+  },
   data() {
     return {
       idolName: "",
@@ -123,6 +104,16 @@ export default {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
+    let javs = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/")
+      .catch(e => {
+        console.log(e);
+      });
+    let categories = await axios
+      .get("https://jav.souzou.dev/jav4free/categories/")
+      .catch(e => {
+        console.log(e);
+      });
     let idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/")
       .catch(e => {
@@ -137,6 +128,8 @@ export default {
       convert.xml2json(spaceDataIdols.data, options)
     );
     return {
+      javs: javs.data.javs,
+      categories: categories.data.categories,
       idols: idols.data.idols,
       resultIdols: resultIdols
     };
