@@ -162,8 +162,20 @@
           <div class="need-space"></div>
           <div class="row justify-content-center">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">{{this.progress}}</div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-              <button class="btn btn-upload-admin float-right" v-on:click="submitFiles()">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+              <button
+                class="btn btn-upload-admin"
+                v-on:click="clearFiles()"
+              >
+                Clear All Files
+                <font-awesome-icon :icon="['fas', 'eraser']" />
+              </button>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+              <button
+                class="btn btn-upload-admin"
+                v-on:click="submitFiles()"
+              >
                 Upload All Files
                 <font-awesome-icon :icon="['fas', 'upload']" />
               </button>
@@ -194,7 +206,7 @@
                   <tbody>
                     <tr v-for="(file, key) in javs" :key="key">
                       <td class="text-center">{{file[0].name}}</td>
-                      <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                      <td class="text-center">{{formatBytes(file[0].size)}}</td>
                       <td class="text-center">
                         <div
                           class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
@@ -218,7 +230,7 @@
                   <tbody>
                     <tr v-for="(file, key) in idols" :key="key">
                       <td class="text-center">{{file[0].name}}</td>
-                      <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                      <td class="text-center">{{formatBytes(file[0].size)}}</td>
                       <td class="text-center">
                         <div
                           class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
@@ -242,7 +254,7 @@
                   <tbody>
                     <tr v-for="(file, key) in covers" :key="key">
                       <td class="text-center">{{file[0].name}}</td>
-                      <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                      <td class="text-center">{{formatBytes(file[0].size)}}</td>
                       <td class="text-center">
                         <div
                           class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
@@ -266,7 +278,7 @@
                   <tbody>
                     <tr v-for="(file, key) in vtts" :key="key">
                       <td class="text-center">{{file[0].name}}</td>
-                      <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                      <td class="text-center">{{formatBytes(file[0].size)}}</td>
                       <td class="text-center">
                         <div
                           class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
@@ -290,7 +302,7 @@
                   <tbody>
                     <tr v-for="(file, key) in sprites" :key="key">
                       <td class="text-center">{{file[0].name}}</td>
-                      <td class="text-center">{{Math.round(file[0].size / 10240)}} MB</td>
+                      <td class="text-center">{{formatBytes(file[0].size)}}</td>
                       <td class="text-center">
                         <div
                           class="progress-bar progress-bar-striped progress-bar-animated bg-jav4free"
@@ -342,7 +354,8 @@ export default {
       idolTab: "",
       coverTab: "",
       vttTab: "",
-      spriteTab: ""
+      spriteTab: "",
+      isUploading: false
     };
   },
   async asyncData() {
@@ -367,7 +380,59 @@ export default {
       idolsData: idols.data.idols
     };
   },
+  beforeMount() {
+    window.addEventListener("beforeunload", this.preventNav);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("beforeunload", this.preventNav);
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.uploading) {
+      if (!window.confirm("Leave without finish uploads?")) {
+        return;
+      }
+    }
+    next();
+  },
+  computed: {
+    uploading() {
+      if (
+        this.javs.length > 0 ||
+        this.idols.length > 0 ||
+        this.covers.length > 0 ||
+        this.vtts.length > 0 ||
+        this.sprites.length > 0
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
   methods: {
+    preventNav(event) {
+      if (!this.uploading) return;
+      event.preventDefault();
+      event.returnValue = "";
+    },
+    formatBytes(a, b = 2) {
+      if (0 === a) return "0 Bytes";
+      const c = 0 > b ? 0 : b,
+        d = Math.floor(Math.log(a) / Math.log(1024));
+      return (
+        parseFloat((a / Math.pow(1024, d)).toFixed(c)) +
+        " " +
+        ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]
+      );
+    },
+    clearFiles() {
+      this.javs = [];
+      this.covers = [];
+      this.idols = [];
+      this.vtts = [];
+      this.sprites = [];
+    },
     changeJavTab() {
       if (this.javTab != "active") {
         this.javTab = "active";
