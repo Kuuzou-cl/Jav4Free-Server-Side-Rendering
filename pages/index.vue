@@ -1,6 +1,5 @@
 <template>
   <div>
-    <PopUp />
     <div v-if="$device.isDesktop" class="container-fluid">
       <PopUp />
       <div class="need-space"></div>
@@ -94,7 +93,6 @@
       </div>
     </div>
     <div v-if="$device.isMobile" class="container-fluid">
-      <PopUp />
       <div class="need-space"></div>
       <div class="container-fluid">
         <div class="row justify-content-center">
