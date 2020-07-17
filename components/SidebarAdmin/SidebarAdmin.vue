@@ -91,6 +91,7 @@ export default {
     async logout() {
       try {
         await this.$store.dispatch("logout");
+        this.$router.push({ path: "/" });
       } catch (e) {}
     }
   }
