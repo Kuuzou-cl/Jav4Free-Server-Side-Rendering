@@ -80,17 +80,17 @@
         <div class="log-navbar">
           <div class="row width-fix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto text-center">
-              <nuxt-link to="/login" tag="div" class="signin" v-if="!$store.state.authUser">
+              <nuxt-link to="/login" tag="div" class="signin" v-if="!$store.state.token">
                 Sign In
                 <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
               </nuxt-link>
-              <nuxt-link to="/dashboard" tag="div" class="signin" v-if="$store.state.authUser">
+              <nuxt-link to="/dashboard" tag="div" class="signin" v-if="$store.state.token">
                 Account
                 <font-awesome-icon :icon="['fas', 'user-astronaut']" class="icon-navbar" />
               </nuxt-link>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto text-center">
-              <div class="signin" v-if="$store.state.authUser" @click="logout()">
+              <div class="signin" v-if="$store.state.token" @click="logout()">
                 Log Out
                 <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="icon-navbar" />
               </div>

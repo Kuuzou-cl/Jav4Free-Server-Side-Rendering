@@ -16,7 +16,7 @@
                   </svg>
                 </button>
                 <vue-plyr :options="playerOptions">
-                  <video preload="metadata" controls :poster="jav.imageIndexUrl">
+                  <video controls :poster="jav.imageIndexUrl" crossorigin playsinline>
                     <source :src="jav.url" type="video/mp4" />
                   </video>
                 </vue-plyr>
@@ -122,8 +122,8 @@
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
         <div class="row justify-content-center">
-            <MobileAd01 />
-          </div>
+          <MobileAd01 />
+        </div>
         <div class="row">
           <div class="container-jav">
             <vue-plyr :options="playerOptions">
@@ -352,8 +352,7 @@ export default {
         iosNative: true,
         container: null
       },
-      controls: controls,
-      ads:{ enabled:true,  tagUrl:'https://lologhfd.com/ceef/gdt3g0/tbt/1769742/tlk.xml'}
+      controls: controls
     };
     return {
       titleJ: jav.data.jav.code,
