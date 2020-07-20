@@ -5,7 +5,6 @@ const cookies = new Cookies();
 
 export const state = () => ({
   authUser: null,
-  admin: false,
   token: null,
   history: [],
   favorites: [],
@@ -91,11 +90,6 @@ export const mutations = {
         path: '/',
         maxAge: 60 * 60 * 24 * 7
       })
-      state.admin = user.data.userState
-      this.$cookies.set('userState', user.data.userState, {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 7
-      })
       state.token = user.data.token
       this.$cookies.set('token', user.data.token, {
         path: '/',
@@ -104,11 +98,6 @@ export const mutations = {
     } else {
       state.authUser = null
       this.$cookies.set('user', null, {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 7
-      })
-      state.admin = false
-      this.$cookies.set('userState', false, {
         path: '/',
         maxAge: 60 * 60 * 24 * 7
       })
@@ -179,7 +168,6 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ commit, state }, { req }) {
     const cookieUser = this.$cookies.get('user');
-    const cookieUserState = this.$cookies.get('userState');
     const cookieToken = this.$cookies.get('token');
     const cookieHistory = this.$cookies.get('history');
     const cookieFavorites = this.$cookies.get('favorites');
@@ -187,7 +175,6 @@ export const actions = {
       let userData = {
         "data": {
           "user": cookieUser,
-          "userState": cookieUserState,
           "token": cookieToken
         }
       }

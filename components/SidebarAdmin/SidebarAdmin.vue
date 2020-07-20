@@ -1,10 +1,11 @@
 <template>
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center">
-      <div class="sidebar-brand-text mx-3">
-        <nuxt-link :to="'/dashboard'">Dashboard Home</nuxt-link>
-      </div>
-    </a>
+    <nuxt-link
+      :to="'/dashboard'"
+      class="sidebar-brand d-flex align-items-center justify-content-center"
+    >
+      <div class="sidebar-brand-text mx-3">Dashboard Home</div>
+    </nuxt-link>
     <hr class="sidebar-divider my-0" />
     <li class="nav-item active">
       <nuxt-link :to="'/'" class="nav-link">
