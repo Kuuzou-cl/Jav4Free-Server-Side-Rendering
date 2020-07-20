@@ -1,5 +1,5 @@
 import axios from "axios";
-export default async function ({ store, error }) {
+export default async function ({ redirect , store, error }) {
   if (!store.state.token) {
     error({
       message: 'You are not connected',
@@ -13,10 +13,8 @@ export default async function ({ store, error }) {
       }
     });
     if (!userAlive.data.alive) {
-      error({
-        message: 'Token not valid!',
-        statusCode: 403
-      })
+      store.dispatch("logout");
+      return redirect('/')
     }
   }
 }
