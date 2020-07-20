@@ -108,7 +108,11 @@ export default {
         hidden: false
       };
       let response = await axios
-        .patch("https://jav.souzou.dev/jav4free/idols/" + this.idol._id, obj)
+        .patch("https://jav.souzou.dev/jav4free/idols/" + this.idol._id, obj, {
+          headers: {
+            "x-access-token": this.$store.state.token
+          }
+        })
         .catch(e => {
           console.log(e);
         });

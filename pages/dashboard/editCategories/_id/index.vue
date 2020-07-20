@@ -96,7 +96,12 @@ export default {
       let response = await axios
         .patch(
           "https://jav.souzou.dev/jav4free/categories/" + this.category._id,
-          obj
+          obj,
+          {
+            headers: {
+              "x-access-token": this.$store.state.token
+            }
+          }
         )
         .catch(e => {
           console.log(e);

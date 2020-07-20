@@ -315,7 +315,11 @@ export default {
         idols: this.jav.idols
       };
       let response = await axios
-        .patch("https://jav.souzou.dev/jav4free/javs/" + this.jav._id, obj)
+        .patch("https://jav.souzou.dev/jav4free/javs/" + this.jav._id, obj, {
+          headers: {
+            "x-access-token": this.$store.state.token
+          }
+        })
         .catch(e => {
           console.log(e);
         });

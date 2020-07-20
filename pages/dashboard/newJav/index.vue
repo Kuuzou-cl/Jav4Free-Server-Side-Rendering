@@ -317,7 +317,11 @@ export default {
         idols: this.javIdols
       };
       let response = await axios
-        .post("https://jav.souzou.dev/jav4free/javs/newJav/", obj)
+        .post("https://jav.souzou.dev/jav4free/javs/newJav/", obj, {
+          headers: {
+            "x-access-token": this.$store.state.token
+          }
+        })
         .catch(e => {
           console.log(e);
         });

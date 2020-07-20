@@ -106,7 +106,11 @@ export default {
   methods: {
     async deleteCat(_id) {
       let message = await axios
-        .delete("https://jav.souzou.dev/jav4free/categories/" + _id)
+        .delete("https://jav.souzou.dev/jav4free/categories/" + _id, {
+          headers: {
+            "x-access-token": this.$store.state.token
+          }
+        })
         .catch(e => {
           console.log(e);
         });

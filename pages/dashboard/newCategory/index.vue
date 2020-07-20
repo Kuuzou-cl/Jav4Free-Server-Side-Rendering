@@ -41,10 +41,7 @@
                 <table class="table table-hover text-center">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="t-header"
-                      >Pending Javs ({{this.categories.length}})</th>
+                      <th scope="col" class="t-header">Pending Javs ({{this.categories.length}})</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -106,7 +103,11 @@ export default {
         name: this.catName
       };
       let response = await axios
-        .post("https://jav.souzou.dev/jav4free/categories/newCategory/", obj)
+        .post("https://jav.souzou.dev/jav4free/categories/newCategory/", obj, {
+          headers: {
+            "x-access-token": this.$store.state.token
+          }
+        })
         .catch(e => {
           console.log(e);
         });

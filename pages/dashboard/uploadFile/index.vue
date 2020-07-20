@@ -163,19 +163,13 @@
           <div class="row justify-content-center">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">{{this.progress}}</div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
-              <button
-                class="btn btn-upload-admin"
-                v-on:click="clearFiles()"
-              >
+              <button class="btn btn-upload-admin" v-on:click="clearFiles()">
                 Clear All Files
                 <font-awesome-icon :icon="['fas', 'eraser']" />
               </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
-              <button
-                class="btn btn-upload-admin"
-                v-on:click="submitFiles()"
-              >
+              <button class="btn btn-upload-admin" v-on:click="submitFiles()">
                 Upload All Files
                 <font-awesome-icon :icon="['fas', 'upload']" />
               </button>
@@ -490,14 +484,23 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post("https://jav.souzou.dev/jav4free/uploads/upJav", formData, {
-            onUploadProgress: uploadEvent => {
-              file[1] = Math.round(
-                (uploadEvent.loaded / uploadEvent.total) * 100
-              );
-              this.progress = file[1];
+          .post(
+            "https://jav.souzou.dev/jav4free/uploads/upJav",
+            formData,
+            {
+              headers: {
+                "x-access-token": this.$store.state.token
+              }
+            },
+            {
+              onUploadProgress: uploadEvent => {
+                file[1] = Math.round(
+                  (uploadEvent.loaded / uploadEvent.total) * 100
+                );
+                this.progress = file[1];
+              }
             }
-          })
+          )
           .then(response => {
             this.javs.forEach((jav, index2) => {
               if (jav[0].name == file[0].name) {
@@ -522,14 +525,23 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post("https://jav.souzou.dev/jav4free/uploads/upCover", formData, {
-            onUploadProgress: uploadEvent => {
-              file[1] = Math.round(
-                (uploadEvent.loaded / uploadEvent.total) * 100
-              );
-              this.progress = file[1];
+          .post(
+            "https://jav.souzou.dev/jav4free/uploads/upCover",
+            formData,
+            {
+              headers: {
+                "x-access-token": this.$store.state.token
+              }
+            },
+            {
+              onUploadProgress: uploadEvent => {
+                file[1] = Math.round(
+                  (uploadEvent.loaded / uploadEvent.total) * 100
+                );
+                this.progress = file[1];
+              }
             }
-          })
+          )
           .then(response => {
             this.covers.forEach((cover, index2) => {
               if (cover[0].name == file[0].name) {
@@ -554,14 +566,23 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post("https://jav.souzou.dev/jav4free/uploads/upIdol", formData, {
-            onUploadProgress: uploadEvent => {
-              file[1] = Math.round(
-                (uploadEvent.loaded / uploadEvent.total) * 100
-              );
-              this.progress = file[1];
+          .post(
+            "https://jav.souzou.dev/jav4free/uploads/upIdol",
+            formData,
+            {
+              headers: {
+                "x-access-token": this.$store.state.token
+              }
+            },
+            {
+              onUploadProgress: uploadEvent => {
+                file[1] = Math.round(
+                  (uploadEvent.loaded / uploadEvent.total) * 100
+                );
+                this.progress = file[1];
+              }
             }
-          })
+          )
           .then(response => {
             this.idols.forEach((idol, index2) => {
               if (idol[0].name == file[0].name) {
@@ -586,14 +607,23 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post("https://jav.souzou.dev/jav4free/uploads/upVtt", formData, {
-            onUploadProgress: uploadEvent => {
-              file[1] = Math.round(
-                (uploadEvent.loaded / uploadEvent.total) * 100
-              );
-              this.progress = file[1];
+          .post(
+            "https://jav.souzou.dev/jav4free/uploads/upVtt",
+            formData,
+            {
+              headers: {
+                "x-access-token": this.$store.state.token
+              }
+            },
+            {
+              onUploadProgress: uploadEvent => {
+                file[1] = Math.round(
+                  (uploadEvent.loaded / uploadEvent.total) * 100
+                );
+                this.progress = file[1];
+              }
             }
-          })
+          )
           .then(response => {
             this.vtts.forEach((vtt, index2) => {
               if (vtt[0].name == file[0].name) {
@@ -618,14 +648,23 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post("https://jav.souzou.dev/jav4free/uploads/upSprite", formData, {
-            onUploadProgress: uploadEvent => {
-              file[1] = Math.round(
-                (uploadEvent.loaded / uploadEvent.total) * 100
-              );
-              this.progress = file[1];
+          .post(
+            "https://jav.souzou.dev/jav4free/uploads/upSprite",
+            formData,
+            {
+              headers: {
+                "x-access-token": this.$store.state.token
+              }
+            },
+            {
+              onUploadProgress: uploadEvent => {
+                file[1] = Math.round(
+                  (uploadEvent.loaded / uploadEvent.total) * 100
+                );
+                this.progress = file[1];
+              }
             }
-          })
+          )
           .then(response => {
             this.sprites.forEach((sprite, index2) => {
               if (sprite[0].name == file[0].name) {

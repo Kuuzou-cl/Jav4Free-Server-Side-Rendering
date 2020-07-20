@@ -172,7 +172,11 @@ export default {
         hidden: this.hidden
       };
       let response = await axios
-        .post("https://jav.souzou.dev/jav4free/idols/newIdol/", obj)
+        .post("https://jav.souzou.dev/jav4free/idols/newIdol/", obj, {
+          headers: {
+            "x-access-token": this.$store.state.token
+          }
+        })
         .catch(e => {
           console.log(e);
         });
