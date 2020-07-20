@@ -196,6 +196,7 @@
                     <a class="nav-link" :class="spriteTab">Sprites</a>
                   </li>
                 </ul>
+                <div>{{this.javs}}</div>
                 <table class="table table-hover" v-if="this.javTab == 'active'">
                   <tbody>
                     <tr v-for="(file, key) in javs" :key="key">
@@ -484,23 +485,17 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post(
-            "https://jav.souzou.dev/jav4free/uploads/upJav",
-            formData,
-            {
-              headers: {
-                "x-access-token": this.$store.state.token
-              }
+          .post("https://jav.souzou.dev/jav4free/uploads/upJav", formData, {
+            headers: {
+              "x-access-token": this.$store.state.token
             },
-            {
-              onUploadProgress: uploadEvent => {
-                file[1] = Math.round(
-                  (uploadEvent.loaded / uploadEvent.total) * 100
-                );
-                this.progress = file[1];
-              }
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+              this.progress = file[1];
             }
-          )
+          })
           .then(response => {
             this.javs.forEach((jav, index2) => {
               if (jav[0].name == file[0].name) {
@@ -525,23 +520,17 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post(
-            "https://jav.souzou.dev/jav4free/uploads/upCover",
-            formData,
-            {
-              headers: {
-                "x-access-token": this.$store.state.token
-              }
+          .post("https://jav.souzou.dev/jav4free/uploads/upCover", formData, {
+            headers: {
+              "x-access-token": this.$store.state.token
             },
-            {
-              onUploadProgress: uploadEvent => {
-                file[1] = Math.round(
-                  (uploadEvent.loaded / uploadEvent.total) * 100
-                );
-                this.progress = file[1];
-              }
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+              this.progress = file[1];
             }
-          )
+          })
           .then(response => {
             this.covers.forEach((cover, index2) => {
               if (cover[0].name == file[0].name) {
@@ -566,23 +555,17 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post(
-            "https://jav.souzou.dev/jav4free/uploads/upIdol",
-            formData,
-            {
-              headers: {
-                "x-access-token": this.$store.state.token
-              }
+          .post("https://jav.souzou.dev/jav4free/uploads/upIdol", formData, {
+            headers: {
+              "x-access-token": this.$store.state.token
             },
-            {
-              onUploadProgress: uploadEvent => {
-                file[1] = Math.round(
-                  (uploadEvent.loaded / uploadEvent.total) * 100
-                );
-                this.progress = file[1];
-              }
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+              this.progress = file[1];
             }
-          )
+          })
           .then(response => {
             this.idols.forEach((idol, index2) => {
               if (idol[0].name == file[0].name) {
@@ -607,23 +590,17 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post(
-            "https://jav.souzou.dev/jav4free/uploads/upVtt",
-            formData,
-            {
-              headers: {
-                "x-access-token": this.$store.state.token
-              }
+          .post("https://jav.souzou.dev/jav4free/uploads/upVtt", formData, {
+            headers: {
+              "x-access-token": this.$store.state.token
             },
-            {
-              onUploadProgress: uploadEvent => {
-                file[1] = Math.round(
-                  (uploadEvent.loaded / uploadEvent.total) * 100
-                );
-                this.progress = file[1];
-              }
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+              this.progress = file[1];
             }
-          )
+          })
           .then(response => {
             this.vtts.forEach((vtt, index2) => {
               if (vtt[0].name == file[0].name) {
@@ -648,23 +625,17 @@ export default {
         let formData = new FormData();
         formData.append("file", file[0], file[0].name);
         axios
-          .post(
-            "https://jav.souzou.dev/jav4free/uploads/upSprite",
-            formData,
-            {
-              headers: {
-                "x-access-token": this.$store.state.token
-              }
+          .post("https://jav.souzou.dev/jav4free/uploads/upSprite", formData, {
+            headers: {
+              "x-access-token": this.$store.state.token
             },
-            {
-              onUploadProgress: uploadEvent => {
-                file[1] = Math.round(
-                  (uploadEvent.loaded / uploadEvent.total) * 100
-                );
-                this.progress = file[1];
-              }
+            onUploadProgress: uploadEvent => {
+              file[1] = Math.round(
+                (uploadEvent.loaded / uploadEvent.total) * 100
+              );
+              this.progress = file[1];
             }
-          )
+          })
           .then(response => {
             this.sprites.forEach((sprite, index2) => {
               if (sprite[0].name == file[0].name) {
