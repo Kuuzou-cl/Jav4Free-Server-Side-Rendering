@@ -196,7 +196,6 @@
                     <a class="nav-link" :class="spriteTab">Sprites</a>
                   </li>
                 </ul>
-                <div>{{this.javs}}</div>
                 <table class="table table-hover" v-if="this.javTab == 'active'">
                   <tbody>
                     <tr v-for="(file, key) in javs" :key="key">
