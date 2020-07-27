@@ -40,10 +40,11 @@
       }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1600px) {
   .sitemap{
+    height: 3%;
     ul {
-        font-size: 9px;
+        font-size: 10px;
       }
   }
 }

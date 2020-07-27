@@ -55,6 +55,14 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="form-row">
+                      <label for="inputJav03">Hidden</label>
+                      <input type="checkbox" class="input-admin" id="inputJav03" v-model="hidden" />
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="need-space"></div>
               <div class="container">
@@ -176,7 +184,7 @@ export default {
       javName: "",
       javCode: "",
       javDuration: "",
-      hidden: false,
+      hidden: true,
       javCategories: [],
       javIdols: [],
       viewCategories: false,
