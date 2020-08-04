@@ -203,6 +203,8 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch("addCrumb", { page: "Home", route: "" });
+  },
+  methods:{
   }
 };
 </script>

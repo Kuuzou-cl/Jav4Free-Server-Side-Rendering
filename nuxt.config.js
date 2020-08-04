@@ -37,7 +37,8 @@ module.exports = {
   */
   plugins: [
     '~plugins/bootstrap.js',
-    '~/plugins/vue-plyr'
+    '~/plugins/vue-plyr',
+    { src: '~/plugins/vue-touch2', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules

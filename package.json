@@ -29,6 +29,7 @@
     "popper.js": "^1.16.1",
     "universal-cookie": "^4.0.3",
     "vue-plyr": "^6.0.4",
+    "vue2-touch-events": "^2.2.1",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-dark box2">
+  <div @contextmenu.prevent class="card bg-dark box2">
     <div class="loading-box"></div>
     <div class="box2-media">
       <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
@@ -24,10 +24,10 @@
 export default {
   name: "CardJav2",
   props: {
-    dataJav: Object
+    dataJav: Object,
   },
   methods: {
-    getName: function(_name) {
+    getName: function (_name) {
       let newName;
       if (_name.length > 45) {
         newName = _name.slice(0, 45) + " ...";
@@ -36,17 +36,17 @@ export default {
         return _name;
       }
     },
-    restart: function() {
-      $(".video-jav").on("mouseout", function(event) {
+    restart: function () {
+      $(".video-jav").on("mouseout", function (event) {
         this.load();
       });
     },
-    start: function() {
-      $(".video-jav").on("mouseover", function(event) {
+    start: function () {
+      $(".video-jav").on("mouseover", function (event) {
         this.play();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
