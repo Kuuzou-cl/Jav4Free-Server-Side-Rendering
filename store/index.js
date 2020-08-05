@@ -166,12 +166,22 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit({ commit, state }, { req }) {
+  async nuxtServerInit({ commit, state }, { req }) {
     const cookieUser = this.$cookies.get('user');
     const cookieToken = this.$cookies.get('token');
     const cookieHistory = this.$cookies.get('history');
     const cookieFavorites = this.$cookies.get('favorites');
-    if (cookieUser) {
+
+    let user = cookieUser;
+    const userAlive = await axios.post('https://jav.souzou.dev/jav4free/user/currentAlive', { user }, {
+      headers: {
+        'x-access-token': cookieToken
+      }
+    });
+
+    if (!userAlive.data.alive) {
+      commit('SET_USER', null)
+    }else{
       let userData = {
         "data": {
           "user": cookieUser,
@@ -179,14 +189,14 @@ export const actions = {
         }
       }
       commit('SET_USER', userData)
-    } else {
-      commit('SET_USER', null)
     }
+
     if (cookieHistory) {
       commit('SET_HISTORY', cookieHistory);
     } else {
       commit('SET_HISTORY', null);
     }
+
     if (cookieFavorites) {
       commit('SET_FAVORITES', cookieFavorites);
     } else {
