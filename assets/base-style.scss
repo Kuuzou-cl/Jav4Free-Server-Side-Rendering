@@ -117,23 +117,13 @@ body
     color:#f8faff !important;
     border-color: #f8faff !important;
     box-shadow: none !important;
+    border-radius: 0px;
 }
 
 .btn-more:hover{
     color: #E8175D !important;
     border-color: #E8175D !important;
-    
-}
-
-.custom-input{
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #E8175D;
-    color: #f8faff;
-    letter-spacing: 2px;
-    text-align: left;
-    margin: 2% 0% !important;
-    box-shadow: none !important;
+    background-color: #000000;
 }
 
 .pagination{

@@ -80,10 +80,7 @@
         <div class="log-navbar">
           <div class="row width-fix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto text-center">
-              <nuxt-link to="/login" tag="div" class="signin" v-if="!$store.state.token">
-                Sign In
-                <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
-              </nuxt-link>
+              <Login />
               <nuxt-link to="/dashboard" tag="div" class="signin" v-if="$store.state.token">
                 Account
                 <font-awesome-icon :icon="['fas', 'user-astronaut']" class="icon-navbar" />
@@ -103,11 +100,15 @@
 </template>
 
 <script>
+import Login from "~/components/LoginModal/Login.vue";
 export default {
   name: "Navbar",
+  components: {
+    Login,
+  },
   data() {
     return {
-      query: ""
+      query: "",
     };
   },
   methods: {
@@ -123,8 +124,8 @@ export default {
         await this.$store.dispatch("logout");
         this.$router.push({ path: "/" });
       } catch (e) {}
-    }
-  }
+    },
+  },
 };
 </script>
 

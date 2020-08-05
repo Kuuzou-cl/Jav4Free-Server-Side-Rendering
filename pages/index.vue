@@ -148,14 +148,14 @@ import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 
 export default {
-  layout: ctx => (ctx.isMobile ? "mobile" : "default"),
+  layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
     PopUp,
     Crumbs,
     CardJav,
     CardIdol,
     CardJavMobile,
-    CardIdolMobile
+    CardIdolMobile,
   },
   head() {
     return {
@@ -163,34 +163,34 @@ export default {
         {
           name: "description",
           content:
-            "Jav4Free, watch every japanese adult video in HD and Free, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
-        }
-      ]
+            "Jav4Free, watch every japanese adult video in HD and Free, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
+        },
+      ],
     };
   },
   async asyncData() {
     const cat1 = await axios
       .get("https://jav.souzou.dev/jav4free/categories/getRandomCategory")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     const javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/getLatestJavs")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     const javsMobile = await axios
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
-          quantity: 8
-        }
+          quantity: 8,
+        },
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     const idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     return {
@@ -198,14 +198,13 @@ export default {
       javsCategory1: cat1.data.javs,
       javs: javs.data.javs,
       javsMobile: javsMobile.data.javs,
-      idols: idols.data.idols
+      idols: idols.data.idols,
     };
   },
   beforeCreate() {
     this.$store.dispatch("addCrumb", { page: "Home", route: "" });
   },
-  methods:{
-  }
+  methods: {},
 };
 </script>
 

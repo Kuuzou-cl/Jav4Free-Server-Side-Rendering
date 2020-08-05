@@ -98,12 +98,8 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     vendor: ['jquery', 'bootstrap'],
     plugins: [
-      // set shortcuts as global for bootstrap
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',

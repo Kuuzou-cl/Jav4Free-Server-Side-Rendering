@@ -83,6 +83,7 @@
     color: #f8faff;
     font-size: 9px;
     border: 1px solid #E8175D;
+    border-radius: 0px;
     width: 100%;
     text-transform: uppercase;
     p{
@@ -104,10 +105,8 @@
 
 .btn-options:hover{
     color: #f8faff;
-    background-color: #444444;
+    background-color: #000000;
 }
-
-
 
 .jav-extra{
     padding: 0.5% 2%;
