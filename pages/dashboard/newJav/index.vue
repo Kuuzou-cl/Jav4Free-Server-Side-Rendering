@@ -143,22 +143,97 @@
               </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-              <div class="tableFixHead">
-                <table class="table table-hover text-center">
-                  <thead>
-                    <tr>
-                      <th
-                        scope="col"
-                        class="t-header"
-                      >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
-                      <th>{{jav}}</th>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="row justify-content-center">
+                <button
+                  class="btn btn-warning"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#modalPending"
+                >Pending Videos</button>
+                <div
+                  class="modal fade"
+                  id="modalPending"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="modalPendingLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalPendingLabel">Pending Videos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="tableFixHead">
+                              <table class="table table-hover text-center">
+                                <tbody>
+                                  <tr v-for="(jav, key) in spaceCheck" :key="key">
+                                    <th>{{jav}}</th>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="need-space"></div>
+              <div class="row justify-content-center">
+                <button
+                  class="btn btn-warning"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#modalDB"
+                >Database</button>
+                <div
+                  class="modal fade"
+                  id="modalDB"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="modalDBLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalDBLabel">Videos Database</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="tableFixHead">
+                              <table class="table table-hover text-center">
+                                <tbody>
+                                  <tr v-for="(jav, key) in javs" :key="key">
+                                    <th>{{jav.code}}</th>
+                                    <th><button class="btn btn-warning" @click="loadDataVideo(jav._id)">Load Data</button></th>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -177,7 +252,7 @@ export default {
   layout: "admin",
   name: "NewJav",
   components: {
-    SidebarAdmin
+    SidebarAdmin,
   },
   data() {
     return {
@@ -194,7 +269,7 @@ export default {
       categories: null,
       idols: null,
       filteredCategories: [],
-      filteredIdols: []
+      filteredIdols: [],
     };
   },
   async asyncData() {
@@ -203,22 +278,22 @@ export default {
 
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let categories = await axios
       .get("https://jav.souzou.dev/jav4free/categories/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let spaceData = await axios
       .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     var result = JSON.parse(convert.xml2json(spaceData.data, options));
@@ -226,39 +301,25 @@ export default {
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
-      result: result
+      result: result,
     };
   },
   methods: {
-    spaceCheck(space, javs) {
-      let spaceData = [];
-
-      space.elements[0].elements.forEach(element => {
-        if (element.name === "Contents") {
-          element.elements.forEach(obj => {
-            if (obj.name === "Key") {
-              let javNameData = obj.elements[0].text.split("/");
-              if (javNameData[1]) {
-                let javName = javNameData[1].split(".");
-                spaceData.push(javName[0]);
-              }
-            }
-          });
-        }
+    async loadDataVideo(_id){
+      let jav = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/" + _id)
+      .catch(e => {
+        console.log(e);
       });
-
-      let pending = [];
-
-      spaceData.forEach(r => {
-        if (!javs.some(item => item.code === r)) {
-          pending.push(r);
-        }
-      });
-
-      return pending;
+      let javData = jav.data.jav;
+      this.javName = javData.name; 
+      this.javCode = javData.code;
+      this.javDuration = javData.duration
+      this.javCategories = javData.categories;
+      this.javIdols = javData.idols;
     },
-    addCategory: function(_id) {
-      const exist = this.javCategories.find(category => category === _id);
+    addCategory: function (_id) {
+      const exist = this.javCategories.find((category) => category === _id);
       if (exist) {
         for (var i = 0; i < this.javCategories.length; i++) {
           if (this.javCategories[i] === _id) {
@@ -272,16 +333,16 @@ export default {
         this.searchCategories = "";
       }
     },
-    checkCategory: function(_id) {
-      const exist = this.javCategories.find(category => category === _id);
+    checkCategory: function (_id) {
+      const exist = this.javCategories.find((category) => category === _id);
       if (exist) {
         return false;
       } else {
         return true;
       }
     },
-    addIdol: function(_id) {
-      const exist = this.javIdols.find(idol => idol === _id);
+    addIdol: function (_id) {
+      const exist = this.javIdols.find((idol) => idol === _id);
       if (exist) {
         for (var i = 0; i < this.javIdols.length; i++) {
           if (this.javIdols[i] === _id) {
@@ -295,8 +356,8 @@ export default {
         this.searchIdols = "";
       }
     },
-    checkIdol: function(_id) {
-      const exist = this.javIdols.find(idol => idol === _id);
+    checkIdol: function (_id) {
+      const exist = this.javIdols.find((idol) => idol === _id);
       if (exist) {
         return false;
       } else {
@@ -322,15 +383,15 @@ export default {
           "-static.jpg",
         hidden: this.hidden,
         categories: this.javCategories,
-        idols: this.javIdols
+        idols: this.javIdols,
       };
       let response = await axios
         .post("https://jav.souzou.dev/jav4free/javs/newJav/", obj, {
           headers: {
-            "x-access-token": this.$store.state.token
-          }
+            "x-access-token": this.$store.state.token,
+          },
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
       this.$router.push({ path: "/dashboard" });
@@ -350,12 +411,12 @@ export default {
         this.viewIdols = true;
         this.viewCategories = false;
       }
-    }
+    },
   },
   computed: {
     filterCategories() {
       this.filteredCategories = [];
-      this.categories.forEach(category => {
+      this.categories.forEach((category) => {
         if (
           category.name
             .toLowerCase()
@@ -368,14 +429,41 @@ export default {
     },
     filterIdols() {
       this.filteredIdols = [];
-      this.idols.forEach(idol => {
+      this.idols.forEach((idol) => {
         if (idol.name.toLowerCase().includes(this.searchIdols.toLowerCase())) {
           this.filteredIdols.push(idol);
         }
       });
       return this.filteredIdols;
-    }
-  }
+    },
+    spaceCheck() {
+      let spaceData = [];
+
+      this.result.elements[0].elements.forEach((element) => {
+        if (element.name === "Contents") {
+          element.elements.forEach((obj) => {
+            if (obj.name === "Key") {
+              let javNameData = obj.elements[0].text.split("/");
+              if (javNameData[1]) {
+                let javName = javNameData[1].split(".");
+                spaceData.push(javName[0]);
+              }
+            }
+          });
+        }
+      });
+
+      let pending = [];
+
+      spaceData.forEach((r) => {
+        if (!this.javs.some((item) => item.code === r)) {
+          pending.push(r);
+        }
+      });
+
+      return pending;
+    },
+  },
 };
 </script>
 
