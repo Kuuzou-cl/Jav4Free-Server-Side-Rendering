@@ -167,21 +167,63 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit, state }, { req }) {
-    const cookieUser = this.$cookies.get('user');
-    const cookieToken = this.$cookies.get('token');
-    const cookieHistory = this.$cookies.get('history');
-    const cookieFavorites = this.$cookies.get('favorites');
 
-    let user = cookieUser;
-    const userAlive = await axios.post('https://jav.souzou.dev/jav4free/user/currentAlive', { user }, {
-      headers: {
-        'x-access-token': cookieToken
-      }
-    });
+    let cookieUser;
+    if (this.$cookies.get('user')) {
+      cookieUser = this.$cookies.get('user');
+    } else {
+      cookieUser = null;
+      this.$cookies.set('user', null, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+    }
+    let cookieToken;
+    if (this.$cookies.get('token')) {
+      cookieToken = this.$cookies.get('token');
+    } else {
+      cookieToken = null;
+      this.$cookies.set('token', null, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+    }
+    let cookieHistory;
+    if (this.$cookies.get('history')) {
+      cookieHistory = this.$cookies.get('history');
+    } else {
+      cookieHistory = null;
+      this.$cookies.set('history', null, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+    }
+    let cookieFavorites;
+    if (this.$cookies.get('favorites')) {
+      cookieFavorites = this.$cookies.get('favorites');
+    } else {
+      cookieFavorites = null;
+      this.$cookies.set('favorites', null, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+    }
 
-    if (!userAlive.data.alive) {
-      commit('SET_USER', null)
+    let userAlive;
+
+    if (cookieToken && cookieUser) {
+      userAlive = await axios.post('https://jav.souzou.dev/jav4free/user/currentAlive', { cookieUser }, {
+        headers: {
+          'x-access-token': cookieToken
+        }
+      });
     }else{
+      userAlive = null;
+    }
+
+    if (!userAlive) {
+      commit('SET_USER', null)
+    } else {
       let userData = {
         "data": {
           "user": cookieUser,
