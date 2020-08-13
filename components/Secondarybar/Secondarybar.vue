@@ -32,18 +32,6 @@
             <div class="title-sidebar">History</div>
           </nuxt-link>
         </li>
-        <li v-if="$store.state.authUser" class="navbar-nav-link">
-          <nuxt-link :to="'/dashboard'">
-            <font-awesome-icon :icon="['fas', 'edit']" class="icon-sidebar" />
-            <div class="title-sidebar">Dashboard</div>
-          </nuxt-link>
-        </li>
-        <li v-if="$store.state.authUser" @click="logout()" class="navbar-nav-link">
-          <nuxt-link to="/">
-            <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="icon-sidebar" />
-            <div class="title-sidebar">Log Out</div>
-          </nuxt-link>
-        </li>
       </ul>
     </div>
   </div>
@@ -52,11 +40,6 @@
 <script>
 export default {
   methods: {
-    async logout() {
-      try {
-        await this.$store.dispatch("logout");
-      } catch (e) {}
-    }
   }
 };
 </script>

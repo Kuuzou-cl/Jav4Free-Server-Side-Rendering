@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Sitemap v-if="$device.isDesktop"/>
-    <Navbar v-if="$device.isDesktop"/>
-    <NavbarMobile v-if="$device.isMobileOrTablet" />
+    <Sitemap/>
+    <Navbar/>
+    <Secondarybar />
     <nuxt />
     <Footer />
   </div>

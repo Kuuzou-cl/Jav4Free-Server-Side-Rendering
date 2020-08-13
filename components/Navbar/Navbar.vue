@@ -19,7 +19,7 @@
         <div class="search-navbar">
           <div class="row width-fix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="input-group mb-3">
+              <div class="input-group">
                 <input
                   @keyup.enter="search"
                   v-model="query"
@@ -38,42 +38,6 @@
                   </span>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row width-fix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto text-center">
-              <ul>
-                <li class="navbar-nav-link">
-                  <nuxt-link :to="'/javs/1'">
-                    <font-awesome-icon :icon="['fab', 'youtube']" class="icon-sidebar" />
-                    <div class="title-sidebar">Javs</div>
-                  </nuxt-link>
-                </li>
-                <li class="navbar-nav-link">
-                  <nuxt-link :to="'/categories'">
-                    <font-awesome-icon :icon="['fas', 'layer-group']" class="icon-sidebar" />
-                    <div class="title-sidebar">Categories</div>
-                  </nuxt-link>
-                </li>
-                <li class="navbar-nav-link">
-                  <nuxt-link :to="'/idols/1'">
-                    <font-awesome-icon :icon="['fas', 'venus']" class="icon-sidebar" />
-                    <div class="title-sidebar">Idols</div>
-                  </nuxt-link>
-                </li>
-                <li class="navbar-nav-link">
-                  <nuxt-link :to="'/favorites/1'">
-                    <font-awesome-icon :icon="['fas', 'heart']" class="icon-sidebar" />
-                    <div class="title-sidebar">Favorites</div>
-                  </nuxt-link>
-                </li>
-                <li class="navbar-nav-link">
-                  <nuxt-link :to="'/history/1'">
-                    <font-awesome-icon :icon="['fas', 'history']" class="icon-sidebar" />
-                    <div class="title-sidebar">History</div>
-                  </nuxt-link>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
