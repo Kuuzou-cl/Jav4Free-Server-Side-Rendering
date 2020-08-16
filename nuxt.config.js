@@ -16,6 +16,9 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ],
     script: [
+      { type: 'application/javascript', src: 'http://js.juicyads.com/jam_min.js' },
+      { type: 'application/javascript', innerHTML: 'window.onload=check_mobile(22598,246527)', charset: 'utf-8' },
+      { type: 'application/javascript', src: '//libedgolart.com/t/9/fret/meow4/1768851/brt.js' }
     ]
   },
   /*
