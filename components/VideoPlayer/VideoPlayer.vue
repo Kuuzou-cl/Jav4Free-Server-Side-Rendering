@@ -10,24 +10,29 @@
 export default {
   name: "VideoPlayer",
   props: {
-    jav: Object
+    jav: Object,
   },
   data() {
     return {
       playerOptions: {
+        ads: {
+          enabled: true,
+          tagUrl:
+            "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+        },
         previewThumbnails: {
           enabled: true,
           src:
             "https://javdata.sfo2.cdn.digitaloceanspaces.com/vtts/" +
             this.jav.code +
-            "_thumbs.vtt"
+            "_thumbs.vtt",
         },
         disableContextMenu: true,
         fullscreen: {
           enabled: true,
           fallback: true,
           iosNative: true,
-          container: null
+          container: null,
         },
         controls: `
       <div class="plyr__controls">
@@ -92,10 +97,10 @@ export default {
             </svg>
             <span class="label--pressed plyr__sr-only">Exit fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter fullscreen</span>
         </button>
-      </div>`
-      }
+      </div>`,
+      },
     };
-  }
+  },
 };
 </script>
 
