@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="$device.isDesktop" class="container-fluid">
-      <PopUp />
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
@@ -140,7 +139,6 @@
 <script>
 import axios from "axios";
 
-import PopUp from "~/components/PopUpAd/popUpAd.vue";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "../components/Cards/CardJav00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
@@ -150,7 +148,6 @@ import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    PopUp,
     Crumbs,
     CardJav,
     CardIdol,

@@ -5,7 +5,6 @@
       <div class="container-fluid">
         <div class="container content-jav">
           <div class="row justify-content-center">
-            <DesktopAd01 />
           </div>
           <div class="row">
             <div :class="resize">
@@ -85,12 +84,10 @@
               </div>
             </div>
             <div :class="resizeToHide">
-              <DesktopAd03 />
             </div>
           </div>
           <div class="need-space"></div>
           <div class="row justify-content-center">
-            <DesktopAd02 />
           </div>
           <div class="need-space"></div>
           <div class="row">
@@ -118,7 +115,6 @@
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
         <div class="row justify-content-center">
-          <MobileAd01 />
         </div>
         <div class="row">
           <div class="container-jav">
@@ -208,10 +204,6 @@ import axios from "axios";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
-import DesktopAd01 from "~/components/DesktopAd/DesktopAd01";
-import DesktopAd02 from "~/components/DesktopAd/DesktopAd02";
-import DesktopAd03 from "~/components/DesktopAd/DesktopAd03";
-import MobileAd01 from "~/components/DesktopAd/MobileAd01";
 import VideoPlayer from "~/components/VideoPlayer/VideoPlayer";
 
 export default {
@@ -221,10 +213,6 @@ export default {
     Crumbs,
     CardJav,
     CardJavMobile,
-    DesktopAd01,
-    DesktopAd02,
-    DesktopAd03,
-    MobileAd01,
     VideoPlayer
   },
   data() {
