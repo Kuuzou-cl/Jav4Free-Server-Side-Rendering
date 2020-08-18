@@ -4,7 +4,7 @@
       <Crumbs />
       <div class="container-fluid">
         <div class="container content-jav">
-          <div class="row justify-content-center"></div>
+          <div class="row justify-content-center"><DesktopAdBanner /></div>
           <div class="row">
             <div class="col-lg-9">
               <div class="container-jav">
@@ -109,7 +109,7 @@
     <div v-if="$device.isMobile" class="container-fluid">
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
-        <div class="row justify-content-center"></div>
+        <div class="row justify-content-center"><MobileAdBanner /></div>
         <div class="row">
           <div class="container-jav">
             <FluidPlayer v-bind:jav="jav" />
@@ -165,22 +165,8 @@
             </div>
           </div>
         </div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="row justify-content-center recommended-title">
-              <h3>Recommended videos</h3>
-            </div>
-            <div class="container-recommended-mobile">
+          <div class="container-recommended-mobile">
               <div class="row">
                 <div
                   v-for="jav in relatedJavs"
@@ -191,11 +177,7 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
       </div>
     </div>
   </div>
@@ -208,6 +190,8 @@ import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
 import VideoSlider from "~/components/ExoclickAds/VideoSlider.vue";
+import DesktopAdBanner from '~/components/ExoclickAds/DesktopAdBanner.vue';
+import MobileAdBanner from '~/components/ExoclickAds/MobileAdBanner.vue';
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 
 export default {
@@ -219,6 +203,8 @@ export default {
     CardJavMobile,
     VideoSlider,
     FluidPlayer,
+    DesktopAdBanner,
+    MobileAdBanner
   },
   data() {
     return {
