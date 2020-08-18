@@ -50,6 +50,7 @@ export default {
         ],
       },
       onBeforeXMLHttpRequest: (request) => {
+        request.withCredentials = false;
         console.log(request)
       },
     });
