@@ -1,6 +1,7 @@
 <template>
   <div>
     <div v-if="$device.isDesktop" class="container-fluid">
+      <Popunder />
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
@@ -144,6 +145,7 @@ import CardJav from "../components/Cards/CardJav00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
 import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
+import Popunder from '~/components/ExoclickAds/Popunder.vue'
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -153,6 +155,7 @@ export default {
     CardIdol,
     CardJavMobile,
     CardIdolMobile,
+    Popunder
   },
   head() {
     return {

@@ -11,12 +11,11 @@
 <script>
 import Sitemap from '~/components/Sitemap/Sitemap.vue';
 import Navbar from '~/components/Navbar/Navbar.vue';
-import NavbarMobile from '~/components/NavbarMobile/NavbarMobile.vue';
 import Secondarybar from '~/components/Secondarybar/Secondarybar.vue';
 import Footer from '~/components/Footer/Footer.vue';
 export default {
   components: {
-    Sitemap,Navbar,NavbarMobile,Secondarybar,Footer
+    Sitemap,Navbar,Secondarybar,Footer
   }
 }
 </script>

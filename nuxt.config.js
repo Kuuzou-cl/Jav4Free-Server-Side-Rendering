@@ -20,6 +20,9 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ],
     script: [
+      {
+        src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
+      }
     ]
   },
   /*
