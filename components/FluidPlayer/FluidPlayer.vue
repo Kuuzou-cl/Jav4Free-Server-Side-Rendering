@@ -40,18 +40,7 @@ export default {
             roll: "preRoll",
             vastTag:
               "https://syndication.realsrv.com/splash.php?idzone=3966138",
-          },
-          {
-            roll: "midRoll",
-            vastTag:
-              "https://syndication.realsrv.com/splash.php?idzone=3966138",
-            timer: 600,
-          },
-          {
-            roll: "postRoll",
-            vastTag:
-              "https://syndication.realsrv.com/splash.php?idzone=3966138",
-          },
+          }
         ],
       },
       onBeforeXMLHttpRequest: (request) => {
