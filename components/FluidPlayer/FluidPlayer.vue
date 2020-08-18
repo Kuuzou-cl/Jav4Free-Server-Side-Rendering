@@ -49,6 +49,9 @@ export default {
           },
         ],
       },
+      onBeforeXMLHttpRequest: (request) => {
+        console.log(request)
+      },
     });
   },
   destroyed() {
