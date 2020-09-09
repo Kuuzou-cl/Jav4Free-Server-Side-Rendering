@@ -93,13 +93,13 @@ export default {
       });
 
     let spaceDataJavs = await axios
-      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs&max-keys=10000")
       .catch(e => {
         console.log(e);
       });
     var result = JSON.parse(convert.xml2json(spaceDataJavs.data, options));
     let spaceDataIdols = await axios
-      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/")
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols&max-keys=10000")
       .catch(e => {
         console.log(e);
       });

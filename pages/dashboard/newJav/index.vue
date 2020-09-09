@@ -292,7 +292,7 @@ export default {
         console.log(e);
       });
     let spaceData = await axios
-      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs/")
+      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs&max-keys=10000")
       .catch((e) => {
         console.log(e);
       });

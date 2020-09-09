@@ -34,7 +34,6 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'plyr/dist/plyr.css',
     'bootstrap/dist/css/bootstrap.css'
   ],
   /*
@@ -42,7 +41,6 @@ module.exports = {
   */
   plugins: [
     '~plugins/bootstrap.js',
-    '~/plugins/vue-plyr',
     { src: '~/plugins/vue-touch2', ssr: false },
   ],
   /*
