@@ -34,6 +34,28 @@
           </div>
         </div>
       </div>
+      <div class="need-space" v-if="recommendedJavs.length > 0"></div>
+      <div class="container" v-if="recommendedJavs.length > 0">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h6 class="title-index title-white">
+              Recommended for You!
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="need-space" v-if="recommendedJavs.length > 0"></div>
+      <div class="container" v-if="recommendedJavs.length > 0">
+        <div class="row">
+          <div
+            v-for="jav in recommendedJavs"
+            :key="jav._id"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          >
+            <CardJav v-bind:dataJav="jav" />
+          </div>
+        </div>
+      </div>
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
@@ -145,7 +167,7 @@ import CardJav from "../components/Cards/CardJav00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
 import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
-import Popunder from '~/components/ExoclickAds/Popunder.vue'
+import Popunder from "~/components/ExoclickAds/Popunder.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -155,7 +177,7 @@ export default {
     CardIdol,
     CardJavMobile,
     CardIdolMobile,
-    Popunder
+    Popunder,
   },
   head() {
     return {
@@ -168,7 +190,7 @@ export default {
       ],
     };
   },
-  async asyncData() {
+  async asyncData({ store }) {
     const cat1 = await axios
       .get("https://jav.souzou.dev/jav4free/categories/getRandomCategory")
       .catch((e) => {
@@ -188,6 +210,16 @@ export default {
       .catch((e) => {
         console.log(e);
       });
+
+    var dataHistory = {
+      javsBatch: store.getters.getHistory,
+    };
+    var recommendedJavs = await axios
+      .post("https://jav.souzou.dev/jav4free/javs/getRecommendJavsByHistory", dataHistory)
+      .catch((e) => {
+        console.log(e);
+      });
+
     const idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
       .catch((e) => {
@@ -198,6 +230,7 @@ export default {
       javsCategory1: cat1.data.javs,
       javs: javs.data.javs,
       javsMobile: javsMobile.data.javs,
+      recommendedJavs: recommendedJavs.data.javs,
       idols: idols.data.idols,
     };
   },
