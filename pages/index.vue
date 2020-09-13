@@ -38,9 +38,7 @@
       <div class="container" v-if="recommendedJavs.length > 0">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h6 class="title-index title-white">
-              Recommended for You!
-            </h6>
+            <h6 class="title-index title-white">Recommended for You!</h6>
           </div>
         </div>
       </div>
@@ -136,6 +134,23 @@
           <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <button class="btn btn-more">Recommended for You!</button>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="row">
+        <div
+          v-for="jav in recommendedJavs"
+          :key="jav._id"
+          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        >
+          <CardJavMobile v-bind:dataJav="jav" />
+        </div>
+      </div>
       <div class="need-space"></div>
       <div class="container-fluid">
         <div class="row justify-content-center">
@@ -215,7 +230,10 @@ export default {
       javsBatch: store.getters.getHistory,
     };
     var recommendedJavs = await axios
-      .post("https://jav.souzou.dev/jav4free/javs/getRecommendJavsByHistory", dataHistory)
+      .post(
+        "https://jav.souzou.dev/jav4free/javs/getRecommendJavsByHistory",
+        dataHistory
+      )
       .catch((e) => {
         console.log(e);
       });

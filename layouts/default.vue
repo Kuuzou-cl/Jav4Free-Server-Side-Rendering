@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Sitemap/>
     <Navbar/>
     <Secondarybar />
     <nuxt />
