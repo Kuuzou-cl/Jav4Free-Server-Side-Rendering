@@ -73,41 +73,8 @@
       <div class="need-space"></div>
       <div class="container">
         <div class="row">
-          <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <CardJav v-bind:dataJav="jav" />
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <h6 class="title-index">
-              <nuxt-link :to="'/idols/1'" tag="a" class="title-white">Featured Jav Idols</nuxt-link>
-            </h6>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <nuxt-link :to="'/idols/1'" class="btn btn-more float-right">
-              watch more
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div
-            v-for="(idol,index) in idols"
-            :key="index"
-            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-          >
-            <CardIdol
-              v-if="idol != null"
-              v-bind:dataId="idol._id"
-              v-bind:dataName="idol.name"
-              v-bind:dataUrl="idol.imageUrl"
-            ></CardIdol>
+          <div v-for="scene in scenes" :key="scene._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <CardJav v-bind:dataJav="scene" />
           </div>
         </div>
       </div>
@@ -211,7 +178,7 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-    const javs = await axios
+    const scenes = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/getLatestScenes")
       .catch((e) => {
         console.log(e);
@@ -246,7 +213,7 @@ export default {
     return {
       category1: cat1.data.category,
       javsCategory1: cat1.data.javs,
-      javs: javs.data.scenes,
+      scenes: scenes.data.scenes,
       javsMobile: javsMobile.data.javs,
       recommendedJavs: recommendedJavs.data.scene,
       idols: idols.data.idols,
