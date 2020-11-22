@@ -1,6 +1,11 @@
 <template>
   <div id="wrapper">
-    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <SidebarAdmin
+      v-bind:scenes="scenes"
+      v-bind:videos="javs"
+      v-bind:idols="idols"
+      v-bind:categories="categories"
+    />
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
@@ -32,7 +37,9 @@
                   </div>
                 </div>
                 <div class="row justify-content-center">
-                  <button class="btn category-admin" @click="postCat()">Add Category</button>
+                  <button class="btn category-admin" @click="postCat()">
+                    Add Category
+                  </button>
                 </div>
               </div>
             </div>
@@ -41,12 +48,14 @@
                 <table class="table table-hover text-center">
                   <thead>
                     <tr>
-                      <th scope="col" class="t-header">Pending Javs ({{this.categories.length}})</th>
+                      <th scope="col" class="t-header">
+                        Pending Javs ({{ this.categories.length }})
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(category, key) in this.categories" :key="key">
-                      <th>{{category.name}}</th>
+                      <th>{{ category.name }}</th>
                     </tr>
                   </tbody>
                 </table>
@@ -68,52 +77,58 @@ export default {
   layout: "admin",
   name: "NewCategory",
   components: {
-    SidebarAdmin
+    SidebarAdmin,
   },
   data() {
     return {
-      catName: ""
+      catName: "",
     };
   },
   async asyncData() {
+    let scenes = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/")
+      .catch((e) => {
+        console.log(e);
+      });
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let categories = await axios
       .get("https://jav.souzou.dev/jav4free/categories/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     return {
+      scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
-      idols: idols.data.idols
+      idols: idols.data.idols,
     };
   },
   methods: {
     async postCat() {
       var obj = {
-        name: this.catName
+        name: this.catName,
       };
       let response = await axios
         .post("https://jav.souzou.dev/jav4free/categories/newCategory/", obj, {
           headers: {
-            "x-access-token": this.$store.state.token
-          }
+            "x-access-token": this.$store.state.token,
+          },
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
       this.$router.push({ path: "/dashboard" });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -52,13 +52,13 @@
   
   @media (min-width: 1200px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl {
-      max-width: 1300px !important;
+      max-width: 1600px !important;
     }
   }
 
   @media (min-width: 2120px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl {
-      max-width: 1600px !important;
+      max-width: 1800px !important;
     }
   }
   
@@ -72,6 +72,14 @@ body
     background-color: #000000;
     font-family: 'Roboto';
     width: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+video{
+  width: 100%;
 }
 
 .hide{

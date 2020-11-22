@@ -13,7 +13,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="title-admin">
-              <h2>List of Published Categories</h2>
+              <h2>List of Published Scenes</h2>
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
                 class="input-admin"
                 type="text"
                 v-model="search"
-                placeholder="Search by name..."
+                placeholder="Search by code..."
               />
             </div>
           </div>
@@ -36,29 +36,32 @@
                 <table class="table table-hover text-center">
                   <thead>
                     <tr>
-                      <th scope="col" class="t-header">Title</th>
                       <th scope="col" class="t-header">Code</th>
+                      <th scope="col" class="t-header">Video</th>
+                      <th scope="col" class="t-header">Hidden</th>
+                      <th scope="col" class="t-header">Categories</th>
+                      <th scope="col" class="t-header">Idols</th>
                       <th scope="col" class="t-header"></th>
                       <th scope="col" class="t-header"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr
-                      v-for="category in filterCategories"
-                      :key="category._id"
-                    >
-                      <th scope="row">{{ category.name }}</th>
-                      <td>{{ category._id }}</td>
+                    <tr v-for="scene in filterScenes" :key="scene._id">
+                      <th>{{ scene.code }}</th>
+                      <td>{{ scene.url }}</td>
+                      <td>{{ scene.hidden }}</td>
+                      <td>{{ scene.categories.length }}</td>
+                      <td>{{ scene.idols.length }}</td>
                       <td>
                         <nuxt-link
-                          :to="'/dashboard/editCategories/' + category._id"
+                          :to="'/dashboard/editScenes/' + scene._id"
                           class="btn button-admin"
                           >Edit</nuxt-link
                         >
                       </td>
                       <td>
                         <button
-                          @click="deleteCat(category._id)"
+                          @click="deleteJav(scene._id)"
                           class="btn button-admin"
                         >
                           Delete
@@ -83,16 +86,15 @@ import axios from "axios";
 import SidebarAdmin from "~/components/SidebarAdmin/SidebarAdmin.vue";
 export default {
   layout: "admin",
-  name: "editCategories",
+  name: "editJavs",
   components: {
     SidebarAdmin,
   },
   data() {
     return {
       search: "",
-      categories: null,
-      filteredCategories: [],
-      categoriesLength: [],
+      scenes: null,
+      filteredScenes: [],
     };
   },
   async asyncData() {
@@ -117,16 +119,16 @@ export default {
         console.log(e);
       });
     return {
-      scenes:scenes.data.scenes,
+      scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
     };
   },
   methods: {
-    async deleteCat(_id) {
+    async deleteJav(_id) {
       let message = await axios
-        .delete("https://jav.souzou.dev/jav4free/categories/" + _id, {
+        .delete("https://jav.souzou.dev/jav4free/scenes/" + _id, {
           headers: {
             "x-access-token": this.$store.state.token,
           },
@@ -138,14 +140,14 @@ export default {
     },
   },
   computed: {
-    filterCategories() {
-      this.filteredCategories = [];
-      this.categories.forEach((category) => {
-        if (category.name.toLowerCase().includes(this.search.toLowerCase())) {
-          this.filteredCategories.push(category);
+    filterScenes() {
+      this.filteredScenes = [];
+      this.scenes.forEach((scene) => {
+        if (scene.code.toLowerCase().includes(this.search.toLowerCase())) {
+          this.filteredScenes.push(scene);
         }
       });
-      return this.filteredCategories;
+      return this.filteredScenes;
     },
   },
 };

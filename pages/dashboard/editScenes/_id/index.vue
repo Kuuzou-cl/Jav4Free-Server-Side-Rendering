@@ -13,7 +13,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="title-admin">
-              <h2>Edit {{ this.jav.code }} details</h2>
+              <h2>Edit {{ this.scene.code }} details</h2>
             </div>
           </div>
         </div>
@@ -25,47 +25,15 @@
               <div class="container container-admin">
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <img id="inputJav06" :src="jav.imageUrl" />
-                  </div>
-                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                    <div class="row">
-                      <label for="inputJav01">Jav Title</label>
+                    <img id="inputJav06" :src="scene.imageIndexUrl" />
+                    <div class="row need-space">
+                      <label for="inputJav03">Hidden</label>
                       <input
-                        v-model="jav.name"
+                        type="checkbox"
                         class="input-admin"
-                        id="inputJav01"
-                        placeholder="Enter new title"
+                        id="inputJav03"
+                        v-model="scene.hidden"
                       />
-                    </div>
-                    <div class="row">
-                      <label for="inputJav02">Jav Code</label>
-                      <input
-                        v-model="jav.code"
-                        class="input-admin"
-                        id="inputJav02"
-                        placeholder="Enter new code"
-                      />
-                    </div>
-                    <div class="row">
-                      <label for="inputJav04">Jav Image url</label>
-                      <input
-                        v-model="jav.imageUrl"
-                        class="input-admin"
-                        id="inputJav04"
-                        placeholder="Enter new image url"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <div class="row">
-                      <label for="inputJav07">Scenes</label>
-                    </div>
-                    <div class="row">
-                      <p class="tag" v-for="scene in scenesJav" :key="scene._id">
-                        {{ scene.code }}
-                      </p>
                     </div>
                     <div class="row">
                       <label for="inputJav07">Categories</label>
@@ -88,19 +56,70 @@
                       </p>
                     </div>
                   </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div v-if="jav != null" class="row">
+                      <label for="inputJav01">Jav Code</label>
+                      <input
+                        v-model="jav.code"
+                        class="input-admin"
+                        id="inputJav00"
+                        placeholder="Jav Code"
+                        disabled
+                      />
+                    </div>
                     <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-row">
-                          <label for="inputJav03">Hidden</label>
-                          <input
-                            type="checkbox"
-                            class="input-admin"
-                            id="inputJav03"
-                            v-model="jav.hidden"
-                          />
-                        </div>
-                      </div>
+                      <label for="inputJav01">Scene Title</label>
+                      <input
+                        v-model="scene.name"
+                        class="input-admin"
+                        id="inputJav01"
+                        placeholder="Enter new title"
+                      />
+                    </div>
+                    <div class="row">
+                      <label for="inputJav02">Scene Code</label>
+                      <input
+                        v-model="scene.code"
+                        class="input-admin"
+                        id="inputJav02"
+                        placeholder="Enter new code"
+                      />
+                    </div>
+                    <div class="row">
+                      <label for="inputJav03">Scene Duration</label>
+                      <input
+                        v-model="scene.duration"
+                        class="input-admin"
+                        id="inputJav03"
+                        placeholder="Enter video duration"
+                      />
+                    </div>
+                    <div class="row">
+                      <label for="inputJav04">Preview url</label>
+                      <input
+                        v-model="scene.imageUrl"
+                        class="input-admin"
+                        id="inputJav04"
+                        placeholder="Enter new preview url"
+                      />
+                    </div>
+                    <div class="row">
+                      <label for="inputJav05">Image url</label>
+                      <input
+                        v-model="scene.imageIndexUrl"
+                        class="input-admin"
+                        id="inputJav05"
+                        placeholder="Enter new image url"
+                      />
+                    </div>
+                    <div class="row">
+                      <label for="inputJav06">Video url</label>
+                      <input
+                        v-model="scene.url"
+                        class="input-admin"
+                        id="inputJav06"
+                        placeholder="Enter new video url"
+                      />
                     </div>
                   </div>
                 </div>
@@ -110,15 +129,7 @@
           <div class="need-space"></div>
           <div class="container">
             <div class="row justify-content-center">
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-                <button
-                  class="btn category-admin"
-                  @click="viewScenesContainer()"
-                >
-                  View Scenes
-                </button>
-              </div>
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
                 <button
                   class="btn category-admin"
                   @click="viewCategoriesContainer()"
@@ -126,7 +137,7 @@
                   View Categories
                 </button>
               </div>
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
                 <button
                   class="btn category-admin"
                   @click="viewIdolsContainer()"
@@ -137,38 +148,6 @@
             </div>
           </div>
           <div class="need-space"></div>
-          <div v-if="this.viewScenes" class="container-fluid">
-            <div class="row justify-content-center">
-              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                <input
-                  type="text"
-                  class="input-admin"
-                  v-model="searchScenes"
-                  placeholder="Search..."
-                />
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div v-for="scene in filterScenes" :key="scene._id">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <button
-                    v-if="checkScene(scene._id)"
-                    @click="addScene(scene._id)"
-                    class="btn category-button"
-                  >
-                    {{ scene.code }}
-                  </button>
-                  <button
-                    v-else
-                    @click="addScene(scene._id)"
-                    class="active btn category-button"
-                  >
-                    {{ scene.code }}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
           <div v-if="this.viewCategories" class="container-fluid">
             <div class="row justify-content-center">
               <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -260,18 +239,15 @@ export default {
   },
   data() {
     return {
-      jav: null,
+      scene: null,
       categoriesJav: null,
       idolsJav: null,
-      scenesJav: null,
       categories: null,
       idols: null,
       viewCategories: false,
       viewIdols: false,
-      viewScenes: false,
       searchCategories: "",
       searchIdols: "",
-      searchScenes: "",
     };
   },
   async asyncData({ params }) {
@@ -281,8 +257,8 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-    let jav = await axios
-      .get("https://jav.souzou.dev/jav4free/javs/" + id)
+    let scene = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/" + id)
       .catch((e) => {
         console.log(e);
       });
@@ -303,18 +279,18 @@ export default {
       });
     return {
       scenes: scenes.data.scenes,
-      jav: jav.data.jav,
+      scene: scene.data.scene,
       javs: javs.data.javs,
-      scenesJav: jav.data.scenes,
-      categoriesJav: jav.data.categories,
-      idolsJav: jav.data.idols,
+      categoriesJav: scene.data.categories,
+      jav: scene.data.jav,
+      idolsJav: scene.data.idols,
       categories: categories.data.categories,
       idols: idols.data.idols,
     };
   },
   methods: {
     checkCategory: function (_id) {
-      const exist = this.jav.categories.find((category) => category === _id);
+      const exist = this.scene.categories.find((category) => category === _id);
       if (exist) {
         return false;
       } else {
@@ -322,15 +298,7 @@ export default {
       }
     },
     checkIdol: function (_id) {
-      const exist = this.jav.idols.find((idol) => idol === _id);
-      if (exist) {
-        return false;
-      } else {
-        return true;
-      }
-    },
-    checkScene: function (_id) {
-      const exist = this.jav.scenes.find((scene) => scene === _id);
+      const exist = this.scene.idols.find((idol) => idol === _id);
       if (exist) {
         return false;
       } else {
@@ -338,66 +306,58 @@ export default {
       }
     },
     addCategory: function (_id) {
-      const exist = this.jav.categories.find((category) => category === _id);
+      const exist = this.scene.categories.find((category) => category === _id);
       if (exist) {
-        for (var i = 0; i < this.jav.categories.length; i++) {
-          if (this.jav.categories[i] === _id) {
-            this.jav.categories.splice(i, 1);
+        for (var i = 0; i < this.scene.categories.length; i++) {
+          if (this.scene.categories[i] === _id) {
+            this.scene.categories.splice(i, 1);
             this.searchCategories = "";
             i--;
           }
         }
       } else {
-        this.jav.categories.push(_id);
+        this.scene.categories.push(_id);
         this.searchCategories = "";
       }
     },
     addIdol: function (_id) {
-      const exist = this.jav.idols.find((idol) => idol === _id);
+      const exist = this.scene.idols.find((idol) => idol === _id);
       if (exist) {
-        for (var i = 0; i < this.jav.idols.length; i++) {
-          if (this.jav.idols[i] === _id) {
-            this.jav.idols.splice(i, 1);
+        for (var i = 0; i < this.scene.idols.length; i++) {
+          if (this.scene.idols[i] === _id) {
+            this.scene.idols.splice(i, 1);
             this.searchIdols = "";
             i--;
           }
         }
       } else {
-        this.jav.idols.push(_id);
-        this.searchIdols = "";
-      }
-    },
-    addScene: function (_id) {
-      const exist = this.jav.scenes.find((scene) => scene === _id);
-      if (exist) {
-        for (var i = 0; i < this.jav.scenes.length; i++) {
-          if (this.jav.scenes[i] === _id) {
-            this.jav.scenes.splice(i, 1);
-            this.searchScenes = "";
-            i--;
-          }
-        }
-      } else {
-        this.jav.scenes.push(_id);
+        this.scene.idols.push(_id);
         this.searchIdols = "";
       }
     },
     async updateJav() {
       let obj = {
-        name: this.jav.name,
-        code: this.jav.code,
-        imageUrl: this.jav.imageUrl,
-        hidden: this.jav.hidden,
-        categories: this.jav.categories,
-        idols: this.jav.idols,
-        scenes: this.jav.scenes,
+        name: this.scene.name,
+        code: this.scene.code,
+        jav: "",
+        url: this.scene.url,
+        duration: this.scene.duration,
+        imageUrl: this.scene.imageUrl,
+        imageIndexUrl: this.scene.imageIndexUrl,
+        hidden: this.scene.hidden,
+        categories: this.scene.categories,
+        idols: this.scene.idols,
       };
       let response = await axios
-        .patch("https://jav.souzou.dev/jav4free/javs/" + this.jav._id, obj, {
-          headers: {
-            "x-access-token": this.$store.state.token,
-          },
-        })
+        .patch(
+          "https://jav.souzou.dev/jav4free/scenes/" + this.scene._id,
+          obj,
+          {
+            headers: {
+              "x-access-token": this.$store.state.token,
+            },
+          }
+        )
         .catch((e) => {
           console.log(e);
         });
@@ -409,7 +369,6 @@ export default {
       } else {
         this.viewCategories = true;
         this.viewIdols = false;
-        this.viewScenes = false;
       }
     },
     viewIdolsContainer() {
@@ -418,16 +377,6 @@ export default {
       } else {
         this.viewIdols = true;
         this.viewCategories = false;
-        this.viewScenes = false;
-      }
-    },
-    viewScenesContainer() {
-      if (this.viewScenes) {
-        this.viewScenes = false;
-      } else {
-        this.viewScenes = true;
-        this.viewCategories = false;
-        this.viewIdols = false;
       }
     },
   },
@@ -453,15 +402,6 @@ export default {
         }
       });
       return this.filteredIdols;
-    },
-    filterScenes() {
-      this.filteredScenes = [];
-      this.scenes.forEach((scene) => {
-        if (scene.code.toLowerCase().includes(this.searchScenes.toLowerCase())) {
-          this.filteredScenes.push(scene);
-        }
-      });
-      return this.filteredScenes;
     },
   },
 };

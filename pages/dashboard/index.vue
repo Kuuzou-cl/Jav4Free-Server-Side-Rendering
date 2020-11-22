@@ -1,6 +1,11 @@
 <template>
   <div id="wrapper">
-    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <SidebarAdmin
+      v-bind:scenes="scenes"
+      v-bind:videos="javs"
+      v-bind:idols="idols"
+      v-bind:categories="categories"
+    />
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
@@ -21,15 +26,22 @@
                 <table class="table table-hover text-center">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="t-header"
-                      >Pending Idols ({{this.spaceCheckIdols(resultIdols, idols).length}})</th>
+                      <th scope="col" class="t-header">
+                        Pending Idols ({{
+                          this.spaceCheckIdols(resultIdols, idols).length
+                        }})
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(idol, key) in this.spaceCheckIdols(resultIdols, idols)" :key="key">
-                      <th>{{idol}}</th>
+                    <tr
+                      v-for="(idol, key) in this.spaceCheckIdols(
+                        resultIdols,
+                        idols
+                      )"
+                      :key="key"
+                    >
+                      <th>{{ idol }}</th>
                     </tr>
                   </tbody>
                 </table>
@@ -40,15 +52,19 @@
                 <table class="table table-hover text-center">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="t-header"
-                      >Pending Javs ({{this.spaceCheck(result, javs).length}})</th>
+                      <th scope="col" class="t-header">
+                        Pending Javs ({{
+                          this.spaceCheck(result, javs).length
+                        }})
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(jav, key) in this.spaceCheck(result, javs)" :key="key">
-                      <th>{{jav}}</th>
+                    <tr
+                      v-for="(jav, key) in this.spaceCheck(result, javs)"
+                      :key="key"
+                    >
+                      <th>{{ jav }}</th>
                     </tr>
                   </tbody>
                 </table>
@@ -70,56 +86,66 @@ export default {
   layout: "admin",
   name: "Dashboard",
   components: {
-    SidebarAdmin
+    SidebarAdmin,
   },
   async asyncData() {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
+    let scenes = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/")
+      .catch((e) => {
+        console.log(e);
+      });
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let categories = await axios
       .get("https://jav.souzou.dev/jav4free/categories/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
 
     let spaceDataJavs = await axios
-      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=javs&max-keys=10000")
-      .catch(e => {
+      .get(
+        "https://sfo2.digitaloceanspaces.com/javdata?prefix=javs&max-keys=10000"
+      )
+      .catch((e) => {
         console.log(e);
       });
     var result = JSON.parse(convert.xml2json(spaceDataJavs.data, options));
     let spaceDataIdols = await axios
-      .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols&max-keys=10000")
-      .catch(e => {
+      .get(
+        "https://sfo2.digitaloceanspaces.com/javdata?prefix=idols&max-keys=10000"
+      )
+      .catch((e) => {
         console.log(e);
       });
     var resultIdols = JSON.parse(
       convert.xml2json(spaceDataIdols.data, options)
     );
     return {
+      scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
       result: result,
-      resultIdols: resultIdols
+      resultIdols: resultIdols,
     };
   },
   methods: {
     spaceCheck(space, javs) {
       let spaceData = [];
-      space.elements[0].elements.forEach(element => {
+      space.elements[0].elements.forEach((element) => {
         if (element.name === "Contents") {
-          element.elements.forEach(obj => {
+          element.elements.forEach((obj) => {
             if (obj.name === "Key") {
               let javNameData = obj.elements[0].text.split("/");
               if (javNameData[1]) {
@@ -133,8 +159,8 @@ export default {
 
       let pending = [];
 
-      spaceData.forEach(r => {
-        if (!javs.some(item => item.code === r)) {
+      spaceData.forEach((r) => {
+        if (!javs.some((item) => item.code === r)) {
           pending.push(r);
         }
       });
@@ -143,9 +169,9 @@ export default {
     },
     spaceCheckIdols(space, idols) {
       let spaceData = [];
-      space.elements[0].elements.forEach(element => {
+      space.elements[0].elements.forEach((element) => {
         if (element.name === "Contents") {
-          element.elements.forEach(obj => {
+          element.elements.forEach((obj) => {
             if (obj.name === "Key") {
               let javNameData = obj.elements[0].text.split("/");
               if (javNameData[1]) {
@@ -160,15 +186,15 @@ export default {
 
       let pending = [];
 
-      spaceData.forEach(r => {
-        if (!idols.some(item => item.name.toLowerCase() === r)) {
+      spaceData.forEach((r) => {
+        if (!idols.some((item) => item.name.toLowerCase() === r)) {
           pending.push(r);
         }
       });
 
       return pending;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,11 @@
 <template>
   <div id="wrapper">
-    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <SidebarAdmin
+      v-bind:scenes="scenes"
+      v-bind:videos="javs"
+      v-bind:idols="idols"
+      v-bind:categories="categories"
+    />
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
@@ -42,19 +47,25 @@
                   </thead>
                   <tbody>
                     <tr v-for="jav in filterJavs" :key="jav._id">
-                      <th>{{jav.code}}</th>
-                      <td>{{jav.url}}</td>
-                      <td>{{jav.hidden}}</td>
-                      <td>{{jav.categories.length}}</td>
-                      <td>{{jav.idols.length}}</td>
+                      <th>{{ jav.code }}</th>
+                      <td>{{ jav.url }}</td>
+                      <td>{{ jav.hidden }}</td>
+                      <td>{{ jav.categories.length }}</td>
+                      <td>{{ jav.idols.length }}</td>
                       <td>
                         <nuxt-link
-                          :to="'/dashboard/editJavs/'+jav._id"
+                          :to="'/dashboard/editJavs/' + jav._id"
                           class="btn button-admin"
-                        >Edit</nuxt-link>
+                          >Edit</nuxt-link
+                        >
                       </td>
                       <td>
-                        <button @click="deleteJav(jav._id)" class="btn button-admin">Delete</button>
+                        <button
+                          @click="deleteJav(jav._id)"
+                          class="btn button-admin"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -77,35 +88,41 @@ export default {
   layout: "admin",
   name: "editJavs",
   components: {
-    SidebarAdmin
+    SidebarAdmin,
   },
   data() {
     return {
       search: "",
       javs: null,
-      filteredJavs: []
+      filteredJavs: [],
     };
   },
   async asyncData() {
+    let scenes = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/")
+      .catch((e) => {
+        console.log(e);
+      });
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let categories = await axios
       .get("https://jav.souzou.dev/jav4free/categories/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     return {
+      scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
-      idols: idols.data.idols
+      idols: idols.data.idols,
     };
   },
   methods: {
@@ -113,26 +130,26 @@ export default {
       let message = await axios
         .delete("https://jav.souzou.dev/jav4free/javs/" + _id, {
           headers: {
-            "x-access-token": this.$store.state.token
-          }
+            "x-access-token": this.$store.state.token,
+          },
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
       this.$router.push({ path: "/dashboard" });
-    }
+    },
   },
   computed: {
     filterJavs() {
       this.filteredJavs = [];
-      this.javs.forEach(jav => {
+      this.javs.forEach((jav) => {
         if (jav.code.toLowerCase().includes(this.search.toLowerCase())) {
           this.filteredJavs.push(jav);
         }
       });
       return this.filteredJavs;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -212,7 +212,7 @@ export default {
         console.log(e);
       });
     const javs = await axios
-      .get("https://jav.souzou.dev/jav4free/javs/getLatestJavs")
+      .get("https://jav.souzou.dev/jav4free/scenes/getLatestScenes")
       .catch((e) => {
         console.log(e);
       });
@@ -227,11 +227,11 @@ export default {
       });
 
     var dataHistory = {
-      javsBatch: store.getters.getHistory,
+      scenesBatch: store.getters.getHistory,
     };
     var recommendedJavs = await axios
       .post(
-        "https://jav.souzou.dev/jav4free/javs/getRecommendJavsByHistory",
+        "https://jav.souzou.dev/jav4free/scenes/getRecommendScenesByHistory",
         dataHistory
       )
       .catch((e) => {
@@ -246,9 +246,9 @@ export default {
     return {
       category1: cat1.data.category,
       javsCategory1: cat1.data.javs,
-      javs: javs.data.javs,
+      javs: javs.data.scenes,
       javsMobile: javsMobile.data.javs,
-      recommendedJavs: recommendedJavs.data.javs,
+      recommendedJavs: recommendedJavs.data.scene,
       idols: idols.data.idols,
     };
   },

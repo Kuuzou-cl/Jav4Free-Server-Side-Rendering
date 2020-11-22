@@ -13,7 +13,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="title-admin">
-              <h2>Add new JAV</h2>
+              <h2>Add new Scene</h2>
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
                 <div class="row justify-content-center">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-row">
-                      <label for="inputJav01">JAV Title</label>
+                      <label for="inputJav01">Scene Title</label>
                       <input
                         v-model="javName"
                         class="input-admin"
@@ -39,7 +39,7 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="form-row">
-                      <label for="inputJav02">JAV Code</label>
+                      <label for="inputJav02">Scene Code</label>
                       <input
                         v-model="javCode"
                         class="input-admin"
@@ -50,7 +50,20 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="form-row">
-                      <label for="inputJav03">Hidden Status</label>
+                      <label for="inputJav03">Scene Duration</label>
+                      <input
+                        v-model="javDuration"
+                        class="input-admin"
+                        id="inputJav03"
+                        placeholder="Enter duration in minutes"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="form-row">
+                      <label for="inputJav03">Hidden</label>
                       <input
                         type="checkbox"
                         class="input-admin"
@@ -151,7 +164,7 @@
               <div class="container">
                 <div class="row justify-content-center">
                   <button class="btn category-admin" @click="postJav()">
-                    Add Video
+                    Add Scene
                   </button>
                 </div>
               </div>
@@ -312,6 +325,7 @@ export default {
     return {
       javName: "",
       javCode: "",
+      javDuration: "",
       hidden: true,
       javCategories: [],
       javIdols: [],
@@ -328,6 +342,7 @@ export default {
   async asyncData() {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
+
     let scenes = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/")
       .catch((e) => {
@@ -350,7 +365,7 @@ export default {
       });
     let spaceData = await axios
       .get(
-        "https://sfo2.digitaloceanspaces.com/javdata?prefix=javs&max-keys=10000"
+        "https://sfo2.digitaloceanspaces.com/javdata?prefix=scenes&max-keys=10000"
       )
       .catch((e) => {
         console.log(e);
@@ -428,17 +443,20 @@ export default {
       var obj = {
         name: this.javName,
         code: this.javCode,
+        url: "https://cdn.jav4free.watch/scenes/" + this.javCode + ".mp4",
+        duration: this.javDuration,
         imageUrl:
-          "https://cdn.jav4free.watch/javs/" +
+          "https://cdn.jav4free.watch/scenes/preview/" + this.javCode + ".mp4",
+        imageIndexUrl:
+          "https://cdn.jav4free.watch/scenes/static/" +
           this.javCode +
-          ".jpg",
-        scenes: [],
+          "-static.jpg",
         hidden: this.hidden,
         categories: this.javCategories,
         idols: this.javIdols,
       };
       let response = await axios
-        .post("https://jav.souzou.dev/jav4free/javs/newJav/", obj, {
+        .post("https://jav.souzou.dev/jav4free/scenes/newScene/", obj, {
           headers: {
             "x-access-token": this.$store.state.token,
           },
@@ -508,7 +526,7 @@ export default {
       let pending = [];
 
       spaceData.forEach((r) => {
-        if (!this.javs.some((item) => item.code === r)) {
+        if (!this.javs.some((item) => item.code === r) && r !="preview" && r !="static") {
           pending.push(r);
         }
       });

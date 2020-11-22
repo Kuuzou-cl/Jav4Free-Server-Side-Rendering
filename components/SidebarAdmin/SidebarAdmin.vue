@@ -24,9 +24,15 @@
     <hr class="sidebar-divider" />
     <div class="sidebar-heading">New Content</div>
     <li class="nav-item">
+      <nuxt-link :to="'/dashboard/newScene/'" class="nav-link">
+        <font-awesome-icon :icon="['fas', 'plus-square']" />
+        <span>Add Scene</span>
+      </nuxt-link>
+    </li>
+    <li class="nav-item">
       <nuxt-link :to="'/dashboard/newJav/'" class="nav-link">
         <font-awesome-icon :icon="['fas', 'plus-square']" />
-        <span>Add Video</span>
+        <span>Add Jav</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
@@ -46,9 +52,16 @@
     <!-- Heading -->
     <div class="sidebar-heading">Data Center</div>
     <li class="nav-item">
+      <nuxt-link :to="'/dashboard/editScenes/'" class="nav-link">
+        <font-awesome-icon :icon="['fas', 'stream']" />
+        <span>List Scenes</span>
+        <span>{{scenes.length}}</span>
+      </nuxt-link>
+    </li>
+    <li class="nav-item">
       <nuxt-link :to="'/dashboard/editJavs/'" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
-        <span>List Videos</span>
+        <span>List Javs</span>
         <span>{{videos.length}}</span>
       </nuxt-link>
     </li>
@@ -81,6 +94,7 @@
 export default {
   name: "SidebarAdmin",
   props: {
+    scenes: Array,
     videos: Array,
     categories: Array,
     idols: Array

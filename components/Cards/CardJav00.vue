@@ -1,6 +1,5 @@
 <template>
   <div class="card bg-dark box2">
-    <div class="loading-box"></div>
     <div class="box2-media">
       <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
         <img :src="dataJav.imageIndexUrl" v-lazy-load />
@@ -10,7 +9,7 @@
       </nuxt-link>
     </div>
     <div class="box-code">
-      <b class="post">{{dataJav.code}}</b>
+      <b class="post">{{dataJav.duration}}</b>
     </div>
     <div class="box-content">
       <h3 class="title">
