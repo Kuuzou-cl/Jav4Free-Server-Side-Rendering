@@ -4,6 +4,12 @@
   "description": "Jav4Free | Japanese Adult Videos for Free | Streaming Service",
   "author": "Kuuzou",
   "private": true,
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "8080"
+    }
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
