@@ -16,22 +16,7 @@
                     <p class="title">{{ getName(scene.name) }}</p>
                   </div>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div
-                      class="btn btn-options"
-                      @click="addToFavorites(scene._id)"
-                    >
-                      <p>{{ messageFavorite }}</p>
-                      <font-awesome-icon
-                        :icon="['fas', 'heart']"
-                        v-if="!checkFavorite"
-                        class="favorite-icon"
-                      />
-                      <font-awesome-icon
-                        :icon="['fas', 'heart']"
-                        v-if="checkFavorite"
-                        class="favorite-icon-active"
-                      />
-                    </div>
+                    
                   </div>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <div class="btn btn-options">
@@ -73,18 +58,7 @@
               </div>
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="btn btn-options" @click="addToFavorites(jav._id)">
-                    <font-awesome-icon
-                      :icon="['fas', 'heart']"
-                      v-if="!checkFavorite"
-                      class="favorite-icon"
-                    />
-                    <font-awesome-icon
-                      :icon="['fas', 'heart']"
-                      v-if="checkFavorite"
-                      class="favorite-icon-active"
-                    />
-                  </div>
+                  
                 </div>
               </div>
             </div>

@@ -2,68 +2,63 @@ nav {
     width: 100%;
     display:flex;
     align-items:center;
-    background: #2a2a2a;
+    background: linear-gradient(90deg, #ffd800 80%, #000000 20%);
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-.main-navbar{
-    padding-left: 0%;
+.navbar-button{
+    color: #eeeeee;
+    min-width: 23%;
+    background-color:#000000;
+    -webkit-transform:skew(-25deg);
+    transform:skew(-25deg);
+    display:inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 0;
+}
+
+.navbar-button:hover{
+    color: #ffd800;
 }
 
 .heart {
-    width: 15%;
+    width: 30%;
     margin: 0 auto;
     display: block;
     margin: initial;
     padding: 0px 0px 0px 0px;
-    img{
-        height: 120px;
-    }
-}
-
-div[type=button]{
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
 }
 
 .search-navbar{    
-    width: 90%;
-    .input-group-text{
-        background-color: #242424;
-    }
-    input{
-        width: 80% !important;
-        height: 40px !important;
-        font-size: 12px !important;
-    }
+    width: 60%;
     input, textarea{
-        background-color:#eeeeee;
-        color: #3f3844;
+        color: #272727;
+        border: 0;
+        border-radius: 0%;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid #000000;
     }
     input:focus{
-        background-color:#eeeeee;
-        color: #3f3844;
-        border-color: #E8175D;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #E8175D;
+        background: transparent;
+        color: #000000;
+        border-bottom: 1px dashed #000000;
+        box-shadow: none;
+    }
+    .input-group-text{
+        background-color: transparent;
     }
     .icon-search-navbar{
         width: 100%;
-        color: #eeeeee;
+        color: #000000;
         cursor: pointer;    
     }
 }
 
 .log-navbar{
-    width: 10%;
-    color: #eeeeee;
+    width: 30%;
     font-size: 12px;
-    letter-spacing: 3px;
-    cursor: pointer;  
-    .signin{
-        display:flex;
-        justify-content:flex-end;
-        align-items:center;
-    }
-    .icon-navbar{
-        margin: 0% 3%;
-    }
+    letter-spacing: 3px !important;
 }

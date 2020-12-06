@@ -1,15 +1,15 @@
 <template>
   <div v-if="!$store.state.token">
-    <div
+    <li
       type="button"
-      class="signin"
+      class="navbar-nav-link"
       v-if="!$store.state.token"
       data-toggle="modal"
       data-target="#exampleModal"
     >
-      Sign In
       <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
-    </div>
+      <div class="title-sidebar">Sign In</div>
+    </li>
     <div
       class="modal fade"
       id="exampleModal"
@@ -28,7 +28,12 @@
                 height="25%"
               />
             </div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -37,7 +42,11 @@
               <p v-if="loginError" class="error">{{ loginError }}</p>
             </div>
             <div class="form-row justify-content-center">
-              <input v-model="email" class="custom-input-login" placeholder="Email" />
+              <input
+                v-model="email"
+                class="custom-input-login"
+                placeholder="Email"
+              />
             </div>
             <div class="form-row justify-content-center">
               <input
@@ -49,7 +58,14 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-more" @click="login" data-dismiss="modal">Sign In</button>
+            <button
+              type="button"
+              class="btn btn-more"
+              @click="login"
+              data-dismiss="modal"
+            >
+              Sign In
+            </button>
           </div>
         </div>
       </div>

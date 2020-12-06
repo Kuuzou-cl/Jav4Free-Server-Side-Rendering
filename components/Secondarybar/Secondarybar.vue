@@ -2,35 +2,22 @@
   <div class="secondarybar">
     <div class="container height-fix">
       <ul>
+        <Login />
         <li class="navbar-nav-link">
-          <nuxt-link :to="'/javs/1'">
-            <font-awesome-icon :icon="['fab', 'youtube']" class="icon-sidebar" />
-            <div class="title-sidebar">Javs</div>
+          <nuxt-link :to="'/dashboard'" v-if="$store.state.token">
+            <font-awesome-icon
+              :icon="['fa', 'caret-square-down']"
+              class="icon-sidebar"
+            />
+            <div class="title-sidebar">Dashboard</div>
           </nuxt-link>
         </li>
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/categories'">
-            <font-awesome-icon :icon="['fas', 'layer-group']" class="icon-sidebar" />
-            <div class="title-sidebar">Categories</div>
-          </nuxt-link>
-        </li>
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/idols/1'">
-            <font-awesome-icon :icon="['fas', 'venus']" class="icon-sidebar" />
-            <div class="title-sidebar">Idols</div>
-          </nuxt-link>
-        </li>
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/favorites/1'">
-            <font-awesome-icon :icon="['fas', 'heart']" class="icon-sidebar" />
-            <div class="title-sidebar">Favorites</div>
-          </nuxt-link>
-        </li>
-        <li class="navbar-nav-link">
-          <nuxt-link :to="'/history/1'">
-            <font-awesome-icon :icon="['fas', 'history']" class="icon-sidebar" />
-            <div class="title-sidebar">History</div>
-          </nuxt-link>
+        <li class="navbar-nav-link" v-if="$store.state.token" @click="logout()">
+          <font-awesome-icon
+            :icon="['fas', 'sign-out-alt']"
+            class="icon-sidebar"
+          />
+          <div class="title-sidebar">Log Out</div>
         </li>
       </ul>
     </div>
@@ -38,9 +25,19 @@
 </template>
 
 <script>
+import Login from "~/components/LoginModal/Login.vue";
 export default {
+  components: {
+    Login,
+  },
   methods: {
-  }
+    async logout() {
+      try {
+        await this.$store.dispatch("logout");
+        this.$router.push({ path: "/" });
+      } catch (e) {}
+    },
+  },
 };
 </script>
 
