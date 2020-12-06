@@ -3,12 +3,13 @@
     <li
       type="button"
       class="navbar-nav-link"
-      v-if="!$store.state.token"
       data-toggle="modal"
       data-target="#exampleModal"
     >
-      <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-navbar" />
-      <div class="title-sidebar">Sign In</div>
+      <nuxt-link :to="'/'">
+        <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon-sidebar" />
+        <div class="title-sidebar">Sign In</div>
+      </nuxt-link>
     </li>
     <div
       class="modal fade"

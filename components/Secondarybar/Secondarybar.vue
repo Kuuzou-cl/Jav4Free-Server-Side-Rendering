@@ -13,11 +13,13 @@
           </nuxt-link>
         </li>
         <li class="navbar-nav-link" v-if="$store.state.token" @click="logout()">
-          <font-awesome-icon
-            :icon="['fas', 'sign-out-alt']"
-            class="icon-sidebar"
-          />
-          <div class="title-sidebar">Log Out</div>
+          <nuxt-link :to="'/'" v-if="$store.state.token">
+            <font-awesome-icon
+              :icon="['fas', 'sign-out-alt']"
+              class="icon-sidebar"
+            />
+            <div class="title-sidebar">Log Out</div>
+          </nuxt-link>
         </li>
       </ul>
     </div>

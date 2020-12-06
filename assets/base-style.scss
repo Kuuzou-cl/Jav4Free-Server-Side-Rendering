@@ -122,15 +122,16 @@ video{
 }
 
 .btn-more{
-    color:#f8faff !important;
-    border-color: #f8faff !important;
+    color:#000000 !important;
+    background-color: #ffd800;
+    border-color: #ffd800 !important;
     box-shadow: none !important;
-    border-radius: 0px;
+    border-radius: 35px;
 }
 
 .btn-more:hover{
-    color: #E8175D !important;
-    border-color: #E8175D !important;
+    color: #ffd800 !important;
+    border-color: #ffd800 !important;
     background-color: #000000;
 }
 

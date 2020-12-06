@@ -10,7 +10,6 @@ nav {
 .navbar-button{
     color: #eeeeee;
     min-width: 23%;
-    height: 100%;
     background-color:#000000;
     -webkit-transform:skew(-25deg);
     transform:skew(-25deg);
@@ -18,14 +17,10 @@ nav {
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 0;
-    font-size: 14px;
-    letter-spacing: 2px !important;
 }
 
 .navbar-button:hover{
     color: #ffd800;
-    font-size: 12px;
-    letter-spacing: 1px !important;
 }
 
 .heart {
@@ -65,4 +60,6 @@ nav {
 
 .log-navbar{
     width: 30%;
+    font-size: 14px;
+    letter-spacing: 2px !important;
 }

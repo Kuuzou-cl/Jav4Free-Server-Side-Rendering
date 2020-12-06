@@ -17,7 +17,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
             <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more float-right">
               watch more
-              <font-awesome-icon :icon="['fas', 'plus']" />
+              <font-awesome-icon :icon="['fa', 'eye']" />
             </nuxt-link>
           </div>
         </div>
@@ -65,7 +65,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
             <nuxt-link :to="'/javs/1'" class="btn btn-more float-right">
               watch more
-              <font-awesome-icon :icon="['fas', 'plus']" />
+              <font-awesome-icon :icon="['fa', 'eye']" />
             </nuxt-link>
           </div>
         </div>
