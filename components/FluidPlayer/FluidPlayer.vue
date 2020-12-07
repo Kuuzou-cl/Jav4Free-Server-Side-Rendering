@@ -24,7 +24,7 @@ export default {
         posterImage: this.jav.imageIndexUrl,
         timelinePreview: {
           file:
-            "https://javdata.sfo2.cdn.digitaloceanspaces.com/vtts/" +
+            "https://javdata.sfo2.digitaloceanspaces.com/vtts/" +
             this.jav.code +
             "_thumbs.vtt",
           type: "VTT",
