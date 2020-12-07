@@ -443,12 +443,12 @@ export default {
       var obj = {
         name: this.javName,
         code: this.javCode,
-        url: "https://cdn.jav4free.watch/scenes/" + this.javCode + ".mp4",
+        url: "https://javdata.sfo2.digitaloceanspaces.com/scenes/" + this.javCode + ".mp4",
         duration: this.javDuration,
         imageUrl:
-          "https://cdn.jav4free.watch/scenes/preview/" + this.javCode + ".mp4",
+          "https://javdata.sfo2.digitaloceanspaces.com/scenes/preview/" + this.javCode + ".mp4",
         imageIndexUrl:
-          "https://cdn.jav4free.watch/scenes/static/" +
+          "https://javdata.sfo2.digitaloceanspaces.com/scenes/static/" +
           this.javCode +
           "-static.jpg",
         hidden: this.hidden,
