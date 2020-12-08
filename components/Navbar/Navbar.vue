@@ -56,7 +56,7 @@
               {{ textButton3 }}
             </div>
           </nuxt-link>
-          <nuxt-link to="/categories/1" tag="button" class="btn navbar-button">
+          <nuxt-link to="/categories" tag="button" class="btn navbar-button">
             <div
               @mouseover="handleHoverB4(true)"
               @mouseleave="handleHoverB4(false)"

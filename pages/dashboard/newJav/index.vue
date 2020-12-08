@@ -429,7 +429,7 @@ export default {
         name: this.javName,
         code: this.javCode,
         imageUrl:
-          "https://cdn.jav4free.watch/javs/" +
+          "https://javdata.sfo2.digitaloceanspaces.com/javs/" +
           this.javCode +
           ".jpg",
         scenes: [],
