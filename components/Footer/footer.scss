@@ -1,16 +1,22 @@
 footer{
     width: 100%;
     text-align: center;
+    a{
+        color: #7DF9FF;
+    }
+    a:hover{
+        color: #ffd800;
+    }
 }
 
 .footer .copyright{
-    border-top: 2px solid #E8175D;
+    border-top: 2px solid #ffd800;
     background-color: #000;
     padding-bottom: 0px;
 }
 
 .footer .copyright p{
-    color: #E8175D ;
+    color: #ffd800 ;
     height: 5px;
     text-align: center;
     font-weight: 300;

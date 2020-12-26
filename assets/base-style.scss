@@ -74,6 +74,10 @@ body
     width: 100%;
 }
 
+a:hover{
+  text-decoration: none;
+}
+
 img {
   width: 100%;
 }
@@ -157,9 +161,10 @@ video{
 }
 
 .pagination .paginate-actual{
-    border-color: #E8175D !important;
-    background-color: #E8175D !important;
-    color: #f8faff !important;
+    border-color: #ffd800 !important;
+    border-style: dashed;
+    background-color: #000000 !important;
+    color: #ffd800 !important;
     box-shadow: none !important;    
 }
 
@@ -168,30 +173,33 @@ video{
 }
 
 .pagination .paginate-index:hover{
-    border-color: #444444 !important;
-    background-color: #444444 !important;
+    border-color: #ffd800 !important;
+    background-color: #000000 !important;
+    color: #ffd800 !important;
 }
 
 .pagination .paginate-prev{
     border-color: #2e2e2e !important;
-    background-color: #2e2e2e !important;
-    color: #f8faff !important;
+    background-color: #000000 !important;
+    color: #ffd800 !important;
     box-shadow: none !important;
 }
 
 .pagination .paginate-prev:hover{
-    border-color: #444444 !important;
-    background-color: #444444 !important;
+    border-color: #ffd800 !important;
+    background-color: #ffd800 !important;
+    color: #000000 !important;
 }
 
 .pagination .paginate-next{
     border-color: #2e2e2e !important;
-    background-color: #2e2e2e !important;
-    color: #f8faff !important;
+    background-color: #000000 !important;
+    color: #ffd800 !important;
     box-shadow: none !important;
 }
 
 .pagination .paginate-next:hover{
-    border-color: #444444 !important;
-    background-color: #444444 !important;
+    border-color: #ffd800 !important;
+    background-color: #ffd800 !important;
+    color: #000000 !important;
 }

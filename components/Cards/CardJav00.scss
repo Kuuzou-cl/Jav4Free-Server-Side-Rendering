@@ -4,7 +4,7 @@
     border: 0;
     border-radius: 0;
     a{
-        color: #E8175D !important;
+        color: #eeeeee !important;
     }
     cursor: pointer;
     img{
@@ -17,13 +17,13 @@
 
 .box2:hover{
     a{
-        color: #E8175D !important;
+        color: #ffd800 !important;
     }
 }
 
 .box2-media:hover, .box2-media:active, .box2-media:focus{
     a{
-        color: #E8175D !important;
+        color: #ffd800 !important;
     }
     img{
         display: none;
@@ -38,7 +38,7 @@
 .loading-box{
     position: absolute;
     z-index:1;
-    border-top: 2px solid #E8175D;
+    border-top: 2px solid #ffd800;
     width:0;
     transition: width 0.5s ease-in-out;
 }
