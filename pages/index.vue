@@ -34,26 +34,6 @@
           </div>
         </div>
       </div>
-      <div class="need-space" v-if="recommendedJavs.length > 0"></div>
-      <div class="container" v-if="recommendedJavs.length > 0">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h6 class="title-index title-white">Recommended for You!</h6>
-          </div>
-        </div>
-      </div>
-      <div class="need-space" v-if="recommendedJavs.length > 0"></div>
-      <div class="container" v-if="recommendedJavs.length > 0">
-        <div class="row">
-          <div
-            v-for="jav in recommendedJavs"
-            :key="jav._id"
-            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-          >
-            <CardJav v-bind:dataJav="jav" />
-          </div>
-        </div>
-      </div>
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
@@ -95,23 +75,6 @@
       <div class="row">
         <div
           v-for="jav in javsCategory1"
-          :key="jav._id"
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-        >
-          <CardJavMobile v-bind:dataJav="jav" />
-        </div>
-      </div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <button class="btn btn-more">Recommended for You!</button>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="row">
-        <div
-          v-for="jav in recommendedJavs"
           :key="jav._id"
           class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
         >
@@ -196,14 +159,6 @@ export default {
     var dataHistory = {
       scenesBatch: store.getters.getHistory,
     };
-    var recommendedJavs = await axios
-      .post(
-        "https://jav.souzou.dev/jav4free/scenes/getRecommendScenesByHistory",
-        dataHistory
-      )
-      .catch((e) => {
-        console.log(e);
-      });
 
     const idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
@@ -215,7 +170,6 @@ export default {
       javsCategory1: cat1.data.javs,
       scenes: scenes.data.scenes,
       javsMobile: javsMobile.data.javs,
-      recommendedJavs: recommendedJavs.data.scene,
       idols: idols.data.idols,
     };
   },
