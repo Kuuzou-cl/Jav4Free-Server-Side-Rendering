@@ -18,18 +18,59 @@
                 </div>
               </div>
               <div class="jav-extra">
-              <span>
-                Categories:
-                <nuxt-link
-                  v-for="category in categories"
-                  :key="category._id"
-                  :to="'/categories/1/' + category._id"
-                  tag="a"
-                  class="links"
-                  >{{ category.name }},</nuxt-link
-                >
-              </span>
+                <span>
+                  Categories:
+                  <nuxt-link
+                    v-for="category in categories"
+                    :key="category._id"
+                    :to="'/categories/1/' + category._id"
+                    tag="a"
+                    class="links"
+                    >{{ category.name }},</nuxt-link
+                  >
+                </span>
+              </div>
+              <div class="jav-extra">
+                <span>
+                  Idols:
+                  <nuxt-link
+                    v-for="idol in idols"
+                    :key="idol._id"
+                    :to="'/idols/1/' + idol._id"
+                    tag="a"
+                    class="links"
+                    >{{ idol.name }},</nuxt-link
+                  >
+                </span>
+              </div>
             </div>
+            <div class="jav-more">
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <nuxt-link :to="'/javs/jav/'+jav._id" tag="img" :src="jav.imageUrl">
+                  </nuxt-link>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <div class="row">
+                    <p class="info">Jav Title : {{ jav.name }}</p>
+                  </div>
+                  <div class="row">
+                    <p class="info">Jav Code : {{ jav.code }}</p>
+                  </div>
+                  <div class="row">
+                    <p class="info">Categories</p>
+                  </div>
+                  <div class="row">
+                    <p
+                      class="info-secondary"
+                      v-for="category in categories"
+                      :key="category._id"
+                    >
+                      {{ category.name }}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-3 text-center">
@@ -58,9 +99,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  
-                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
               </div>
             </div>
             <div class="jav-extra">
@@ -171,6 +210,7 @@ export default {
       scene: scene.data.scene,
       categories: scene.data.categories,
       idols: scene.data.idols,
+      jav: scene.data.jav,
     };
   },
   beforeCreate() {},

@@ -1,5 +1,6 @@
 .container-jav{
     border: 0;
+    border-bottom: 1px dashed #ffd800;
 }
 
 .container-recommended{
@@ -119,7 +120,6 @@
     font-size:10px;
     letter-spacing: 1px;
     color: #f8faff;
-    border-bottom: 1px solid #202020;
 }
 
 .jav-extra a {
@@ -129,30 +129,19 @@
 }
 
 .jav-extra a:hover {
-    color: #ba0032;
+    color: #ff0044;
 }
 
-.plyr--full-ui input[type=range] {
-    color: #ffd800 !important;
-  }
-  
-  .plyr__control--overlaid {
-    background: rgba(255, 216, 0, .8) !important;
-  }
-
-  .plyr--video .plyr__control.plyr__tab-focus,
-  .plyr--video .plyr__control:hover,
-  .plyr--video .plyr__control[aria-expanded=true] {
-    background: #ffd800 !important;
-  }
-  
-  .plyr__control.plyr__tab-focus {
-    box-shadow: 0 0 0 5px rgba(255, 216, 0, .5) !important;
-  }
-  
-  .plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
-    background: #ffd800 !important;
-  }
+.jav-more{
+    padding: 0.5% 2%;
+    text-align: justify;
+    justify-content:center;
+    align-items:center;
+    background-color: #131313;
+    font-size:10px;
+    letter-spacing: 1px;
+    color: #f8faff;
+}
 
 @media screen and (min-width: 1601px) and (max-width: 1919px) {
 
