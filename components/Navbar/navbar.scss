@@ -1,15 +1,16 @@
 nav {
     width: 100%;
+    height: auto;
     display:flex;
-    align-items:center;
-    background: linear-gradient(90deg, #ffd800 80%, #000000 20%);
+    background-color: #ffd800;
+    background-image: -webkit-linear-gradient(-30deg, #ffd800 69%, #000000 31%);
     padding-top: 0;
     padding-bottom: 0;
 }
 
 .navbar-button{
     color: #eeeeee;
-    min-width: 23%;
+    min-width: 24%;
     background-color:#000000;
     -webkit-transform:skew(-25deg);
     transform:skew(-25deg);
@@ -19,20 +20,28 @@ nav {
     border-radius: 0;
 }
 
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+ }
+
 .navbar-button:hover{
     color: #ffd800;
 }
 
 .heart {
-    width: 30%;
-    margin: 0 auto;
-    display: block;
-    margin: initial;
-    padding: 0px 0px 0px 0px;
+    width: 19%;
+    img{
+        max-width: 80px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        padding: 0px 0px 0px 0px;
+    }
 }
 
 .search-navbar{    
-    width: 60%;
+    width: 50%;
     input, textarea{
         color: #272727;
         border: 0;

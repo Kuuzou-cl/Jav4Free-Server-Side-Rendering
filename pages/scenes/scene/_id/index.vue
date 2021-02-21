@@ -16,16 +16,8 @@
                     <p class="title">{{ getName(scene.name) }}</p>
                   </div>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    
                   </div>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="btn btn-options">
-                      <p>Report a bug</p>
-                      <font-awesome-icon
-                        :icon="['fas', 'bug']"
-                        class="bug-icon"
-                      />
-                    </div>
                   </div>
                 </div>
               </div>

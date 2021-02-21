@@ -1,6 +1,7 @@
 .crumbs-content{
     width: 100%;
-    background-color: #131313;
+    background-color: #000000;
+    border-bottom: 1px dashed #ffd800;
     padding-bottom: 0.2%;
     margin-bottom: 1%;
 }
@@ -18,7 +19,7 @@
 }
 
 .crumbs-content a:hover {
-  color: #E8175D !important;
+  color: #ffd800 !important;
 }
 
 .fade-enter-active, .fade-leave-active {
