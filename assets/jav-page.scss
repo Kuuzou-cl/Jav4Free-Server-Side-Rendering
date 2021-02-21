@@ -35,7 +35,7 @@
     justify-content:center;
     height: 10%;
     background-color: #18191a;
-    border-bottom: 1px solid #ffd800;
+    border-bottom: 1px dashed #ffd800;
     .title{
         text-transform: uppercase;
         font-size:14px;
@@ -123,35 +123,35 @@
 }
 
 .jav-extra a {
-    color: #E8175D;
+    color: #ffd800;
     padding-right: 0.15%;
     display: inline-block;
 }
 
 .jav-extra a:hover {
-    color: #E8175D;
+    color: #ba0032;
 }
 
 .plyr--full-ui input[type=range] {
-    color: #E8175D !important;
+    color: #ffd800 !important;
   }
   
   .plyr__control--overlaid {
-    background: rgba(232, 23, 93, .8) !important;
+    background: rgba(255, 216, 0, .8) !important;
   }
 
   .plyr--video .plyr__control.plyr__tab-focus,
   .plyr--video .plyr__control:hover,
   .plyr--video .plyr__control[aria-expanded=true] {
-    background: #E8175D !important;
+    background: #ffd800 !important;
   }
   
   .plyr__control.plyr__tab-focus {
-    box-shadow: 0 0 0 5px rgba(232, 23, 93, .5) !important;
+    box-shadow: 0 0 0 5px rgba(255, 216, 0, .5) !important;
   }
   
   .plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
-    background: #E8175D !important;
+    background: #ffd800 !important;
   }
 
 @media screen and (min-width: 1601px) and (max-width: 1919px) {

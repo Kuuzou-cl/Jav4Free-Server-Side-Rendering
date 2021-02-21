@@ -12,15 +12,24 @@
               <FluidPlayer v-bind:jav="scene" />
               <div class="jav-title">
                 <div class="row justify-content-center">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <p class="title">{{ getName(scene.name) }}</p>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                   </div>
                 </div>
               </div>
+              <div class="jav-extra">
+              <span>
+                Categories:
+                <nuxt-link
+                  v-for="category in categories"
+                  :key="category._id"
+                  :to="'/categories/1/' + category._id"
+                  tag="a"
+                  class="links"
+                  >{{ category.name }},</nuxt-link
+                >
+              </span>
+            </div>
             </div>
           </div>
           <div class="col-lg-3 text-center">
@@ -166,9 +175,6 @@ export default {
   },
   beforeCreate() {},
   methods: {
-    addToFavorites: function (_id) {
-      this.$store.dispatch("addToFavorites", { javId: _id });
-    },
     getName: function (_name) {
       let newName;
       if (_name.length > 180) {
