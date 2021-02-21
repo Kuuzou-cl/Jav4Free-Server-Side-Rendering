@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Navbar/>
-    <Secondarybar />
     <nuxt />
     <Footer />
   </div>

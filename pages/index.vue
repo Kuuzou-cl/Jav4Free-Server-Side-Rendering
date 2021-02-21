@@ -2,7 +2,7 @@
   <div>
     <div v-if="$device.isDesktop" class="container-fluid">
       <Popunder />
-      <div class="need-space"></div>
+      <!-- <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -33,7 +33,7 @@
             <CardJav v-bind:dataJav="jav" />
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
