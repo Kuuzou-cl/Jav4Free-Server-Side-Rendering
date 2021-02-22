@@ -85,10 +85,10 @@ export default {
   },
   computed: {
     textButton1() {
-      return this.hoverB1 === true ? "ビデオ" : "Scenes";
+      return this.hoverB1 === true ? "ビデオ" : "Videos";
     },
     textButton2() {
-      return this.hoverB2 === true ? "ビデオコード" : "Video Codes";
+      return this.hoverB2 === true ? "ビデオコード" : "Codes";
     },
     textButton3() {
       return this.hoverB3 === true ? "ポルノスター" : "Porn Stars";
