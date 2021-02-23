@@ -47,7 +47,11 @@
             <div class="jav-more">
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                  <nuxt-link :to="'/javs/jav/'+jav._id" tag="img" :src="jav.imageUrl">
+                  <nuxt-link
+                    :to="'/javs/jav/' + jav._id"
+                    tag="img"
+                    :src="jav.imageUrl"
+                  >
                   </nuxt-link>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -75,6 +79,26 @@
           </div>
           <div class="col-lg-3 text-center">
             <DesktopSideAdBanner />
+          </div>
+        </div>
+        <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row justify-content-center recommended-title">
+              <h3>Recommended videos</h3>
+            </div>
+            <div class="container-recommended">
+              <div class="row">
+                <div
+                  v-for="scene in related"
+                  :key="scene._id"
+                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                >
+                  <CardJav v-bind:dataJav="scene" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="need-space"></div>
@@ -203,7 +227,11 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-
+    let related = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + id)
+      .catch((e) => {
+        console.log(e);
+      });
     return {
       SceneTitle: scene.data.scene.name,
       SceneCode: scene.data.jav.code,
@@ -211,6 +239,7 @@ export default {
       categories: scene.data.categories,
       idols: scene.data.idols,
       jav: scene.data.jav,
+      related: related.data.relatedScenes,
     };
   },
   beforeCreate() {},
