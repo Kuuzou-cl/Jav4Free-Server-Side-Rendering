@@ -47,6 +47,11 @@
           </div>
         </div>
         <div class="need-space"></div>
+        <div class="need-space"></div>
+        <div class="row justify-content-center recommended-title">
+          <h3>Scenes from this JAV</h3>
+        </div>
+        <div class="need-space"></div>
         <div class="row">
           <div
             v-for="scene in scenes"
@@ -57,10 +62,11 @@
           </div>
         </div>
         <div class="need-space"></div>
+        <div class="need-space"></div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row justify-content-center recommended-title">
-              <h3>Recommended videos</h3>
+              <h3>Recommended jav</h3>
             </div>
             <div class="container-recommended">
               <div class="row">

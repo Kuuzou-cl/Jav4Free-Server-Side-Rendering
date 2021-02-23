@@ -13,8 +13,8 @@
         <div class="need-space"></div>
         <div class="container">
           <div class="row">
-            <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-              <CardJav v-bind:dataJav="jav" />
+            <div v-for="scene in scenes" :key="scene._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+              <CardJav v-bind:dataJav="scene" />
             </div>
           </div>
         </div>
@@ -167,9 +167,9 @@ export default {
       .catch(e => {
         console.log(e);
       });
-    let javs = await axios
+    let scenes = await axios
       .get(
-        "https://jav.souzou.dev/jav4free/javs/getJavByCategory/" +
+        "https://jav.souzou.dev/jav4free/scenes/getSceneByCategory/" +
           page +
           "/" +
           categoryId
@@ -180,10 +180,10 @@ export default {
     return {
       titleC: category.data.category.name,
       category: category.data.category,
-      javs: javs.data.javs,
+      scenes: scenes.data.scenes,
       page: page,
-      nextPage: javs.data.nextPage,
-      lastPage: javs.data.lastPage
+      nextPage: scenes.data.nextPage,
+      lastPage: scenes.data.lastPage
     };
   },
   beforeCreate() {
