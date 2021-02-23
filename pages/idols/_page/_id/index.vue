@@ -198,7 +198,7 @@ export default {
       });
     let javs = await axios
       .get(
-        "https://jav.souzou.dev/jav4free/javs/getJavByIdol/" +
+        "https://jav.souzou.dev/jav4free/scenes/getSceneByIdol/" +
           page +
           "/" +
           idolId
@@ -209,7 +209,7 @@ export default {
     return {
       titleI: idol.data.idol.name,
       idol: idol.data.idol,
-      javs: javs.data.javs,
+      javs: javs.data.scenes,
       page: page,
       nextPage: javs.data.nextPage,
       lastPage: javs.data.lastPage
@@ -221,14 +221,6 @@ export default {
     this.$store.dispatch("addCrumb", {
       page: "Idol",
       show: this.$route.params.id,
-      route: routePage
-    });
-  },
-  beforeCreate() {
-    let routePage = "javs/" + this.$route.params.page;
-    this.$store.dispatch("addCrumb", {
-      page: "Javs",
-      show: "Recently Added Videos",
       route: routePage
     });
   },

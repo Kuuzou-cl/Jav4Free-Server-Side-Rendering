@@ -183,7 +183,7 @@ export default {
       page = "1";
     }
     let idols = await axios
-      .get("https://jav.souzou.dev/jav4free/idols/getIdolsByPage/" + page)
+      .get("https://jav.souzou.dev/jav4free/idols/idolsNotEmpty/" + page)
       .catch(e => {
         console.log(e);
       });

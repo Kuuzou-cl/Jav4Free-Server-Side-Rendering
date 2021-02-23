@@ -150,7 +150,12 @@ export const mutations = {
                           let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
                           state.breadCrumbs = newCrumbs;
                         } else {
-
+                          if (page.page == "Scenes") {
+                            let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
+                            state.breadCrumbs = newCrumbs;
+                          } else {
+  
+                          }
                         }
                       }
                     }

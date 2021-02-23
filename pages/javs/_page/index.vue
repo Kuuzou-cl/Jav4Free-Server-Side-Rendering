@@ -174,7 +174,7 @@ export default {
     let routePage = "javs/" + this.$route.params.page;
     this.$store.dispatch("addCrumb", {
       page: "Javs",
-      show: "Recently Added Videos",
+      show: "Recently Added JAV",
       route: routePage
     });
   },

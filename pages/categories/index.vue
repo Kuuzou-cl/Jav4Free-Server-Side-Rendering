@@ -82,7 +82,7 @@ export default {
   },
   async asyncData() {
     const { data } = await axios
-      .get("https://jav.souzou.dev/jav4free/categories")
+      .get("https://jav.souzou.dev/jav4free/categories/categoriesNotEmpty")
       .catch(e => {
         console.log(e);
       });
