@@ -526,7 +526,7 @@ export default {
       let pending = [];
 
       spaceData.forEach((r) => {
-        if (!this.javs.some((item) => item.code === r) && r !="preview" && r !="static") {
+        if (!this.scenes.some((item) => item.code == r) && r !="preview" && r !="static") {
           pending.push(r);
         }
       });
