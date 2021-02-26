@@ -37,13 +37,8 @@
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <h6 class="title-index">
-              <nuxt-link :to="'/javs/1'" tag="a" class="title-white">Recently Added Videos</nuxt-link>
-            </h6>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <nuxt-link :to="'/javs/1'" class="btn btn-more float-right">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <nuxt-link :to="'/javs/1'" class="btn btn-more">
               watch more
               <font-awesome-icon :icon="['fa', 'eye']" />
             </nuxt-link>

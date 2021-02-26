@@ -9,14 +9,14 @@ nav {
 }
 
 .navbar-button{
-    color: #eeeeee;
+    color: #ffd800;
     min-width: 24%;
     background-color:#000000;
     -webkit-transform:skew(-25deg);
     transform:skew(-25deg);
     display:inline-block;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     border-radius: 0;
 }
 
@@ -26,7 +26,7 @@ nav {
  }
 
 .navbar-button:hover{
-    color: #ffd800;
+    color: #da0000;
 }
 
 .heart {

@@ -21,7 +21,7 @@ module.exports = {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.cdn.digitaloceanspaces.com/logo-short-01.png' },
+      { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.digitaloceanspaces.com/j4f-favicon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ],
     script: [

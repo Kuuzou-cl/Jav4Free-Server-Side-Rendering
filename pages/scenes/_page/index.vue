@@ -181,19 +181,19 @@ export default {
   methods: {
     nextClick() {
       var newPage = Number(this.page) + 1;
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/scenes/" + newPage });
     },
     prevClick() {
       var newPage = Number(this.page) - 1;
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/scenes/" + newPage });
     },
     pullPage(indexPage) {
       var newPage = Number(indexPage);
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/scenes/" + newPage });
     },
     pushPage(indexPage) {
       var newPage = Number(indexPage);
-      this.$router.push({ path: "/javs/" + newPage });
+      this.$router.push({ path: "/scenes/" + newPage });
     }
   },
   computed: {

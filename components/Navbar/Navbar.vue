@@ -2,7 +2,7 @@
   <nav role="navbar navigation" class="navbar-expand-sm">
     <div class="navbar-collapse">
       <nuxt-link :to="'/'" class="heart" tag="div" type="button">
-        <img src="https://javdata.sfo2.digitaloceanspaces.com/j4f-logo-black.png" />
+        <img src="https://javdata.sfo2.digitaloceanspaces.com/j4f-logo-black2.png" />
       </nuxt-link>
       <div class="search-navbar">
         <div class="row width-fix">
