@@ -7,7 +7,7 @@
     </div>
     <div class="box-content">
       <h3 class="title">
-        <nuxt-link :to="'/scenes/scene/'+dataJav._id" tag="a">{{getName(dataJav.name)}}</nuxt-link>
+        <nuxt-link :to="'/scenes/scene/'+dataJav._id" tag="a">{{dataJav.code + " - " + getName(dataJav.name)}}</nuxt-link>
       </h3>
     </div>
   </div>

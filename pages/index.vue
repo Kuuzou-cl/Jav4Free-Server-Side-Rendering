@@ -1,66 +1,69 @@
 <template>
   <div>
-    <div v-if="$device.isDesktop" class="container-fluid">
+    <div v-if="$device.isDesktop" class="container-fluid no-margin no-padding">
       <Popunder />
-      <!-- <div class="need-space"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <h6 class="title-index">
-              <nuxt-link
-                :to="'/categories/1/'+category1._id"
-                tag="a"
-                class="title-white"
-              >Recommended Category - {{category1.name}} JAV's</nuxt-link>
-            </h6>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more float-right">
-              watch more
-              <font-awesome-icon :icon="['fa', 'eye']" />
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container">
-        <div class="row">
+      <div class="container-fluid no-margin no-padding">
+        <div class="row width-fix no-margin">
           <div
-            v-for="jav in javsCategory1"
+            v-for="jav in javsDesktop"
             :key="jav._id"
-            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
           >
-            <CardJav v-bind:dataJav="jav" />
-          </div>
-        </div>
-      </div> -->
-      <div class="need-space"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <nuxt-link :to="'/javs/1'" class="btn btn-more">
-              watch more
-              <font-awesome-icon :icon="['fa', 'eye']" />
-            </nuxt-link>
+            <CardJavPoster v-bind:dataJav="jav" />
           </div>
         </div>
       </div>
       <div class="need-space"></div>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <div v-for="scene in scenes" :key="scene._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <CardJav v-bind:dataJav="scene" />
+          <div class="col-lg-7">
+            <div class="row justify-content-center">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <nuxt-link :to="'/scenes/1'" class="btn btn-more">
+                  watch more AV scenes
+                </nuxt-link>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                v-for="scene in scenes"
+                :key="scene._id"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+              >
+                <CardScene v-bind:dataJav="scene" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="row">
+              <div
+                v-for="idol in idols"
+                :key="idol._id"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
+              >
+                <CardIdol
+                  v-if="idol != null"
+                  v-bind:dataId="idol._id"
+                  v-bind:dataName="idol.name"
+                  v-bind:dataUrl="idol.imageUrl"
+                ></CardIdol>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="need-space"></div>
     </div>
     <div v-if="$device.isMobile" class="container-fluid">
       <div class="need-space"></div>
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <nuxt-link :to="'/categories/1/'+category1._id" class="btn btn-more">
-              Recommended Videos from "{{category1.name}}"
+            <nuxt-link
+              :to="'/categories/1/' + category1._id"
+              class="btn btn-more"
+            >
+              Recommended Videos from "{{ category1.name }}"
               <font-awesome-icon :icon="['fas', 'plus']" />
             </nuxt-link>
           </div>
@@ -89,7 +92,11 @@
       </div>
       <div class="need-space"></div>
       <div class="row">
-        <div v-for="jav in javs" :key="jav._id" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div
+          v-for="jav in javs"
+          :key="jav._id"
+          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        >
           <CardJavMobile v-bind:dataJav="jav" />
         </div>
       </div>
@@ -103,21 +110,23 @@
 import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
-import CardJav from "../components/Cards/CardJav00";
+import CardScene from "../components/Cards/CardScene";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
 import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 import Popunder from "~/components/ExoclickAds/Popunder.vue";
+import CardJavPoster from "~/components/Cards/CardJavPoster.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
     Crumbs,
-    CardJav,
+    CardScene,
     CardIdol,
     CardJavMobile,
     CardIdolMobile,
     Popunder,
+    CardJavPoster,
   },
   head() {
     return {
@@ -131,11 +140,6 @@ export default {
     };
   },
   async asyncData({ store }) {
-    const cat1 = await axios
-      .get("https://jav.souzou.dev/jav4free/categories/getRandomCategory")
-      .catch((e) => {
-        console.log(e);
-      });
     const scenes = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/getLatestScenes")
       .catch((e) => {
@@ -150,19 +154,22 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-
-    var dataHistory = {
-      scenesBatch: store.getters.getHistory,
-    };
-
+    const javsDesktop = await axios
+      .get("https://jav.souzou.dev/jav4free/javs/", {
+        headers: {
+          quantity: 4,
+        },
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     const idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
       .catch((e) => {
         console.log(e);
       });
     return {
-      category1: cat1.data.category,
-      javsCategory1: cat1.data.javs,
+      javsDesktop: javsDesktop.data.javs,
       scenes: scenes.data.scenes,
       javsMobile: javsMobile.data.javs,
       idols: idols.data.idols,

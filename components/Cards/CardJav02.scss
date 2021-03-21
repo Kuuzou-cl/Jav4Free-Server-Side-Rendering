@@ -4,7 +4,7 @@
     border: 0;
     border-radius: 0;
     a{
-        color: #eeeeee !important;
+        color: #000 !important;
     }
     cursor: pointer;
     img{
@@ -14,7 +14,7 @@
 
 .box22:hover{
     a{
-        color: #ffd800 !important;
+        color: #da0000 !important;
         text-decoration: none;
     }
 }
@@ -28,7 +28,7 @@
     width:100%;
     padding:5px 10px;
     color:#f8faff;
-    background-color: #000000;
+    background-color: #fff;
     text-align: justify;
     z-index:1;
 }

@@ -20,7 +20,7 @@ export default {
       layoutControls: {
         layout: "default",
         fillToContainer: true,
-        primaryColor: "#ffd800",
+        primaryColor: "#da0000",
         posterImage: this.jav.imageIndexUrl,
         timelinePreview: {
           file:

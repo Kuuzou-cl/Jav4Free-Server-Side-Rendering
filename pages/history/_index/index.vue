@@ -133,7 +133,7 @@
 import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
-import CardJav from "~/components/Cards/CardJav00";
+import CardJav from "~/components/Cards/CardScene";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 
 export default {

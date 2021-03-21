@@ -168,7 +168,7 @@
 import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
-import CardJav from "~/components/Cards/CardJav00";
+import CardJav from "~/components/Cards/CardScene";
 import CardJav02 from "~/components/Cards/CardJav02";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
 import VideoSlider from "~/components/ExoclickAds/VideoSlider.vue";
