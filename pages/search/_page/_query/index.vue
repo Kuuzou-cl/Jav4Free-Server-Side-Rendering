@@ -3,30 +3,6 @@
     <div v-if="$device.isDesktop">
       <Crumbs />
       <div class="container-fluid">
-        <div v-if="categories.length > 0" class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h6 class="title-white text-left">Categories found by "{{this.query.toUpperCase()}}":</h6>
-            </div>
-          </div>
-        </div>
-        <div v-if="categories.length > 0" class="need-space"></div>
-        <div v-if="categories.length > 0" class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="row">
-                <div v-for="category in categories" :key="category._id">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <nuxt-link :to="'/categories/1/'+category._id">
-                      <button class="btn category-title">{{ category.name }}</button>
-                    </nuxt-link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-if="categories.length > 0" class="need-space"></div>
         <div v-if="idols.length > 0" class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -51,7 +27,7 @@
           </div>
         </div>
         <div v-if="idols.length > 0" class="need-space"></div>
-        <div v-if="$device.isDesktop" class="container">
+        <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <h6 class="title-white text-left">Videos found by "{{this.query.toUpperCase()}}":</h6>
@@ -59,17 +35,10 @@
           </div>
         </div>
         <div class="need-space"></div>
-        <div v-if="$device.isDesktop" class="container">
+        <div class="container">
           <div class="row">
-            <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-              <CardJav v-bind:dataJav="jav" />
-            </div>
-          </div>
-        </div>
-        <div v-if="$device.isMobileOrTablet" class="container">
-          <div class="row">
-            <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-              <CardJavMobile v-bind:dataJav="jav" />
+            <div v-for="scene in scenes" :key="scene._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+              <CardJav v-bind:dataJav="scene" />
             </div>
           </div>
         </div>
@@ -264,9 +233,9 @@ export default {
     if (page == null || page == "") {
       page = "1";
     }
-    const javs = await axios
+    const scenes = await axios
       .get(
-        "https://jav.souzou.dev/jav4free/javs/searchJav/" + page + "/" + query
+        "https://jav.souzou.dev/jav4free/scenes/searchScene/" + page + "/" + query
       )
       .catch(e => {
         console.log(e);
@@ -274,11 +243,11 @@ export default {
     return {
       query: query,
       page: page,
-      javs: javs.data.dataPage,
-      nextPage: javs.data.nextPage,
-      lastPage: javs.data.lastPage,
-      idols: javs.data.idols,
-      categories: javs.data.categories
+      scenes: scenes.data.dataPage,
+      nextPage: scenes.data.nextPage,
+      lastPage: scenes.data.lastPage,
+      idols: scenes.data.idols,
+      categories: scenes.data.categories
     };
   },
   beforeCreate() {
