@@ -3,7 +3,7 @@
     <div v-if="$device.isDesktop" class="container-fluid no-margin no-padding">
       <Popunder />
       <div class="container-fluid">
-        <div class="row">
+        <div class="row row-title">
           <div class="col-lg-12 text-center">
             <h4>Newest AV Added</h4>
           </div>
@@ -21,10 +21,11 @@
         </div>
       </div>
       <div class="need-space"></div>
+      <div class="need-space"></div>
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-7">
-            <div class="row">
+            <div class="row row-title">
               <div class="col-lg-12 text-center">
                 <h4>Newest AV Scenes</h4>
               </div>
@@ -48,7 +49,7 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <div class="row">
+            <div class="row row-title">
               <div class="col-lg-12 text-center">
                 <h4>Featured AV Idols</h4>
               </div>

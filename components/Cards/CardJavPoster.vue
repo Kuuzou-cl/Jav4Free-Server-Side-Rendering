@@ -47,7 +47,7 @@ export default {
   bottom: 70px;
   font-size: 25px;
   color: #fff;
-  background-color: #0000007d;
+  background-color: #000000b1;
   border: 2px solid #fff;
   font-weight: 700;
   letter-spacing: 2px;
