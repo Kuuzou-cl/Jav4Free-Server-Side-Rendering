@@ -187,7 +187,7 @@ export default {
       let pending = [];
 
       spaceData.forEach((r) => {
-        if (!idols.some((item) => item.name.toLowerCase() === r)) {
+        if (!idols.some((item) => item.name.toLowerCase() === r.toLowerCase())) {
           pending.push(r);
         }
       });

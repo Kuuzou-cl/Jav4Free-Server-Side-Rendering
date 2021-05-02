@@ -1,6 +1,11 @@
 <template>
   <div id="wrapper">
-    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <SidebarAdmin
+      v-bind:scenes="scenes"
+      v-bind:videos="javs"
+      v-bind:idols="idols"
+      v-bind:categories="categories"
+    />
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
@@ -104,19 +109,24 @@ export default {
     var convert = require("xml-js");
     var options = { compact: false, ignoreComment: true, spaces: 3 };
 
+    let scenes = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/")
+      .catch((e) => {
+        console.log(e);
+      });
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let categories = await axios
       .get("https://jav.souzou.dev/jav4free/categories/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let idols = await axios
       .get("https://jav.souzou.dev/jav4free/idols/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     let spaceDataIdols = await axios
@@ -128,6 +138,7 @@ export default {
       convert.xml2json(spaceDataIdols.data, options)
     );
     return {
+      scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,

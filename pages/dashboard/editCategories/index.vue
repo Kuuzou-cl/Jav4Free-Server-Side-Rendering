@@ -21,7 +21,7 @@
         <div class="need-space"></div>
         <div class="container">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
               <input
                 class="input-admin"
                 type="text"
@@ -29,21 +29,41 @@
                 placeholder="Search by name..."
               />
             </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+              <div class="dropdown">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  {{ this.entries }} of {{ this.categories.length }}
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" @click="changeEntries(15)">10</a>
+                  <a class="dropdown-item" @click="changeEntries(25)">25</a>
+                  <a class="dropdown-item" @click="changeEntries(50)">50</a>
+                  <a
+                    class="dropdown-item"
+                    @click="changeEntries(filteredCategories.length)"
+                    >All</a
+                  >
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="tableFixHead">
-                <table class="table table-hover text-center">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="t-header">Title</th>
-                      <th scope="col" class="t-header">Code</th>
-                      <th scope="col" class="t-header"></th>
-                      <th scope="col" class="t-header"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
+              <table id="example" class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>ID Code</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
                       v-for="category in filterCategories"
                       :key="category._id"
                     >
@@ -65,9 +85,16 @@
                         </button>
                       </td>
                     </tr>
-                  </tbody>
-                </table>
-              </div>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Title</th>
+                    <th>ID Code</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
           </div>
         </div>
@@ -93,6 +120,7 @@ export default {
       categories: null,
       filteredCategories: [],
       categoriesLength: [],
+      entries: 5,
     };
   },
   async asyncData() {
@@ -117,7 +145,7 @@ export default {
         console.log(e);
       });
     return {
-      scenes:scenes.data.scenes,
+      scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
@@ -136,6 +164,9 @@ export default {
         });
       this.$router.push({ path: "/dashboard" });
     },
+    changeEntries(_entries) {
+      this.entries = _entries;
+    },
   },
   computed: {
     filterCategories() {
@@ -145,7 +176,7 @@ export default {
           this.filteredCategories.push(category);
         }
       });
-      return this.filteredCategories;
+      return this.filteredCategories.slice(0,this.entries);
     },
   },
 };

@@ -1,6 +1,11 @@
 <template>
   <div id="wrapper">
-    <SidebarAdmin v-bind:videos="javs" v-bind:idols="idols" v-bind:categories="categories" />
+    <SidebarAdmin
+      v-bind:scenes="scenes"
+      v-bind:videos="javs"
+      v-bind:idols="idols"
+      v-bind:categories="categories"
+    />
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
@@ -73,6 +78,11 @@ export default {
   },
   async asyncData({ params }) {
     let id = params.id;
+    let scenes = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/")
+      .catch((e) => {
+        console.log(e);
+      });
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/")
       .catch(e => {
@@ -94,6 +104,7 @@ export default {
         console.log(e);
       });
     return {
+      scenes: scenes.data.scenes,
       idol: idol.data.idol,
       javs: javs.data.javs,
       categories: categories.data.categories,
