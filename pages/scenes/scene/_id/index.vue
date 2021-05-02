@@ -13,7 +13,7 @@
               <div class="jav-title">
                 <div class="row justify-content-center">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <p class="title">{{ getName(scene.name) }}</p>
+                    <p class="title">{{scene.code + " " + getName(scene.name) }}</p>
                   </div>
                 </div>
               </div>
