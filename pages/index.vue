@@ -29,8 +29,7 @@
               <div class="col-lg-12 text-center">
                 <h4>Newest AV Scenes</h4>
               </div>
-            </div>
-            
+            </div>            
             <div class="row">
               <div
                 v-for="scene in scenes"
@@ -78,11 +77,8 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <nuxt-link
-              :to="'/categories/1/' + category1._id"
-              class="btn btn-more"
-            >
-              Recommended Videos from "{{ category1.name }}"
+            <nuxt-link :to="'/scenes/1'" class="btn btn-more">
+              Recently Scenes Added
               <font-awesome-icon :icon="['fas', 'plus']" />
             </nuxt-link>
           </div>
@@ -91,32 +87,11 @@
       <div class="need-space"></div>
       <div class="row">
         <div
-          v-for="jav in javsCategory1"
-          :key="jav._id"
+          v-for="scene in scenes"
+          :key="scene._id"
           class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
         >
-          <CardJavMobile v-bind:dataJav="jav" />
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <nuxt-link :to="'/javs/1'" class="btn btn-more">
-              Recently Added Videos
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="row">
-        <div
-          v-for="jav in javs"
-          :key="jav._id"
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-        >
-          <CardJavMobile v-bind:dataJav="jav" />
+          <CardSceneMobile v-bind:dataJav="scene" />
         </div>
       </div>
       <div class="need-space"></div>
@@ -131,6 +106,7 @@ import axios from "axios";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardScene from "../components/Cards/CardScene";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
+import CardSceneMobile from "../components/Cards/CardSceneMobile";
 import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 import Popunder from "~/components/ExoclickAds/Popunder.vue";
@@ -143,6 +119,7 @@ export default {
     CardScene,
     CardIdol,
     CardJavMobile,
+    CardSceneMobile,
     CardIdolMobile,
     Popunder,
     CardJavPoster,

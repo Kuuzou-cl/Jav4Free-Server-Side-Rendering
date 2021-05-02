@@ -68,14 +68,17 @@
       <div class="container-fluid">
         <div class="need-space"></div>
         <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h6 class="title-white text-left">Recently Added Videos</h6>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <nuxt-link :to="'/scenes/1'" class="btn btn-more">
+              Recently Scenes Added
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
           </div>
         </div>
         <div class="need-space"></div>
         <div class="row">
-          <div v-for="jav in javs" :key="jav._id" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <CardJavMobile v-bind:dataJav="jav" />
+          <div v-for="scene in videos" :key="scene._id" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <CardSceneMobile v-bind:dataJav="scene" />
           </div>
         </div>
         <div class="row">
@@ -125,7 +128,7 @@ import axios from "axios";
 
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
-import CardJavMobile from "~/components/Cards/CardJav00Mobile";
+import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
 export default {
   name: "RecentJavs",
@@ -133,7 +136,7 @@ export default {
   components: {
     Crumbs,
     CardJav,
-    CardJavMobile
+    CardSceneMobile
   },
   data() {
     return {
