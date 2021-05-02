@@ -153,16 +153,22 @@ export default {
   text-align: center;
 }
 
-@media screen and (min-width: 1440px) and (max-width: 1919px) {
-}
 
-@media screen and (min-width: 1280px) and (max-width: 1439px) {
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
   .card-scene .title {
     font-size: 12px;
   }
 
   .card-scene .box-content {
     padding: 5px 5px;
+  }
+
+  .card-scene .box-code {
+    width: 28%;
+  }
+  
+  .card-scene .box-code .post{
+    font-size: 10px;
   }
 }
 

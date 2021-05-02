@@ -26,6 +26,12 @@ export default {
 </script>
 
 <style lang="scss">
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+  .profile-card-2 .profile-name {
+    font-size: 18px !important;
+  }
+}
+
 .profile-card-2 {
   width: 100%;
   background-color: #fff;

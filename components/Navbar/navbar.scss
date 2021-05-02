@@ -46,38 +46,27 @@ nav {
     }
 }
 
-/*
-
-.search-navbar{    
-    width: 50%;
-    input, textarea{
-        color: #272727;
-        border: 0;
-        border-radius: 0%;
-        outline: 0;
-        background: transparent;
-        border-bottom: 1px solid #000000;
-    }
-    input:focus{
-        background: transparent;
-        color: #000000;
-        border-bottom: 1px dashed #000000;
-        box-shadow: none;
-    }
-    .input-group-text{
-        background-color: transparent;
-        border: 0px;
-    }
-    .icon-search-navbar{
-        width: 100%;
-        color: #000000;
-        cursor: pointer;    
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+    .navbar-nav{
+        margin-right: 5% !important;
+        .navbar-button{
+            font-size: 12px;
+        }
     }
 }
 
-.log-navbar{
-    width: 30%;
-    font-size: 14px;
-    letter-spacing: 2px !important;
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+
 }
-*/
+
+@media screen and (min-width: 800px) and (max-width: 991px) {
+
+}
+
+@media screen and (min-width: 620px) and (max-width: 799px) {
+
+}
+
+@media screen and (max-width: 620px) {
+
+}
