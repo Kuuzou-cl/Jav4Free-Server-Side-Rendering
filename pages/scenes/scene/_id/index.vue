@@ -115,11 +115,11 @@
         </div>
         <div class="row">
           <div class="container-jav">
-            <FluidPlayer v-bind:jav="jav" />
+            <FluidPlayer v-bind:jav="scene" />
             <div class="jav-title-mobile">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <p class="title">{{ getName(jav.name) }}</p>
+                  <p class="title">{{scene.code + " " + getName(scene.name) }}</p>
                 </div>
               </div>
               <div class="row">
@@ -160,14 +160,14 @@
         <div class="row">
           <div class="container-recommended-mobile">
             <div class="row">
-              <div
-                v-for="jav in relatedJavs"
-                :key="jav._id"
-                class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-              >
-                <CardJavMobile v-bind:dataJav="jav" />
+                <div
+                  v-for="scene in related"
+                  :key="scene._id"
+                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                >
+                  <CardJavMobile v-bind:dataJav="scene" />
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
