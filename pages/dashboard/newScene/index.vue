@@ -177,7 +177,7 @@
                   data-toggle="modal"
                   data-target="#modalPending"
                 >
-                  Pending Videos
+                  Pending Scenes
                 </button>
                 <div
                   class="modal fade"
@@ -191,7 +191,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="modalPendingLabel">
-                          Pending Videos
+                          Pending Scenes
                         </h5>
                         <button
                           type="button"
@@ -209,7 +209,7 @@
                               <table class="table table-hover text-center">
                                 <tbody>
                                   <tr
-                                    v-for="(jav, key) in spaceCheck"
+                                    v-for="(jav, key) in spaceCheckScenes"
                                     :key="key"
                                   >
                                     <th>{{ jav }}</th>
@@ -241,7 +241,7 @@
                   data-toggle="modal"
                   data-target="#modalDB"
                 >
-                  Database
+                  Pending Javs
                 </button>
                 <div
                   class="modal fade"
@@ -255,7 +255,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="modalDBLabel">
-                          Videos Database
+                          Pending Javs
                         </h5>
                         <button
                           type="button"
@@ -272,16 +272,12 @@
                             <div class="tableFixHead">
                               <table class="table table-hover text-center">
                                 <tbody>
-                                  <tr v-for="(jav, key) in javs" :key="key">
+                                  <tr
+                                    v-for="(jav, key) in spaceCheckJavs"
+                                    :key="key"
+                                  >
+                                    <th>{{ jav.name }}</th>
                                     <th>{{ jav.code }}</th>
-                                    <th>
-                                      <button
-                                        class="btn btn-warning"
-                                        @click="loadDataVideo(jav._id)"
-                                      >
-                                        Load Data
-                                      </button>
-                                    </th>
                                   </tr>
                                 </tbody>
                               </table>
@@ -302,6 +298,15 @@
                   </div>
                 </div>
               </div>
+              <div class="need-space"></div>
+              <div class="row justify-content-center">
+                <button class="btn btn-warning" @click="changeVideo">
+                  Reload Video
+                </button>
+                <video controls ref="video">
+                  <source :src="this.video" type="video/mp4" />
+                </video>
+              </div>
             </div>
           </div>
         </div>
@@ -315,6 +320,7 @@
 <script>
 import axios from "axios";
 import SidebarAdmin from "~/components/SidebarAdmin/SidebarAdmin.vue";
+
 export default {
   layout: "admin",
   name: "NewJav",
@@ -337,6 +343,7 @@ export default {
       idols: null,
       filteredCategories: [],
       filteredIdols: [],
+      video: "",
     };
   },
   async asyncData() {
@@ -371,27 +378,33 @@ export default {
         console.log(e);
       });
     var result = JSON.parse(convert.xml2json(spaceData.data, options));
+    let spaceDataScenes = await axios
+      .get(
+        "https://sfo2.digitaloceanspaces.com/javdata?prefix=scenes&max-keys=10000"
+      )
+      .catch((e) => {
+        console.log(e);
+      });
+    var resultScenes = JSON.parse(
+      convert.xml2json(spaceDataScenes.data, options)
+    );
     return {
       scenes: scenes.data.scenes,
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
       result: result,
+      resultScenes: resultScenes,
     };
   },
   methods: {
-    async loadDataVideo(_id) {
-      let jav = await axios
-        .get("https://jav.souzou.dev/jav4free/javs/" + _id)
-        .catch((e) => {
-          console.log(e);
-        });
-      let javData = jav.data.jav;
-      this.javName = javData.name;
-      this.javCode = javData.code;
-      this.javDuration = javData.duration;
-      this.javCategories = javData.categories;
-      this.javIdols = javData.idols;
+    changeVideo() {
+      this.video =
+        "https://javdata.sfo2.digitaloceanspaces.com/scenes/" +
+        this.javCode +
+        ".mp4";
+      var vid = this.$refs.video;
+      vid.load();
     },
     addCategory: function (_id) {
       const exist = this.javCategories.find((category) => category === _id);
@@ -443,10 +456,15 @@ export default {
       var obj = {
         name: this.javName,
         code: this.javCode,
-        url: "https://javdata.sfo2.digitaloceanspaces.com/scenes/" + this.javCode + ".mp4",
+        url:
+          "https://javdata.sfo2.digitaloceanspaces.com/scenes/" +
+          this.javCode +
+          ".mp4",
         duration: this.javDuration,
         imageUrl:
-          "https://javdata.sfo2.digitaloceanspaces.com/scenes/preview/" + this.javCode + ".mp4",
+          "https://javdata.sfo2.digitaloceanspaces.com/scenes/preview/" +
+          this.javCode +
+          ".mp4",
         imageIndexUrl:
           "https://javdata.sfo2.digitaloceanspaces.com/scenes/static/" +
           this.javCode +
@@ -506,7 +524,7 @@ export default {
       });
       return this.filteredIdols;
     },
-    spaceCheck() {
+    spaceCheckJavs() {
       let spaceData = [];
 
       this.result.elements[0].elements.forEach((element) => {
@@ -526,7 +544,38 @@ export default {
       let pending = [];
 
       spaceData.forEach((r) => {
-        if (!this.scenes.some((item) => item.code == r) && r !="preview" && r !="static") {
+        if (!this.javs.some((item) => item.code === r)) {
+          pending.push(r);
+        }
+      });
+
+      return pending;
+    },
+    spaceCheckScenes() {
+      let spaceData = [];
+
+      this.resultScenes.elements[0].elements.forEach((element) => {
+        if (element.name === "Contents") {
+          element.elements.forEach((obj) => {
+            if (obj.name === "Key") {
+              let javNameData = obj.elements[0].text.split("/");
+              if (
+                javNameData[1] &&
+                javNameData[1] != "static" &&
+                javNameData[1] != "preview"
+              ) {
+                let javName = javNameData[1].split(".");
+                spaceData.push(javName[0]);
+              }
+            }
+          });
+        }
+      });
+
+      let pending = [];
+
+      spaceData.forEach((r) => {
+        if (!this.scenes.some((item) => item.code === r)) {
           pending.push(r);
         }
       });
