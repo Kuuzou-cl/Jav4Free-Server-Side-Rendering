@@ -20,6 +20,7 @@
             <div class="title-sidebar">Idols</div>
           </nuxt-link>
         </li>
+        <!--
         <li class="navbar-nav-link">
           <nuxt-link :to="'/favorites/1'">
             <font-awesome-icon :icon="['fas', 'heart']" class="icon-sidebar" />
@@ -32,6 +33,7 @@
             <div class="title-sidebar">History</div>
           </nuxt-link>
         </li>
+        -->
       </ul>
     </div>
   </footer>

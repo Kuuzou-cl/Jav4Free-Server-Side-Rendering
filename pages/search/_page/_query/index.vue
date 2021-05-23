@@ -6,7 +6,9 @@
         <div v-if="idols.length > 0" class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h6 class="title-white text-left">Idols found by "{{this.query.toUpperCase()}}":</h6>
+              <h4 class="text-left">
+                Idols found by "{{ this.query.toUpperCase() }}":
+              </h4>
             </div>
           </div>
         </div>
@@ -17,8 +19,10 @@
               <div class="row">
                 <div v-for="idol in idols" :key="idol._id">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <nuxt-link :to="'/idols/1/'+idol._id">
-                      <button class="btn category-title">{{ idol.name }}</button>
+                    <nuxt-link :to="'/idols/1/' + idol._id">
+                      <button class="btn category-title">
+                        {{ idol.name }}
+                      </button>
                     </nuxt-link>
                   </div>
                 </div>
@@ -30,14 +34,20 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h6 class="title-white text-left">Videos found by "{{this.query.toUpperCase()}}":</h6>
+              <h4 class="text-left">
+                Videos found by "{{ this.query.toUpperCase() }}":
+              </h4>
             </div>
           </div>
         </div>
         <div class="need-space"></div>
         <div class="container">
           <div class="row">
-            <div v-for="scene in scenes" :key="scene._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div
+              v-for="scene in scenes"
+              :key="scene._id"
+              class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+            >
               <CardJav v-bind:dataJav="scene" />
             </div>
           </div>
@@ -48,45 +58,61 @@
             <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
               <div class="pagination">
                 <button
-                  v-if="page!=1"
+                  v-if="page != 1"
                   @click="prevClick()"
                   type="button"
                   class="btn paginate-prev"
-                >Prev</button>
+                >
+                  Prev
+                </button>
                 <button
                   v-for="(prevPage, index) in previousPages"
                   :key="index"
                   type="button"
                   class="btn paginate-index"
                   @click="pullPage(Number(prevPage))"
-                >{{prevPage}}</button>
-                <button disabled type="button" class="btn paginate-actual">{{page}}</button>
+                >
+                  {{ prevPage }}
+                </button>
+                <button disabled type="button" class="btn paginate-actual">
+                  {{ page }}
+                </button>
                 <button
                   v-for="(nextPage, index) in actualNextPages"
                   :key="index"
                   type="button"
                   class="btn paginate-index"
                   @click="pushPage(Number(nextPage))"
-                >{{nextPage}}</button>
+                >
+                  {{ nextPage }}
+                </button>
                 <button
-                  v-if="page< lastPage - 1"
+                  v-if="page < lastPage - 1"
                   disabled
                   type="button"
                   class="btn paginate-index"
-                >...</button>
+                >
+                  ...
+                </button>
                 <button
-                  v-if="page!=lastPage && lastPage != 0"
+                  v-if="page != lastPage && lastPage != 0"
                   type="button"
                   @click="pushPage(Number(lastPage))"
                   class="btn paginate-index"
-                >{{Number(lastPage)}}</button>
+                >
+                  {{ Number(lastPage) }}
+                </button>
                 <button
                   v-if="nextPage"
                   type="button"
                   class="btn paginate-next"
                   @click="nextClick()"
-                >Next</button>
-                <button v-else disabled type="button" class="btn paginate-next">Next</button>
+                >
+                  Next
+                </button>
+                <button v-else disabled type="button" class="btn paginate-next">
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -96,29 +122,9 @@
     <div v-if="$device.isMobile">
       <div class="need-space"></div>
       <div class="container-fluid">
-        <div v-if="categories.length > 0" class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <h6 class="title-white">Categories found by "{{this.query.toUpperCase()}}":</h6>
-          </div>
-        </div>
-        <div v-if="categories.length > 0" class="need-space"></div>
-        <div v-if="categories.length > 0" class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="row justify-content-center">
-              <div v-for="category in categories" :key="category._id">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <nuxt-link :to="'/categories/1/'+category._id">
-                    <button class="btn category-title">{{ category.name }}</button>
-                  </nuxt-link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-if="categories.length > 0" class="need-space"></div>
         <div v-if="idols.length > 0" class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <h6 class="title-white text-left">Idols found by "{{this.query.toUpperCase()}}":</h6>
+            <h6>Idols found by "{{ this.query.toUpperCase() }}":</h6>
           </div>
         </div>
         <div v-if="idols.length > 0" class="need-space"></div>
@@ -127,7 +133,7 @@
             <div class="row justify-content-center">
               <div v-for="idol in idols" :key="idol._id">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <nuxt-link :to="'/idols/1/'+idol._id">
+                  <nuxt-link :to="'/idols/1/' + idol._id">
                     <button class="btn category-title">{{ idol.name }}</button>
                   </nuxt-link>
                 </div>
@@ -138,46 +144,62 @@
         <div v-if="idols.length > 0" class="need-space"></div>
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <h6 class="title-white">Videos found by "{{this.query.toUpperCase()}}":</h6>
+            <h6>Videos found by "{{ this.query.toUpperCase() }}":</h6>
           </div>
         </div>
         <div class="need-space"></div>
         <div class="row">
-          <div v-for="jav in javs" :key="jav._id" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <CardJavMobile v-bind:dataJav="jav" />
+          <div
+            v-for="scene in scenes"
+            :key="scene._id"
+            class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+          >
+            <CardSceneMobile v-bind:dataJav="scene" />
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="pagination">
               <button
-                v-if="page!=1"
+                v-if="page != 1"
                 @click="prevClick()"
                 type="button"
                 class="btn paginate-prev"
-              >Prev</button>
+              >
+                Prev
+              </button>
               <button
                 v-for="(prevPage, index) in previousPagesMobile"
                 :key="index"
                 type="button"
                 class="btn paginate-index"
                 @click="pullPage(Number(prevPage))"
-              >{{prevPage}}</button>
-              <button disabled type="button" class="btn paginate-actual">{{page}}</button>
+              >
+                {{ prevPage }}
+              </button>
+              <button disabled type="button" class="btn paginate-actual">
+                {{ page }}
+              </button>
               <button
                 v-for="(nextPage, index) in actualNextPagesMobile"
                 :key="index"
                 type="button"
                 class="btn paginate-index"
                 @click="pushPage(Number(nextPage))"
-              >{{nextPage}}</button>
+              >
+                {{ nextPage }}
+              </button>
               <button
                 v-if="nextPage"
                 type="button"
                 class="btn paginate-next"
                 @click="nextClick()"
-              >Next</button>
-              <button v-else disabled type="button" class="btn paginate-next">Next</button>
+              >
+                Next
+              </button>
+              <button v-else disabled type="button" class="btn paginate-next">
+                Next
+              </button>
             </div>
           </div>
         </div>
@@ -195,21 +217,23 @@ import axios from "axios";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
+import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
 export default {
   name: "Search",
-  layout: ctx => (ctx.isMobile ? "mobile" : "default"),
+  layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
     Crumbs,
     CardJav,
-    CardJavMobile
+    CardJavMobile,
+    CardSceneMobile
   },
   data() {
     return {
       query: "",
       page: "",
       prevPages: null,
-      nextPages: null
+      nextPages: null,
     };
   },
   head() {
@@ -219,9 +243,9 @@ export default {
         {
           name: "description",
           content:
-            "Jav4Free, watch , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
-        }
-      ]
+            "Jav4Free, watch , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
+        },
+      ],
     };
   },
   async asyncData({ params }) {
@@ -235,9 +259,12 @@ export default {
     }
     const scenes = await axios
       .get(
-        "https://jav.souzou.dev/jav4free/scenes/searchScene/" + page + "/" + query
+        "https://jav.souzou.dev/jav4free/scenes/searchScene/" +
+          page +
+          "/" +
+          query
       )
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     return {
@@ -247,7 +274,7 @@ export default {
       nextPage: scenes.data.nextPage,
       lastPage: scenes.data.lastPage,
       idols: scenes.data.idols,
-      categories: scenes.data.categories
+      categories: scenes.data.categories,
     };
   },
   beforeCreate() {
@@ -256,7 +283,7 @@ export default {
     this.$store.dispatch("addCrumb", {
       page: "Search",
       show: show,
-      route: routePage
+      route: routePage,
     });
   },
   methods: {
@@ -275,7 +302,7 @@ export default {
     pushPage(indexPage) {
       var newPage = Number(indexPage);
       this.$router.push({ path: "/search/" + newPage + "/" + this.query });
-    }
+    },
   },
   computed: {
     previousPages() {
@@ -335,8 +362,8 @@ export default {
       } else {
         return this.nextPages;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
