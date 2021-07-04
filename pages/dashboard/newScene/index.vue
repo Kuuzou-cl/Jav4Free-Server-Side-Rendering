@@ -372,7 +372,7 @@ export default {
       });
     let spaceData = await axios
       .get(
-        "https://sfo2.digitaloceanspaces.com/javdata?prefix=scenes&max-keys=10000"
+        "https://sfo2.digitaloceanspaces.com/javdata?prefix=javs&max-keys=10000"
       )
       .catch((e) => {
         console.log(e);

@@ -148,9 +148,9 @@ export default {
   methods: {
     spaceCheckIdols(space, idols) {
       let spaceData = [];
-      space.elements[0].elements.forEach(element => {
+      space.elements[0].elements.forEach((element) => {
         if (element.name === "Contents") {
-          element.elements.forEach(obj => {
+          element.elements.forEach((obj) => {
             if (obj.name === "Key") {
               let javNameData = obj.elements[0].text.split("/");
               if (javNameData[1]) {
@@ -165,8 +165,8 @@ export default {
 
       let pending = [];
 
-      spaceData.forEach(r => {
-        if (!idols.some(item => item.name.toLowerCase() === r)) {
+      spaceData.forEach((r) => {
+        if (!idols.some((item) => item.name.toLowerCase() === r.toLowerCase())) {
           pending.push(r);
         }
       });

@@ -20,7 +20,7 @@
         <div class="need-space"></div>
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
               <input
                 class="input-admin"
                 type="text"
@@ -28,20 +28,27 @@
                 placeholder="Search by name..."
               />
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-right">
+              <button @click="deleteIdolsEmpty()" class="btn btn-danger">Delete</button>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-right">
               <div class="dropdown">
                 <button
                   type="button"
                   class="btn btn-primary dropdown-toggle"
                   data-toggle="dropdown"
                 >
-                  {{this.entries}} of {{this.idols.length}}
+                  {{ this.entries }} of {{ this.idols.length }}
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" @click="changeEntries(15)">10</a>
                   <a class="dropdown-item" @click="changeEntries(25)">25</a>
                   <a class="dropdown-item" @click="changeEntries(50)">50</a>
-                  <a class="dropdown-item" @click="changeEntries(filteredIdols.length)">All</a>
+                  <a
+                    class="dropdown-item"
+                    @click="changeEntries(filteredIdols.length)"
+                    >All</a
+                  >
                 </div>
               </div>
             </div>
@@ -162,6 +169,18 @@ export default {
         });
       this.$router.push({ path: "/dashboard" });
     },
+    async deleteIdolsEmpty() {
+      let message = await axios
+        .delete("https://jav.souzou.dev/jav4free/idols/deleteIdolsEmpty", {
+          headers: {
+            "x-access-token": this.$store.state.token,
+          },
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      this.$router.push({ path: "/dashboard" });
+    },
     changeEntries(_entries) {
       this.entries = _entries;
     },
@@ -175,7 +194,7 @@ export default {
         }
       });
 
-      return this.filteredIdols.slice(0,this.entries);
+      return this.filteredIdols.slice(0, this.entries);
     },
   },
 };

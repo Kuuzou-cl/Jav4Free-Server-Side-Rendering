@@ -145,6 +145,7 @@ export default {
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
           quantity: 8,
+          empty: "false"
         },
       })
       .catch((e) => {
@@ -154,6 +155,7 @@ export default {
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
           quantity: 4,
+          empty: "false"
         },
       })
       .catch((e) => {
