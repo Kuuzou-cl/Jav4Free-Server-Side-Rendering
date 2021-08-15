@@ -79,9 +79,9 @@
         </div>
         <div class="need-space"></div>
         <div class="row">
-          <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <CardJavMobile v-bind:dataJav="jav" />
-          </div>
+          <div v-for="scene in scenes" :key="scene._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+              <CardSceneMobile v-bind:dataJav="scene" />
+            </div>
         </div>
         <div class="row">
           <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
@@ -131,11 +131,12 @@ import axios from "axios";
 import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
+import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
 export default {
   name: "category",
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
-  components: { Crumbs, CardJav, CardJavMobile },
+  components: { Crumbs, CardJav, CardJavMobile,CardSceneMobile },
   data() {
     return {
       prevPages: null,

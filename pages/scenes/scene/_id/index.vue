@@ -13,7 +13,9 @@
               <div class="jav-title">
                 <div class="row justify-content-center">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <p class="title">{{scene.code + " " + getName(scene.name) }}</p>
+                    <p class="title">
+                      {{ scene.code + " " + getName(scene.name) }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -119,7 +121,9 @@
             <div class="jav-title-mobile">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <p class="title">{{scene.code + " " + getName(scene.name) }}</p>
+                  <p class="title">
+                    {{ scene.code + " " + getName(scene.name) }}
+                  </p>
                 </div>
               </div>
               <div class="row">
@@ -159,15 +163,18 @@
         </div>
         <div class="row">
           <div class="container-recommended-mobile">
+            <div class="row justify-content-center">
+              <MobileAdBanner />
+            </div>
             <div class="row">
-                <div
-                  v-for="scene in related"
-                  :key="scene._id"
-                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                >
-                  <CardJavMobile v-bind:dataJav="scene" />
-                </div>
+              <div
+                v-for="scene in related"
+                :key="scene._id"
+                class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+              >
+                <CardSceneMobile v-bind:dataJav="scene" />
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -185,6 +192,7 @@ import DesktopAdBanner from "~/components/ExoclickAds/DesktopAdBanner.vue";
 import DesktopSideAdBanner from "~/components/ExoclickAds/DesktopSideAdBanner.vue";
 import MobileAdBanner from "~/components/ExoclickAds/MobileAdBanner.vue";
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
+import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -196,7 +204,7 @@ export default {
     FluidPlayer,
     DesktopAdBanner,
     DesktopSideAdBanner,
-    MobileAdBanner,
+    MobileAdBanner,CardSceneMobile
   },
   data() {
     return {};

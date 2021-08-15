@@ -76,6 +76,9 @@
       <div class="need-space"></div>
       <div class="container-fluid">
         <div class="row justify-content-center">
+          <MobileAdBanner />
+        </div>
+        <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <nuxt-link :to="'/scenes/1'" class="btn btn-more">
               Recently Scenes Added
@@ -95,6 +98,21 @@
         </div>
       </div>
       <div class="need-space"></div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <MobileAdBanner />
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <nuxt-link :to="'/scenes/1'" class="btn btn-more">
+              Recently Scenes Added
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="need-space"></div>
       <div class="need-space"></div>
     </div>
   </div>
@@ -111,6 +129,7 @@ import CardIdol from "../components/Cards/CardIdol00";
 import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
 import Popunder from "~/components/ExoclickAds/Popunder.vue";
 import CardJavPoster from "~/components/Cards/CardJavPoster.vue";
+import MobileAdBanner from "~/components/ExoclickAds/MobileAdBanner.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -123,6 +142,7 @@ export default {
     CardIdolMobile,
     Popunder,
     CardJavPoster,
+    MobileAdBanner,
   },
   head() {
     return {

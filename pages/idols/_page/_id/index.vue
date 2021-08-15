@@ -99,7 +99,7 @@
                 :key="jav._id"
                 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
               >
-                <CardJavMobile v-bind:dataJav="jav" />
+                <CardSceneMobile v-bind:dataJav="jav" />
               </div>
             </div>
           </div>
@@ -154,6 +154,7 @@ import CardIdol from "../../../../components/Cards/CardIdol00";
 import CardIdolMobile from "../../../../components/Cards/CardIdol00Mobile";
 import CardJav from "~/components/Cards/CardScene";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
+import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
 export default {
   name: "idol",
@@ -163,7 +164,8 @@ export default {
     CardIdol,
     CardIdolMobile,
     CardJav,
-    CardJavMobile
+    CardJavMobile,
+    CardSceneMobile
   },
   data() {
     return {
