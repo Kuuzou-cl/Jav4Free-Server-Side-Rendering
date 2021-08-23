@@ -14,7 +14,7 @@ import Footer from '~/components/Footer/Footer.vue';
 export default {
   head:{
     script: [
-      {src:"https://js.wpadmngr.com/static/adManager.js", 'data-admpid':"7833", body:true}
+      {}
     ]
   },
   components: {
