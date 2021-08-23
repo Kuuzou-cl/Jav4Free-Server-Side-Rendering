@@ -1,6 +1,5 @@
 <template>
   <div id="app-mobile">
-    <script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="7833"></script>
     <Navbar />
     <nuxt />
     <Footer />
@@ -11,6 +10,11 @@
 import Navbar from '~/components/NavbarMobile/NavbarMobile.vue';
 import Footer from '~/components/FooterMobile/FooterMobile.vue';
 export default {
+  head:{
+    script: [
+      {src:"https://js.wpadmngr.com/static/adManager.js", 'data-admpid':"7833", body:true}
+    ]
+  },
   components: {
     Navbar,
     Footer
