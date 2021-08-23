@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="7833"></script>
     <Navbar/>
     <nuxt />
     <Footer />
