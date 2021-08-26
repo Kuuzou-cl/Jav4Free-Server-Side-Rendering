@@ -42,7 +42,7 @@ export default {
       }
     },
     getCode: function (_name) {
-      return _name.slice(0,_name.length -3)
+      return _name.slice(0,_name.length -4)
     },
     restart: function () {
       $(".video-jav").on("mouseout", function (event) {

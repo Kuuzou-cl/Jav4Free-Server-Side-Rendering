@@ -11,7 +11,7 @@
     </div>
     <div class="box-content-mobile">
       <h3 class="title-mobile">
-        <nuxt-link :to="'/scenes/scene/'+dataJav._id" tag="a">{{getName(dataJav.name)}}</nuxt-link>
+        <nuxt-link :to="'/scenes/scene/' + dataJav._id" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.name) }}</nuxt-link>
       </h3>
     </div>
   </div>
@@ -32,6 +32,9 @@ export default {
       } else {
         return _name;
       }
+    },
+    getCode: function (_name) {
+      return _name.slice(0,_name.length -4)
     },
     restart: function () {
       $(".video-jav").on("mouseout", function (event) {
