@@ -4,7 +4,7 @@
       <div class="need-space"></div>
       <div class="container content-jav">
         <div class="row">
-          <div class="col-lg-9 text-center"><DesktopAdBanner /></div>
+          <div data-nat="3624"></div>
         </div>
         <div class="row">
           <div class="col-lg-9">
@@ -80,10 +80,12 @@
             </div>
           </div>
           <div class="col-lg-3 text-center">
-            <DesktopSideAdBanner />
           </div>
         </div>
         <div class="need-space"></div>
+        <div class="row">
+          <div data-nat="3625"></div>
+        </div>
         <div class="need-space"></div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -102,10 +104,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="need-space"></div>
-        <div class="row justify-content-center">
-          <VideoSlider />
         </div>
       </div>
     </div>

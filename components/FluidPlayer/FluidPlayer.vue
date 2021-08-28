@@ -39,7 +39,7 @@ export default {
           {
             roll: "preRoll",
             vastTag:
-              "https://syndication.realsrv.com/splash.php?idzone=3966138",
+              "https://vast.yomeno.xyz/vast?spot_id=3971",
           }
         ],
       },
