@@ -32,9 +32,7 @@ export default {
         allowTheatre: false,
       },
       vastOptions: {
-        adText: "Advertising helps us keep the lights on",
-        adTextPosition: "top left",
-        skipButtonCaption: "Wait [seconds] more second(s)",
+        allowVPAID: true,
         adList: [
           {
             roll: "preRoll",

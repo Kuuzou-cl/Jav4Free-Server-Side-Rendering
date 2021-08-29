@@ -186,8 +186,6 @@ import axios from "axios";
 import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
 import VideoSlider from "~/components/ExoclickAds/VideoSlider.vue";
-import DesktopAdBanner from "~/components/ExoclickAds/DesktopAdBanner.vue";
-import DesktopSideAdBanner from "~/components/ExoclickAds/DesktopSideAdBanner.vue";
 import MobileAdBanner from "~/components/ExoclickAds/MobileAdBanner.vue";
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 import CardSceneMobile from "~/components/Cards/CardSceneMobile";
@@ -200,9 +198,8 @@ export default {
     CardJavMobile,
     VideoSlider,
     FluidPlayer,
-    DesktopAdBanner,
-    DesktopSideAdBanner,
-    MobileAdBanner,CardSceneMobile
+    MobileAdBanner,
+    CardSceneMobile
   },
   data() {
     return {};
