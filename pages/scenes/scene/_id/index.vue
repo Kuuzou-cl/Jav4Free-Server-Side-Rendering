@@ -185,7 +185,6 @@ import axios from "axios";
 
 import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
-import VideoSlider from "~/components/ExoclickAds/VideoSlider.vue";
 import MobileAdBanner from "~/components/ExoclickAds/MobileAdBanner.vue";
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 import CardSceneMobile from "~/components/Cards/CardSceneMobile";
@@ -196,10 +195,9 @@ export default {
   components: {
     CardJav,
     CardJavMobile,
-    VideoSlider,
+    CardSceneMobile,
     FluidPlayer,
-    MobileAdBanner,
-    CardSceneMobile
+    MobileAdBanner
   },
   data() {
     return {};
