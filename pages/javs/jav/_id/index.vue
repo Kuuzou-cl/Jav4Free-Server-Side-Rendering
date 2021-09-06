@@ -86,32 +86,22 @@
     <div v-if="$device.isMobile" class="container-fluid">
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
-        <div class="row justify-content-center">
-          <MobileAdBanner />
-        </div>
         <div class="row">
           <div class="container-jav">
-            <FluidPlayer v-bind:jav="jav" />
             <div class="jav-title-mobile">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <p class="title">{{ getName(jav.name) }}</p>
+                  <img :src="jav.imageUrl" />
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="btn btn-options" @click="addToFavorites(jav._id)">
-                    <font-awesome-icon
-                      :icon="['fas', 'heart']"
-                      v-if="!checkFavorite"
-                      class="favorite-icon"
-                    />
-                    <font-awesome-icon
-                      :icon="['fas', 'heart']"
-                      v-if="checkFavorite"
-                      class="favorite-icon-active"
-                    />
-                  </div>
+                  <p class="title">{{ jav.code }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <p class="title">{{ jav.name }}</p>
                 </div>
               </div>
             </div>
@@ -146,20 +136,20 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="container-recommended-mobile">
-            <div class="row">
-              <div
-                v-for="jav in relatedJavs"
-                :key="jav._id"
-                class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-              >
-                <CardJavMobile v-bind:dataJav="jav" />
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="row">
+        <div
+          v-for="scene in scenes"
+          :key="scene._id"
+          class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+        >
+          <CardJav v-bind:dataJav="scene" />
         </div>
       </div>
+      <div class="need-space"></div>
+      <div class="need-space"></div>
+      <div class="need-space"></div>
     </div>
   </div>
 </template>

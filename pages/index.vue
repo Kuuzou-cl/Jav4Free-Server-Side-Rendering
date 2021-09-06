@@ -76,6 +76,27 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <nuxt-link :to="'/javs/1'" class="btn btn-more">
+              Recently JAV Added
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="row">
+        <div
+          v-for="jav in javsMobile"
+          :key="jav._id"
+          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        >
+          <CardJavMobile v-bind:dataJav="jav" />
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <nuxt-link :to="'/scenes/1'" class="btn btn-more">
               Recently Scenes Added
               <font-awesome-icon :icon="['fas', 'plus']" />
@@ -114,24 +135,20 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
-import CardScene from "../components/Cards/CardScene";
+import CardJavPoster from "~/components/Cards/CardJavPoster.vue";
+import CardScene from "~/components/Cards/CardScene";
+import CardIdol from "~/components/Cards/CardIdol00";
 import CardJavMobile from "../components/Cards/CardJav00Mobile";
 import CardSceneMobile from "../components/Cards/CardSceneMobile";
-import CardIdol from "../components/Cards/CardIdol00";
-import CardIdolMobile from "../components/Cards/CardIdol00Mobile";
-import CardJavPoster from "~/components/Cards/CardJavPoster.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    Crumbs,
+    CardJavPoster,
     CardScene,
     CardIdol,
     CardJavMobile,
-    CardSceneMobile,
-    CardIdolMobile,
-    CardJavPoster
+    CardSceneMobile
   },
   head() {
     return {
@@ -153,7 +170,7 @@ export default {
     const javsMobile = await axios
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
-          quantity: 8,
+          quantity: 3,
           empty: "false"
         },
       })
@@ -181,11 +198,7 @@ export default {
       javsMobile: javsMobile.data.javs,
       idols: idols.data.idols,
     };
-  },
-  beforeCreate() {
-    this.$store.dispatch("addCrumb", { page: "Home", route: "" });
-  },
-  methods: {},
+  }
 };
 </script>
 

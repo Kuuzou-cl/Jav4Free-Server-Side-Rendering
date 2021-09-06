@@ -3,6 +3,12 @@
     <div class="navbar-mobile-bottom">
       <ul>
         <li class="navbar-nav-link">
+          <nuxt-link :to="'/javs/1'">
+            <font-awesome-icon :icon="['fab', 'youtube']" class="icon-sidebar" />
+            <div class="title-sidebar">JAV</div>
+          </nuxt-link>
+        </li>
+        <li class="navbar-nav-link">
           <nuxt-link :to="'/scenes/1'">
             <font-awesome-icon :icon="['fab', 'youtube']" class="icon-sidebar" />
             <div class="title-sidebar">Scenes</div>
