@@ -1,11 +1,10 @@
 <template>
   <div>
     <div v-if="$device.isDesktop">
-      <Crumbs />
       <div class="container-fluid">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row row-title justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
               <h6 class="title-white text-left">Recently Added Videos</h6>
             </div>
           </div>
@@ -62,10 +61,19 @@
             </div>
           </div>
         </div>
+        <div class="need-space"></div>
+        <div class="container">
+          <div class="row">
+            <div data-nat="3932"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div v-if="$device.isMobile">
       <div class="container-fluid">
+        <div class="row">
+          <div data-nat="3932"></div>
+        </div>
         <div class="need-space"></div>
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
