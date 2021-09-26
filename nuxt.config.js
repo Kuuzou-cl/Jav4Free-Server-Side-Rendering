@@ -18,6 +18,10 @@ module.exports = {
       {
         name: 'exoclick-site-verification',
         content: '0922ef088413c0d106de848a80b5487f'
+      },
+      {
+        name: 'juicyads-site-verification',
+        content: 'c23a8ba63c9c4356619c93eb2953dfaf'
       }
     ],
     link: [
