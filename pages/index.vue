@@ -82,9 +82,7 @@
             </div>
             <div class="row">
               <div class="col-lg-12">
-                <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
-                <ins class="adsbyexoclick" data-zoneid="4445412"></ins> 
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+                <iframe src="//a.realsrv.com/iframe.php?idzone=4445412&size=728x90" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
               </div>
             </div>
           </div>
