@@ -5,9 +5,7 @@
       <div class="container content-jav">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
-            <ins class="adsbyexoclick" data-zoneid="4451862"></ins> 
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            <iframe src="//a.realsrv.com/iframe.php?idzone=4451862&size=728x90" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
           </div>
         </div>
         <div class="need-space"></div>
@@ -75,9 +73,7 @@
             <div class="need-space"></div>
             <div class="row">
               <div class="col-lg-12">
-                <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
-                <ins class="adsbyexoclick" data-zoneid="4451866"></ins> 
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+                <iframe src="//a.realsrv.com/iframe.php?idzone=4451866&size=300x250" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
               </div>
             </div>
           </div>
