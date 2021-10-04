@@ -68,21 +68,12 @@
             </div>
             <div class="row">
               <div class="col-lg-12">
-                <!-- JuicyAds v3.1 -->
-                <script type="application/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-                <ins id="947443" data-width="728" data-height="102"></ins>
-                <script type="application/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':947443});</script>
-                <!--JuicyAds END-->
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
                 <div data-nat="4288"></div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-12">
-                <iframe src="//a.realsrv.com/iframe.php?idzone=4445412&size=728x90" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+                <iframe src="//a.realsrv.com/iframe.php?idzone=4445412&size=728x90" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
               </div>
             </div>
           </div>
@@ -116,7 +107,12 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <iframe src="//a.realsrv.com/iframe.php?idzone=4445648&size=300x100" width="300" height="100" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+            <div data-nat="4288"></div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <iframe src="//a.realsrv.com/iframe.php?idzone=4445648&size=300x100" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
           </div>
         </div>
       </div>
