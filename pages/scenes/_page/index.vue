@@ -79,9 +79,7 @@
     <div v-if="$device.isMobile">
       <div class="container-fluid">
         <div class="row">
-          <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
-          <ins class="adsbyexoclick" data-zoneid="4451876"></ins> 
-          <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+          <iframe src="//a.realsrv.com/iframe.php?idzone=4451876&size=300x250" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
         </div>
         <div class="need-space"></div>
         <div class="row justify-content-center">

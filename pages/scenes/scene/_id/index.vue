@@ -8,7 +8,6 @@
             <iframe src="//a.realsrv.com/iframe.php?idzone=4451862&size=728x90" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
           </div>
         </div>
-        <div class="need-space"></div>
         <div class="row">
           <div class="col-lg-9">
             <div class="container-jav">
@@ -111,9 +110,7 @@
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
         <div class="row justify-content-center need-space">
-          <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
-          <ins class="adsbyexoclick" data-zoneid="4451872"></ins> 
-          <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+          <iframe src="//a.realsrv.com/iframe.php?idzone=4451872&size=300x100" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
         </div>
         <div class="row">
           <div class="container-jav">
