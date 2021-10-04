@@ -3,6 +3,15 @@
     <div v-if="$device.isDesktop">
       <div class="container-fluid">
         <div class="container">
+          <div class="row need-space">
+            <div class="col-lg-12 text-center">
+              <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+              <ins class="adsbyexoclick" data-zoneid="4451880"></ins> 
+              <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            </div>
+          </div>
+        </div>
+        <div class="container">
           <div class="row row-title justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
               <h6 class="title-white text-left">Recently Added Videos</h6>
@@ -72,7 +81,9 @@
     <div v-if="$device.isMobile">
       <div class="container-fluid">
         <div class="row">
-          <div data-nat="3932"></div>
+          <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+          <ins class="adsbyexoclick" data-zoneid="4451876"></ins> 
+          <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
         </div>
         <div class="need-space"></div>
         <div class="row justify-content-center">

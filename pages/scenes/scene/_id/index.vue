@@ -4,10 +4,13 @@
       <div class="need-space"></div>
       <div class="container content-jav">
         <div class="row">
-          <div class="col-lg-12">
-            <div data-nat="3624"></div>
+          <div class="col-lg-12 text-center">
+            <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+            <ins class="adsbyexoclick" data-zoneid="4451862"></ins> 
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
           </div>
         </div>
+        <div class="need-space"></div>
         <div class="row">
           <div class="col-lg-9">
             <div class="container-jav">
@@ -69,6 +72,14 @@
                 >
               </span>
             </div>
+            <div class="need-space"></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+                <ins class="adsbyexoclick" data-zoneid="4451866"></ins> 
+                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+              </div>
+            </div>
           </div>
         </div>
         <div class="need-space"></div>
@@ -92,8 +103,10 @@
         </div>
         <div class="need-space"></div>
         <div class="row">
-          <div class="col-lg-12">
-            <div data-nat="3625"></div>
+          <div class="col-lg-12 text-center">
+            <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+            <ins class="adsbyexoclick" data-zoneid="4451862"></ins> 
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
           </div>
         </div>
       </div>
@@ -101,8 +114,10 @@
     <div v-if="$device.isMobile" class="container-fluid">
       <div class="need-space"></div>
       <div class="container-fluid content-jav">
-        <div class="row justify-content-center">
-          <MobileAdBanner />
+        <div class="row justify-content-center need-space">
+          <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+          <ins class="adsbyexoclick" data-zoneid="4451872"></ins> 
+          <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
         </div>
         <div class="row">
           <div class="container-jav">
@@ -152,8 +167,10 @@
         </div>
         <div class="row">
           <div class="container-recommended-mobile">
-            <div class="row justify-content-center">
-              <MobileAdBanner />
+            <div class="row justify-content-center need-space">
+              <script async type="application/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+              <ins class="adsbyexoclick" data-zoneid="4451872"></ins> 
+              <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
             </div>
             <div class="row">
               <div
@@ -176,7 +193,6 @@ import axios from "axios";
 
 import CardJav from "~/components/Cards/CardJav01";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
-import MobileAdBanner from "~/components/ExoclickAds/MobileAdBanner.vue";
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
@@ -188,7 +204,6 @@ export default {
     CardJavMobile,
     CardSceneMobile,
     FluidPlayer,
-    MobileAdBanner,
   },
   data() {
     return {};

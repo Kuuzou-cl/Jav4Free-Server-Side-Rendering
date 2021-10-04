@@ -37,7 +37,12 @@ export default {
           {
             roll: "preRoll",
             vastTag:
-              "https://vast.yomeno.xyz/vast?spot_id=3971",
+              "https://syndication.realsrv.com/splash.php?idzone=4451856"
+          },
+          {
+            roll: "onPauseRoll",
+            vastTag: "https://syndication.realsrv.com/splash.php?idzone=4451858",
+            vAlign: "middle"
           }
         ],
       },
