@@ -276,8 +276,7 @@
                                     v-for="(jav, key) in spaceCheckJavs"
                                     :key="key"
                                   >
-                                    <th>{{ jav.name }}</th>
-                                    <th>{{ jav.code }}</th>
+                                    <th>{{ jav }}</th>
                                   </tr>
                                 </tbody>
                               </table>
@@ -303,7 +302,7 @@
                 <button class="btn btn-warning" @click="changeVideo">
                   Reload Video
                 </button>
-                <video controls ref="video">
+                <video controls muted ref="video">
                   <source :src="this.video" type="video/mp4" />
                 </video>
               </div>

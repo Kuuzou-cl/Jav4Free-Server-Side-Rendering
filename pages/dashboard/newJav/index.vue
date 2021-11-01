@@ -263,8 +263,7 @@
                                     v-for="(jav, key) in spaceCheckJavs"
                                     :key="key"
                                   >
-                                    <th>{{ jav.name }}</th>
-                                    <th>{{ jav.code }}</th>
+                                    <th>{{ jav }}</th>
                                   </tr>
                                 </tbody>
                               </table>
