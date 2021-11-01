@@ -23,6 +23,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/device": "^1.2.7",
+    "@nuxtjs/i18n": "^7.1.0",
     "bootstrap": "^4.5.3",
     "cookie-universal-nuxt": "^2.1.4",
     "cross-env": "^5.2.0",

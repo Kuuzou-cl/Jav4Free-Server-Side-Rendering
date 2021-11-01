@@ -307,7 +307,7 @@ export default {
     return {
       javName: "",
       javCode: "",
-      hidden: true,
+      hidden: false,
       javCategories: [],
       javIdols: [],
       viewCategories: false,

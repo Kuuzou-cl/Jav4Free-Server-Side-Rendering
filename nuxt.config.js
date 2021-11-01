@@ -34,7 +34,7 @@ module.exports = {
         src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
       },
       {
-        src:"https://js.wpadmngr.com/static/adManager.js", 'data-admpid':"7833", body:true
+        src: "https://js.wpadmngr.com/static/adManager.js", 'data-admpid': "7833", body: true
       }
     ]
   },
@@ -67,6 +67,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/i18n',
     ['nuxt-lazy-load', {
       directiveOnly: true,
       observerConfig: {
@@ -102,6 +103,32 @@ module.exports = {
     ],
     'cookie-universal-nuxt'
   ],
+  i18n: {
+    baseUrl: 'https://jav4free.watch',
+    lazy:true,
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
+        file: 'en.json'
+      },
+      {
+        code: 'es',
+        iso: 'es-ES',
+        name: 'Español',
+        file: 'es.json'
+      }
+    ],
+    langDir: '~/locales/',
+    defaultLocale: 'en',
+    detectBrowserLanguage: {
+      fallbackLocale: 'en',
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    }
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

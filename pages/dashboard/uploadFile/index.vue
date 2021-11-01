@@ -13,7 +13,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="title-admin">
-              <h2>Upload files</h2>
+              <h2>{{ $t('adminUploadFile.title') }}</h2>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Jav</h6>
+                          <h6>{{ $t('adminUploadFile.jav') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -67,7 +67,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Scenes</h6>
+                          <h6>{{ $t('adminUploadFile.scenes') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -94,7 +94,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Idols</h6>
+                          <h6>{{ $t('adminUploadFile.idols') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -121,7 +121,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Statics</h6>
+                          <h6>{{ $t('adminUploadFile.statics') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -148,7 +148,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Previews</h6>
+                          <h6>{{ $t('adminUploadFile.previews') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -178,7 +178,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Vtts</h6>
+                          <h6>{{ $t('adminUploadFile.vtts') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -205,7 +205,7 @@
                         </div>
                         <br />
                         <div class="row justify-content-center">
-                          <h6>Sprites</h6>
+                          <h6>{{ $t('adminUploadFile.sprites') }}</h6>
                         </div>
                       </div>
                     </div>
@@ -219,13 +219,13 @@
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">{{this.progress}}</div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
               <button class="btn btn-upload-admin" v-on:click="clearFiles()">
-                Clear All Files
+                {{ $t('adminUploadFile.clearFiles') }}
                 <font-awesome-icon :icon="['fas', 'eraser']" />
               </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
               <button class="btn btn-upload-admin" v-on:click="submitFiles()">
-                Upload All Files
+                {{ $t('adminUploadFile.uploadFiles') }}
                 <font-awesome-icon :icon="['fas', 'upload']" />
               </button>
             </div>
@@ -236,25 +236,25 @@
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs">
                   <li class="nav-item" @click="changeJavTab">
-                    <a class="nav-link" :class="javTab">Videos</a>
+                    <a class="nav-link" :class="javTab">{{ $t('adminUploadFile.jav') }}</a>
                   </li>
                   <li class="nav-item" @click="changeSceneTab">
-                    <a class="nav-link" :class="sceneTab">Scenes</a>
+                    <a class="nav-link" :class="sceneTab">{{ $t('adminUploadFile.scenes') }}</a>
                   </li>
                   <li class="nav-item" @click="changeIdolTab">
-                    <a class="nav-link" :class="idolTab">Idols</a>
+                    <a class="nav-link" :class="idolTab">{{ $t('adminUploadFile.idols') }}</a>
                   </li>
                   <li class="nav-item" @click="changeStaticTab">
-                    <a class="nav-link" :class="staticTab">Static</a>
+                    <a class="nav-link" :class="staticTab">{{ $t('adminUploadFile.statics') }}</a>
                   </li>
                   <li class="nav-item" @click="changePreviewTab">
-                    <a class="nav-link" :class="previewTab">Preview</a>
+                    <a class="nav-link" :class="previewTab">{{ $t('adminUploadFile.previews') }}</a>
                   </li>
                   <li class="nav-item" @click="changeVttTab">
-                    <a class="nav-link" :class="vttTab">Vtts</a>
+                    <a class="nav-link" :class="vttTab">{{ $t('adminUploadFile.vtts') }}</a>
                   </li>
                   <li class="nav-item" @click="changeSpriteTab">
-                    <a class="nav-link" :class="spriteTab">Sprites</a>
+                    <a class="nav-link" :class="spriteTab">{{ $t('adminUploadFile.sprites') }}</a>
                   </li>
                 </ul>
                 <table class="table table-hover" v-if="this.javTab == 'active'">

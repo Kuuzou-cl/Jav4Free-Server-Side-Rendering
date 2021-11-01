@@ -1,0 +1,46 @@
+{
+    "overview": "Inicio",
+    "sidebarAdmin": {
+        "dashboard" : "Menu Principal",
+        "return" : "Volver al Sitio", 
+        "manageFiles" : "Administrar Archivos",
+        "upload" : "Subir Archivos",
+        "newContent" : "Nuevo Contenido",
+        "addScene" : "Agregar Video",
+        "addJav" : "Agregar Película",
+        "addIdol" : "Agregar Actriz",
+        "addCategory": "Agregar Categoría",
+        "dataCenter" : "Base de Datos",
+        "listScenes" : "Ver Videos",
+        "listJavs" : "Ver Películas",
+        "listIdols" : "Ver Actrices",
+        "listCategories" : "Ver Categorías"
+    },
+    "adminUploadFile": {
+        "title" : "Subir Archivos",
+        "jav" : "Películas",
+        "scenes" : "Videos",
+        "idols" : "Actrices",
+        "statics" : "Carátula",
+        "previews" : "Previsualización",
+        "vtts" : "Archivos Vtt",
+        "sprites" : "Archivos Sprite",
+        "clearFiles" : "Limpiar Lista de Archivos",
+        "uploadFiles" : "Subir Ahora"
+    },
+    "adminAddScene": {
+
+    },
+    "adminAddJav": {
+
+    },
+    "adminAddIdol": {
+
+    },
+    "adminAddCategory": {
+
+    },
+    "adminListScenes": {
+
+    }
+}

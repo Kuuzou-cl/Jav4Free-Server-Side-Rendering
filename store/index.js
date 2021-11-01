@@ -24,6 +24,9 @@ export const getters = {
     } else {
       return false;
     }
+  },
+  getLanguage: state => {
+    return state.language;
   }
 }
 
@@ -108,66 +111,6 @@ export const mutations = {
       })
     }
   },
-  SET_BREADCRUMBS(state, page) {
-    if (page) {
-      if (page.page == "Home") {
-        let newCrumbs = [{ page: "Home", route: "" }];
-        state.breadCrumbs = newCrumbs;
-      } else {
-        if (page.page == "Categories") {
-          let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-          state.breadCrumbs = newCrumbs;
-        } else {
-          if (page.page == "Idols") {
-            let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-            state.breadCrumbs = newCrumbs;
-          } else {
-            if (page.page == "Idol") {
-              let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: "Idols", show: "Idols", route: "idols/1" }, { page: page.page, show: page.show, route: page.route }];
-              state.breadCrumbs = newCrumbs;
-            } else {
-              if (page.page == "Category") {
-                let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: "Categories", show: "Categories", route: "categories" }, { page: page.page, show: page.show, route: page.route }];
-                state.breadCrumbs = newCrumbs;
-              } else {
-                if (page.page == "Javs") {
-                  let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-                  state.breadCrumbs = newCrumbs;
-                } else {
-                  if (page.page == "Jav") {
-                    let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: "Javs", show: "Javs", route: "javs/1" }, { page: page.page, show: page.show, route: page.route }];
-                    state.breadCrumbs = newCrumbs;
-                  } else {
-                    if (page.page == "Search") {
-                      let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-                      state.breadCrumbs = newCrumbs;
-                    } else {
-                      if (page.page == "Favorites") {
-                        let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-                        state.breadCrumbs = newCrumbs;
-                      } else {
-                        if (page.page == "History") {
-                          let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-                          state.breadCrumbs = newCrumbs;
-                        } else {
-                          if (page.page == "Scenes") {
-                            let newCrumbs = [{ page: "Home", show: "Home", route: "" }, { page: page.page, show: page.show, route: page.route }];
-                            state.breadCrumbs = newCrumbs;
-                          } else {
-  
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 export const actions = {
@@ -277,60 +220,6 @@ export const actions = {
     } catch (error) {
       throw error;
     }
-  },
-
-  async addCrumb({ commit }, { page, show, route }) {
-    let newPage;
-    if (page == "Idol") {
-      try {
-        let idolId = show;
-        let idol = await axios.get(
-          "https://jav.souzou.dev/jav4free/idols/" + idolId
-        );
-        newPage = { page: page, show: idol.data.idol.name, route: route }
-      } catch (error) {
-        throw error
-      }
-    } else {
-      if (page == "Category") {
-        try {
-          let categoryId = show;
-          let category = await axios.get(
-            "https://jav.souzou.dev/jav4free/categories/" + categoryId
-          );
-          newPage = { page: page, show: category.data.category.name, route: route }
-        } catch (error) {
-          throw error
-        }
-      } else {
-        if (page == "Jav") {
-          try {
-            let javId = show;
-            let jav = await axios.get(
-              "https://jav.souzou.dev/jav4free/javs/" + javId
-            );
-            newPage = { page: page, show: jav.data.jav.code, route: route }
-          } catch (error) {
-            throw error
-          }
-        } else {
-          if (page == "Search") {
-            newPage = { page: page, show: show, route: route }
-          } else {
-            if (page == "Favorites") {
-              newPage = { page: page, show: show, route: route }
-            } else {
-              if (page == "History") {
-                newPage = { page: page, show: show, route: route }
-              } else {
-                newPage = { page: page, show: show, route: route }
-              }
-            }
-          }
-        }
-      }
-    }
-    commit('SET_BREADCRUMBS', newPage)
   },
 
 }

@@ -1,0 +1,46 @@
+{
+    "overview": "Overview",
+    "sidebarAdmin": {
+        "dashboard" : "Home",
+        "return" : "Return to Website",
+        "manageFiles" : "Manage Files",
+        "upload" : "Upload Files",
+        "newContent" : "New Content",
+        "addScene" : "Add Scene",
+        "addJav" : "Add Jav",
+        "addIdol" : "Add Idol",
+        "addCategory": "Add Category",
+        "dataCenter" : "Data Center",
+        "listScenes" : "List Scenes",
+        "listJavs" : "List Javs",
+        "listIdols" : "List Idols",
+        "listCategories" : "List Categories"
+    },
+    "adminUploadFile": {
+        "title" : "Upload Files",
+        "jav" : "Javs",
+        "scenes" : "Scenes",
+        "idols" : "Idols",
+        "statics" : "Statics",
+        "previews" : "Previews",
+        "vtts" : "Vtt Files",
+        "sprites" : "Sprites",
+        "clearFiles" : "Clear All Files",
+        "uploadFiles" : "Upload Now"
+    },
+    "adminAddScene": {
+
+    },
+    "adminAddJav": {
+
+    },
+    "adminAddIdol": {
+
+    },
+    "adminAddCategory": {
+
+    },
+    "adminListScenes": {
+
+    }
+}
