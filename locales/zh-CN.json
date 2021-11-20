@@ -1,0 +1,46 @@
+{
+    "overview": "概述",
+    "sidebarAdmin": {
+        "dashboard" : "首页",
+        "return" : "返回到网站",
+        "manageFiles" : "管理文件",
+        "upload" : "Upload Files",
+        "newContent" : "New Content",
+        "addScene" : "Add Scene",
+        "addJav" : "Add Jav",
+        "addIdol" : "Add Idol",
+        "addCategory": "Add Category",
+        "dataCenter" : "Data Center",
+        "listScenes" : "List Scenes",
+        "listJavs" : "List Javs",
+        "listIdols" : "List Idols",
+        "listCategories" : "List Categories"
+    },
+    "adminUploadFile": {
+        "title" : "Upload Files",
+        "jav" : "Javs",
+        "scenes" : "Scenes",
+        "idols" : "Idols",
+        "statics" : "Statics",
+        "previews" : "Previews",
+        "vtts" : "Vtt Files",
+        "sprites" : "Sprites",
+        "clearFiles" : "Clear All Files",
+        "uploadFiles" : "Upload Now"
+    },
+    "adminAddScene": {
+
+    },
+    "adminAddJav": {
+
+    },
+    "adminAddIdol": {
+
+    },
+    "adminAddCategory": {
+
+    },
+    "adminListScenes": {
+
+    }
+}
