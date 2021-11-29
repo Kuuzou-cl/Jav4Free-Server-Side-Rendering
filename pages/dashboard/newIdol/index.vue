@@ -42,15 +42,6 @@
                         placeholder="Enter idol's name"
                       />
                     </div>
-                    <div class="form-row">
-                      <label for="inputJav02">Idol Name index</label>
-                      <input
-                        v-model="idolUrl"
-                        class="input-admin"
-                        id="inputJav02"
-                        placeholder="Enter file name, example: 'name-surname'"
-                      />
-                    </div>
                   </div>
                 </div>
               </div>
@@ -178,7 +169,7 @@ export default {
         name: this.idolName,
         imageUrl:
           "https://javdata.sfo2.cdn.digitaloceanspaces.com/idols/" +
-          this.idolUrl +
+          this.idolName.toLowerCase().replace(" ","-") +
           ".jpg",
         hidden: this.hidden
       };
