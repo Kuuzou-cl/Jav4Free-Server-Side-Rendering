@@ -40,7 +40,7 @@ module.exports = {
       } 
       , */
       {
-        src: "~/plugins/adilla.js", 'data-cfasync' : 'false' , body: true
+        src: "https://javdata.sfo2.cdn.digitaloceanspaces.com/scripts/adilla.js", 'data-cfasync' : 'false' , body: true
       } 
     ]
   },
