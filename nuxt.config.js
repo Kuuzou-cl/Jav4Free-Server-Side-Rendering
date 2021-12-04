@@ -33,10 +33,10 @@ module.exports = {
       {
         src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
       }
-      /**,
+      ,
       {
         src: "https://js.wpadmngr.com/static/adManager.js", 'data-admpid': "7833", body: true
-      } */
+      } 
     ]
   },
   /*
