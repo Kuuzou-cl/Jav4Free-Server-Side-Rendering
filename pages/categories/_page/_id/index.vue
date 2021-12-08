@@ -128,7 +128,6 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 import CardSceneMobile from "~/components/Cards/CardSceneMobile";
@@ -188,13 +187,6 @@ export default {
     };
   },
   beforeCreate() {
-    let routePage =
-      "categories/" + this.$route.params.page + "/" + this.$route.params.id;
-    this.$store.dispatch("addCrumb", {
-      page: "Category",
-      show: this.$route.params.id,
-      route: routePage
-    });
   },
   methods: {
     nextClick() {

@@ -4,11 +4,7 @@ module.exports = {
     port: 8080, // default: 3000
     host: '0.0.0.0' // default: localhost
   },
-  mode: 'universal',
   telemetry: false,
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'Jav4Free | Japanese Adult Videos for Free | Streaming Service',
     meta: [
@@ -32,13 +28,7 @@ module.exports = {
     script: [
       {
         src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
-      }
-      ,
-      /**
-      {
-        src: "https://js.wpadmngr.com/static/adManager.js", 'data-admpid': "7833", body: true
-      } 
-      , */
+      },
       {
         src: "https://javdata.sfo2.cdn.digitaloceanspaces.com/scripts/adilla.js", 'data-cfasync' : 'false' , body: true
       } 
@@ -146,7 +136,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['jquery', 'bootstrap'],
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',

@@ -123,7 +123,6 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardJav02";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 
@@ -171,12 +170,6 @@ export default {
     };
   },
   beforeCreate() {
-    let routePage = "javs/" + this.$route.params.page;
-    this.$store.dispatch("addCrumb", {
-      page: "Javs",
-      show: "Recently Added JAV",
-      route: routePage
-    });
   },
   methods: {
     nextClick() {

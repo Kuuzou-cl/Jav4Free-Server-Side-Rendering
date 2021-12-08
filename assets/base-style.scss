@@ -3,36 +3,6 @@
 @import 'categories-page.scss';
 
 @media (min-width: 576px) {
-    .container {
-      max-width: 540px !important;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .container {
-      max-width: 720px !important;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .container {
-      max-width: 960px !important;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1400px !important;
-    }
-  }
-
-  @media (min-width: 2120px) {
-    .container {
-      max-width: 1600px !important;
-    }
-  }
-
-  @media (min-width: 576px) {
     .container, .container-sm {
       max-width: 540px !important;
     }
@@ -70,7 +40,7 @@
 body
 {	
     background-color: #fff;
-    font-family: 'Roboto', sans-serif;
+    font-family: consolas,'Roboto', sans-serif;
     width: 100%;
 }
 

@@ -157,21 +157,15 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
 import CardJav02 from "~/components/Cards/CardJav02";
 import CardJavMobile from "~/components/Cards/CardJav01Mobile";
-import VideoSlider from "~/components/ExoclickAds/VideoSlider.vue";
-import DesktopAdBanner from "~/components/ExoclickAds/DesktopAdBanner.vue";
-import DesktopSideAdBanner from "~/components/ExoclickAds/DesktopSideAdBanner.vue";
-import MobileAdBanner from "~/components/ExoclickAds/MobileAdBanner.vue";
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   name: "JAV",
   components: {
-    Crumbs,
     CardJav,
     CardJav02,
     CardJavMobile,

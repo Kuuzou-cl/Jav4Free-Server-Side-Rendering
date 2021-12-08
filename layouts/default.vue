@@ -497,18 +497,14 @@
 </template>
 
 <script>
-import Sitemap from "~/components/Sitemap/Sitemap.vue";
 import Navbar from "~/components/Navbar/Navbar.vue";
-import Secondarybar from "~/components/Secondarybar/Secondarybar.vue";
 import Footer from "~/components/Footer/Footer.vue";
 export default {
   head: {
     script: [{}],
   },
   components: {
-    Sitemap,
     Navbar,
-    Secondarybar,
     Footer,
   },
 };

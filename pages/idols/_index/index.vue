@@ -142,7 +142,6 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardIdol from "~/components/Cards/CardIdol00";
 import CardIdolMobile from "~/components/Cards/CardIdol00Mobile";
 
@@ -195,12 +194,6 @@ export default {
     };
   },
   beforeCreate() {
-    let routePage = "idols/" + this.$route.params.index;
-    this.$store.dispatch("addCrumb", {
-      page: "Idols",
-      show: "Idols",
-      route: routePage
-    });
   },
   methods: {
     nextClick() {

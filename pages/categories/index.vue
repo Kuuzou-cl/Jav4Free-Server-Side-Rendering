@@ -61,8 +61,6 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
-
 export default {
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   components: {
@@ -89,11 +87,6 @@ export default {
     return { categories: data.categories };
   },
   beforeCreate() {
-    this.$store.dispatch("addCrumb", {
-      page: "Categories",
-      show: "Categories",
-      route: "categories"
-    });
   }
 };
 </script>

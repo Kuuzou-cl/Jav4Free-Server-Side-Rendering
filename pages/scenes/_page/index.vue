@@ -141,7 +141,6 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
 import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
@@ -149,7 +148,6 @@ export default {
   name: "RecentJavs",
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    Crumbs,
     CardJav,
     CardSceneMobile
   },
@@ -189,12 +187,6 @@ export default {
     };
   },
   beforeCreate() {
-    let routePage = "scenes/" + this.$route.params.page;
-    this.$store.dispatch("addCrumb", {
-      page: "Scenes",
-      show: "Recently Added Videos",
-      route: routePage
-    });
   },
   methods: {
     nextClick() {

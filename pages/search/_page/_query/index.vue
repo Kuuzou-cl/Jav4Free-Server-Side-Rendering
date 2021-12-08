@@ -214,7 +214,6 @@
 <script>
 import axios from "axios";
 
-import Crumbs from "~/components/Breadcrumbs/Breadcrumbs";
 import CardJav from "~/components/Cards/CardScene";
 import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 import CardSceneMobile from "~/components/Cards/CardSceneMobile";
@@ -223,7 +222,6 @@ export default {
   name: "Search",
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    Crumbs,
     CardJav,
     CardJavMobile,
     CardSceneMobile
