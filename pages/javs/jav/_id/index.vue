@@ -169,11 +169,7 @@ export default {
     CardJav,
     CardJav02,
     CardJavMobile,
-    VideoSlider,
     FluidPlayer,
-    DesktopAdBanner,
-    DesktopSideAdBanner,
-    MobileAdBanner,
   },
   data() {
     return {};

@@ -130,7 +130,6 @@ export default {
   name: "RecentJavs",
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    Crumbs,
     CardJav,
     CardJavMobile
   },

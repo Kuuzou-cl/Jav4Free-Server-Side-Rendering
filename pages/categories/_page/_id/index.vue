@@ -135,7 +135,7 @@ import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 export default {
   name: "category",
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
-  components: { Crumbs, CardJav, CardJavMobile,CardSceneMobile },
+  components: { CardJav, CardJavMobile,CardSceneMobile },
   data() {
     return {
       prevPages: null,

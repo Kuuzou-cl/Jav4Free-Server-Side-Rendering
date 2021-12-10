@@ -64,7 +64,6 @@ import axios from "axios";
 export default {
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    Crumbs
   },
   head() {
     return {

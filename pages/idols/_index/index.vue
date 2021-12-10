@@ -149,7 +149,6 @@ export default {
   name: "Idols",
   layout: ctx => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    Crumbs,
     CardIdol,
     CardIdolMobile
   },
