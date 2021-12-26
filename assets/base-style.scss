@@ -1,6 +1,7 @@
 @import 'jav-page.scss';
 @import 'login-page.scss';
 @import 'categories-page.scss';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;800&display=swap');
 
 @media (min-width: 576px) {
     .container, .container-sm {
@@ -40,7 +41,7 @@
 body
 {	
     background-color: #fff;
-    font-family: consolas,'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     width: 100%;
 }
 
