@@ -65,9 +65,9 @@ module.exports = {
   modules: [
     '@nuxtjs/i18n',
     ['nuxt-lazy-load', {
-      directiveOnly: true,
+      directiveOnly: false,
       observerConfig: {
-        threshold: 0.3
+        threshold: 0.1
       }
 
     }],
