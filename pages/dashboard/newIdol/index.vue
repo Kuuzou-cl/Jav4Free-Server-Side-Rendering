@@ -28,7 +28,11 @@
                     <div class="form-row">
                       <img
                         id="inputJav06"
-                        :src="'https://javdata.sfo2.digitaloceanspaces.com/idols/'+this.idolUrl+'.jpg'"
+                        :src="
+                          'https://javdata.sfo2.digitaloceanspaces.com/idols/' +
+                          this.idolUrl +
+                          '.jpg'
+                        "
                       />
                     </div>
                   </div>
@@ -36,7 +40,7 @@
                     <div class="form-row">
                       <label for="inputCat01">Idol Name</label>
                       <input
-                        v-model="idolName"
+                        v-model="name"
                         class="input-admin"
                         id="inputCat01"
                         placeholder="Enter idol's name"
@@ -45,10 +49,15 @@
                   </div>
                 </div>
               </div>
-              <div class="need-space"></div>
+              <div class="need-space">
+                {{ this.idolUrl }}
+                {{ this.idolName }}
+              </div>
               <div class="container">
                 <div class="row justify-content-center">
-                  <button class="btn category-admin" @click="postIdol()">Add Idol</button>
+                  <button class="btn category-admin" @click="postIdol()">
+                    Add Idol
+                  </button>
                 </div>
               </div>
             </div>
@@ -57,15 +66,22 @@
                 <table class="table table-hover text-center">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="t-header"
-                      >Pending Idols ({{this.spaceCheckIdols(resultIdols, idols).length}})</th>
+                      <th scope="col" class="t-header">
+                        Pending Idols ({{
+                          this.spaceCheckIdols(resultIdols, idols).length
+                        }})
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(idol, key) in this.spaceCheckIdols(resultIdols, idols)" :key="key">
-                      <th>{{idol}}</th>
+                    <tr
+                      v-for="(idol, key) in this.spaceCheckIdols(
+                        resultIdols,
+                        idols
+                      )"
+                      :key="key"
+                    >
+                      <th>{{ idol }}</th>
                     </tr>
                   </tbody>
                 </table>
@@ -87,13 +103,14 @@ export default {
   layout: "admin",
   name: "NewIdol",
   components: {
-    SidebarAdmin
+    SidebarAdmin,
   },
   data() {
     return {
+      name: "",
       idolName: "",
       idolUrl: "",
-      hidden: false
+      hidden: false,
     };
   },
   async asyncData() {
@@ -122,7 +139,7 @@ export default {
       });
     let spaceDataIdols = await axios
       .get("https://sfo2.digitaloceanspaces.com/javdata?prefix=idols/")
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     var resultIdols = JSON.parse(
@@ -133,7 +150,7 @@ export default {
       javs: javs.data.javs,
       categories: categories.data.categories,
       idols: idols.data.idols,
-      resultIdols: resultIdols
+      resultIdols: resultIdols,
     };
   },
   methods: {
@@ -157,7 +174,9 @@ export default {
       let pending = [];
 
       spaceData.forEach((r) => {
-        if (!idols.some((item) => item.name.toLowerCase() === r.toLowerCase())) {
+        if (
+          !idols.some((item) => item.name.toLowerCase() === r.toLowerCase())
+        ) {
           pending.push(r);
         }
       });
@@ -169,22 +188,36 @@ export default {
         name: this.idolName,
         imageUrl:
           "https://javdata.sfo2.cdn.digitaloceanspaces.com/idols/" +
-          this.idolName.toLowerCase().replace(" ","-") +
+          this.idolName.toLowerCase().replace(" ", "-") +
           ".jpg",
-        hidden: this.hidden
+        hidden: this.hidden,
       };
       let response = await axios
         .post("https://jav.souzou.dev/jav4free/idols/newIdol/", obj, {
           headers: {
-            "x-access-token": this.$store.state.token
-          }
+            "x-access-token": this.$store.state.token,
+          },
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
       this.$router.push({ path: "/dashboard" });
-    }
-  }
+    },
+  },
+  watch: {
+    name(val) {
+      this.idolUrl = val.toLowerCase().replace(" ", "-");
+      var splitStr = val.toLowerCase().split(" ");
+      for (var i = 0; i < splitStr.length; i++) {
+        if (this.idolName.length > 0) {
+          this.idolName = this.idolName + " " + splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);  
+        } else {
+          this.idolName = this.idolName + splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        }
+        
+      }
+    },
+  },
 };
 </script>
 
