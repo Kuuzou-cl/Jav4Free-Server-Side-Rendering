@@ -1,7 +1,7 @@
 @import 'jav-page.scss';
 @import 'login-page.scss';
 @import 'categories-page.scss';
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700&display=swap');
 
 @media (min-width: 576px) {
     .container, .container-sm {
@@ -89,7 +89,6 @@ video{
 
 .row-title{
   background-color: #000;
-  border-top: 1px dashed #fff;
   color: #fff;
   h4{
     margin: auto;

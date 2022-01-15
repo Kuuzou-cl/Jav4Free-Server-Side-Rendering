@@ -2,7 +2,7 @@
   <footer class="pt-4 footer">
     <div class="copyright py-3">
       <p>
-        © 2020 Copyright:
+        © 2022 Copyright:
         <nuxt-link to="/" tag="a">JAV4Free.watch</nuxt-link>
         <nuxt-link :to="'/login'" v-if="!$store.state.token">
           <font-awesome-icon
