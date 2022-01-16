@@ -321,6 +321,15 @@
                   {{ category }}
                 </p>
               </div>
+              <div class="row justify-content-center">
+                <p
+                  class="tag"
+                  v-for="idol in this.javObject.idols"
+                  :key="idol._id"
+                >
+                  {{ idol }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -428,6 +437,13 @@ export default {
             for (let indexc = 0; indexc < this.categories.length; indexc++) {
               if (this.javs[index].categories[indexb] == this.categories[indexc]._id) {
                 this.javs[index].categories[indexb] = this.categories[indexc].name;
+              }
+            }
+          }
+          for (let indexd = 0; indexd < this.javs[index].idols.length; indexd++) {
+            for (let indexe = 0; indexe < this.idols.length; indexe++) {
+              if (this.javs[index].idols[indexd] == this.idols[indexe]._id) {
+                this.javs[index].idols[indexd] = this.idols[indexe].name;
               }
             }
           }
