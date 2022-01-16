@@ -436,6 +436,7 @@ export default {
           for (let indexb = 0; indexb < this.javs[index].categories.length; indexb++) {
             for (let indexc = 0; indexc < this.categories.length; indexc++) {
               if (this.javs[index].categories[indexb] == this.categories[indexc]._id) {
+                this.addCategory(this.javs[index].categories[indexb]);
                 this.javs[index].categories[indexb] = this.categories[indexc].name;
               }
             }
@@ -443,6 +444,7 @@ export default {
           for (let indexd = 0; indexd < this.javs[index].idols.length; indexd++) {
             for (let indexe = 0; indexe < this.idols.length; indexe++) {
               if (this.javs[index].idols[indexd] == this.idols[indexe]._id) {
+                this.addIdol(this.javs[index].idols[indexd]);
                 this.javs[index].idols[indexd] = this.idols[indexe].name;
               }
             }
