@@ -306,6 +306,21 @@
                   <source :src="this.video" type="video/mp4" />
                 </video>
               </div>
+              <div class="row justify-content-center">
+                {{ this.javObject.name }}
+              </div>
+              <div class="row justify-content-center">
+                <img id="inputJav06" :src="this.javObject.imageUrl" />
+              </div>
+              <div class="row justify-content-center">
+                <p
+                  class="tag"
+                  v-for="category in this.javObject.categories"
+                  :key="category._id"
+                >
+                  {{ category }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -331,6 +346,8 @@ export default {
       javName: "",
       javCode: "",
       javDuration: "",
+      javOG: "",
+      javObject: "",
       hidden: true,
       javCategories: [],
       javIdols: [],
@@ -404,6 +421,19 @@ export default {
         ".mp4";
       var vid = this.$refs.video;
       vid.load();
+      for (let index = 0; index < this.javs.length; index++) {
+        if (this.javs[index].code == this.javOG) {
+          this.javObject = this.javs[index];
+          for (let indexb = 0; indexb < this.javs[index].categories.length; indexb++) {
+            for (let indexc = 0; indexc < this.categories.length; indexc++) {
+              if (this.javs[index].categories[indexb] == this.categories[indexc]._id) {
+                this.javs[index].categories[indexb] = this.categories[indexc].name;
+              }
+            }
+          }
+          break;
+        }
+      }
     },
     addCategory: function (_id) {
       const exist = this.javCategories.find((category) => category === _id);
@@ -580,6 +610,12 @@ export default {
       });
 
       return pending;
+    },
+  },
+  watch: {
+    javCode(val) {
+      var splitStr = this.javCode.split("_");
+      this.javOG = splitStr[0];
     },
   },
 };
