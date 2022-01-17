@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-lg-9">
             <div class="container-jav">
-              <FluidPlayer v-bind:jav="scene" />
+              <FluidPlayer v-bind:jav="this.scene" />
               <div class="jav-title">
                 <div class="row justify-content-center">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -221,12 +221,12 @@ export default {
     let scene = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/" + id)
       .catch((e) => {
-        console.log(e);
+        console.log("error scene");
       });
     let related = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + id)
       .catch((e) => {
-        console.log(e);
+        console.log("error related");
       });
     return {
       SceneTitle: scene.data.scene.name,

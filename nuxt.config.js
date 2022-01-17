@@ -63,14 +63,14 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/i18n',
+    /*
     ['nuxt-lazy-load', {
       directiveOnly: false,
       observerConfig: {
         threshold: 0.1
       }
 
-    }],
+    }],*/
     '@nuxtjs/device',
     /* 
     instance.$device.isDesktop
@@ -99,32 +99,6 @@ module.exports = {
     ],
     'cookie-universal-nuxt'
   ],
-  i18n: {
-    baseUrl: 'https://jav4free.watch',
-    lazy:true,
-    locales: [
-      {
-        code: 'en',
-        iso: 'en-US',
-        name: 'English',
-        file: 'en.json'
-      },
-      {
-        code: 'es',
-        iso: 'es-ES',
-        name: 'Español',
-        file: 'es.json'
-      }
-    ],
-    langDir: '~/locales/',
-    defaultLocale: 'en',
-    detectBrowserLanguage: {
-      fallbackLocale: 'en',
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-    }
-  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

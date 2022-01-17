@@ -36,14 +36,13 @@ export default {
         adList: [
           {
             roll: "preRoll",
-            vastTag:
-              "https://vast.yomeno.xyz/vast?spot_id=3971"
+            vastTag: "https://vast.yomeno.xyz/vast?spot_id=3971",
           },
           {
             roll: "onPauseRoll",
             vastTag: "https://vast.yomeno.xyz/vast?spot_id=20325",
-            vAlign: "middle"
-          }
+            vAlign: "middle",
+          },
         ],
       },
       onBeforeXMLHttpRequest: (request) => {
