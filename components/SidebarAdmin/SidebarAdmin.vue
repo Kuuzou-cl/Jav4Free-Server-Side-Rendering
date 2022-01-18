@@ -1,81 +1,81 @@
 <template>
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <nuxt-link
-      :to="localePath({ name: 'dashboard' })"
+      to="/dashboard"
       class="sidebar-brand d-flex align-items-center justify-content-center"
     >
-      <div class="sidebar-brand-text mx-3">{{ $t('sidebarAdmin.dashboard') }}</div>
+      <div class="sidebar-brand-text mx-3">Dashboard</div>
     </nuxt-link>
     <hr class="sidebar-divider my-0" />
     <li class="nav-item active">
-      <nuxt-link :to="localePath('index')" class="nav-link">
+      <nuxt-link to="/" class="nav-link">
         <font-awesome-icon :icon="['fas', 'undo-alt']" />
-        <span>{{ $t('sidebarAdmin.return') }}</span>
+        <span>Return to Site</span>
       </nuxt-link>
     </li>
     <hr class="sidebar-divider" />
-    <div class="sidebar-heading">{{ $t('sidebarAdmin.manageFiles') }}</div>
+    <div class="sidebar-heading">Manage Files</div>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-uploadFile' })" class="nav-link">
+      <nuxt-link to="/dashboard/uploadFile" class="nav-link">
         <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" />
-        <span>{{ $t('sidebarAdmin.upload') }}</span>
+        <span>Upload</span>
       </nuxt-link>
     </li>
     <hr class="sidebar-divider" />
-    <div class="sidebar-heading">{{ $t('sidebarAdmin.newContent') }}</div>
+    <div class="sidebar-heading">New Content</div>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-newScene' })" class="nav-link">
+      <nuxt-link to="/dashboard/newScene" class="nav-link">
         <font-awesome-icon :icon="['fas', 'plus-square']" />
-        <span>{{ $t('sidebarAdmin.addScene') }}</span>
+        <span>New Scene</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-newJav' })" class="nav-link">
+      <nuxt-link to="/dashboard/newJav" class="nav-link">
         <font-awesome-icon :icon="['fas', 'plus-square']" />
-        <span>{{ $t('sidebarAdmin.addJav') }}</span>
+        <span>New Jav</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-newIdol' })" class="nav-link">
+      <nuxt-link to="/dashboard/newIdol" class="nav-link">
         <font-awesome-icon :icon="['fas', 'plus-square']" />
-        <span>{{ $t('sidebarAdmin.addIdol') }}</span>
+        <span>New Idol</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-newCategory' })" class="nav-link">
+      <nuxt-link to="/newCategory" class="nav-link">
         <font-awesome-icon :icon="['fas', 'plus-square']" />
-        <span>{{ $t('sidebarAdmin.addCategory') }}</span>
+        <span>New Category</span>
       </nuxt-link>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider" />
     <!-- Heading -->
-    <div class="sidebar-heading">{{ $t('sidebarAdmin.dataCenter') }}</div>
+    <div class="sidebar-heading">Data Center</div>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-editScenes' })" class="nav-link">
+      <nuxt-link to="/editScenes" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
-        <span>{{ $t('sidebarAdmin.listScenes') }}</span>
+        <span>Scenes</span>
         <span>{{scenes.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-editJavs' })" class="nav-link">
+      <nuxt-link to="/editJavs" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
-        <span>{{ $t('sidebarAdmin.listJavs') }}</span>
+        <span>Javs</span>
         <span>{{videos.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-editIdols' })" class="nav-link">
+      <nuxt-link to="/editIdols" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
-        <span>{{ $t('sidebarAdmin.listIdols') }}</span>
+        <span>Idols</span>
         <span>{{idols.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="localePath({ name: 'dashboard-editCategories' })" class="nav-link">
+      <nuxt-link to="/editCategories" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
-        <span>{{ $t('sidebarAdmin.listCategories') }}</span>
+        <span>Categories</span>
         <span>{{categories.length}}</span>
       </nuxt-link>
     </li>

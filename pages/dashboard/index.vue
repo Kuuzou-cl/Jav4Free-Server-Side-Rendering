@@ -13,24 +13,13 @@
         <div class="container-fluid">
           <div class="row">
             <div class="title-admin">
-              <h2>{{ $t('overview') }}</h2>
+              <h2>Overview</h2>
             </div>
           </div>
         </div>
         <div class="need-space"></div>
         <div class="need-space"></div>
         <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              {{$i18n.locale}}
-              <nuxt-link
-                v-for="locale in availableLocales"
-                :key="locale.code"
-                :to="switchLocalePath(locale.code)"
-                >{{ locale.name }}</nuxt-link
-              >
-            </div>
-          </div>
           <div class="row justify-content-center">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
               <div class="tableFixHead">
@@ -209,9 +198,6 @@ export default {
     },
   },
   computed: {
-    availableLocales() {
-      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale);
-    },
   },
 };
 </script>
