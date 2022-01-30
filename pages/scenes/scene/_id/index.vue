@@ -5,7 +5,7 @@
       <div class="container content-jav">
         <div class="row">
           <div class="col-lg-12 text-center">
-           <div data-nat="3624"></div>
+            <div data-nat="3624"></div>
           </div>
         </div>
         <div class="row">
@@ -16,7 +16,7 @@
                 <div class="row justify-content-center">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <p class="title">
-                      {{ scene.code + " " + getName(scene.name) }}
+                      {{ scene.code + " " + getName(scene.name) + " - Views: " + scene.views}}
                     </p>
                   </div>
                 </div>
@@ -35,12 +35,11 @@
               </div>
             </div>
             <div class="jav-extra">
-              <span> JAV Code: 
-                <nuxt-link
-                  :to="'/javs/jav/' + jav._id"
-                  tag="a"
-                  class="links"
-                  >{{ jav.code }}</nuxt-link>
+              <span>
+                JAV Code:
+                <nuxt-link :to="'/javs/jav/' + jav._id" tag="a" class="links">{{
+                  jav.code
+                }}</nuxt-link>
               </span>
             </div>
             <div class="jav-extra">
@@ -223,6 +222,11 @@ export default {
       .catch((e) => {
         console.log("error scene");
       });
+    let responseView = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/view/" + id)
+      .catch((e) => {
+        console.log(e);
+      });
     let related = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + id)
       .catch((e) => {
@@ -236,6 +240,7 @@ export default {
       idols: scene.data.idols,
       jav: scene.data.jav,
       related: related.data.relatedScenes,
+      view: responseView.data.scene.view
     };
   },
   beforeCreate() {},

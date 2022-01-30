@@ -22,13 +22,30 @@
       <div class="need-space"></div>
       <div class="need-space"></div>
       <div class="container-fluid">
+        <div class="row row-title">
+          <div class="col-lg-12 text-center">
+            <h4>Most Viewed AV Scenes</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            v-for="scene in mostviews"
+            :key="scene._id"
+            class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+          >
+            <CardScene v-bind:dataJav="scene" />
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container-fluid">
         <div class="row">
           <div class="col-lg-7">
             <div class="row row-title">
               <div class="col-lg-12 text-center">
                 <h4>Newest AV Scenes</h4>
               </div>
-            </div>            
+            </div>
             <div class="row">
               <div
                 v-for="scene in scenes"
@@ -110,6 +127,24 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <button class="btn btn-more">Most Viewed Scenes</button>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="row">
+        <div
+          v-for="scene in mostviews"
+          :key="scene._id"
+          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        >
+          <CardSceneMobile v-bind:dataJav="scene" />
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <nuxt-link :to="'/scenes/1'" class="btn btn-more">
               Recently Scenes Added
               <font-awesome-icon :icon="['fas', 'plus']" />
@@ -161,7 +196,7 @@ export default {
     CardScene,
     CardIdol,
     CardJavMobile,
-    CardSceneMobile
+    CardSceneMobile,
   },
   head() {
     return {
@@ -180,11 +215,20 @@ export default {
       .catch((e) => {
         console.log(e);
       });
+    const mostviews = await axios
+      .get("https://jav.souzou.dev/jav4free/scenes/getMostViewScenes", {
+        headers: {
+          quantity: 6,
+        },
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     const javsMobile = await axios
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
           quantity: 3,
-          empty: "false"
+          empty: "false",
         },
       })
       .catch((e) => {
@@ -194,7 +238,7 @@ export default {
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
           quantity: 4,
-          empty: "false"
+          empty: "false",
         },
       })
       .catch((e) => {
@@ -208,10 +252,11 @@ export default {
     return {
       javsDesktop: javsDesktop.data.javs,
       scenes: scenes.data.scenes,
+      mostviews: mostviews.data.scenes,
       javsMobile: javsMobile.data.javs,
       idols: idols.data.idols,
     };
-  }
+  },
 };
 </script>
 
