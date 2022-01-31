@@ -2,7 +2,7 @@
   <div class="card bg-dark box22">
     <div class="box22-media">
       <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-        <img :src="dataJav.imageUrl" v-lazy-load />
+        <img :src="dataJav.imageUrl"  />
       </nuxt-link>
     </div>
     <div class="box-content">

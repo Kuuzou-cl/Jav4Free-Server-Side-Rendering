@@ -2,7 +2,7 @@
   <div class="card bg-dark box21">
     <div class="box21-media">
       <nuxt-link :to="'/scenes/scene/'+dataJav._id" tag="a">
-        <img :src="dataJav.imageIndexUrl" v-lazy-load />
+        <img :src="dataJav.imageIndexUrl" />
         <video class="video-jav" @mouseleave="restart()" @mouseover="start()" preload="auto" loop>
           <source :src="dataJav.imageUrl" type="video/mp4" />
         </video>
