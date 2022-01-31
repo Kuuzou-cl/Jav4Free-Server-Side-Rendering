@@ -42,7 +42,7 @@
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link to="/newCategory" class="nav-link">
+      <nuxt-link to="/dashboard/newCategory" class="nav-link">
         <font-awesome-icon :icon="['fas', 'plus-square']" />
         <span>New Category</span>
       </nuxt-link>
@@ -52,28 +52,28 @@
     <!-- Heading -->
     <div class="sidebar-heading">Data Center</div>
     <li class="nav-item">
-      <nuxt-link to="/editScenes" class="nav-link">
+      <nuxt-link to="/dashboard/editScenes" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
         <span>Scenes</span>
         <span>{{scenes.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link to="/editJavs" class="nav-link">
+      <nuxt-link to="/dashboard/editJavs" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
         <span>Javs</span>
         <span>{{videos.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link to="/editIdols" class="nav-link">
+      <nuxt-link to="/dashboard/editIdols" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
         <span>Idols</span>
         <span>{{idols.length}}</span>
       </nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link to="/editCategories" class="nav-link">
+      <nuxt-link to="/dashboard/editCategories" class="nav-link">
         <font-awesome-icon :icon="['fas', 'stream']" />
         <span>Categories</span>
         <span>{{categories.length}}</span>
