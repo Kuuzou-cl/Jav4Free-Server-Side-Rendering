@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="$device.isDesktop">
-      <Crumbs />
       <div class="container-fluid">
         <div class="container">
           <div class="row justify-content-center">

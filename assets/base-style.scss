@@ -107,6 +107,18 @@ video{
     text-decoration-color: #f8faff;
 }
 
+.title-black{
+  color:#000;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  padding-top:5px;
+}
+
+.title-black:hover{
+  color:#000;
+  text-decoration-color: #000;
+}
+
 .title-index{
     font-size: 15px;
     display:flex;align-items:center;

@@ -84,9 +84,19 @@
               </div>
             </div>
             <div class="row">
+              <nuxt-link :to="'/contactus'" class="btn btn-more">
+                Your Ad Here, Contact Us!
+              </nuxt-link>
+            </div>
+            <div class="row">
               <div class="col-lg-12">
                 <div data-nat="4288"></div>
               </div>
+            </div>
+            <div class="row">
+              <nuxt-link :to="'/contactus'" class="btn btn-more">
+                Your Ad Here, Contact Us!
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -94,6 +104,10 @@
       <div class="need-space"></div>
     </div>
     <div v-if="$device.isMobile" class="container-fluid">
+      <div class="need-space"></div>
+      <nuxt-link :to="'/contactus'" class="btn btn-more">
+        Your Ad Here, Contact Us!
+      </nuxt-link>
       <div class="need-space"></div>
       <div class="container-fluid">
         <div class="row justify-content-center">
@@ -173,6 +187,11 @@
           </div>
         </div>
       </div>
+      <div class="need-space"></div>
+      <div class="need-space"></div>
+      <nuxt-link :to="'/contactus'" class="btn btn-more">
+        Your Ad Here, Contact Us!
+      </nuxt-link>
       <div class="need-space"></div>
       <div class="need-space"></div>
       <div class="need-space"></div>
