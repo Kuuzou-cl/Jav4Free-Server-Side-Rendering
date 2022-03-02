@@ -3,8 +3,8 @@
     <div class="copyright py-3">
       <p>
         © 2022 Copyright |
-        <nuxt-link to="/"> <a> | JAV4Free.watch | </a></nuxt-link>
-        <nuxt-link to="/contactus"> <a> | Contact Us | </a> </nuxt-link>
+        <nuxt-link to="/" tag="a"> | JAV4Free.watch | </nuxt-link>
+        <nuxt-link to="/contactus" tag="a"> | Contact Us | </nuxt-link>
         <nuxt-link :to="'/login'" v-if="!$store.state.token">
           |
           <font-awesome-icon
