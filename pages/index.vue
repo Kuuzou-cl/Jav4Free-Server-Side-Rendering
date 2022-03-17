@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$device.isDesktop" class="container-fluid no-margin no-padding">
+    <div class="container-fluid no-margin no-padding">
       <div class="container-fluid">
         <div class="row row-title">
           <div class="col-lg-12 text-center">
@@ -63,7 +63,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div v-if="$device.isDesktop" class="col-lg-5">
             <div class="row row-title">
               <div class="col-lg-12 text-center">
                 <h4>Featured AV Idols</h4>
@@ -83,117 +83,11 @@
                 ></CardIdol>
               </div>
             </div>
-            <div class="row">
-              <nuxt-link :to="'/contactus'" class="btn btn-more">
-                Your Ad Here, Contact Us!
-              </nuxt-link>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div data-nat="4288"></div>
-              </div>
-            </div>
-            <div class="row">
-              <nuxt-link :to="'/contactus'" class="btn btn-more">
-                Your Ad Here, Contact Us!
-              </nuxt-link>
-            </div>
           </div>
         </div>
       </div>
-      <div class="need-space"></div>
-    </div>
-    <div v-if="$device.isMobile" class="container-fluid">
-      <div class="need-space"></div>
-      <nuxt-link :to="'/contactus'" class="btn btn-more">
-        Your Ad Here, Contact Us!
-      </nuxt-link>
-      <div class="need-space"></div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <nuxt-link :to="'/javs/1'" class="btn btn-more">
-              Recently JAV Added
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="row">
-        <div
-          v-for="jav in javsMobile"
-          :key="jav._id"
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-        >
-          <CardJavMobile v-bind:dataJav="jav" />
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <div data-nat="4288"></div>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <button class="btn btn-more">Most Viewed Scenes</button>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="row">
-        <div
-          v-for="scene in mostviews"
-          :key="scene._id"
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-        >
-          <CardSceneMobile v-bind:dataJav="scene" />
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <nuxt-link :to="'/scenes/1'" class="btn btn-more">
-              Recently Scenes Added
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="row">
-        <div
-          v-for="scene in scenes"
-          :key="scene._id"
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-        >
-          <CardSceneMobile v-bind:dataJav="scene" />
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <nuxt-link :to="'/scenes/1'" class="btn btn-more">
-              Recently Scenes Added
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
-      <div class="need-space"></div>
-      <div class="need-space"></div>
-      <nuxt-link :to="'/contactus'" class="btn btn-more">
-        Your Ad Here, Contact Us!
-      </nuxt-link>
-      <div class="need-space"></div>
-      <div class="need-space"></div>
+      <div v-if="$device.isMobile" class="need-space"></div>
+      <div v-if="$device.isMobile" class="need-space"></div>
       <div class="need-space"></div>
     </div>
   </div>
@@ -205,8 +99,6 @@ import axios from "axios";
 import CardJavPoster from "~/components/Cards/CardJavPoster.vue";
 import CardScene from "~/components/Cards/CardScene";
 import CardIdol from "~/components/Cards/CardIdol00";
-import CardJavMobile from "../components/Cards/CardJav00Mobile";
-import CardSceneMobile from "../components/Cards/CardSceneMobile";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -214,8 +106,6 @@ export default {
     CardJavPoster,
     CardScene,
     CardIdol,
-    CardJavMobile,
-    CardSceneMobile,
   },
   head() {
     return {
@@ -243,16 +133,6 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-    const javsMobile = await axios
-      .get("https://jav.souzou.dev/jav4free/javs/", {
-        headers: {
-          quantity: 3,
-          empty: "false",
-        },
-      })
-      .catch((e) => {
-        console.log(e);
-      });
     const javsDesktop = await axios
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
@@ -272,7 +152,6 @@ export default {
       javsDesktop: javsDesktop.data.javs,
       scenes: scenes.data.scenes,
       mostviews: mostviews.data.scenes,
-      javsMobile: javsMobile.data.javs,
       idols: idols.data.idols,
     };
   },

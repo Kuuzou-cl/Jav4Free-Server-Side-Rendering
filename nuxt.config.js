@@ -10,15 +10,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-      {
-        name: 'exoclick-site-verification',
-        content: '0922ef088413c0d106de848a80b5487f'
-      },
-      {
-        name: 'juicyads-site-verification',
-        content: 'c23a8ba63c9c4356619c93eb2953dfaf'
-      }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.digitaloceanspaces.com/j4f-favicon.png' },
@@ -29,9 +21,11 @@ module.exports = {
       {
         src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
       },
+      /*
       {
         src: "https://javdata.sfo2.cdn.digitaloceanspaces.com/scripts/adilla.js", 'data-cfasync' : 'false' , body: true
       } 
+      */
     ]
   },
   /*
