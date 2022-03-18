@@ -1,121 +1,94 @@
 <template>
-  <div>
-    <div v-if="$device.isDesktop">
-      <Crumbs />
-      <div class="container-fluid">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h6 class="title-white text-left">Recently Added Videos</h6>
-            </div>
-          </div>
+  <div class="container-fluid no-margin no-padding">
+    <div class="container-fluid">
+      <div class="row row-title">
+        <div class="col-lg-12 text-center">
+          <h4>Recently Added Videos</h4>
         </div>
-        <div class="need-space"></div>
-        <div class="container">
-          <div class="row">
-            <div v-for="jav in javs" :key="jav._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-              <CardJav v-bind:dataJav="jav" />
-            </div>
-          </div>
-        </div>
-        <div class="need-space"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="pagination">
-                <button
-                  v-if="page!=1"
-                  @click="prevClick()"
-                  type="button"
-                  class="btn paginate-prev"
-                >Prev</button>
-                <button
-                  v-for="(prevPage, index) in previousPages"
-                  :key="index"
-                  type="button"
-                  class="btn paginate-index"
-                  @click="pullPage(Number(prevPage))"
-                >{{prevPage}}</button>
-                <button disabled type="button" class="btn paginate-actual">{{page}}</button>
-                <button
-                  v-for="(nextPage, index) in actualNextPages"
-                  :key="index"
-                  type="button"
-                  class="btn paginate-index"
-                  @click="pushPage(Number(nextPage))"
-                >{{nextPage}}</button>
-                <button v-if="page!=lastPage" disabled type="button" class="btn paginate-index">...</button>
-                <button
-                  v-if="page!=lastPage"
-                  type="button"
-                  @click="pushPage(Number(lastPage))"
-                  class="btn paginate-index"
-                >{{Number(lastPage)}}</button>
-                <button
-                  v-if="nextPage"
-                  type="button"
-                  class="btn paginate-next"
-                  @click="nextClick()"
-                >Next</button>
-                <button v-else disabled type="button" class="btn paginate-next">Next</button>
-              </div>
-            </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="container">
+        <div class="row">
+          <div
+            v-for="jav in javs"
+            :key="jav._id"
+            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          >
+            <CardJav v-bind:dataJav="jav" />
           </div>
         </div>
       </div>
-    </div>
-    <div v-if="$device.isMobile">
-      <div class="container-fluid">
-        <div class="need-space"></div>
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h6 class="title-white text-left">Recently Added Videos</h6>
-          </div>
-        </div>
-        <div class="need-space"></div>
+      <div class="need-space"></div>
+      <div class="container">
         <div class="row">
-          <div v-for="jav in javs" :key="jav._id" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <CardJavMobile v-bind:dataJav="jav" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
             <div class="pagination">
               <button
-                v-if="page!=1"
+                v-if="page != 1"
                 @click="prevClick()"
                 type="button"
                 class="btn paginate-prev"
-              >Prev</button>
+              >
+                Prev
+              </button>
               <button
-                v-for="(prevPage, index) in previousPagesMobile"
+                v-if="$device.isDesktop"
+                v-for="(prevPage, index) in previousPages"
                 :key="index"
                 type="button"
                 class="btn paginate-index"
                 @click="pullPage(Number(prevPage))"
-              >{{prevPage}}</button>
-              <button disabled type="button" class="btn paginate-actual">{{page}}</button>
+              >
+                {{ prevPage }}
+              </button>
+              <button disabled type="button" class="btn paginate-actual">
+                {{ page }}
+              </button>
               <button
-                v-for="(nextPage, index) in actualNextPagesMobile"
+                v-if="$device.isDesktop"
+                v-for="(nextPage, index) in actualNextPages"
                 :key="index"
                 type="button"
                 class="btn paginate-index"
                 @click="pushPage(Number(nextPage))"
-              >{{nextPage}}</button>
+              >
+                {{ nextPage }}
+              </button>
+              <button
+                v-if="page < lastPage - 1 && $device.isDesktop"
+                disabled
+                type="button"
+                class="btn paginate-index"
+              >
+                ...
+              </button>
+              <button
+                v-if="page != lastPage && lastPage != 0 && $device.isDesktop"
+                type="button"
+                @click="pushPage(Number(lastPage))"
+                class="btn paginate-index"
+              >
+                {{ Number(lastPage) }}
+              </button>
               <button
                 v-if="nextPage"
                 type="button"
                 class="btn paginate-next"
                 @click="nextClick()"
-              >Next</button>
-              <button v-else disabled type="button" class="btn paginate-next">Next</button>
+              >
+                Next
+              </button>
+              <button v-else disabled type="button" class="btn paginate-next">
+                Next
+              </button>
             </div>
           </div>
         </div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
-        <div class="need-space"></div>
       </div>
+      <div class="need-space"></div>
+      <div v-if="$device.isMobile" class="need-space"></div>
+      <div v-if="$device.isMobile" class="need-space"></div>
+      <div v-if="$device.isMobile" class="need-space"></div>
     </div>
   </div>
 </template>
@@ -124,19 +97,17 @@
 import axios from "axios";
 
 import CardJav from "~/components/Cards/CardJav02";
-import CardJavMobile from "~/components/Cards/CardJav00Mobile";
 
 export default {
   name: "RecentJavs",
-  layout: ctx => (ctx.isMobile ? "mobile" : "default"),
+  layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
     CardJav,
-    CardJavMobile
   },
   data() {
     return {
       prevPages: null,
-      nextPages: null
+      nextPages: null,
     };
   },
   head() {
@@ -146,9 +117,9 @@ export default {
         {
           name: "description",
           content:
-            "Jav4Free, Uploads every day, free streaming videos, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality."
-        }
-      ]
+            "Jav4Free, Uploads every day, free streaming videos, Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
+        },
+      ],
     };
   },
   async asyncData({ params }) {
@@ -158,17 +129,15 @@ export default {
     }
     let javs = await axios
       .get("https://jav.souzou.dev/jav4free/javs/getJavsByPage/" + page)
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     return {
       javs: javs.data.javs,
       page: page,
       nextPage: javs.data.nextPage,
-      lastPage: javs.data.lastPage
+      lastPage: javs.data.lastPage,
     };
-  },
-  beforeCreate() {
   },
   methods: {
     nextClick() {
@@ -186,7 +155,7 @@ export default {
     pushPage(indexPage) {
       var newPage = Number(indexPage);
       this.$router.push({ path: "/javs/" + newPage });
-    }
+    },
   },
   computed: {
     previousPages() {
@@ -246,10 +215,7 @@ export default {
       } else {
         return this.nextPages;
       }
-    }
-  }
+    },
+  },
 };
 </script>
-
-<style lang="scss">
-</style>
