@@ -21,11 +21,9 @@ module.exports = {
       {
         src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
       },
-      /*
       {
-        src: "https://javdata.sfo2.cdn.digitaloceanspaces.com/scripts/adilla.js", 'data-cfasync' : 'false' , body: true
+        src: "https://javdata.sfo2.cdn.digitaloceanspaces.com/scripts/adilla2.js", 'data-cfasync' : 'false' , body: true
       } 
-      */
     ]
   },
   /*
