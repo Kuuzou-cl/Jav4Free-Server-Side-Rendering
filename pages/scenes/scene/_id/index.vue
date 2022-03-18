@@ -1,178 +1,105 @@
 <template>
-  <div>
-    <div v-if="$device.isDesktop" class="container-fluid">
-      <div class="need-space"></div>
-      <div class="container content-jav">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div data-nat="3624"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-9">
-            <div class="container-jav">
-              <FluidPlayer v-bind:jav="this.scene" />
-              <div class="jav-title">
-                <div class="row justify-content-center">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <p class="title">
-                      {{ scene.code + " " + getName(scene.name) + " - Views: " + scene.views}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 text-center">
-            <div class="row">
-              <div class="col-lg-12">
-                <nuxt-link
-                  :to="'/javs/jav/' + jav._id"
-                  tag="img"
-                  :src="jav.imageUrl"
-                >
-                </nuxt-link>
-              </div>
-            </div>
-            <div class="jav-extra">
-              <span>
-                JAV Code:
-                <nuxt-link :to="'/javs/jav/' + jav._id" tag="a" class="links">{{
-                  jav.code
-                }}</nuxt-link>
-              </span>
-            </div>
-            <div class="jav-extra">
-              <span>
-                Categories:
-                <nuxt-link
-                  v-for="category in categories"
-                  :key="category._id"
-                  :to="'/categories/1/' + category._id"
-                  tag="a"
-                  class="links"
-                  >{{ category.name }},</nuxt-link
-                >
-              </span>
-            </div>
-            <div class="jav-extra">
-              <span>
-                Idols:
-                <nuxt-link
-                  v-for="idol in idols"
-                  :key="idol._id"
-                  :to="'/idols/1/' + idol._id"
-                  tag="a"
-                  class="links"
-                  >{{ idol.name }},</nuxt-link
-                >
-              </span>
-            </div>
-            <div class="need-space"></div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div data-nat="3625"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="need-space"></div>
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="row justify-content-center recommended-title">
-              <h3>Recommended videos</h3>
-            </div>
-            <div class="container-recommended">
-              <div class="row">
-                <div
-                  v-for="scene in related"
-                  :key="scene._id"
-                  class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                >
-                  <CardJav v-bind:dataJav="scene" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="need-space"></div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div data-nat="3624"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-if="$device.isMobile" class="container-fluid">
-      <div class="need-space"></div>
-      <div class="container-fluid content-jav">
-        <div class="row justify-content-center need-space">
-          <div data-nat="3624"></div>
-        </div>
-        <div class="row">
+  <div class="container-fluid no-margin no-padding">
+    <div v-if="$device.isMobile" class="need-space"></div>
+    <div class="container content-jav">
+      <div class="row">
+        <div class="col-lg-9">
           <div class="container-jav">
-            <FluidPlayer v-bind:jav="scene" />
-            <div class="jav-title-mobile">
-              <div class="row">
+            <FluidPlayer v-bind:jav="this.scene" />
+            <div class="jav-title">
+              <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <p class="title">
-                    {{ scene.code + " " + getName(scene.name) }}
+                    {{
+                      scene.code +
+                      " " +
+                      getName(scene.name) +
+                      " - Views: " +
+                      scene.views
+                    }}
                   </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-              </div>
-            </div>
-            <div class="jav-extra">
-              <span>Code: {{ jav.code }}</span>
-            </div>
-            <div class="jav-extra">
-              <span>
-                Categories:
-                <nuxt-link
-                  v-for="category in categories"
-                  :key="category._id"
-                  :to="'/categories/1/' + category._id"
-                  tag="a"
-                  class="links"
-                  >{{ category.name }},</nuxt-link
-                >
-              </span>
-            </div>
-            <div class="jav-extra">
-              <span>
-                Idols:
-                <nuxt-link
-                  v-for="idol in idols"
-                  :key="idol._id"
-                  :to="'/idols/1/' + idol._id"
-                  tag="a"
-                  class="links"
-                  >{{ idol.name }},</nuxt-link
-                >
-              </span>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="container-recommended-mobile">
-            <div class="row justify-content-center need-space">
+        <div class="col-lg-3 text-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <nuxt-link
+                :to="'/javs/jav/' + jav._id"
+                tag="img"
+                :src="jav.imageUrl"
+              >
+              </nuxt-link>
+            </div>
+          </div>
+          <div class="jav-extra">
+            <span>
+              JAV Code:
+              <nuxt-link :to="'/javs/jav/' + jav._id" tag="a" class="links">{{
+                jav.code
+              }}</nuxt-link>
+            </span>
+          </div>
+          <div class="jav-extra">
+            <span>
+              Categories:
+              <nuxt-link
+                v-for="category in categories"
+                :key="category._id"
+                :to="'/categories/1/' + category._id"
+                tag="a"
+                class="links"
+                >{{ category.name }},</nuxt-link
+              >
+            </span>
+          </div>
+          <div class="jav-extra">
+            <span>
+              Idols:
+              <nuxt-link
+                v-for="idol in idols"
+                :key="idol._id"
+                :to="'/idols/1/' + idol._id"
+                tag="a"
+                class="links"
+                >{{ idol.name }},</nuxt-link
+              >
+            </span>
+          </div>
+          <div class="need-space"></div>
+          <div class="row">
+            <div class="col-lg-12">
               <div data-nat="3625"></div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="need-space"></div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row justify-content-center recommended-title">
+            <h3>Recommended videos</h3>
+          </div>
+          <div class="container-recommended">
             <div class="row">
               <div
                 v-for="scene in related"
                 :key="scene._id"
                 class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
               >
-                <CardSceneMobile v-bind:dataJav="scene" />
+                <CardJav v-bind:dataJav="scene" />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div v-if="$device.isMobile" class="need-space"></div>
+    <div v-if="$device.isMobile" class="need-space"></div>
+    <div v-if="$device.isMobile" class="need-space"></div>
+    <div v-if="$device.isMobile" class="need-space"></div>
   </div>
 </template>
 
@@ -180,21 +107,14 @@
 import axios from "axios";
 
 import CardJav from "~/components/Cards/CardJav01";
-import CardJavMobile from "~/components/Cards/CardJav01Mobile";
 import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
-import CardSceneMobile from "~/components/Cards/CardSceneMobile";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   name: "JAV",
   components: {
     CardJav,
-    CardJavMobile,
-    CardSceneMobile,
     FluidPlayer,
-  },
-  data() {
-    return {};
   },
   head() {
     return {
@@ -240,7 +160,7 @@ export default {
       idols: scene.data.idols,
       jav: scene.data.jav,
       related: related.data.relatedScenes,
-      view: responseView.data.scene.view
+      view: responseView.data.scene.view,
     };
   },
   beforeCreate() {},
@@ -258,6 +178,3 @@ export default {
   computed: {},
 };
 </script>
-
-<style lang="scss">
-</style>
