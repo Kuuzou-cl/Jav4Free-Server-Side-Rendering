@@ -27,21 +27,21 @@
                   <thead>
                     <tr>
                       <th scope="col" class="t-header">
-                        Pending Idols ({{
-                          this.spaceCheckIdols(resultIdols, idols).length
+                        Pending Scenes ({{
+                          spaceCheckScenes(resultScenes, scenes).length
                         }})
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr
-                      v-for="(idol, key) in this.spaceCheckIdols(
-                        resultIdols,
-                        idols
+                      v-for="(scene, key) in this.spaceCheckScenes(
+                        resultScenes,
+                        scenes
                       )"
                       :key="key"
                     >
-                      <th>{{ idol }}</th>
+                      <th>{{ scene }}</th>
                     </tr>
                   </tbody>
                 </table>
@@ -65,6 +65,34 @@
                       :key="key"
                     >
                       <th>{{ jav }}</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="tableFixHead">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="t-header">
+                        Pending Idols ({{
+                          this.spaceCheckIdols(resultIdols, idols).length
+                        }})
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="(idol, key) in this.spaceCheckIdols(
+                        resultIdols,
+                        idols
+                      )"
+                      :key="key"
+                    >
+                      <th>{{ idol }}</th>
                     </tr>
                   </tbody>
                 </table>
@@ -131,6 +159,16 @@ export default {
     var resultIdols = JSON.parse(
       convert.xml2json(spaceDataIdols.data, options)
     );
+    let spaceDataScenes = await axios
+      .get(
+        "https://sfo2.digitaloceanspaces.com/javdata?prefix=scenes&max-keys=10000"
+      )
+      .catch((e) => {
+        console.log(e);
+      });
+    var resultScenes = JSON.parse(
+      convert.xml2json(spaceDataScenes.data, options)
+    );
     return {
       scenes: scenes.data.scenes,
       javs: javs.data.javs,
@@ -138,6 +176,7 @@ export default {
       idols: idols.data.idols,
       result: result,
       resultIdols: resultIdols,
+      resultScenes: resultScenes,
     };
   },
   methods: {
@@ -196,11 +235,35 @@ export default {
 
       return pending;
     },
-  },
-  computed: {
+    spaceCheckScenes(space, scenes) {
+      let spaceData = [];
+      space.elements[0].elements.forEach((element) => {
+        if (element.name === "Contents") {
+          element.elements.forEach((obj) => {
+            if (obj.name === "Key") {
+              let javNameData = obj.elements[0].text.split("/");
+              if (javNameData[1]) {
+                let javName = javNameData[1].split(".");
+                spaceData.push(javName[0]);
+              }
+            }
+          });
+        }
+      });
+
+      let pending = [];
+
+      spaceData.forEach((r) => {
+        if (
+          !scenes.some((item) => item.code.toLowerCase() === r.toLowerCase()) &&
+          r != "preview"
+        ) {
+          pending.push(r);
+        }
+      });
+
+      return pending;
+    },
   },
 };
 </script>
-
-<style lang="scss">
-</style>

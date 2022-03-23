@@ -21,7 +21,7 @@
         <div class="need-space"></div>
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="col-lg-7">
               <div class="container container-admin">
                 <div class="row justify-content-center">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -169,7 +169,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="col-lg-3">
               <div class="row justify-content-center">
                 <button
                   class="btn btn-warning"
@@ -310,25 +310,19 @@
                 {{ this.javObject.name }}
               </div>
               <div class="row justify-content-center">
-                <img id="inputJav06" :src="this.javObject.imageUrl" />
+                <img :src="this.javObject.imageUrl" />
               </div>
-              <div class="row justify-content-center">
-                <p
-                  class="tag"
-                  v-for="category in this.javObject.categories"
-                  :key="category._id"
-                >
-                  {{ category }}
-                </p>
+            </div>
+            <div class="col-lg-2">
+              <div v-if="filterIdolPrev" class="row justify-content-center">
+                <div class="col-lg-12">
+                  {{filterIdolPrev.name }}  
+                </div>        
               </div>
-              <div class="row justify-content-center">
-                <p
-                  class="tag"
-                  v-for="idol in this.javObject.idols"
-                  :key="idol._id"
-                >
-                  {{ idol }}
-                </p>
+              <div v-if="filterIdolPrev" class="row justify-content-center">
+                <div class="col-lg-12">
+                  <img v-on:click="changeIdol()" :src="filterIdolPrev.imageUrl" />
+                </div>
               </div>
             </div>
           </div>
@@ -366,6 +360,8 @@ export default {
       searchIdols: "",
       categories: null,
       idols: null,
+      idolPrev: [],
+      actualIdol : 0,
       filteredCategories: [],
       filteredIdols: [],
       video: "",
@@ -423,6 +419,13 @@ export default {
     };
   },
   methods: {
+    changeIdol(){
+      if (this.actualIdol == this.idolPrev.length - 1) {
+        this.actualIdol = 0;
+      }else{
+        this.actualIdol++;
+      }
+    },
     changeVideo() {
       this.video =
         "https://javdata.sfo2.digitaloceanspaces.com/scenes/" +
@@ -450,6 +453,13 @@ export default {
             }
           }
           break;
+        }
+      }
+      for (let index = 0; index < this.javObject.idols.length; index++) {
+        for (let indexb = 0; indexb < this.idols.length; indexb++) {
+          if (this.javObject.idols[index] == this.idols[indexb].name) {
+            this.idolPrev.push(this.idols[indexb])
+          }
         }
       }
     },
@@ -629,6 +639,9 @@ export default {
 
       return pending;
     },
+    filterIdolPrev(){
+      return this.idolPrev[this.actualIdol];
+    }
   },
   watch: {
     javCode(val) {
@@ -638,6 +651,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-</style>
