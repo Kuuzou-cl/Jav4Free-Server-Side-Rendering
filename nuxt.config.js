@@ -1,8 +1,8 @@
 const webpack = require('webpack')
 module.exports = {
   server: {
-    port: 8080, // default: 3000
-    host: '0.0.0.0' // default: localhost
+    port: 8080,
+    host: '0.0.0.0'
   },
   telemetry: false,
   head: {
@@ -19,41 +19,28 @@ module.exports = {
     ],
     script: [
       {
-        src: 'https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js'
+        src: 'https://cdn.fluidplayer.com/3.0.4/fluidplayer.min.js'
       },
+      /**
       {
         src: "https://javdata.sfo2.cdn.digitaloceanspaces.com/scripts/adilla2.js", 'data-cfasync' : 'false' , body: true
       } 
+      */
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#ffd800' },
-  /*
-  ** Global CSS
-  */
   css: [
     'bootstrap/dist/css/bootstrap.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
     '~plugins/bootstrap.js',
     { src: '~/plugins/vue-touch2', ssr: false },
   ],
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
     ['@nuxtjs/google-analytics', {
       id: 'UA-71938715-4'
     }]
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     /*
     ['nuxt-lazy-load', {
@@ -91,16 +78,8 @@ module.exports = {
     ],
     'cookie-universal-nuxt'
   ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
   axios: {
-    // proxyHeaders: false
   },
-  /*
-  ** Build configuration
-  */
   build: {
     plugins: [
       new webpack.ProvidePlugin({

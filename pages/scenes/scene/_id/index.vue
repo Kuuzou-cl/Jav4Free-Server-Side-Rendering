@@ -5,16 +5,14 @@
       <div class="row">
         <div class="col-lg-9">
           <div class="container-jav">
-            <FluidPlayer v-bind:jav="this.scene" />
+            <video id="javId" ref="javId2">
+              <source :src="this.scene.url" type="video/mp4" />
+            </video>
             <div class="jav-title">
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <p class="title">
-                    {{
-                      scene.code +
-                      " " +
-                      getName(scene.name)
-                    }}
+                    {{ scene.code + " " + getName(scene.name) }}
                   </p>
                 </div>
               </div>
@@ -105,14 +103,12 @@
 import axios from "axios";
 
 import CardJav from "~/components/Cards/CardJav01";
-import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   name: "JAV",
   components: {
     CardJav,
-    FluidPlayer,
   },
   head() {
     return {
@@ -130,21 +126,22 @@ export default {
       ],
     };
   },
+  data() {
+    return {
+      player: null,
+    };
+  },
   async asyncData({ params }) {
-    let id = params.id;
-
-    if (id == null || id == "") {
-      id = "623674027a972650ac9fb9a5";
-    }
-
     let scene = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/" + id)
+      .get("https://jav.souzou.dev/jav4free/scenes/" + params.id)
       .catch((e) => {
         console.log("error scene");
       });
 
     let related = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + id)
+      .get(
+        "https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + params.id
+      )
       .catch((e) => {
         console.log("error related");
       });
@@ -155,10 +152,58 @@ export default {
       categories: scene.data.categories,
       idols: scene.data.idols,
       jav: scene.data.jav,
-      related: related.data.relatedScenes
+      related: related.data.relatedScenes,
     };
   },
-  beforeCreate() {},
+  mounted() {
+    const interval = setInterval(() => {
+      if (this.$refs.javId2) {
+        console.log(this.$refs.javId2);
+        console.log(this.$refs);
+        console.log(interval);
+        clearInterval(interval);
+        this.player = fluidPlayer("javId", {
+          layoutControls: {
+            layout: "default",
+            fillToContainer: true,
+            primaryColor: "#da0000",
+            posterImage: this.scene.imageIndexUrl,
+            timelinePreview: {
+              file:
+                "https://javdata.sfo2.digitaloceanspaces.com/vtts/" +
+                this.scene.code +
+                "_thumbs.vtt",
+              type: "VTT",
+            },
+            allowTheatre: false,
+          },
+          vastOptions: {
+            allowVPAID: true,
+            adList: [
+              {
+                roll: "preRoll",
+                vastTag: "https://vast.yomeno.xyz/vast?spot_id=3971",
+              },
+              {
+                roll: "onPauseRoll",
+                vastTag: "https://vast.yomeno.xyz/vast?spot_id=20325",
+                vAlign: "middle",
+              },
+            ],
+          },
+          onBeforeXMLHttpRequest: (request) => {
+            request.withCredentials = false;
+          },
+        });
+      }
+    }, 50);
+  },
+  destroyed() {
+    if (!this.player) {
+      return;
+    }
+    this.player.destroy();
+  },
   methods: {
     getName: function (_name) {
       let newName;
@@ -170,6 +215,5 @@ export default {
       }
     },
   },
-  computed: {},
 };
 </script>

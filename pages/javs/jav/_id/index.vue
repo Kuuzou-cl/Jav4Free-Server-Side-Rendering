@@ -90,15 +90,13 @@ import axios from "axios";
 
 import CardJav from "~/components/Cards/CardScene";
 import CardJav02 from "~/components/Cards/CardJav02";
-import FluidPlayer from "~/components/FluidPlayer/FluidPlayer.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   name: "JAV",
   components: {
     CardJav,
-    CardJav02,
-    FluidPlayer,
+    CardJav02
   },
   data() {
     return {};
