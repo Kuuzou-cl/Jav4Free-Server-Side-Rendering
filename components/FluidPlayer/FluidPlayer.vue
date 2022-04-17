@@ -16,6 +16,13 @@ export default {
     };
   },
   mounted() {
+    const interval = setInterval(() => {
+      if (this.$refs.JavPlayer) {
+        console.log(this.$refs.JavPlayer);
+        console.log(this.$refs);
+        clearInterval(interval);
+      }
+    }, 50);
     this.player = fluidPlayer(this.$refs.JavPlayer, {
       layoutControls: {
         layout: "default",

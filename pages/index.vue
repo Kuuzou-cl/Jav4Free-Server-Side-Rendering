@@ -33,23 +33,6 @@
     </div>
     <div class="need-space"></div>
     <div class="container-fluid">
-      <div class="row row-title">
-        <div class="col-lg-12 text-center">
-          <h4>Most Viewed AV Scenes</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div
-          v-for="scene in mostviews"
-          :key="scene._id"
-          class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-        >
-          <CardScene v-bind:dataJav="scene" />
-        </div>
-      </div>
-    </div>
-    <div class="need-space"></div>
-    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-7">
           <div class="row row-title">
@@ -135,21 +118,18 @@ export default {
     };
   },
   async asyncData({ store }) {
-    const scenes = await axios
+    const axiosJ4F= axios.create({
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+
+    const scenes = await axiosJ4F
       .get("https://jav.souzou.dev/jav4free/scenes/getLatestScenes")
       .catch((e) => {
         console.log(e);
       });
-    const mostviews = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/getMostViewScenes", {
-        headers: {
-          quantity: 6,
-        },
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    const javsDesktop = await axios
+    const javsDesktop = await axiosJ4F
       .get("https://jav.souzou.dev/jav4free/javs/", {
         headers: {
           quantity: 4,
@@ -159,7 +139,7 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-    const idols = await axios
+    const idols = await axiosJ4F
       .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
       .catch((e) => {
         console.log(e);
@@ -167,12 +147,8 @@ export default {
     return {
       javsDesktop: javsDesktop.data.javs,
       scenes: scenes.data.scenes,
-      mostviews: mostviews.data.scenes,
       idols: idols.data.idols,
     };
   },
 };
 </script>
-
-<style>
-</style>

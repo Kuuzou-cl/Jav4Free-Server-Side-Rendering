@@ -13,9 +13,7 @@
                     {{
                       scene.code +
                       " " +
-                      getName(scene.name) +
-                      " - Views: " +
-                      scene.views
+                      getName(scene.name)
                     }}
                   </p>
                 </div>
@@ -134,19 +132,17 @@ export default {
   },
   async asyncData({ params }) {
     let id = params.id;
+
     if (id == null || id == "") {
-      id = "";
+      id = "623674027a972650ac9fb9a5";
     }
+
     let scene = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/" + id)
       .catch((e) => {
         console.log("error scene");
       });
-    let responseView = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/view/" + id)
-      .catch((e) => {
-        console.log(e);
-      });
+
     let related = await axios
       .get("https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + id)
       .catch((e) => {
@@ -159,8 +155,7 @@ export default {
       categories: scene.data.categories,
       idols: scene.data.idols,
       jav: scene.data.jav,
-      related: related.data.relatedScenes,
-      view: responseView.data.scene.view,
+      related: related.data.relatedScenes
     };
   },
   beforeCreate() {},
