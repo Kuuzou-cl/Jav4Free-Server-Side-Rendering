@@ -64,12 +64,6 @@
               >
             </span>
           </div>
-          <div class="need-space"></div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div data-nat="3625"></div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="need-space"></div>

@@ -19,19 +19,6 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="text-center">
-      <ins
-        class="adsbyexoclick"
-        data-zoneid="4445412"
-        v-if="$device.isDesktop"
-      ></ins>
-      <ins
-        class="adsbyexoclick"
-        data-zoneid="4445648"
-        v-if="$device.isMobile"
-      ></ins>
-    </div>
-    <div class="need-space"></div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-7">
@@ -76,12 +63,6 @@
                 v-bind:dataUrl="idol.imageUrl"
               ></CardIdol>
             </div>
-          </div>
-          <div class="text-center">
-            <ins
-              class="adsbyexoclick"
-              data-zoneid="4445412"
-            ></ins>
           </div>
         </div>
       </div>
