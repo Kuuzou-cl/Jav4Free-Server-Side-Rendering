@@ -15,7 +15,7 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://javdata.sfo2.digitaloceanspaces.com/j4f-favicon.png' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700&display=swap' }
     ],
     script: [
       {
@@ -35,6 +35,7 @@ module.exports = {
   plugins: [
     '~plugins/bootstrap.js',
     { src: '~/plugins/vue-touch2', ssr: false },
+    { src: '~/plugins/error-handler.js' }
   ],
   buildModules: [
     ['@nuxtjs/google-analytics', {

@@ -125,36 +125,34 @@ export default {
       player: null,
     };
   },
-  async asyncData({ params }) {
-    let scene = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/" + params.id)
-      .catch((e) => {
-        console.log("error scene");
-      });
-
-    let related = await axios
-      .get(
+  async asyncData({ params, error, $errorHandler }) {
+    try {
+      let scene = await axios.get(
+        "https://jav.souzou.dev/jav4free/scenes/" + params.id
+      );
+      let related = await axios.get(
         "https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + params.id
-      )
-      .catch((e) => {
-        console.log("error related");
+      );
+      return {
+        SceneTitle: scene.data.scene.name,
+        SceneCode: scene.data.jav.code,
+        scene: scene.data.scene,
+        categories: scene.data.categories,
+        idols: scene.data.idols,
+        jav: scene.data.jav,
+        related: related.data.relatedScenes,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      SceneTitle: scene.data.scene.name,
-      SceneCode: scene.data.jav.code,
-      scene: scene.data.scene,
-      categories: scene.data.categories,
-      idols: scene.data.idols,
-      jav: scene.data.jav,
-      related: related.data.relatedScenes,
-    };
+    }
   },
   mounted() {
     const interval = setInterval(() => {
       if (this.$refs.javId2) {
-        console.log(this.$refs.javId2);
-        console.log(this.$refs);
-        console.log(interval);
         clearInterval(interval);
         this.player = fluidPlayer("javId", {
           layoutControls: {

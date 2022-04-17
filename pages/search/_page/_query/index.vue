@@ -128,7 +128,7 @@ export default {
   name: "Search",
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    CardScene
+    CardScene,
   },
   data() {
     return {
@@ -151,32 +151,36 @@ export default {
     };
   },
   async asyncData({ params }) {
-    let query = params.query;
-    if (query == null || query == "") {
-      query = "";
-    }
-    let page = params.page;
-    if (page == null || page == "") {
-      page = "1";
-    }
-    const scenes = await axios
-      .get(
+    try {
+      let query = params.query;
+      if (query == null || query == "") {
+        query = "";
+      }
+      let page = params.page;
+      if (page == null || page == "") {
+        page = "1";
+      }
+      const scenes = await axios.get(
         "https://jav.souzou.dev/jav4free/scenes/searchScene/" +
           page +
           "/" +
           query
-      )
-      .catch((e) => {
-        console.log(e);
+      );
+      return {
+        query: query,
+        page: page,
+        scenes: scenes.data.dataPage,
+        nextPage: scenes.data.nextPage,
+        lastPage: scenes.data.lastPage,
+        idols: scenes.data.idols,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      query: query,
-      page: page,
-      scenes: scenes.data.dataPage,
-      nextPage: scenes.data.nextPage,
-      lastPage: scenes.data.lastPage,
-      idols: scenes.data.idols
-    };
+    }
   },
   methods: {
     nextClick() {

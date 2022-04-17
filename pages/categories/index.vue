@@ -51,12 +51,18 @@ export default {
     };
   },
   async asyncData() {
-    const { data } = await axios
-      .get("https://jav.souzou.dev/jav4free/categories/categoriesNotEmpty")
-      .catch((e) => {
-        console.log(e);
+    try {
+      const { data } = await axios.get(
+        "https://jav.souzou.dev/jav4free/categories/categoriesNotEmpty"
+      );
+      return { categories: data.categories };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return { categories: data.categories };
+    }
   },
 };
 </script>

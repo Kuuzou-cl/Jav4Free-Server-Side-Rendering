@@ -102,7 +102,7 @@ export default {
   name: "Idols",
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    CardIdol
+    CardIdol,
   },
   data() {
     return {
@@ -122,27 +122,33 @@ export default {
       ],
     };
   },
-  async asyncData({ params }) {
-    let page = params.index;
-    if (
-      page == null ||
-      page == "" ||
-      page == "undefined" ||
-      page == undefined
-    ) {
-      page = "1";
-    }
-    let idols = await axios
-      .get("https://jav.souzou.dev/jav4free/idols/idolsNotEmpty/" + page)
-      .catch((e) => {
-        console.log(e);
+  async asyncData({ params, error, $errorHandler }) {
+    try {
+      let page = params.index;
+      if (
+        page == null ||
+        page == "" ||
+        page == "undefined" ||
+        page == undefined
+      ) {
+        page = "1";
+      }
+      let idols = await axios.get(
+        "https://jav.souzou.dev/jav4free/idols/idolsNotEmpty/" + page
+      );
+      return {
+        idols: idols.data.idols,
+        page: page,
+        nextPage: idols.data.nextPage,
+        lastPage: idols.data.lastPage,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      idols: idols.data.idols,
-      page: page,
-      nextPage: idols.data.nextPage,
-      lastPage: idols.data.lastPage,
-    };
+    }
   },
   methods: {
     nextClick() {

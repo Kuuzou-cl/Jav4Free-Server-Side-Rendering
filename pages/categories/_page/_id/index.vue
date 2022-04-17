@@ -3,9 +3,7 @@
     <div class="container-fluid">
       <div class="row row-title">
         <div class="col-lg-12 text-center">
-          <h4>
-            Category - {{ category.name }} | Latest Videos
-          </h4>
+          <h4>Category - {{ category.name }} | Latest Videos</h4>
         </div>
       </div>
       <div class="need-space"></div>
@@ -124,35 +122,37 @@ export default {
       ],
     };
   },
-  async asyncData({ params }) {
-    let page = params.page;
-    if (page == null || page == "") {
-      page = "1";
-    }
-    let categoryId = params.id;
-    let category = await axios
-      .get("https://jav.souzou.dev/jav4free/categories/" + categoryId)
-      .catch((e) => {
-        console.log(e);
-      });
-    let scenes = await axios
-      .get(
+  async asyncData({ params, error, $errorHandler }) {
+    try {
+      let page = params.page;
+      if (page == null || page == "") {
+        page = "1";
+      }
+      let categoryId = params.id;
+      let category = await axios.get(
+        "https://jav.souzou.dev/jav4free/categories/" + categoryId
+      );
+      let scenes = await axios.get(
         "https://jav.souzou.dev/jav4free/scenes/getSceneByCategory/" +
           page +
           "/" +
           categoryId
-      )
-      .catch((e) => {
-        console.log(e);
+      );
+      return {
+        titleC: category.data.category.name,
+        category: category.data.category,
+        scenes: scenes.data.scenes,
+        page: page,
+        nextPage: scenes.data.nextPage,
+        lastPage: scenes.data.lastPage,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      titleC: category.data.category.name,
-      category: category.data.category,
-      scenes: scenes.data.scenes,
-      page: page,
-      nextPage: scenes.data.nextPage,
-      lastPage: scenes.data.lastPage,
-    };
+    }
   },
   methods: {
     nextClick() {

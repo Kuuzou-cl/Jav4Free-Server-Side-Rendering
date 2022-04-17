@@ -98,38 +98,35 @@ export default {
       ],
     };
   },
-  async asyncData({ store }) {
-    const axiosJ4F= axios.create({
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    });
-
-    const scenes = await axiosJ4F
-      .get("https://jav.souzou.dev/jav4free/scenes/getLatestScenes")
-      .catch((e) => {
-        console.log(e);
+  async asyncData({ error, $errorHandler }) {
+    try {
+      const scenes = await axios.get(
+        "https://jav.souzou.dev/jav4free/scenes/getLatestScenes"
+      );
+      const javsDesktop = await axios.get(
+        "https://jav.souzou.dev/jav4free/javs/",
+        {
+          headers: {
+            quantity: 4,
+            empty: "false",
+          },
+        }
+      );
+      const idols = await axios.get(
+        "https://jav.souzou.dev/jav4free/idols/getRandomIdols"
+      );
+      return {
+        javsDesktop: javsDesktop.data.javs,
+        scenes: scenes.data.scenes,
+        idols: idols.data.idols,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    const javsDesktop = await axiosJ4F
-      .get("https://jav.souzou.dev/jav4free/javs/", {
-        headers: {
-          quantity: 4,
-          empty: "false",
-        },
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    const idols = await axiosJ4F
-      .get("https://jav.souzou.dev/jav4free/idols/getRandomIdols")
-      .catch((e) => {
-        console.log(e);
-      });
-    return {
-      javsDesktop: javsDesktop.data.javs,
-      scenes: scenes.data.scenes,
-      idols: idols.data.idols,
-    };
+    }
   },
 };
 </script>

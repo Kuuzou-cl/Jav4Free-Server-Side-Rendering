@@ -136,35 +136,43 @@ export default {
       ],
     };
   },
-  async asyncData({ params }) {
+  async asyncData({ params, error, $errorHandler }) {
     let page = params.page;
-    if (page == null || page == "") {
+    if (
+      page == null ||
+      page == "" ||
+      page == "undefined" ||
+      page == undefined
+    ) {
       page = "1";
     }
     let idolId = params.id;
-    let idol = await axios
-      .get("https://jav.souzou.dev/jav4free/idols/" + idolId)
-      .catch((e) => {
-        console.log(e);
-      });
-    let javs = await axios
-      .get(
+
+    try {
+      const idol = await axios.get(
+        "https://jav.souzou.dev/jav4free/idols/" + idolId
+      );
+      const javs = await axios.get(
         "https://jav.souzou.dev/jav4free/scenes/getSceneByIdol/" +
           page +
           "/" +
           idolId
-      )
-      .catch((e) => {
-        console.log(e);
+      );
+      return {
+        titleI: idol.data.idol.name,
+        idol: idol.data.idol,
+        javs: javs.data.scenes,
+        page: page,
+        nextPage: javs.data.nextPage,
+        lastPage: javs.data.lastPage,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      titleI: idol.data.idol.name,
-      idol: idol.data.idol,
-      javs: javs.data.scenes,
-      page: page,
-      nextPage: javs.data.nextPage,
-      lastPage: javs.data.lastPage,
-    };
+    }
   },
   methods: {
     nextClick() {

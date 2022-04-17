@@ -102,7 +102,7 @@ export default {
   name: "RecentJavs",
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
-    CardScene
+    CardScene,
   },
   data() {
     return {
@@ -122,22 +122,28 @@ export default {
       ],
     };
   },
-  async asyncData({ params }) {
-    let page = params.page;
-    if (page == null || page == "") {
-      page = "1";
-    }
-    let videos = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/getScenesByPage/" + page)
-      .catch((e) => {
-        console.log(e);
+  async asyncData({ params, error, $errorHandler }) {
+    try {
+      let page = params.page;
+      if (page == null || page == "") {
+        page = "1";
+      }
+      let videos = await axios.get(
+        "https://jav.souzou.dev/jav4free/scenes/getScenesByPage/" + page
+      );
+      return {
+        videos: videos.data.scenes,
+        page: page,
+        nextPage: videos.data.nextPage,
+        lastPage: videos.data.lastPage,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      videos: videos.data.scenes,
-      page: page,
-      nextPage: videos.data.nextPage,
-      lastPage: videos.data.lastPage,
-    };
+    }
   },
   methods: {
     nextClick() {

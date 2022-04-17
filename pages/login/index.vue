@@ -58,7 +58,6 @@
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -109,6 +108,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
