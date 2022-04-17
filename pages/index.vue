@@ -10,7 +10,7 @@
     <div class="container-fluid no-margin no-padding">
       <div class="row width-fix no-margin">
         <div
-          v-for="jav in javsDesktop"
+          v-for="jav in javs"
           :key="jav._id"
           class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
         >
@@ -103,7 +103,7 @@ export default {
       const scenes = await axios.get(
         "https://jav.souzou.dev/jav4free/scenes/getLatestScenes"
       );
-      const javsDesktop = await axios.get(
+      const javs = await axios.get(
         "https://jav.souzou.dev/jav4free/javs/",
         {
           headers: {
@@ -116,7 +116,7 @@ export default {
         "https://jav.souzou.dev/jav4free/idols/getRandomIdols"
       );
       return {
-        javsDesktop: javsDesktop.data.javs,
+        javs: javs.data.javs,
         scenes: scenes.data.scenes,
         idols: idols.data.idols,
       };

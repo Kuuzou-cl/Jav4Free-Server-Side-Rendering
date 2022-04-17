@@ -6,13 +6,14 @@
         <div class="col-lg-9">
           <div class="container-jav">
             <video id="javId" ref="javId2">
-              <source :src="this.scene.url" type="video/mp4" />
+              <source data-fluid-hd :src="this.scene.url" title='720p' type="video/mp4" />
+              <source :src="this.scene.url" title='480p' type="video/mp4" />
             </video>
             <div class="jav-title">
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <p class="title">
-                    {{ scene.code + " " + getName(scene.name) }}
+                    {{ jav.code + " | " + getName(scene.name) }}
                   </p>
                 </div>
               </div>
@@ -106,15 +107,15 @@ export default {
   },
   head() {
     return {
-      title: this.SceneTitle + " | Jav4Free | " + this.SceneCode,
+      title: this.scene.name + " | Jav4Free | " + this.jav.code,
       meta: [
         {
           name: "description",
           content:
             "Jav4Free, watch " +
-            this.SceneTitle +
+            this.scene.name +
             " , " +
-            this.SceneCode +
+            this.jav.code +
             " , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
         },
       ],
@@ -134,7 +135,6 @@ export default {
         "https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + params.id
       );
       return {
-        SceneTitle: scene.data.scene.name,
         SceneCode: scene.data.jav.code,
         scene: scene.data.scene,
         categories: scene.data.categories,
@@ -156,9 +156,11 @@ export default {
         clearInterval(interval);
         this.player = fluidPlayer("javId", {
           layoutControls: {
+            title: this.scene.name + " | Jav4Free | " + this.jav.code,
             layout: "default",
             fillToContainer: true,
             primaryColor: "#da0000",
+            preload: true,
             posterImage: this.scene.imageIndexUrl,
             timelinePreview: {
               file:
@@ -168,6 +170,9 @@ export default {
               type: "VTT",
             },
             allowTheatre: false,
+            contextMenu: {
+              controls:false
+            }
           },
           vastOptions: {
             allowVPAID: true,
