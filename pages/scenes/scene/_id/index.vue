@@ -7,7 +7,7 @@
           <div class="container-jav">
             <video id="javId" ref="javId2">
               <source data-fluid-hd :src="this.scene.url" title='720p' type="video/mp4" />
-              <source :src="this.scene.url" title='480p' type="video/mp4" />
+              <source :src="'https://javdata.sfo2.digitaloceanspaces.com/scenes_480/'+this.scene.code+'_1.mp4'" title='480p' type="video/mp4" />
             </video>
             <div class="jav-title">
               <div class="row justify-content-center">
@@ -158,7 +158,7 @@ export default {
           layoutControls: {
             title: this.scene.name + " | Jav4Free | " + this.jav.code,
             layout: "default",
-            fillToContainer: true,
+            fillToContainer: false,
             primaryColor: "#da0000",
             preload: true,
             posterImage: this.scene.imageIndexUrl,
