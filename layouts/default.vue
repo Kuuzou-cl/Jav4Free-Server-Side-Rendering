@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      dataText: "Try the new 480p quality selection in the video player for slow connections.",
+      dataText: "Try the new 480p video quality selection in the video player for slow connections.",
       dataTitle: "New Update!",
     };
   },
