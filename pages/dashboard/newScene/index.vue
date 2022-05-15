@@ -428,9 +428,9 @@ export default {
     },
     changeVideo() {
       this.video =
-        "https://javdata.sfo2.digitaloceanspaces.com/scenes/" +
+        "https://javdata.sfo2.digitaloceanspaces.com/scenes_480/" +
         this.javCode +
-        ".mp4";
+        "_1.mp4";
       var vid = this.$refs.video;
       vid.load();
       for (let index = 0; index < this.javs.length; index++) {
