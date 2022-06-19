@@ -206,6 +206,8 @@ export default {
   },
   watch: {
     name(val) {
+      this.idolUrl = "";
+      this.idolName = "";
       this.idolUrl = val.toLowerCase().replace(" ", "-");
       var splitStr = val.toLowerCase().split(" ");
       for (var i = 0; i < splitStr.length; i++) {
