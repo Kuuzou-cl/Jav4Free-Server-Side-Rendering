@@ -20,6 +20,28 @@
     </div>
     <div class="need-space"></div>
     <div class="container-fluid">
+      <div class="row row-title">
+        <div class="col-lg-12 text-center">
+          <h4>Most Viewed This Week</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div
+              v-for="scene in mostViewed"
+              :key="scene._id"
+              class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+            >
+              <CardScene v-bind:dataJav="scene" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-7">
           <div class="row row-title">
@@ -100,24 +122,31 @@ export default {
   },
   async asyncData({ error, $errorHandler }) {
     try {
-      const scenes = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getLatestScenes"
-      );
-      const javs = await axios.get(
-        "https://jav.souzou.dev/jav4free/javs/",
+      const mostViewed = await axios.get(
+        "https://jav.souzou.dev/jav4free/scenes/getMostViewed/1",
         {
           headers: {
-            quantity: 4,
-            empty: "false",
+            quantity: 6,
+            period: "week",
           },
         }
       );
+      const scenes = await axios.get(
+        "https://jav.souzou.dev/jav4free/scenes/getLatestScenes"
+      );
+      const javs = await axios.get("https://jav.souzou.dev/jav4free/javs/", {
+        headers: {
+          quantity: 4,
+          empty: "false",
+        },
+      });
       const idols = await axios.get(
         "https://jav.souzou.dev/jav4free/idols/getRandomIdols"
       );
       return {
         javs: javs.data.javs,
         scenes: scenes.data.scenes,
+        mostViewed: mostViewed.data.scenes,
         idols: idols.data.idols,
       };
     } catch (errors) {
