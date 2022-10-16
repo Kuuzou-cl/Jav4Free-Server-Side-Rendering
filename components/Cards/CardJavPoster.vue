@@ -1,6 +1,6 @@
 <template>
-  <nuxt-link :to="'/javs/jav/' + dataJav._id" class="profile-card-2">
-    <img :src="dataJav.imageUrl" class="img img-responsive" />
+  <nuxt-link :to="'/javs/jav/' + dataJav.code" class="profile-card-2">
+    <img :src="dataJav.image" class="img img-responsive" />
     <div class="profile-name">{{ dataJav.code }}</div>
   </nuxt-link>
 </template>

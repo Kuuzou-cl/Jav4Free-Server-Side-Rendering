@@ -1,6 +1,6 @@
 <template>
   <div class="card mb-3 bg-dark text-white box00 mx-auto">
-    <nuxt-link :to="'/idols/1/'+dataId">
+    <nuxt-link :to="'/idols/1/'+dataName">
       <img class="card-img" :src="dataUrl" />
     </nuxt-link>
     <div class="box-code">
@@ -15,7 +15,7 @@
 export default {
   name: "CardIdol",
   props: {
-    dataId: String,
+    dataId: Number,
     dataName: String,
     dataUrl: String,
   }

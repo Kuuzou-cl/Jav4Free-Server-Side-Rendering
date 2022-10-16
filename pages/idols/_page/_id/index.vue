@@ -10,20 +10,12 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-2">
-            <CardIdol
-              v-bind:dataId="idol._id"
-              v-bind:dataName="idol.name"
-              v-bind:dataUrl="idol.imageUrl"
-            />
+            <CardIdol v-bind:dataId="idol.id" v-bind:dataName="idol.name" v-bind:dataUrl="idol.image" />
           </div>
           <div class="col-lg-10">
             <div class="row">
-              <div
-                v-for="jav in javs"
-                :key="jav._id"
-                class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-              >
-                <CardJav v-bind:dataJav="jav" />
+              <div v-for="scene in scenes" :key="scene.id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <CardScene v-bind:dataJav="scene" />
               </div>
             </div>
           </div>
@@ -34,59 +26,28 @@
         <div class="row">
           <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
             <div class="pagination">
-              <button
-                v-if="page != 1"
-                @click="prevClick()"
-                type="button"
-                class="btn paginate-prev"
-              >
+              <button v-if="page != 1" @click="prevClick()" type="button" class="btn paginate-prev">
                 Prev
               </button>
-              <button
-                v-if="$device.isDesktop"
-                v-for="(prevPage, index) in previousPages"
-                :key="index"
-                type="button"
-                class="btn paginate-index"
-                @click="pullPage(Number(prevPage))"
-              >
+              <button v-if="$device.isDesktop" v-for="(prevPage, index) in previousPages" :key="index" type="button"
+                class="btn paginate-index" @click="pullPage(Number(prevPage))">
                 {{ prevPage }}
               </button>
               <button disabled type="button" class="btn paginate-actual">
                 {{ page }}
               </button>
-              <button
-                v-if="$device.isDesktop"
-                v-for="(nextPage, index) in actualNextPages"
-                :key="index"
-                type="button"
-                class="btn paginate-index"
-                @click="pushPage(Number(nextPage))"
-              >
+              <button v-if="$device.isDesktop" v-for="(nextPage, index) in actualNextPages" :key="index" type="button"
+                class="btn paginate-index" @click="pushPage(Number(nextPage))">
                 {{ nextPage }}
               </button>
-              <button
-                v-if="page < lastPage - 1 && $device.isDesktop"
-                disabled
-                type="button"
-                class="btn paginate-index"
-              >
+              <button v-if="page < lastPage - 1 && $device.isDesktop" disabled type="button" class="btn paginate-index">
                 ...
               </button>
-              <button
-                v-if="page != lastPage && lastPage != 0 && $device.isDesktop"
-                type="button"
-                @click="pushPage(Number(lastPage))"
-                class="btn paginate-index"
-              >
+              <button v-if="page != lastPage && lastPage != 0 && $device.isDesktop" type="button"
+                @click="pushPage(Number(lastPage))" class="btn paginate-index">
                 {{ Number(lastPage) }}
               </button>
-              <button
-                v-if="nextPage"
-                type="button"
-                class="btn paginate-next"
-                @click="nextClick()"
-              >
+              <button v-if="nextPage" type="button" class="btn paginate-next" @click="nextClick()">
                 Next
               </button>
               <button v-else disabled type="button" class="btn paginate-next">
@@ -106,15 +67,15 @@
 <script>
 import axios from "axios";
 
-import CardIdol from "../../../../components/Cards/CardIdol00";
-import CardJav from "~/components/Cards/CardScene";
+import CardIdol from "../../../../components/Cards/CardIdol00.vue";
+import CardScene from "~/components/Cards/CardScene.vue";
 
 export default {
   name: "idol",
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
   components: {
     CardIdol,
-    CardJav,
+    CardScene,
   },
   data() {
     return {
@@ -124,47 +85,37 @@ export default {
   },
   head() {
     return {
-      title: this.titleI + " Videos | Jav4Free",
+      title: this.idol.name + " Porn Videos | Jav4Free",
       meta: [
         {
           name: "description",
           content:
             "Jav4Free, Here you can watch every porn video of " +
-            this.titleI +
+            this.idol.name +
             ", find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
         },
       ],
     };
   },
   async asyncData({ params, error, $errorHandler }) {
-    let page = params.page;
-    if (
-      page == null ||
-      page == "" ||
-      page == "undefined" ||
-      page == undefined
-    ) {
-      page = "1";
-    }
-    let idolId = params.id;
-
     try {
-      const idol = await axios.get(
-        "https://jav.souzou.dev/jav4free/idols/" + idolId
-      );
-      const javs = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getSceneByIdol/" +
-          page +
-          "/" +
-          idolId
-      );
+      let page = params.page;
+      if (
+        page == null ||
+        page == "" ||
+        page == "undefined" ||
+        page == undefined
+      ) {
+        page = "1";
+      }
+      let idolId = params.id;
+      const idol = await axios.get("http://44.203.94.54:3000/idols/scenes?page=" + page + "&name=" + idolId + "&order=desc");
       return {
-        titleI: idol.data.idol.name,
-        idol: idol.data.idol,
-        javs: javs.data.scenes,
-        page: page,
-        nextPage: javs.data.nextPage,
-        lastPage: javs.data.lastPage,
+        idol: idol.data.data.Idol[0],
+        scenes: idol.data.data.Scenes,
+        page: idol.data.meta.page,
+        nextPage: idol.data.meta.nextPage,
+        lastPage: idol.data.meta.lastPage,
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);

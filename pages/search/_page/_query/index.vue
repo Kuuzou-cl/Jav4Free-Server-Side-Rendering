@@ -122,7 +122,7 @@
 <script>
 import axios from "axios";
 
-import CardScene from "~/components/Cards/CardScene";
+import CardScene from "~/components/Cards/CardScene.vue";
 
 export default {
   name: "Search",
@@ -160,19 +160,14 @@ export default {
       if (page == null || page == "") {
         page = "1";
       }
-      const scenes = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/searchScene/" +
-          page +
-          "/" +
-          query
-      );
+      const data = await axios.get("http://44.203.94.54:3000/search?title="+query+"&page="+page);
       return {
         query: query,
         page: page,
-        scenes: scenes.data.dataPage,
-        nextPage: scenes.data.nextPage,
-        lastPage: scenes.data.lastPage,
-        idols: scenes.data.idols,
+        scenes: data.data.dataScenes,
+        idols: data.data.dataIdols,
+        nextPage: data.data.meta.nextPage,
+        lastPage: data.data.meta.lastPage
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);

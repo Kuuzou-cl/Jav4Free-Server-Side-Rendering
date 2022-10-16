@@ -11,7 +11,7 @@
       <div class="row width-fix no-margin">
         <div
           v-for="jav in javs"
-          :key="jav._id"
+          :key="jav.id"
           class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
         >
           <CardJavPoster v-bind:dataJav="jav" />
@@ -19,28 +19,6 @@
       </div>
     </div>
     <div class="need-space"></div>
-    <div class="container-fluid">
-      <div class="row row-title">
-        <div class="col-lg-12 text-center">
-          <h4>Most Viewed This Week</h4>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div
-              v-for="scene in mostViewed"
-              :key="scene._id"
-              class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-            >
-              <CardScene v-bind:dataJav="scene" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-7">
@@ -52,7 +30,7 @@
           <div class="row">
             <div
               v-for="scene in scenes"
-              :key="scene._id"
+              :key="scene.id"
               class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
             >
               <CardScene v-bind:dataJav="scene" />
@@ -79,10 +57,9 @@
               class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
             >
               <CardIdol
-                v-if="idol != null"
-                v-bind:dataId="idol._id"
+                v-bind:dataId="idol.id"
                 v-bind:dataName="idol.name"
-                v-bind:dataUrl="idol.imageUrl"
+                v-bind:dataUrl="idol.image"
               ></CardIdol>
             </div>
           </div>
@@ -99,8 +76,8 @@
 import axios from "axios";
 
 import CardJavPoster from "~/components/Cards/CardJavPoster.vue";
-import CardScene from "~/components/Cards/CardScene";
-import CardIdol from "~/components/Cards/CardIdol00";
+import CardScene from "~/components/Cards/CardScene.vue";
+import CardIdol from "~/components/Cards/CardIdol00.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -122,32 +99,13 @@ export default {
   },
   async asyncData({ error, $errorHandler }) {
     try {
-      const mostViewed = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getMostViewed/1",
-        {
-          headers: {
-            quantity: 6,
-            period: "week",
-          },
-        }
-      );
-      const scenes = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getLatestScenes"
-      );
-      const javs = await axios.get("https://jav.souzou.dev/jav4free/javs/", {
-        headers: {
-          quantity: 4,
-          empty: "false",
-        },
-      });
-      const idols = await axios.get(
-        "https://jav.souzou.dev/jav4free/idols/getRandomIdols"
-      );
+      const scenes = await axios.get("http://44.203.94.54:3000/scenes?page=1&order=desc");
+      const javs = await axios.get("http://44.203.94.54:3000/javs/newest?limit=4");
+      const idols = await axios.get("http://44.203.94.54:3000/idols/featured?limit=4");
       return {
-        javs: javs.data.javs,
-        scenes: scenes.data.scenes,
-        mostViewed: mostViewed.data.scenes,
-        idols: idols.data.idols,
+        javs: javs.data.data.Javs,
+        scenes: scenes.data.data.Scenes,
+        idols: idols.data.data.Idols,
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);

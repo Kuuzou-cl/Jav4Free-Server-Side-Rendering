@@ -6,14 +6,14 @@
         <div class="col-lg-9">
           <div class="container-jav">
             <video id="javId" ref="javId2">
-              <source data-fluid-hd :src="this.scene.url" title='720p' type="video/mp4" />
+              <source data-fluid-hd :src="this.scene.video" title='720p' type="video/mp4" />
               <source :src="'https://javdata.sfo2.digitaloceanspaces.com/scenes_480/'+this.scene.code+'_1.mp4'" title='480p' type="video/mp4" />
             </video>
             <div class="jav-title">
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <p class="title">
-                    {{ jav.code + " | " + getName(scene.name) }}
+                    {{ this.jav.code + " | " + getName(this.scene.title) }}
                   </p>
                 </div>
               </div>
@@ -24,9 +24,9 @@
           <div class="row">
             <div class="col-lg-12">
               <nuxt-link
-                :to="'/javs/jav/' + jav._id"
+                :to="'/javs/jav/' + this.jav.code"
                 tag="img"
-                :src="jav.imageUrl"
+                :src="this.jav.image"
               >
               </nuxt-link>
             </div>
@@ -34,7 +34,7 @@
           <div class="jav-extra">
             <span>
               JAV Code:
-              <nuxt-link :to="'/javs/jav/' + jav._id" tag="a" class="links">{{
+              <nuxt-link :to="'/javs/jav/' + this.jav.code" tag="a" class="links">{{
                 jav.code
               }}</nuxt-link>
             </span>
@@ -44,8 +44,8 @@
               Categories:
               <nuxt-link
                 v-for="category in categories"
-                :key="category._id"
-                :to="'/categories/1/' + category._id"
+                :key="category.id"
+                :to="'/categories/1/' + category.name"
                 tag="a"
                 class="links"
                 >{{ category.name }},</nuxt-link
@@ -57,8 +57,8 @@
               Idols:
               <nuxt-link
                 v-for="idol in idols"
-                :key="idol._id"
-                :to="'/idols/1/' + idol._id"
+                :key="idol.id"
+                :to="'/idols/1/' + idol.name"
                 tag="a"
                 class="links"
                 >{{ idol.name }},</nuxt-link
@@ -68,24 +68,6 @@
         </div>
       </div>
       <div class="need-space"></div>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="row justify-content-center recommended-title">
-            <h3>Recommended videos</h3>
-          </div>
-          <div class="container-recommended">
-            <div class="row">
-              <div
-                v-for="scene in related"
-                :key="scene._id"
-                class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-              >
-                <CardJav v-bind:dataJav="scene" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div v-if="$device.isMobile" class="need-space"></div>
     <div v-if="$device.isMobile" class="need-space"></div>
@@ -97,7 +79,7 @@
 <script>
 import axios from "axios";
 
-import CardJav from "~/components/Cards/CardJav01";
+import CardJav from "~/components/Cards/CardJav01.vue";
 
 export default {
   layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
@@ -107,13 +89,13 @@ export default {
   },
   head() {
     return {
-      title: this.scene.name + " | Jav4Free | " + this.jav.code,
+      title: this.scene.title + " | Jav4Free | " + this.jav.code,
       meta: [
         {
           name: "description",
           content:
             "Jav4Free, watch " +
-            this.scene.name +
+            this.scene.title +
             " , " +
             this.jav.code +
             " , Here you can find almost every Idol and Actress of japanese adult videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
@@ -128,19 +110,13 @@ export default {
   },
   async asyncData({ params, error, $errorHandler }) {
     try {
-      let scene = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/" + params.id
-      );
-      let related = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getRelatedScenes/" + params.id
-      );
+      let str = params.id.split('?');
+      let scene = await axios.get("http://44.203.94.54:3000/scenes/scene?code="+ str[0]);
       return {
-        SceneCode: scene.data.jav.code,
-        scene: scene.data.scene,
-        categories: scene.data.categories,
-        idols: scene.data.idols,
-        jav: scene.data.jav,
-        related: related.data.relatedScenes,
+        scene: scene.data.data.Scene[0],
+        categories: scene.data.data.Categories,
+        idols: scene.data.data.Idols,
+        jav: scene.data.data.Jav[0],
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);
@@ -156,12 +132,12 @@ export default {
         clearInterval(interval);
         this.player = fluidPlayer("javId", {
           layoutControls: {
-            title: this.scene.name + " | Jav4Free | " + this.jav.code,
+            title: this.scene.title + " | Jav4Free | " + this.jav.code,
             layout: "default",
             fillToContainer: false,
             primaryColor: "#da0000",
             preload: true,
-            posterImage: this.scene.imageIndexUrl,
+            posterImage: this.scene.staticImage,
             timelinePreview: {
               file:
                 "https://javdata.sfo2.digitaloceanspaces.com/vtts/" +

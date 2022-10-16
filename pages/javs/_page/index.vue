@@ -9,11 +9,7 @@
       <div class="need-space"></div>
       <div class="container">
         <div class="row">
-          <div
-            v-for="jav in javs"
-            :key="jav._id"
-            class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-          >
+          <div v-for="jav in javs" :key="jav.id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <CardJav v-bind:dataJav="jav" />
           </div>
         </div>
@@ -23,59 +19,28 @@
         <div class="row">
           <div class="col-lg-12 ol-md-12 col-sm-12 col-xs-12">
             <div class="pagination">
-              <button
-                v-if="page != 1"
-                @click="prevClick()"
-                type="button"
-                class="btn paginate-prev"
-              >
+              <button v-if="page != 1" @click="prevClick()" type="button" class="btn paginate-prev">
                 Prev
               </button>
-              <button
-                v-if="$device.isDesktop"
-                v-for="(prevPage, index) in previousPages"
-                :key="index"
-                type="button"
-                class="btn paginate-index"
-                @click="pullPage(Number(prevPage))"
-              >
+              <button v-if="$device.isDesktop" v-for="(prevPage, index) in previousPages" :key="index" type="button"
+                class="btn paginate-index" @click="pullPage(Number(prevPage))">
                 {{ prevPage }}
               </button>
               <button disabled type="button" class="btn paginate-actual">
                 {{ page }}
               </button>
-              <button
-                v-if="$device.isDesktop"
-                v-for="(nextPage, index) in actualNextPages"
-                :key="index"
-                type="button"
-                class="btn paginate-index"
-                @click="pushPage(Number(nextPage))"
-              >
+              <button v-if="$device.isDesktop" v-for="(nextPage, index) in actualNextPages" :key="index" type="button"
+                class="btn paginate-index" @click="pushPage(Number(nextPage))">
                 {{ nextPage }}
               </button>
-              <button
-                v-if="page < lastPage - 1 && $device.isDesktop"
-                disabled
-                type="button"
-                class="btn paginate-index"
-              >
+              <button v-if="page < lastPage - 1 && $device.isDesktop" disabled type="button" class="btn paginate-index">
                 ...
               </button>
-              <button
-                v-if="page != lastPage && lastPage != 0 && $device.isDesktop"
-                type="button"
-                @click="pushPage(Number(lastPage))"
-                class="btn paginate-index"
-              >
+              <button v-if="page != lastPage && lastPage != 0 && $device.isDesktop" type="button"
+                @click="pushPage(Number(lastPage))" class="btn paginate-index">
                 {{ Number(lastPage) }}
               </button>
-              <button
-                v-if="nextPage"
-                type="button"
-                class="btn paginate-next"
-                @click="nextClick()"
-              >
+              <button v-if="nextPage" type="button" class="btn paginate-next" @click="nextClick()">
                 Next
               </button>
               <button v-else disabled type="button" class="btn paginate-next">
@@ -96,7 +61,7 @@
 <script>
 import axios from "axios";
 
-import CardJav from "~/components/Cards/CardJav02";
+import CardJav from "~/components/Cards/CardJav02.vue";
 
 export default {
   name: "RecentJavs",
@@ -122,22 +87,26 @@ export default {
       ],
     };
   },
-  async asyncData({ params }) {
-    let page = params.page;
-    if (page == null || page == "") {
-      page = "1";
-    }
-    let javs = await axios
-      .get("https://jav.souzou.dev/jav4free/javs/getJavsByPage/" + page)
-      .catch((e) => {
-        console.log(e);
+  async asyncData({ params, error, $errorHandler }) {
+    try {
+      let page = params.page;
+      if (page == null || page == "") {
+        page = "1";
+      }
+      let javs = await axios.get("http://44.203.94.54:3000/javs?page=" + page + "&order=desc");
+      return {
+        javs: javs.data.data.Javs,
+        page: javs.data.meta.page,
+        nextPage: javs.data.meta.nextPage,
+        lastPage: javs.data.meta.lastPage,
+      };
+    } catch (errors) {
+      const errorResponse = $errorHandler.setAndParse(errors);
+      error({
+        statusCode: errorResponse.status,
+        message: errorResponse.message,
       });
-    return {
-      javs: javs.data.javs,
-      page: page,
-      nextPage: javs.data.nextPage,
-      lastPage: javs.data.lastPage,
-    };
+    }
   },
   methods: {
     nextClick() {

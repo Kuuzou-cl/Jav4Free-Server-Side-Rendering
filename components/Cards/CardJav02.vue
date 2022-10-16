@@ -1,13 +1,13 @@
 <template>
   <div class="card bg-dark box22">
     <div class="box22-media">
-      <nuxt-link :to="'/javs/jav/'+dataJav._id" tag="a">
-        <img :src="dataJav.imageUrl"  />
+      <nuxt-link :to="'/javs/jav/'+dataJav.code" tag="a">
+        <img :src="dataJav.image"  />
       </nuxt-link>
     </div>
     <div class="box-content">
       <h3 class="title">
-        <nuxt-link :to="'/scenes/scene/'+dataJav._id" tag="a">{{dataJav.code + " - " + getName(dataJav.name)}}</nuxt-link>
+        <nuxt-link :to="'/javs/jav/'+dataJav.code" tag="a">{{dataJav.code + " - " + getName(dataJav.title)}}</nuxt-link>
       </h3>
     </div>
   </div>

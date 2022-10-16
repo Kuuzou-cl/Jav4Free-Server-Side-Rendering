@@ -11,7 +11,7 @@
         <div class="row">
           <div
             v-for="jav in videos"
-            :key="jav._id"
+            :key="jav.id"
             class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
           >
             <CardScene v-bind:dataJav="jav" />
@@ -96,7 +96,7 @@
 <script>
 import axios from "axios";
 
-import CardScene from "~/components/Cards/CardScene";
+import CardScene from "~/components/Cards/CardScene.vue";
 
 export default {
   name: "RecentJavs",
@@ -128,14 +128,12 @@ export default {
       if (page == null || page == "") {
         page = "1";
       }
-      let videos = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getScenesByPage/" + page
-      );
+      let videos = await axios.get("http://44.203.94.54:3000/scenes?page="+page+"&order=desc");
       return {
-        videos: videos.data.scenes,
-        page: page,
-        nextPage: videos.data.nextPage,
-        lastPage: videos.data.lastPage,
+        videos: videos.data.data.Scenes,
+        page: videos.data.data.page,
+        nextPage: videos.data.data.nextPage,
+        lastPage: videos.data.data.lastPage,
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);

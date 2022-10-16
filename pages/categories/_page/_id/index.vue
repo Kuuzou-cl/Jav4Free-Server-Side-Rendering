@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row row-title">
         <div class="col-lg-12 text-center">
-          <h4>Category - {{ category.name }} | Latest Videos</h4>
+          <h4>Category - {{ category }} | Latest Videos</h4>
         </div>
       </div>
       <div class="need-space"></div>
@@ -11,7 +11,7 @@
         <div class="row">
           <div
             v-for="scene in scenes"
-            :key="scene._id"
+            :key="scene.id"
             class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
           >
             <CardJav v-bind:dataJav="scene" />
@@ -96,7 +96,7 @@
 <script>
 import axios from "axios";
 
-import CardJav from "~/components/Cards/CardScene";
+import CardJav from "~/components/Cards/CardScene.vue";
 
 export default {
   name: "category",
@@ -110,13 +110,13 @@ export default {
   },
   head() {
     return {
-      title: this.titleC + " Videos | Jav4Free",
+      title: "Watch the latest porn videos in the " +this.category + " category | Jav4Free",
       meta: [
         {
           name: "description",
           content:
             "Jav4Free, Here you can watch" +
-            this.titleC +
+            this.category +
             " porn videos, find the latest japanese adult videos in high quality, various Idols and categories. Every video stream quickly and with amazing quality.",
         },
       ],
@@ -129,22 +129,13 @@ export default {
         page = "1";
       }
       let categoryId = params.id;
-      let category = await axios.get(
-        "https://jav.souzou.dev/jav4free/categories/" + categoryId
-      );
-      let scenes = await axios.get(
-        "https://jav.souzou.dev/jav4free/scenes/getSceneByCategory/" +
-          page +
-          "/" +
-          categoryId
-      );
+      let scenes = await axios.get("http://44.203.94.54:3000/categories/scenes?page="+page+"&name="+categoryId+"&order=desc");
       return {
-        titleC: category.data.category.name,
-        category: category.data.category,
-        scenes: scenes.data.scenes,
-        page: page,
-        nextPage: scenes.data.nextPage,
-        lastPage: scenes.data.lastPage,
+        category: categoryId,
+        scenes: scenes.data.data.Scenes,
+        page: scenes.data.meta.page,
+        nextPage: scenes.data.meta.nextPage,
+        lastPage: scenes.data.meta.lastPage,
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);
@@ -158,25 +149,25 @@ export default {
     nextClick() {
       var newPage = Number(this.page) + 1;
       this.$router.push({
-        path: "/categories/" + newPage + "/" + this.category._id,
+        path: "/categories/" + newPage + "/" + this.category,
       });
     },
     prevClick() {
       var newPage = Number(this.page) - 1;
       this.$router.push({
-        path: "/categories/" + newPage + "/" + this.category._id,
+        path: "/categories/" + newPage + "/" + this.category,
       });
     },
     pullPage(indexPage) {
       var newPage = Number(indexPage);
       this.$router.push({
-        path: "/categories/" + newPage + "/" + this.category._id,
+        path: "/categories/" + newPage + "/" + this.category,
       });
     },
     pushPage(indexPage) {
       var newPage = Number(indexPage);
       this.$router.push({
-        path: "/categories/" + newPage + "/" + this.category._id,
+        path: "/categories/" + newPage + "/" + this.category,
       });
     },
   },

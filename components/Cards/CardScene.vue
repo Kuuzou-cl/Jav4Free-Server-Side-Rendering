@@ -1,8 +1,8 @@
 <template>
   <div class="card bg-dark card-scene">
     <div class="card-scene-media">
-      <nuxt-link :to="'/scenes/scene/' + dataJav._id" tag="a">
-        <img :src="dataJav.imageIndexUrl" />
+      <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">
+        <img :src="dataJav.staticImage" />
         <video
           class="video-jav"
           @mouseleave="restart()"
@@ -10,7 +10,7 @@
           preload="auto"
           loop
         >
-          <source :src="dataJav.imageUrl" type="video/mp4" />
+          <source :src="dataJav.previewImage" type="video/mp4" />
         </video>
       </nuxt-link>
     </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="box-content">
       <h3 class="title">
-        <nuxt-link :to="'/scenes/scene/' + dataJav._id" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.name) }}</nuxt-link>
+        <nuxt-link :to="'/scenes/scene/' + dataJav.id" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.title) }}</nuxt-link>
       </h3>
     </div>
   </div>

@@ -9,12 +9,11 @@
       <div class="need-space"></div>
       <div class="container">
         <div class="row justify-content-center">
-          <div v-for="(idol, index) in idols" :key="index" class="col-sm-2">
+          <div v-for="idol in idols" :key="idol.id" class="col-sm-2">
             <CardIdol
-              v-if="idol != null"
-              v-bind:dataId="idol._id"
+              v-bind:dataId="idol.id"
               v-bind:dataName="idol.name"
-              v-bind:dataUrl="idol.imageUrl"
+              v-bind:dataUrl="idol.image"
             ></CardIdol>
           </div>
         </div>
@@ -34,8 +33,8 @@
               </button>
               <button
                 v-if="$device.isDesktop"
-                v-for="(prevPage, index) in previousPages"
-                :key="index"
+                v-for="(prevPage, indexA) in previousPages"
+                :key="indexA"
                 type="button"
                 class="btn paginate-index"
                 @click="pullPage(Number(prevPage))"
@@ -47,8 +46,8 @@
               </button>
               <button
                 v-if="$device.isDesktop"
-                v-for="(nextPage, index) in actualNextPages"
-                :key="index"
+                v-for="(nextPage, indexB) in actualNextPages"
+                :key="indexB"
                 type="button"
                 class="btn paginate-index"
                 @click="pushPage(Number(nextPage))"
@@ -96,7 +95,7 @@
 <script>
 import axios from "axios";
 
-import CardIdol from "~/components/Cards/CardIdol00";
+import CardIdol from "~/components/Cards/CardIdol00.vue";
 
 export default {
   name: "Idols",
@@ -112,7 +111,7 @@ export default {
   },
   head() {
     return {
-      title: "Idols on Jav4Free | Japanese Adult Videos for Free",
+      title: "Search for your favorite Idol on Jav4Free | Japanese Adult Videos for Free",
       meta: [
         {
           name: "description",
@@ -133,14 +132,12 @@ export default {
       ) {
         page = "1";
       }
-      let idols = await axios.get(
-        "https://jav.souzou.dev/jav4free/idols/idolsNotEmpty/" + page
-      );
+      let idols = await axios.get("http://44.203.94.54:3000/idols?page="+page+"&order=desc");
       return {
-        idols: idols.data.idols,
-        page: page,
-        nextPage: idols.data.nextPage,
-        lastPage: idols.data.lastPage,
+        idols: idols.data.data.Idols,
+        page: idols.data.meta.page,
+        nextPage: idols.data.meta.nextPage,
+        lastPage: idols.data.meta.lastPage,
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);

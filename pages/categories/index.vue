@@ -11,9 +11,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row justify-content-center">
-              <div v-for="category in categories" :key="category._id">
+              <div v-for="category in categories" :key="category.id">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <nuxt-link :to="'/categories/1/' + category._id">
+                  <nuxt-link :to="'/categories/1/' + category.name">
                     <button class="btn category-title">
                       {{ category.name }}
                     </button>
@@ -50,12 +50,10 @@ export default {
       ],
     };
   },
-  async asyncData() {
+  async asyncData({error, $errorHandler}) {
     try {
-      const { data } = await axios.get(
-        "https://jav.souzou.dev/jav4free/categories/categoriesNotEmpty"
-      );
-      return { categories: data.categories };
+      const categories = await axios.get("http://44.203.94.54:3000/categories");
+      return { categories: categories.data.data.Categories };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);
       error({
