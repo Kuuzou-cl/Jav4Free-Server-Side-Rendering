@@ -139,10 +139,7 @@ export default {
             preload: true,
             posterImage: this.scene.staticImage,
             timelinePreview: {
-              file:
-                "https://javdata.sfo2.digitaloceanspaces.com/vtts/" +
-                this.scene.code +
-                "_thumbs.vtt",
+              file: this.scene.vtt,
               type: "VTT",
             },
             allowTheatre: false,
