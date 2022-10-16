@@ -104,7 +104,7 @@ export default {
     if (id == null || id == "") {
       id = "";
     }
-    let jav = await axios.get("http://44.203.94.54:3000/javs/jav?code=" + id);
+    let jav = await axios.get("https://jav.souzou.dev/javs/jav?code=" + id);
     return {
       jav: jav.data.data.Jav[0],
       categories: jav.data.data.Categories,

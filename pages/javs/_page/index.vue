@@ -93,7 +93,7 @@ export default {
       if (page == null || page == "") {
         page = "1";
       }
-      let javs = await axios.get("http://44.203.94.54:3000/javs?page=" + page + "&order=desc");
+      let javs = await axios.get("https://jav.souzou.dev/javs?page=" + page + "&order=desc");
       return {
         javs: javs.data.data.Javs,
         page: javs.data.meta.page,

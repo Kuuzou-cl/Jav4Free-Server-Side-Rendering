@@ -111,7 +111,7 @@ export default {
   async asyncData({ params, error, $errorHandler }) {
     try {
       let str = params.id.split('?');
-      let scene = await axios.get("http://44.203.94.54:3000/scenes/scene?code="+ str[0]);
+      let scene = await axios.get("https://jav.souzou.dev/scenes/scene?code="+ str[0]);
       return {
         scene: scene.data.data.Scene[0],
         categories: scene.data.data.Categories,

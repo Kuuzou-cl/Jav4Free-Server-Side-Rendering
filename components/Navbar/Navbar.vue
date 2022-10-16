@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <nuxt-link :to="'/'" class="navbar-brand brand" tag="a" type="button">
       <img
-        src="https://javdata.sfo2.digitaloceanspaces.com/j4f-logo-black2.png"
+        src="https://jav4free-s3-data.s3.us-east-1.amazonaws.com/j4f-logo-black2.png"
       />
     </nuxt-link>
     <button

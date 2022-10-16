@@ -3,7 +3,7 @@
     <div class="row justify-content-center fix-width mx-auto">
       <div class="icon-mobile">
         <nuxt-link :to="'/'" class="heart-mobile" type="button">
-          <img src="https://javdata.sfo2.digitaloceanspaces.com/j4f-logo-black2.png" />
+          <img src="https://jav4free-s3-data.s3.us-east-1.amazonaws.com/j4f-logo-black2.png" />
         </nuxt-link>
       </div>
       <div class="search-mobile">

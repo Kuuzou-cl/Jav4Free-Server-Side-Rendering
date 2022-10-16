@@ -99,9 +99,9 @@ export default {
   },
   async asyncData({ error, $errorHandler }) {
     try {
-      const scenes = await axios.get("http://44.203.94.54:3000/scenes?page=1&order=desc");
-      const javs = await axios.get("http://44.203.94.54:3000/javs/newest?limit=4");
-      const idols = await axios.get("http://44.203.94.54:3000/idols/featured?limit=4");
+      const scenes = await axios.get("https://jav.souzou.dev/scenes?page=1&order=desc");
+      const javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=4");
+      const idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=4");
       return {
         javs: javs.data.data.Javs,
         scenes: scenes.data.data.Scenes,

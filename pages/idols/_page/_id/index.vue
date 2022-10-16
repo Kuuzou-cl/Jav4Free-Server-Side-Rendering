@@ -109,7 +109,7 @@ export default {
         page = "1";
       }
       let idolId = params.id;
-      const idol = await axios.get("http://44.203.94.54:3000/idols/scenes?page=" + page + "&name=" + idolId + "&order=desc");
+      const idol = await axios.get("https://jav.souzou.dev/idols/scenes?page=" + page + "&name=" + idolId + "&order=desc");
       return {
         idol: idol.data.data.Idol[0],
         scenes: idol.data.data.Scenes,

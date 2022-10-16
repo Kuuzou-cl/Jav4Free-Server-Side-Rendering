@@ -160,7 +160,7 @@ export default {
       if (page == null || page == "") {
         page = "1";
       }
-      const data = await axios.get("http://44.203.94.54:3000/search?title="+query+"&page="+page);
+      const data = await axios.get("https://jav.souzou.dev/search?title="+query+"&page="+page);
       return {
         query: query,
         page: page,

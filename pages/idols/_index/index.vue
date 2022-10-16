@@ -132,7 +132,7 @@ export default {
       ) {
         page = "1";
       }
-      let idols = await axios.get("http://44.203.94.54:3000/idols?page="+page+"&order=desc");
+      let idols = await axios.get("https://jav.souzou.dev/idols?page="+page+"&order=desc");
       return {
         idols: idols.data.data.Idols,
         page: idols.data.meta.page,

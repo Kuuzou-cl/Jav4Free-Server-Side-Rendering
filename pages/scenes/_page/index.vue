@@ -128,7 +128,7 @@ export default {
       if (page == null || page == "") {
         page = "1";
       }
-      let videos = await axios.get("http://44.203.94.54:3000/scenes?page="+page+"&order=desc");
+      let videos = await axios.get("https://jav.souzou.dev/scenes?page="+page+"&order=desc");
       return {
         videos: videos.data.data.Scenes,
         page: videos.data.data.page,

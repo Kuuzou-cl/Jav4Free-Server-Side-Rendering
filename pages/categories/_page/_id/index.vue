@@ -129,7 +129,7 @@ export default {
         page = "1";
       }
       let categoryId = params.id;
-      let scenes = await axios.get("http://44.203.94.54:3000/categories/scenes?page="+page+"&name="+categoryId+"&order=desc");
+      let scenes = await axios.get("https://jav.souzou.dev/categories/scenes?page="+page+"&name="+categoryId+"&order=desc");
       return {
         category: categoryId,
         scenes: scenes.data.data.Scenes,

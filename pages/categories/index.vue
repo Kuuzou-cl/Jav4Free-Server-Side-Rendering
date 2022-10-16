@@ -52,7 +52,7 @@ export default {
   },
   async asyncData({error, $errorHandler}) {
     try {
-      const categories = await axios.get("http://44.203.94.54:3000/categories");
+      const categories = await axios.get("https://jav.souzou.dev/categories");
       return { categories: categories.data.data.Categories };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);
