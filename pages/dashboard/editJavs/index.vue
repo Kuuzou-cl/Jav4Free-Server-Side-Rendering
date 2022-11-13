@@ -1,15 +1,8 @@
 <template>
   <div id="wrapper">
-    <SidebarAdmin
-      v-bind:scenes="scenes"
-      v-bind:videos="javs"
-      v-bind:idols="idols"
-      v-bind:categories="categories"
-    />
+    <SidebarAdmin />
     <div id="content-wrapper" class="d-flex flex-column">
-      <!-- Main Content -->
       <div id="content">
-        <!-- Begin Page Content -->
         <div class="container-fluid">
           <div class="row">
             <div class="title-admin">
@@ -21,31 +14,18 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <input
-                class="input-admin"
-                type="text"
-                v-model="search"
-                placeholder="Search by code..."
-              />
+              <input class="input-admin" type="text" v-model="search" placeholder="Search by code..." />
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
               <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
-                >
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                   {{ this.entries }} of {{ this.javs.length }}
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" @click="changeEntries(15)">10</a>
                   <a class="dropdown-item" @click="changeEntries(25)">25</a>
                   <a class="dropdown-item" @click="changeEntries(50)">50</a>
-                  <a
-                    class="dropdown-item"
-                    @click="changeEntries(filteredJavs.length)"
-                    >All</a
-                  >
+                  <a class="dropdown-item" @click="changeEntries(filteredJavs.length)">All</a>
                 </div>
               </div>
             </div>
@@ -67,22 +47,15 @@
                 <tbody>
                   <tr v-for="jav in filterJavs" :key="jav._id">
                     <th>{{ jav.code }}</th>
-                    <td>{{ jav.hidden }}</td>
-                    <td>{{ jav.scenes.length }}</td>
-                    <td>{{ jav.categories.length }}</td>
-                    <td>{{ jav.idols.length }}</td>
+                    <td>{{ jav.hide }}</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
                     <td>
-                      <nuxt-link
-                        :to="'/dashboard/editJavs/' + jav._id"
-                        class="btn button-admin"
-                        >Edit</nuxt-link
-                      >
+                      <nuxt-link :to="'/dashboard/editJavs/' + jav.id" class="btn button-admin">Edit</nuxt-link>
                     </td>
                     <td>
-                      <button
-                        @click="deleteJav(jav._id)"
-                        class="btn button-admin"
-                      >
+                      <button @click="deleteJav(jav._id)" class="btn button-admin">
                         Delete
                       </button>
                     </td>
@@ -122,37 +95,18 @@ export default {
   data() {
     return {
       search: "",
-      javs: null,
       filteredJavs: [],
       entries: 5,
     };
   },
   async asyncData() {
-    let scenes = await axios
-      .get("https://jav.souzou.dev/jav4free/scenes/")
-      .catch((e) => {
-        console.log(e);
-      });
     let javs = await axios
-      .get("https://jav.souzou.dev/jav4free/javs/")
-      .catch((e) => {
-        console.log(e);
-      });
-    let categories = await axios
-      .get("https://jav.souzou.dev/jav4free/categories/")
-      .catch((e) => {
-        console.log(e);
-      });
-    let idols = await axios
-      .get("https://jav.souzou.dev/jav4free/idols/")
+      .get("https://jav.souzou.dev/javs/getAll")
       .catch((e) => {
         console.log(e);
       });
     return {
-      scenes: scenes.data.scenes,
-      javs: javs.data.javs,
-      categories: categories.data.categories,
-      idols: idols.data.idols,
+      javs: javs.data.data.Javs
     };
   },
   methods: {
@@ -180,11 +134,8 @@ export default {
           this.filteredJavs.push(jav);
         }
       });
-      return this.filteredJavs.slice(0,this.entries);
+      return this.filteredJavs.slice(0, this.entries);
     },
-  },
+  }
 };
 </script>
-
-<style lang="scss">
-</style>

@@ -1,66 +1,27 @@
 <template>
-  <div>
-    <div v-if="$device.isDesktop" class="container-fluid">
-      <div class="need-space"></div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content user_card">
-              <div class="modal-header">
-                <div class="row justify-content-center">
-                  <img
-                    src="https://javdata.sfo2.cdn.digitaloceanspaces.com/favi-j4.webp"
-                    width="25%"
-                    height="25%"
-                  />
-                </div>
-              </div>
-              <div class="modal-body">
-                <div class="row justify-content-center">
-                  <p v-if="loginError" class="error">{{ loginError }}</p>
-                </div>
-                <div class="form-row justify-content-center">
-                  <input
-                    v-model="email"
-                    class="custom-input-login"
-                    placeholder="Email"
-                  />
-                </div>
-                <div class="form-row justify-content-center">
-                  <input
-                    type="password"
-                    v-model="password"
-                    class="custom-input-login"
-                    placeholder="Password"
-                  />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-more"
-                  @click="login"
-                  data-dismiss="modal"
-                >
-                  Sign In
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="container main">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-md-offset-3 text-center title">
+        <h1>Want to Connect?</h1>
+        <div class="bar"></div>
       </div>
     </div>
-    <div v-if="$device.isMobile" class="container-fluid">
-      <div class="need-space"></div>
-      <div class="need-space"></div>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-md-offset-3 form">
+        <h2>Login</h2>
+        <input v-model="email" type="text" name='username' placeholder='username'>
+        <br>
+        <input v-model="password" type="password" name="password" id="password">
+        <button class="btn btn-default login" @click="login">| login</button>
+        <h4 v-if="loginError">{{ loginError }}</h4>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  layout: (ctx) => (ctx.isMobile ? "mobile" : "default"),
+  layout: "login",
   components: {},
   head() {
     return {
@@ -108,3 +69,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "~/assets/login-page.scss";
+</style>

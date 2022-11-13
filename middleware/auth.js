@@ -6,12 +6,14 @@ export default async function ({ redirect , store, error }) {
       statusCode: 403
     })
   } else {
-    let user = store.state.authUser;
-    const userAlive = await axios.post('https://jav.souzou.dev/jav4free/user/currentAlive', { user }, {
+    let email = store.state.authUser;
+
+    const userAlive = await axios.post('https://jav.souzou.dev/users/currentAlive', { email }, {
       headers: {
-        'x-access-token': store.state.token
+        'authorization': store.state.token
       }
     });
+
     if (!userAlive.data.alive) {
       store.dispatch("logout");
       return redirect('/')

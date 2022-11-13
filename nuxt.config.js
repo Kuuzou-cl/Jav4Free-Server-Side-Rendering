@@ -26,7 +26,7 @@ module.exports = {
       } 
     ]
   },
-  loading: { color: '#ffd800' },
+  loading: { color: '#8e44ad' },
   css: [
     'bootstrap/dist/css/bootstrap.css'
   ],
@@ -64,6 +64,10 @@ module.exports = {
     [
       'nuxt-fontawesome', {
         imports: [
+          {
+            set: '@fortawesome/free-regular-svg-icons',
+            icons: ['far']
+          },
           {
             set: '@fortawesome/free-solid-svg-icons',
             icons: ['fas']

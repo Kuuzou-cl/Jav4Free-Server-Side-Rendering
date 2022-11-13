@@ -1,24 +1,91 @@
-.custom-input-login{
-    background-color: transparent;
+$trans-orange: rgba(245, 132, 33, .87);
+$orange: rgb(245, 132, 33);
+
+.title h1 {
+    font-size: 3.5em;
+    color: #000;
+}
+
+.bar {
+    height: .25em;
+    width: 100%;
+    background: #000;
+    margin: 1.5em auto 0;
+}
+
+.main {
+    min-height: 50vh;
+    position: relative;
+    top: 20vh;
+}
+
+input[type=text],
+input[type=password] {
+    font-size: 1.75em;
+    padding: .55em;
+    width: 100%;
+    margin-bottom: 1em;
     border: none;
-    border-bottom: 1px solid #E8175D;
-    color: #f8faff;
-    letter-spacing: 2px;
-    text-align: left;
-    margin: 2% 0% !important;
-    box-shadow: none !important;
-    width: 60% !important;
+
+    &::placeholder {
+        color: #aaaaaa;
+        position: relative;
+        padding: 0;
+        transition: all 0.5s ease;
+    }
+
+    &:hover::placeholder,
+    &:focus::placeholder {
+        padding-top: 3em;
+    }
 }
 
-.user_card {
-    height: 100%;
-    width: 25vw;
-    background: #18191a;
-    border-radius: 0px;
-    margin: 10%;
+.form {
+    h2 {
+        text-align: left;
+        font-weight: 100;
+        color: #000;
+        margin-bottom: .5em;
+    }
+
+    h4 {
+        font-weight: 100;
+        color: #000;
+        margin-top: 2em;
+    }
 }
 
-.user_card img {
-    height: 80px;
-    width: 80px;
+.login {
+    color: rgb(0, 0, 0);
+    width: 6em;
+    font-weight: 100;
+    font-size: 1.75em;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    background: transparent;
+    transition: all 200ms ease-in;
+    border-radius: .65em;
+
+    &:hover,
+    &:focus {
+        background: #da0000;
+        color: #fff;
+        border: none;
+    }
+}
+
+.signup {
+    @extend .login;
+    font-size: 1em;
+    position: relative;
+    left: 1.5em;
+}
+
+// base
+h1,
+h2 h3,
+h4,
+h5,
+h6,
+input {
+    font-weight: 100;
 }

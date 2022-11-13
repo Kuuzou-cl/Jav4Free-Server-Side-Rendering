@@ -41,7 +41,6 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit, state }, { req }) {
-
     let cookieUser;
     if (this.$cookies.get('user')) {
       cookieUser = this.$cookies.get('user');
@@ -66,13 +65,13 @@ export const actions = {
     let userAlive;
 
     if (cookieToken && cookieUser) {
-      userAlive = await axios.post('https://jav.souzou.dev/jav4free/user/currentAlive', { cookieUser }, {
+      userAlive = await axios.post('https://jav.souzou.dev/users/currentAlive', { cookieUser }, {
         headers: {
-          'x-access-token': cookieToken
+          'authorization': cookieToken
         }
       });
-    }else{
-      userAlive = null;
+    } else {
+      userAlive = false;
     }
 
     if (!userAlive) {
@@ -89,10 +88,11 @@ export const actions = {
   },
   async login({ commit }, { email, password }) {
     try {
-      const user = await axios.post('https://jav.souzou.dev/jav4free/user/login', { email, password })
+      const user = await axios.post('https://jav.souzou.dev/users/login', { email, password })
       commit('SET_USER', user)
     } catch (error) {
       if (error.response && error.response.status === 401) {
+        console.log('Bad credentials')
         throw new Error('Bad credentials')
       }
       throw error

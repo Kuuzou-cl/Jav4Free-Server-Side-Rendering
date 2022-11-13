@@ -117,3 +117,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "~/assets/base-style.scss";
+</style>
