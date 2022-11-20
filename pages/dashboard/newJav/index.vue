@@ -18,52 +18,55 @@
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="form-row">
-                    <label for="inputJav01">JAV Title</label>
+                    <label class="title-input-admin" for="inputJav01">JAV Title</label>
                     <input v-model="newJavTitle" class="input-admin" id="inputJav01"
                       placeholder="Enter video title, no characters limit" />
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="form-row">
-                    <label for="inputJav02">JAV Code</label>
+                    <label class="title-input-admin" for="inputJav02">JAV Code</label>
                     <input v-model="newJavCode" class="input-admin" id="inputJav02"
                       placeholder="Enter video code, example 'ABC-000'" />
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <div class="form-row">
-                    <label for="inputJav03">Hidden Status</label>
-                    <input type="checkbox" class="input-admin" id="inputJav03" v-model="newJavHide" />
-                  </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="form-row">
+                  <label for="inputJav03" class="title-input-admin">Hidden Status</label>
+                  <input type="checkbox" class="input-admin" id="inputJav03" v-model="newJavHide" />
                 </div>
               </div>
             </div>
             <div class="need-space"></div>
             <div class="container">
               <div class="row justify-content-center">
-                <button class="btn category-admin" @click="postJav()">
-                  Add Video
+                <button class="btn btn-success" @click="postJav()">
+                  Add JAV
                 </button>
               </div>
-              {{newJavCategories}}
-              {{newJavIdols}}
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                  <button class="btn category-admin" @click="viewCategoriesContainer()">
-                    View Categories
-                  </button>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                  <button class="btn category-admin" @click="viewIdolsContainer()">
-                    View Idols
-                  </button>
-                </div>
+            <div class="row justify-content-center">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <img class="preview-img-jav"
+                  :src="'https://jav4free-s3-data.s3.us-east-1.amazonaws.com/javs/' + this.newJavCode + '.jpg'" />
+              </div>
+            </div>
+            <div class="need-space"></div>
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                <button class="btn btn-warning btn-block" @click="viewCategoriesContainer()">
+                  View Categories
+                </button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                <button class="btn btn-warning btn-block" @click="viewIdolsContainer()">
+                  View Idols
+                </button>
               </div>
             </div>
             <div v-if="this.viewCategories" class="container-fluid">
@@ -77,10 +80,10 @@
                 <div v-for="category in filterCategories" :key="category._id">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button v-if="checkCategory(category.id)" @click="addCategory(category.id)"
-                      class="btn category-button">
+                      class="btn btn-light btn-sm">
                       {{ category.name }}
                     </button>
-                    <button v-else @click="addCategory(category.id)" class="active btn category-button">
+                    <button v-else @click="addCategory(category.id)" class="active btn btn-dark">
                       {{ category.name }}
                     </button>
                   </div>
@@ -96,10 +99,10 @@
               <div class="row justify-content-center">
                 <div v-for="idol in filterIdols" :key="idol._id">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button v-if="checkIdol(idol.id)" @click="addIdol(idol.id)" class="btn category-button">
+                    <button v-if="checkIdol(idol.id)" @click="addIdol(idol.id)" class="btn btn-light btn-sm">
                       {{ idol.name }}
                     </button>
-                    <button v-else @click="addIdol(idol.id)" class="active btn category-button">
+                    <button v-else @click="addIdol(idol.id)" class="active btn btn-dark">
                       {{ idol.name }}
                     </button>
                   </div>

@@ -18,34 +18,32 @@
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="form-row">
-                    <label for="inputJav01">Scene Title</label>
+                    <label class="title-input-admin" for="inputJav01">Scene Title</label>
                     <input v-model="newSceneTitle" class="input-admin" id="inputJav01"
                       placeholder="Enter video title, no characters limit" />
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                   <div class="form-row">
-                    <label for="inputJav02">Scene Code</label>
+                    <label class="title-input-admin" for="inputJav02">Scene Code</label>
                     <input v-model="newSceneCode" class="input-admin" id="inputJav02"
                       placeholder="Enter video code, example 'ABC-000'" />
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                   <div class="form-row">
-                    <label for="inputJav03">Scene Duration</label>
+                    <label class="title-input-admin" for="inputJav03">Scene Duration</label>
                     <input v-model="newSceneDuration" class="input-admin" id="inputJav03"
                       placeholder="Enter duration in minutes" />
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                  <div class="form-row">
-                    <label for="inputJav03">Hidden</label>
-                    <input type="checkbox" class="input-admin" id="inputJav03" v-model="newSceneHide" />
-                  </div>
+              <div class="row justify-content-center">
+                <div class="form-row">
+                  <label class="title-input-admin" for="inputJav03">Hidden</label>
+                  <input type="checkbox" class="input-admin" id="inputJav03" v-model="newSceneHide" />
                 </div>
               </div>
             </div>
@@ -53,12 +51,12 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                  <button class="btn category-admin" @click="viewCategoriesContainer()">
+                  <button class="btn btn-warning btn-block" @click="viewCategoriesContainer()">
                     View Categories
                   </button>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                  <button class="btn category-admin" @click="viewIdolsContainer()">
+                  <button class="btn btn-warning btn-block" @click="viewIdolsContainer()">
                     View Idols
                   </button>
                 </div>
@@ -76,10 +74,10 @@
                 <div v-for="category in filterCategories" :key="category.id">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button v-if="checkCategory(category.id)" @click="addCategory(category.id)"
-                      class="btn category-button">
+                    class="btn btn-light btn-sm">
                       {{ category.name }}
                     </button>
-                    <button v-else @click="addCategory(category.id)" class="active btn category-button">
+                    <button v-else @click="addCategory(category.id)" class="active btn btn-dark">
                       {{ category.name }}
                     </button>
                   </div>
@@ -95,10 +93,10 @@
               <div class="row justify-content-center">
                 <div v-for="idol in filterIdols" :key="idol._id">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button v-if="checkIdol(idol.id)" @click="addIdol(idol.id)" class="btn category-button">
+                    <button v-if="checkIdol(idol.id)" @click="addIdol(idol.id)" class="btn btn-light btn-sm">
                       {{ idol.name }}
                     </button>
-                    <button v-else @click="addIdol(idol.id)" class="active btn category-button">
+                    <button v-else @click="addIdol(idol.id)" class="active btn btn-dark">
                       {{ idol.name }}
                     </button>
                   </div>
@@ -108,7 +106,7 @@
             <div class="need-space"></div>
             <div class="container">
               <div class="row justify-content-center">
-                <button class="btn category-admin" @click="postScene()">
+                <button class="btn btn-success" @click="postScene()">
                   Add Scene
                 </button>
               </div>
