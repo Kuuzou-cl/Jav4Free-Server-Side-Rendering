@@ -47,7 +47,7 @@
                 @click="pushPage(Number(lastPage))" class="btn paginate-index">
                 {{ Number(lastPage) }}
               </button>
-              <button v-if="nextPage" type="button" class="btn paginate-next" @click="nextClick()">
+              <button v-if="nextPage != page" type="button" class="btn paginate-next" @click="nextClick()">
                 Next
               </button>
               <button v-else disabled type="button" class="btn paginate-next">
@@ -128,19 +128,19 @@ export default {
   methods: {
     nextClick() {
       var newPage = Number(this.page) + 1;
-      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol.name });
     },
     prevClick() {
       var newPage = Number(this.page) - 1;
-      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol.name });
     },
     pullPage(indexPage) {
       var newPage = Number(indexPage);
-      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol.name });
     },
     pushPage(indexPage) {
       var newPage = Number(indexPage);
-      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol._id });
+      this.$router.push({ path: "/idols/" + newPage + "/" + this.idol.name });
     },
   },
   computed: {

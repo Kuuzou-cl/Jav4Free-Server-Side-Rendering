@@ -71,7 +71,7 @@
                 {{ Number(lastPage) }}
               </button>
               <button
-                v-if="nextPage"
+                v-if="nextPage !=  page"
                 type="button"
                 class="btn paginate-next"
                 @click="nextClick()"
@@ -131,9 +131,9 @@ export default {
       let videos = await axios.get("https://jav.souzou.dev/scenes?page="+page+"&order=desc");
       return {
         videos: videos.data.data.Scenes,
-        page: videos.data.data.page,
-        nextPage: videos.data.data.nextPage,
-        lastPage: videos.data.data.lastPage,
+        page: videos.data.meta.page,
+        nextPage: videos.data.meta.nextPage,
+        lastPage: videos.data.meta.lastPage,
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);

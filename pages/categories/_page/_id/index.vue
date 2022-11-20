@@ -71,7 +71,7 @@
                 {{ Number(lastPage) }}
               </button>
               <button
-                v-if="nextPage"
+                v-if="nextPage != page"
                 type="button"
                 class="btn paginate-next"
                 @click="nextClick()"
