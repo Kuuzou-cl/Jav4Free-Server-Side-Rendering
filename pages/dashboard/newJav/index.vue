@@ -198,7 +198,7 @@ export default {
         code: this.newJavCode,
         image:
           "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/javs/" +
-          this.newJavTitle +
+          this.newJavCode +
           ".jpg",
         hide: this.newJavHide,
         categories: this.newJavCategories,
