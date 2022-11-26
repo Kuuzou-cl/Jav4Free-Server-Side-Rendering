@@ -2,7 +2,7 @@
   <div @contextmenu.prevent class="card bg-dark box2">
     <div class="loading-box"></div>
     <div class="box2-media">
-      <nuxt-link :to="'/scenes/scene/'+dataJav._id" tag="a">
+      <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">
         <img :src="dataJav.imageIndexUrl" v-lazy-load />
         <video class="video-jav" @mouseleave="restart()" @mouseover="start()" preload="auto">
           <source :src="dataJav.imageUrl" type="video/mp4" />
@@ -11,7 +11,7 @@
     </div>
     <div class="box-content-mobile">
       <h3 class="title-mobile">
-        <nuxt-link :to="'/scenes/scene/' + dataJav._id" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.name) }}</nuxt-link>
+        <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.name) }}</nuxt-link>
       </h3>
     </div>
   </div>
