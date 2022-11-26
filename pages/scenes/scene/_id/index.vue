@@ -65,6 +65,11 @@
               >
             </span>
           </div>
+          <div class="row need-space">
+            <script async type="text/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+            <ins class="adsbyexoclick" data-zoneid="4451866"></ins> 
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+          </div>
         </div>
       </div>
       <div class="need-space"></div>
