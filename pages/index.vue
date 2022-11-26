@@ -63,6 +63,13 @@
               ></CardIdol>
             </div>
           </div>
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <script async type="text/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
+                <ins class="adsbyexoclick" data-zoneid="4445412"></ins> 
+              <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -21,24 +21,24 @@
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                   <div class="row">
-                    <label for="inputJav01">Jav Title</label>
+                    <label for="inputJav01" class="title-input-admin">Jav Title</label>
                     <input v-model="jav.title" class="input-admin" id="inputJav01" placeholder="Enter new title" />
                   </div>
                   <div class="row">
-                    <label for="inputJav02">Jav Code</label>
+                    <label for="inputJav02" class="title-input-admin">Jav Code</label>
                     <input v-model="jav.code" class="input-admin" id="inputJav02" placeholder="Enter new code" />
                   </div>
                   <div class="row">
-                    <label for="inputJav04">Jav Image url</label>
-                    <input v-model="jav.image" class="input-admin" id="inputJav04"
-                      placeholder="Enter new image url" />
+                    <label for="inputJav04" class="title-input-admin">Jav Image url</label>
+                    <input v-model="jav.image" class="input-admin" id="inputJav04" placeholder="Enter new image url" />
                   </div>
                 </div>
               </div>
+              <div class="need-space"></div>
               <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                   <div class="row">
-                    <label for="inputJav07">Scenes</label>
+                    <label for="inputJav07" class="title-input-admin">Scenes</label>
                   </div>
                   <div class="row">
                     <p class="tag" v-for="scene in scenesJav" :key="scene.id">
@@ -46,29 +46,27 @@
                     </p>
                   </div>
                   <div class="row">
-                    <label for="inputJav07">Categories</label>
+                    <label for="inputJav07" class="title-input-admin">Categories</label>
                   </div>
                   <div class="row">
-                    <p class="tag" v-for="category in categoriesJav" :key="category.id">
+                    <p class="active btn btn-dark" v-for="category in categoriesJav" :key="category.id">
                       {{ category.name }}
                     </p>
                   </div>
                   <div class="row">
-                    <label for="inputJav07">Idols</label>
+                    <label for="inputJav07" class="title-input-admin">Idols</label>
                   </div>
                   <div class="row">
-                    <p class="tag" v-for="idol in idolsJav" :key="idol.id">
+                    <p class="active btn btn-dark" v-for="idol in idolsJav" :key="idol.id">
                       {{ idol.name }}
                     </p>
                   </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="form-row">
-                        <label for="inputJav03">Hidden</label>
-                        <input type="checkbox" class="input-admin" id="inputJav03" v-model="jav.hide" />
-                      </div>
+                  <div class="row justify-content-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                      <label class="title-input-admin" for="inputJav03">Hidden</label>
+                      <input type="checkbox" class="input-admin" id="inputJav03" v-model="jav.hide" />
                     </div>
                   </div>
                 </div>
@@ -80,17 +78,17 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-              <button class="btn category-admin" @click="viewScenesContainer()">
+              <button class="btn btn-warning btn-block" @click="viewScenesContainer()">
                 View Scenes
               </button>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-              <button class="btn category-admin" @click="viewCategoriesContainer()">
+              <button class="btn btn-warning btn-block" @click="viewCategoriesContainer()">
                 View Categories
               </button>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-              <button class="btn category-admin" @click="viewIdolsContainer()">
+              <button class="btn btn-warning btn-block" @click="viewIdolsContainer()">
                 View Idols
               </button>
             </div>
@@ -106,10 +104,10 @@
           <div class="row justify-content-center">
             <div v-for="scene in filterScenes" :key="scene.id">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button v-if="checkScene(scene.id)" @click="addScene(scene)" class="btn category-button">
+                <button v-if="checkScene(scene.id)" @click="addScene(scene)" class="btn btn-light btn-sm">
                   {{ scene.code }}
                 </button>
-                <button v-else @click="addScene(scene)" class="active btn category-button">
+                <button v-else @click="addScene(scene)" class="active btn btn-dark">
                   {{ scene.code }}
                 </button>
               </div>
@@ -126,11 +124,10 @@
           <div class="row justify-content-center">
             <div v-for="category in filterCategories" :key="category.id">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button v-if="checkCategory(category.id)" @click="addCategory(category)"
-                  class="btn category-button">
+                <button v-if="checkCategory(category.id)" @click="addCategory(category)" class="btn btn-light btn-sm">
                   {{ category.name }}
                 </button>
-                <button v-else @click="addCategory(category)" class="active btn category-button">
+                <button v-else @click="addCategory(category)" class="active btn btn-dark">
                   {{ category.name }}
                 </button>
               </div>
@@ -146,10 +143,10 @@
           <div class="row justify-content-center">
             <div v-for="idol in filterIdols" :key="idol.id">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button v-if="checkIdol(idol.id)" @click="addIdol(idol)" class="btn category-button">
+                <button v-if="checkIdol(idol.id)" @click="addIdol(idol)" class="btn btn-light btn-sm">
                   {{ idol.name }}
                 </button>
-                <button v-else @click="addIdol(idol)" class="active btn category-button">
+                <button v-else @click="addIdol(idol)" class="active btn btn-dark">
                   {{ idol.name }}
                 </button>
               </div>
@@ -159,7 +156,7 @@
         <div class="need-space"></div>
         <div class="container">
           <div class="row justify-content-center">
-            <button class="btn category-admin" @click="updateJav()">
+            <button class="btn btn-success" @click="updateJav()">
               Update Video
             </button>
           </div>

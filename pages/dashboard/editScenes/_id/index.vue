@@ -10,11 +10,6 @@
         </div>
       </div>
       <div class="need-space"></div>
-      {{this.scene}}
-      <div class="need-space"></div>
-      {{this.categoriesScene}}
-      <div class="need-space"></div>
-      {{this.idolsScene}}
       <div class="need-space"></div>
       <div class="container">
         <div class="row">
@@ -23,12 +18,12 @@
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <img :src="scene.staticImage" />
-                  <div class="row need-space">
-                    <label for="inputJav03">Hidden</label>
+                  <div class="row justify-content-center need-space">
+                    <label for="inputJav03" class="title-input-admin">Hidden</label>
                     <input type="checkbox" class="input-admin" id="inputJav03" v-model="scene.hide" />
                   </div>
                   <div class="row">
-                    <label for="inputJav07">Categories</label>
+                    <label for="inputJav07" class="title-input-admin">Categories</label>
                   </div>
                   <div class="row">
                     <p class="tag" v-for="category in categoriesScene" :key="category.id">
@@ -36,7 +31,7 @@
                     </p>
                   </div>
                   <div class="row">
-                    <label for="inputJav07">Idols</label>
+                    <label for="inputJav07" class="title-input-admin">Idols</label>
                   </div>
                   <div class="row">
                     <p class="tag" v-for="idol in idolsScene" :key="idol.id">
@@ -45,35 +40,31 @@
                   </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                  <div v-if="jav != null" class="row">
-                    <label for="inputJav01">Jav Code</label>
-                    <input v-model="jav.code" class="input-admin" id="inputJav00" placeholder="Jav Code" disabled />
-                  </div>
                   <div class="row">
-                    <label for="inputJav01">Scene Title</label>
+                    <label for="inputJav01" class="title-input-admin">Scene Title</label>
                     <input v-model="scene.title" class="input-admin" id="inputJav01" placeholder="Enter new title" />
                   </div>
                   <div class="row">
-                    <label for="inputJav02">Scene Code</label>
+                    <label for="inputJav02" class="title-input-admin">Scene Code</label>
                     <input v-model="scene.code" class="input-admin" id="inputJav02" placeholder="Enter new code" />
                   </div>
                   <div class="row">
-                    <label for="inputJav03">Scene Duration</label>
+                    <label for="inputJav03" class="title-input-admin">Scene Duration</label>
                     <input v-model="scene.duration" class="input-admin" id="inputJav03"
                       placeholder="Enter video duration" />
                   </div>
                   <div class="row">
-                    <label for="inputJav04">Preview url</label>
+                    <label for="inputJav04" class="title-input-admin">Preview</label>
                     <input v-model="scene.previewImage" class="input-admin" id="inputJav04"
                       placeholder="Enter new preview url" />
                   </div>
                   <div class="row">
-                    <label for="inputJav05">Image url</label>
+                    <label for="inputJav05" class="title-input-admin">Image</label>
                     <input v-model="scene.staticImage" class="input-admin" id="inputJav05"
                       placeholder="Enter new image url" />
                   </div>
                   <div class="row">
-                    <label for="inputJav06">Video url</label>
+                    <label for="inputJav06" class="title-input-admin">Video</label>
                     <input v-model="scene.video" class="input-admin" id="inputJav06" placeholder="Enter new video url" />
                   </div>
                 </div>
@@ -85,12 +76,12 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-              <button class="btn category-admin" @click="viewCategoriesContainer()">
+              <button class="btn btn-warning btn-block" @click="viewCategoriesContainer()">
                 View Categories
               </button>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-              <button class="btn category-admin" @click="viewIdolsContainer()">
+              <button class="btn btn-warning btn-block" @click="viewIdolsContainer()">
                 View Idols
               </button>
             </div>
@@ -108,10 +99,10 @@
             <div v-for="category in filterCategories" :key="category.id">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <button v-if="checkCategory(category.id)" @click="addCategory(category)"
-                  class="btn category-button">
+                class="btn btn-light btn-sm">
                   {{ category.name }}
                 </button>
-                <button v-else @click="addCategory(category)" class="active btn category-button">
+                <button v-else @click="addCategory(category)" class="active btn btn-dark">
                   {{ category.name }}
                 </button>
               </div>
@@ -127,10 +118,10 @@
           <div class="row justify-content-center">
             <div v-for="idol in filterIdols" :key="idol.id">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button v-if="checkIdol(idol.id)" @click="addIdol(idol)" class="btn category-button">
+                <button v-if="checkIdol(idol.id)" @click="addIdol(idol)" class="btn btn-light btn-sm">
                   {{ idol.name }}
                 </button>
-                <button v-else @click="addIdol(idol)" class="active btn category-button">
+                <button v-else @click="addIdol(idol)" class="active btn btn-dark">
                   {{ idol.name }}
                 </button>
               </div>
@@ -140,7 +131,7 @@
         <div class="need-space"></div>
         <div class="container">
           <div class="row justify-content-center">
-            <button class="btn category-admin" @click="updateJav()">
+            <button class="btn btn-success" @click="updateJav()">
               Update Video
             </button>
           </div>
@@ -176,6 +167,7 @@ export default {
     let categories = await axios.get("https://jav.souzou.dev/categories/");
     let idols = await axios.get("https://jav.souzou.dev/idols/getAll");
     return {
+      test: scene.data,
       scene: scene.data.data.Scene,
       categoriesScene: scene.data.data.Categories,
       idolsScene: scene.data.data.Idols,
