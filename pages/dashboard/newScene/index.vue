@@ -177,7 +177,7 @@ export default {
     },
     changeVideo() {
       this.video =
-        "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scenes/" +
+        "https://d27vxor1f495av.cloudfront.net/scenes/" +
         this.newSceneCode +
         ".mp4";
       var vid = this.$refs.video;
@@ -234,25 +234,25 @@ export default {
         title: this.newSceneTitle,
         code: this.newSceneCode,
         video:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scenes/" +
+          "https://d27vxor1f495av.cloudfront.net/scenes/" +
           this.newSceneCode +
           ".mp4",
         video480p:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scenes_480/" +
+          "https://d27vxor1f495av.cloudfront.net/scenes_480/" +
           this.newSceneCode +
           "_1.mp4",
         duration: this.newSceneDuration,
         hide: this.newSceneHide,
         previewImage:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scenes-preview/" +
+          "https://d27vxor1f495av.cloudfront.net/scenes-preview/" +
           this.newSceneCode +
           ".mp4",
         staticImage:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scenes-static/" +
+          "https://d27vxor1f495av.cloudfront.net/scenes-static/" +
           this.newSceneCode +
           "-static.jpg",
         vtt:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/vtts/" +
+          "https://d27vxor1f495av.cloudfront.net/vtts/" +
           this.newSceneCode +
           "_thumbs.vtt",
         categories: this.newSceneCategories,

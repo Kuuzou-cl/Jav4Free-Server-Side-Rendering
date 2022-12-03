@@ -53,7 +53,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                 <img class="preview-img-jav"
-                  :src="'https://jav4free-s3-data.s3.us-east-1.amazonaws.com/javs/' + this.newJavCode + '.jpg'" />
+                  :src="'https://d27vxor1f495av.cloudfront.net/javs/' + this.newJavCode + '.jpg'" />
               </div>
             </div>
             <div class="need-space"></div>
@@ -200,7 +200,7 @@ export default {
         title: this.newJavTitle,
         code: this.newJavCode,
         image:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/javs/" +
+          "https://d27vxor1f495av.cloudfront.net/javs/" +
           this.newJavCode +
           ".jpg",
         hide: this.newJavHide,

@@ -19,7 +19,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                   <div class="form-row">
                     <img id="inputJav06" :src="
-                      'https://jav4free-s3-data.s3.us-east-1.amazonaws.com/idols/' +
+                      'https://d27vxor1f495av.cloudfront.net/idols/' +
                       this.idolUrl +
                       '.jpg'
                     " />
@@ -77,7 +77,7 @@ export default {
       var obj = {
         name: this.idolName,
         image:
-          "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/idols/" +
+          "https://d27vxor1f495av.cloudfront.net/idols/" +
           this.idolName.toLowerCase().replace(" ", "-") +
           ".jpg",
         hide: this.hidden,
