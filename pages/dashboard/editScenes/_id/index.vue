@@ -26,7 +26,7 @@
                     <label for="inputJav07" class="title-input-admin">Categories</label>
                   </div>
                   <div class="row">
-                    <p class="tag" v-for="category in categoriesScene" :key="category.id">
+                    <p class="active btn btn-dark" v-for="category in categoriesScene" :key="category.id">
                       {{ category.name }}
                     </p>
                   </div>
@@ -34,7 +34,7 @@
                     <label for="inputJav07" class="title-input-admin">Idols</label>
                   </div>
                   <div class="row">
-                    <p class="tag" v-for="idol in idolsScene" :key="idol.id">
+                    <p class="active btn btn-dark" v-for="idol in idolsScene" :key="idol.id">
                       {{ idol.name }}
                     </p>
                   </div>
@@ -232,8 +232,8 @@ export default {
         hide: this.scene.hide,
         previewImage: this.scene.previewImage,
         staticImage: this.scene.staticImage,
-        vtt: "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/vtts/" + this.scene.code + "_thumbs.vtt",
-        video480p: "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scenes_480/" + this.scene.code + "_1.mp4",
+        vtt: "https://d27vxor1f495av.cloudfront.net/vtts/" + this.scene.code + "_thumbs.vtt",
+        video480p: "https://d27vxor1f495av.cloudfront.net/scenes_480/" + this.scene.code + "_1.mp4",
         categories: this.categoriesScene,
         idols: this.idolsScene
       };

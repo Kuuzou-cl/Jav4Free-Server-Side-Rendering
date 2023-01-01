@@ -41,8 +41,8 @@
                     <label for="inputJav07" class="title-input-admin">Scenes</label>
                   </div>
                   <div class="row">
-                    <p class="tag" v-for="scene in scenesJav" :key="scene.id">
-                      {{ scene.code }}
+                    <p class="active btn btn-dark" v-for="scene in scenesJav" :key="scene.id">
+                      {{ scene.code }} 
                     </p>
                   </div>
                   <div class="row">
