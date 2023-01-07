@@ -12,9 +12,9 @@
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="row">
-                <div v-for="idol in idols" :key="idol._id">
+                <div v-for="idol in idols" :key="idol.id">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <nuxt-link :to="'/idols/1/' + idol._id">
+                    <nuxt-link :to="'/idols/1/' + idol.name">
                       <button class="btn category-title">
                         {{ idol.name }}
                       </button>
@@ -37,7 +37,7 @@
         <div class="row">
           <div
             v-for="scene in scenes"
-            :key="scene._id"
+            :key="scene.id"
             class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
           >
             <CardScene v-bind:dataJav="scene" />
