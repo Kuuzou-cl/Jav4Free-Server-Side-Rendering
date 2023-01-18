@@ -13,7 +13,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'https://jav4free-s3-data.s3.us-east-1.amazonaws.com/j4f-favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: 'https://d27vxor1f495av.cloudfront.net/j4f-favicon.png' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700&display=swap' }
     ],
@@ -22,7 +22,7 @@ module.exports = {
         src: 'https://cdn.fluidplayer.com/3.0.4/fluidplayer.min.js'
       },
       {
-        src: "https://jav4free-s3-data.s3.us-east-1.amazonaws.com/scripts/adilla2.js", 'data-cfasync' : 'false' , body: true
+        src: "https://d27vxor1f495av.cloudfront.net/scripts/adilla2.js", 'data-cfasync' : 'false' , body: true
       } 
     ]
   },
