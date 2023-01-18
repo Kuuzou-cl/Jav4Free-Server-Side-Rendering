@@ -67,6 +67,10 @@
                     <label for="inputJav06" class="title-input-admin">Video</label>
                     <input v-model="scene.video" class="input-admin" id="inputJav06" placeholder="Enter new video url" />
                   </div>
+                  <div class="row">
+                    <label for="inputJav06" class="title-input-admin">VTT</label>
+                    <input v-model="scene.vtt" class="input-admin" id="inputJav06" placeholder="Enter new vtt url" />
+                  </div>
                 </div>
               </div>
             </div>

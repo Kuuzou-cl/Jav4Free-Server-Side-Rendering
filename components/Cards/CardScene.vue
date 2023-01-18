@@ -65,7 +65,8 @@ export default {
   border: 0;
   border-radius: 0;
   a {
-    color: #000 !important;
+    color: rgb(0, 0, 0) !important;
+    font-weight: bolder;
   }
   cursor: pointer;
   img {
@@ -228,11 +229,11 @@ export default {
   }
 
   .card-scene .post {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 
   .card-scene .title {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .card-scene .box-content {
