@@ -18,14 +18,14 @@
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="row">
-                    <label for="inputJav04">Category Name</label>
+                    <label class="title-input-admin" for="inputJav04">Category Name</label>
                     <input v-model="category.name" class="input-admin" id="inputJav04"
                       placeholder="Enter new category name" />
                   </div>
                 </div>
               </div>
               <div class="row justify-content-center">
-                <button class="btn category-admin" @click="updateCategory()">Update Category</button>
+                <button class="btn btn-success" @click="updateCategory()">Update Category</button>
               </div>
             </div>
           </div>

@@ -21,16 +21,16 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                   <div class="row">
-                    <label for="inputJav04">Idol Name</label>
+                    <label class="title-input-admin" for="inputJav04">Idol Name</label>
                     <input v-model="idol.name" class="input-admin" id="inputJav04" placeholder="Enter new idol name" />
                   </div>
                   <div class="row">
-                    <label for="inputJav04">Idol Image Url</label>
+                    <label class="title-input-admin" for="inputJav04">Idol Image Url</label>
                     <input v-model="idol.image" class="input-admin" id="inputJav04"
                       placeholder="Enter new image url" />
                   </div>
                   <div class="row justify-content-center">
-                    <button class="btn category-admin" @click="updateIdol()">Update Idol</button>
+                    <button class="btn btn-success" @click="updateIdol()">Update Idol</button>
                   </div>
                 </div>
               </div>

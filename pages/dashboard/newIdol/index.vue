@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                   <div class="form-row">
-                    <label for="inputCat01">Idol Name</label>
+                    <label class="title-input-admin" for="inputCat01">Idol Name</label>
                     <input v-model="name" class="input-admin" id="inputCat01" placeholder="Enter idol's name" />
                   </div>
                 </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="container">
               <div class="row justify-content-center">
-                <button class="btn category-admin" @click="postIdol()">
+                <button class="btn btn-success" @click="postIdol()">
                   Add Idol
                 </button>
               </div>

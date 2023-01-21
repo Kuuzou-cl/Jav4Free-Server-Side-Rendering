@@ -13,9 +13,13 @@
             <div class="need-space"></div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <input v-model="javFound" type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Jav Found</label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <input v-model="idolFound" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Idol Found</label>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <input v-model="sceneFound" type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -38,6 +42,24 @@
                                     <th>{{ jav.file }}</th>
                                     <td>
                                         <font-awesome-icon v-if="jav.state" :icon="['fas', 'file-video']"
+                                            class="icon-green" />
+                                        <font-awesome-icon v-else :icon="['fas', 'file-video']" class="icon-red" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="example" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Idol created</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="idol in filterIdols">
+                                    <th>{{ idol.file }}</th>
+                                    <td>
+                                        <font-awesome-icon v-if="idol.state" :icon="['fas', 'file-video']"
                                             class="icon-green" />
                                         <font-awesome-icon v-else :icon="['fas', 'file-video']" class="icon-red" />
                                     </td>
@@ -84,17 +106,21 @@ export default {
         return {
             searchJavs: "",
             searchScenes: "",
+            searchIdols: "",
             filteredJavs: [],
             filteredScenes: [],
+            filteredIdols: [],
             javFound: false,
-            sceneFound: false
+            sceneFound: false,
+            idolFound: false
         };
     },
     async asyncData() {
         let aws = await axios.get("https://jav.souzou.dev/aws/getAllNotDB");
         return {
             javs: aws.data.dataJavs,
-            scenes: aws.data.dataScenes
+            scenes: aws.data.dataScenes,
+            idols: aws.data.dataIdols
         };
     },
     computed: {
@@ -119,6 +145,17 @@ export default {
                 }
             });
             return this.filteredJavs;
+        },
+        filterIdols() {
+            this.filteredIdols = [];
+            this.idols.forEach((idol) => {
+                if (idol.file.toLowerCase().includes(this.searchIdols.toLowerCase())) {
+                    if (idol.state == this.idolFound) {
+                        this.filteredIdols.push(idol);
+                    }
+                }
+            });
+            return this.filteredIdols;
         },
     }
 };
