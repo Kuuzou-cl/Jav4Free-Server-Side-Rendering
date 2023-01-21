@@ -118,7 +118,7 @@ export default {
       let str = params.id.split('?');      
       let scene = await axios.get("https://jav.souzou.dev/scenes/scene?code="+ str[0]);
       let idView = scene.data.data.Scene[0].id;
-      let view = await axios.get("http://localhost:3000/scenes/newView?id="+ idView);
+      let view = await axios.get("https://jav.souzou.dev/scenes/newView?id="+ idView);
       return {
         scene: scene.data.data.Scene[0],
         categories: scene.data.data.Categories,
