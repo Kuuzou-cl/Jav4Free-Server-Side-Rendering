@@ -76,8 +76,6 @@
     </div>
     <div v-if="$device.isMobile" class="need-space"></div>
     <div v-if="$device.isMobile" class="need-space"></div>
-    <div v-if="$device.isMobile" class="need-space"></div>
-    <div v-if="$device.isMobile" class="need-space"></div>
   </div>
 </template>
 
@@ -139,7 +137,6 @@ export default {
         clearInterval(interval);
         this.player = fluidPlayer("javId", {
           layoutControls: {
-            title: this.scene.title + " | Jav4Free | " + this.jav.code,
             layout: "default",
             fillToContainer: false,
             primaryColor: "#da0000",
