@@ -9,12 +9,23 @@
     </div>
     <div class="container-fluid no-margin no-padding">
       <div class="row width-fix no-margin">
-        <div
-          v-for="jav in javs"
-          :key="jav.id"
-          class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
-        >
+        <div v-for="jav in javs" :key="jav.id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding">
           <CardJavPoster v-bind:dataJav="jav" />
+        </div>
+      </div>
+    </div>
+    <div class="need-space"></div>
+    <div class="container-fluid">
+      <div class="row row-title">
+        <div class="col-lg-12 text-center">
+          <h4>Most Viewed AV Scenes</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid no-margin no-padding">
+      <div class="row width-fix no-margin">
+        <div v-for="scene in mostViewed" :key="scene.id" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <CardScene v-bind:dataJav="scene" />
         </div>
       </div>
     </div>
@@ -28,11 +39,7 @@
             </div>
           </div>
           <div class="row">
-            <div
-              v-for="scene in scenes"
-              :key="scene.id"
-              class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-            >
+            <div v-for="scene in scenes" :key="scene.id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
               <CardScene v-bind:dataJav="scene" />
             </div>
           </div>
@@ -51,23 +58,17 @@
             </div>
           </div>
           <div class="row">
-            <div
-              v-for="idol in idols"
-              :key="idol._id"
-              class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding"
-            >
-              <CardIdol
-                v-bind:dataId="idol.id"
-                v-bind:dataName="idol.name"
-                v-bind:dataUrl="idol.image"
-              ></CardIdol>
+            <div v-for="idol in idols" :key="idol._id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding">
+              <CardIdol v-bind:dataId="idol.id" v-bind:dataName="idol.name" v-bind:dataUrl="idol.image"></CardIdol>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-12 text-center">
-              <script async type="text/javascript" src="https://a.realsrv.com/ad-provider.js"></script> 
-                <ins class="adsbyexoclick" data-zoneid="4445412"></ins> 
-              <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+              <script async type="text/javascript" src="https://a.realsrv.com/ad-provider.js"></script>
+              <ins class="adsbyexoclick" data-zoneid="4445412"></ins>
+              <script>
+                (AdProvider = window.AdProvider || []).push({"serve": {}});
+              </script>
             </div>
           </div>
         </div>
@@ -107,12 +108,14 @@ export default {
   async asyncData({ error, $errorHandler }) {
     try {
       const scenes = await axios.get("https://jav.souzou.dev/scenes?page=1&order=desc");
+      const mostViewed = await axios.get("https://jav.souzou.dev/scenes/byviews?limit=6");
       const javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=4");
       const idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=4");
       return {
         javs: javs.data.data.Javs,
         scenes: scenes.data.data.Scenes,
         idols: idols.data.data.Idols,
+        mostViewed: mostViewed.data.data
       };
     } catch (errors) {
       const errorResponse = $errorHandler.setAndParse(errors);
