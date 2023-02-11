@@ -123,12 +123,12 @@ export default {
         scene = await axios.get("https://jav.souzou.dev/scenes/scene?code=" + str[0]);
         idView = scene.data.data.Scene[0].id;
         view = await axios.get("https://jav.souzou.dev/scenes/newView?id=" + idView);
-        related = await axios.get("https://jav.souzou.dev/scenes/relatedScenes?code=" + str[0] + "&limit=" + 4);
+        related = await axios.get("https://jav.souzou.dev/scenes/relatedScenes?id=" + scene.data.data.Scene[0].id + "&limit=" + 4);
       } else {
         scene = await axios.get("https://jav.souzou.dev/scenes/scene?code=" + str[0]);
         idView = scene.data.data.Scene[0].id;
         view = await axios.get("https://jav.souzou.dev/scenes/newView?id=" + idView);
-        related = await axios.get("https://jav.souzou.dev/scenes/relatedScenes?code=" + str[0] + "&limit=" + 8);
+        related = await axios.get("https://jav.souzou.dev/scenes/relatedScenes?id=" + scene.data.data.Scene[0].id + "&limit=" + 8);
       }
       return {
         scene: scene.data.data.Scene[0],
