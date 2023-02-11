@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-        <div v-if="$device.isDesktop" class="col-lg-5">
+        <div v-if="$device.isDesktopOrTablet" class="col-lg-5">
           <div class="row row-title">
             <div class="col-lg-12 text-center">
               <h4>Featured AV Idols</h4>
@@ -105,12 +105,23 @@ export default {
       ],
     };
   },
-  async asyncData({ error, $errorHandler }) {
+  async asyncData({ error, $errorHandler, $device }) {
     try {
-      const scenes = await axios.get("https://jav.souzou.dev/scenes?page=1&order=desc");
-      const mostViewed = await axios.get("https://jav.souzou.dev/scenes/byviews?limit=6");
-      const javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=4");
-      const idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=4");
+      let javs;
+      let mostViewed;
+      let idols;
+      let scenes;
+      if ($device.isMobile) {
+        javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=2");
+        mostViewed = await axios.get("https://jav.souzou.dev/scenes/byviews?limit=3");
+        idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=1");
+        scenes = await axios.get("https://jav.souzou.dev/scenes/scenes?limit=6&order=desc");
+      }else{
+        javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=4");
+        mostViewed = await axios.get("https://jav.souzou.dev/scenes/byviews?limit=6");
+        idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=4");
+        scenes = await axios.get("https://jav.souzou.dev/scenes/scenes?limit=12&order=desc");
+      }
       return {
         javs: javs.data.data.Javs,
         scenes: scenes.data.data.Scenes,
