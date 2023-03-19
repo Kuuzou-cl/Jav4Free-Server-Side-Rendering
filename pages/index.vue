@@ -39,6 +39,9 @@
             </div>
           </div>
           <div class="row">
+            <div v-for="scene in scenesRnd" :key="scene.id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+              <CardScene v-bind:dataJav="scene" />
+            </div>
             <div v-for="scene in scenes" :key="scene.id" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
               <CardScene v-bind:dataJav="scene" />
             </div>
@@ -111,19 +114,23 @@ export default {
       let mostViewed;
       let idols;
       let scenes;
+      let scenesRnd;
       if ($device.isMobile) {
         javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=2");
         mostViewed = await axios.get("https://jav.souzou.dev/scenes/byviews?limit=3");
         idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=1");
         scenes = await axios.get("https://jav.souzou.dev/scenes/scenes?limit=6&order=desc");
+        scenesRnd = await axios.get("https://jav.souzou.dev/scenes/scenesRandom?limit=4");
       }else{
         javs = await axios.get("https://jav.souzou.dev/javs/newest?limit=4");
         mostViewed = await axios.get("https://jav.souzou.dev/scenes/byviews?limit=6");
         idols = await axios.get("https://jav.souzou.dev/idols/featured?limit=4");
-        scenes = await axios.get("https://jav.souzou.dev/scenes/scenes?limit=12&order=desc");
+        scenes = await axios.get("https://jav.souzou.dev/scenes/scenes?limit=8&order=desc");
+        scenesRnd = await axios.get("https://jav.souzou.dev/scenes/scenesRandom?limit=4");
       }
       return {
         javs: javs.data.data.Javs,
+        scenesRnd: scenesRnd.data.data.Scenes,
         scenes: scenes.data.data.Scenes,
         idols: idols.data.data.Idols,
         mostViewed: mostViewed.data.data
