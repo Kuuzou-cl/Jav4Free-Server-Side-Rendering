@@ -12,6 +12,7 @@
             class="icon-sidebar"
           />
         </nuxt-link>
+        <nuxt-link to="/dashboard" tag="a" v-if="$store.state.token" > | Dashboard | </nuxt-link>
         <font-awesome-icon
           :icon="['fas', 'sign-out-alt']"
           class="icon-sidebar"

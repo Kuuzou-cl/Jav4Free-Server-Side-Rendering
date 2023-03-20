@@ -39,8 +39,8 @@
           <div class="jav-extra">
             <span>
               Categories:
-              <nuxt-link v-for="category in categories" :key="category.id" :to="'/categories/1/' + category.name"
-                tag="a" class="links">{{ category.name }},</nuxt-link>
+              <nuxt-link v-for="category in categories" :key="category.id" :to="'/categories/1/' + category.name" tag="a"
+                class="links">{{ category.name }},</nuxt-link>
             </span>
           </div>
           <div class="jav-extra">
@@ -145,6 +145,11 @@ export default {
       });
     }
   },
+  created() {
+    this.$store.dispatch("viewScene", {
+      scene: this.scene.code
+    });
+  },
   mounted() {
     const interval = setInterval(() => {
       if (this.$refs.javId2) {
@@ -196,7 +201,7 @@ export default {
       } else {
         return _name;
       }
-    },
+    }
   },
 };
 </script>

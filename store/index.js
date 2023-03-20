@@ -5,7 +5,8 @@ const cookies = new Cookies();
 
 export const state = () => ({
   authUser: null,
-  token: null
+  token: null,
+  history: []
 })
 
 export const getters = {
@@ -37,10 +38,20 @@ export const mutations = {
       })
     }
   },
+  ADD_HISTORY(state, scene) {
+    if (scene && !state.history.includes(scene)) {
+      state.history.push(scene);
+      this.$cookies.set('history', state.history, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+    }
+  }
 }
 
 export const actions = {
   async nuxtServerInit({ commit, state }, { req }) {
+
     let cookieUser;
     if (this.$cookies.get('user')) {
       cookieUser = this.$cookies.get('user');
@@ -51,12 +62,24 @@ export const actions = {
         maxAge: 60 * 60 * 24 * 7
       })
     }
+
     let cookieToken;
     if (this.$cookies.get('token')) {
       cookieToken = this.$cookies.get('token');
     } else {
       cookieToken = null;
       this.$cookies.set('token', null, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7
+      })
+    }
+
+    let cookieHistory
+    if (this.$cookies.get('history')) {
+      cookieHistory = this.$cookies.get('history');
+    } else {
+      cookieHistory = [];
+      this.$cookies.set('history', null, {
         path: '/',
         maxAge: 60 * 60 * 24 * 7
       })
@@ -103,6 +126,17 @@ export const actions = {
       commit('SET_USER', null)
     } catch (error) {
       throw error;
+    }
+  },
+  async viewScene({ commit }, { scene }) {
+    try {
+      commit('ADD_HISTORY', scene)
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.log('Error adding scene to history')
+        throw new Error('Error adding scene to history')
+      }
+      throw error
     }
   },
 
