@@ -1,17 +1,20 @@
 <template>
-  <div @contextmenu.prevent class="card bg-dark box2">
-    <div class="loading-box"></div>
-    <div class="box2-media">
+  <div class="card bg-dark card-scene">
+    <div class="card-scene-media">
       <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">
-        <img :src="dataJav.imageIndexUrl" v-lazy-load />
-        <video class="video-jav" @mouseleave="restart()" @mouseover="start()" preload="auto">
-          <source :src="dataJav.imageUrl" type="video/mp4" />
+        <img :src="dataJav.staticImage" />
+        <video class="video-jav" @mouseleave="restart()" @mouseover="start()" preload="auto" loop>
+          <source :src="dataJav.previewImage" type="video/mp4" />
         </video>
       </nuxt-link>
     </div>
-    <div class="box-content-mobile">
-      <h3 class="title-mobile">
-        <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.name) }}</nuxt-link>
+    <div class="box-code">
+      <b class="post">{{ dataJav.duration }}</b>
+    </div>
+    <div class="box-content">
+      <h3 class="title">
+        <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">{{ getCode(dataJav.code) + " - " +
+          getName(dataJav.title) }}</nuxt-link>
       </h3>
     </div>
   </div>
@@ -19,22 +22,22 @@
 
 <script>
 export default {
-  name: "CardSceneMobile",
+  name: "CardScene",
   props: {
     dataJav: Object,
   },
   methods: {
     getName: function (_name) {
       let newName;
-      if (_name.length > 45) {
-        newName = _name.slice(0, 45) + " ...";
+      if (_name.length > 55) {
+        newName = _name.slice(0, 55) + " ...";
         return newName;
       } else {
         return _name;
       }
     },
     getCode: function (_name) {
-      return _name.slice(0,_name.length -4)
+      return _name.slice(0, _name.length - 4)
     },
     restart: function () {
       $(".video-jav").on("mouseout", function (event) {
@@ -46,161 +49,198 @@ export default {
         this.play();
       });
     },
-  },
+  }
 };
 </script>
 
 <style lang="scss">
-.box2{
-    position:relative;
-    overflow:hidden;
-    border: 0;
-    border-radius: 0;
-    a{
-        color: #eeeeee !important;
-    }
-    cursor: pointer;
-    img{
-        z-index:3;
-    }
-    video{
-        display: none;
-    }
-    margin-top: 4%;
-    margin-bottom: 4%;
+.card-scene {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+
+  a {
+    color: rgb(0, 0, 0) !important;
+    font-weight: bolder;
+  }
+
+  cursor: pointer;
+
+  img {
+    z-index: 3;
+  }
+
+  video {
+    display: none;
+  }
+
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
-.box2:hover{
-    a{
-        color: #ffd800 !important;
-    }
+.card-scene:hover {
+  a {
+    color: #da0000 !important;
+  }
 }
 
-.box2-media:hover, .box2-media:active, .box2-media:focus{
-    a{
-        color: #ffd800 !important;
-    }
-    img{
-        display: none;
-    }
-    video{
-        display: block;
-        z-index:1;
-        background-color: #000000;
-    }
+.card-scene-media:hover,
+.card-scene-media:active,
+.card-scene-media:focus {
+  img {
+    display: none;
+  }
+
+  video {
+    display: block;
+    z-index: 1;
+    background-color: #fff;
+  }
 }
 
-.loading-box{
-    position: absolute;
-    z-index:1;
-    border-top: 2px solid #ffd800;
-    width:0;
-    transition: width 0.5s ease-in-out;
+.card-scene .box-code {
+  top: 0%;
+  color: #f8faff;
+  text-align: right;
+  width: 20%;
+  padding-right: 3%;
+  position: absolute;
+  right: 0%;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.40);
 }
 
-.box2 .box-code{
-    top:0%; 
-    color:#f8faff; 
-    text-align: right;
-    width:20%;
-    padding-right: 4%;
-    position:absolute;
-    right:0%;
-    z-index:4;
+.card-scene .post {
+  .box-code {
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+  }
+
+  .box-time {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  text-transform: uppercase;
+  text-align: center !important;
+  font-size: 11px;
+  letter-spacing: 1.5px;
 }
 
-.box2 .post{
-    .box-code{
-        display:flex;justify-content:flex-end;align-items:right;
-    }
-    .box-time{
-        display:flex;justify-content:flex-end;align-items:center;
-    }
-    text-transform:uppercase;
-    text-align:center !important;
-    font-size:11px;
-    letter-spacing: 1.5px;
+.card-scene .title {
+  font-size: 13px;
+  margin: 0;
+  font-weight: 260 !important;
 }
 
-.box2 .title{
-    font-size:13px;
-    margin:0; 
-    font-weight: 260 !important;}
-
-.box2 .box-content{
-    width:100%;
-    padding:5px 10px;
-    color:#f8faff;
-    background-color: #000000;
-    text-align: justify;
-    z-index:1;
+.card-scene .box-content {
+  width: 100%;
+  padding: 5px 10px;
+  color: #f8faff;
+  background-color: #fff;
+  text-align: justify;
+  z-index: 1;
 }
 
-.box2 .title-mobile{
-    font-size:13px;
+.card-scene .title-mobile {
+  font-size: 13px;
 }
 
-.box2 .box-content-mobile{
-    width:100%;
-    padding:1% 0%;
-    color:#f8faff;
-    background-color: #000000;
-    text-align: center;
+.card-scene .box-content-mobile {
+  width: 100%;
+  padding: 1% 0%;
+  color: #f8faff;
+  background-color: #fff;
+  text-align: center;
 }
 
-@media screen and (min-width: 1440px) and (max-width: 1919px) {
 
-}
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+  .card-scene .title {
+    font-size: 12px;
+  }
 
-@media screen and (min-width: 1280px) and (max-width: 1439px) {
-            
-    .box2 .title{font-size:12px;}
+  .card-scene .box-content {
+    padding: 5px 5px;
+  }
 
-    .box2 .box-content{padding:5px 5px;}
+  .card-scene .box-code {
+    width: 28%;
+  }
+
+  .card-scene .box-code .post {
+    font-size: 10px;
+  }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1279px) {
+  .card-scene .post {
+    font-size: 11px;
+  }
 
-    .box2 .post{font-size:11px;}
-    
-    .box2 .title{font-size:10px;}
+  .card-scene .title {
+    font-size: 10px;
+  }
 
-    .box2 .box-content{padding:5px 2px;}
+  .card-scene .box-content {
+    padding: 5px 2px;
+  }
 }
 
 @media screen and (min-width: 800px) and (max-width: 991px) {
-    .box2 .box-time{
-        height: 15%;
-    }
-        
-    .box2 .post{font-size:11px;}
-    
-    .box2 .title{font-size:8px;}
+  .card-scene .box-time {
+    height: 15%;
+  }
 
-    .box2 .box-content{padding:5px 2px;}
+  .card-scene .post {
+    font-size: 11px;
+  }
+
+  .card-scene .title {
+    font-size: 8px;
+  }
+
+  .card-scene .box-content {
+    padding: 5px 2px;
+  }
 }
 
 @media screen and (min-width: 621px) and (max-width: 799px) {
-    .box2 .box-time{
-        height: 15%;
-    }
+  .card-scene .box-time {
+    height: 15%;
+  }
 
-    .box2 .post{font-size:9px !important;}
+  .card-scene .post {
+    font-size: 9px !important;
+  }
 
-    .box2 .title{font-size:8px;}
+  .card-scene .title {
+    font-size: 8px;
+  }
 
-    .box2 .box-content{padding:5px 2px;}
+  .card-scene .box-content {
+    padding: 5px 2px;
+  }
 }
 
 @media screen and (min-width: 380px) and (max-width: 620px) {
-    .box2 .box-time{
-        height: 15%;
-    }
-    
-    .box2 .post{font-size:12px !important;}
+  .card-scene .box-time {
+    height: 15%;
+  }
 
-    .box2 .title{font-size:10px;}
+  .card-scene .post {
+    font-size: 14px !important;
+  }
 
-    .box2 .box-content{padding:5px 2px;}
+  .card-scene .title {
+    font-size: 14px;
+  }
+
+  .card-scene .box-content {
+    padding: 5px 2px;
+  }
 }
 </style>

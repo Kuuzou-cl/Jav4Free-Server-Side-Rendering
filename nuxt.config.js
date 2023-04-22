@@ -32,7 +32,6 @@ module.exports = {
   ],
   plugins: [
     '~plugins/bootstrap.js',
-    { src: '~/plugins/vue-touch2', ssr: false },
     { src: '~/plugins/error-handler.js' }
   ],
   buildModules: [

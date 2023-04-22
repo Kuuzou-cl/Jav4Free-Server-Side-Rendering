@@ -3,13 +3,7 @@
     <div class="card-scene-media">
       <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">
         <img :src="dataJav.staticImage" />
-        <video
-          class="video-jav"
-          @mouseleave="restart()"
-          @mouseover="start()"
-          preload="auto"
-          loop
-        >
+        <video class="video-jav" @mouseleave="restart()" @mouseover="start()" preload="auto" loop>
           <source :src="dataJav.previewImage" type="video/mp4" />
         </video>
       </nuxt-link>
@@ -19,7 +13,8 @@
     </div>
     <div class="box-content">
       <h3 class="title">
-        <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">{{ getCode(dataJav.code) + " - " + getName(dataJav.title) }}</nuxt-link>
+        <nuxt-link :to="'/scenes/scene/' + dataJav.code + '?' + dataJav.title" tag="a">{{ getCode(dataJav.code) + " - " +
+          getName(dataJav.title) }}</nuxt-link>
       </h3>
     </div>
   </div>
@@ -42,7 +37,7 @@ export default {
       }
     },
     getCode: function (_name) {
-      return _name.slice(0,_name.length -4)
+      return _name.slice(0, _name.length - 4)
     },
     restart: function () {
       $(".video-jav").on("mouseout", function (event) {
@@ -54,7 +49,7 @@ export default {
         this.play();
       });
     },
-  },
+  }
 };
 </script>
 
@@ -64,17 +59,22 @@ export default {
   overflow: hidden;
   border: 0;
   border-radius: 0;
+
   a {
     color: rgb(0, 0, 0) !important;
     font-weight: bolder;
   }
+
   cursor: pointer;
+
   img {
     z-index: 3;
   }
+
   video {
     display: none;
   }
+
   margin-top: 4%;
   margin-bottom: 4%;
 }
@@ -91,6 +91,7 @@ export default {
   img {
     display: none;
   }
+
   video {
     display: block;
     z-index: 1;
@@ -116,11 +117,13 @@ export default {
     justify-content: flex-end;
     align-items: right;
   }
+
   .box-time {
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
+
   text-transform: uppercase;
   text-align: center !important;
   font-size: 11px;
@@ -167,8 +170,8 @@ export default {
   .card-scene .box-code {
     width: 28%;
   }
-  
-  .card-scene .box-code .post{
+
+  .card-scene .box-code .post {
     font-size: 10px;
   }
 }
