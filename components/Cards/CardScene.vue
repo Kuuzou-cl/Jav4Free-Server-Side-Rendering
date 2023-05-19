@@ -48,7 +48,7 @@ export default {
       $(".video-jav").on("mouseover", function (event) {
         this.play();
       });
-    },
+    }
   }
 };
 </script>

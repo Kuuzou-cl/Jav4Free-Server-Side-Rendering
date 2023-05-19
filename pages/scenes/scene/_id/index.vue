@@ -7,7 +7,7 @@
           <div class="container-jav">
             <video id="javId" ref="javId2">
               <source data-fluid-hd :src="this.scene.video" title='720p' type="video/mp4" />
-              <source :src="'https://javdata.sfo2.digitaloceanspaces.com/scenes_480/' + this.scene.code + '_1.mp4'"
+              <source :src="this.scene.video480p"
                 title='480p' type="video/mp4" />
             </video>
             <div class="jav-title">
